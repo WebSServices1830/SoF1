@@ -3,18 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/entities/Piloto.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/entities/Escuderia.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/negocio/ManejoPilotos.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/negocio/ManejoCircuitos.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/web/WEB-INF/CRUDEntidades.wsdl</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/web/WEB-INF/CRUDEntidades_schema1.xsd</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/web/index.html</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/entities/Circuito.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/negocio/ManejoEscuderia.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/piloto/CRUDPiloto.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/entities/Premio.java</file>
-            <file>file:/C:/Users/TAURET/Documents/NetBeansProjects/AppFormula1Servidor/src/java/entities/Resultado.java</file>
+            <file>file:/C:/Users/Michael/Documents/WS/Implementacion/AppFormula1Servidor/src/java/negocio/ManejoPilotos.java</file>
         </group>
     </open-files>
 </project-private>

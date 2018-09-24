@@ -24,7 +24,7 @@ public class ManejoPilotos {
     public ManejoPilotos() {
         this.pilotos = new ArrayList<>();
         this.jaxb = new JaxbWriterReader();
-	this.campeonato = (Campeonato) this.jaxb.jaxbReader(Campeonato.class, "C:\\Users\\Michael\\Documents\\WS\\Proyecto\\AppFormula1Servidor\\Data\\campeonato.xml");
+	this.campeonato = (Campeonato) this.jaxb.jaxbReader(Campeonato.class, "C:\\Users\\Michael\\Documents\\WS\\Implementacion\\AppFormula1Servidor\\Data\\campeonato.xml");
         System.out.println(campeonato.getPiloto().size()+"+++++++++");
     }
     
@@ -41,9 +41,10 @@ public class ManejoPilotos {
         pil.setBiografia(piloto.getBiografia());
         pil.setFoto(piloto.getFoto());
         pil.setMultiplicador(piloto.getMultiplicador());
-                
+        pil.setIdPiloto(piloto.getIdPiloto());
+        
         this.campeonato.getPiloto().add(pil);
-        this.jaxb.jaxbWriter(this.campeonato, "C:\\Users\\Michael\\Documents\\WS\\Proyecto\\AppFormula1Servidor\\campeonato.xml");
+        this.jaxb.jaxbWriter(this.campeonato, "C:\\Users\\Michael\\Documents\\WS\\Implementacion\\AppFormula1Servidor\\campeonato.xml");
     }
     
     public List<Piloto> findAll(){
@@ -61,7 +62,7 @@ public class ManejoPilotos {
         
         //return pilotos;
         //return this.campeonato.getPiloto();
-        System.out.println(pts.size());
+        
         return pts;
     }
     
@@ -75,7 +76,7 @@ public class ManejoPilotos {
             ++i;
         }
         
-        this.jaxb.jaxbWriter(this.campeonato, "C:\\Users\\Michael\\Documents\\WS\\Proyecto\\AppFormula1Servidor\\campeonato.xml");
+        this.jaxb.jaxbWriter(this.campeonato, "C:\\Users\\Michael\\Documents\\WS\\Implementacion\\AppFormula1Servidor\\campeonato.xml");
     }
     
     public void edit(Piloto piloto){
@@ -93,6 +94,7 @@ public class ManejoPilotos {
         pil.setFoto(piloto.getFoto());
         pil.setMultiplicador(piloto.getMultiplicador());
         
+        
         int i = 0;
         for(Persistencia.Piloto p : this.campeonato.getPiloto()){
             if(p.getIdPiloto() == piloto.getIdPiloto()){
@@ -102,7 +104,7 @@ public class ManejoPilotos {
             ++i;
         }
         
-            this.jaxb.jaxbWriter(this.campeonato, "C:\\Users\\Michael\\Documents\\WS\\Proyecto\\AppFormula1Servidor\\campeonato.xml");
+            this.jaxb.jaxbWriter(this.campeonato, "C:\\Users\\Michael\\Documents\\WS\\Implementacion\\AppFormula1Servidor\\campeonato.xml");
     }
     
     public Piloto findById(int id){
