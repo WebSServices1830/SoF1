@@ -25,8 +25,8 @@ public class AppClienteWS {
     public static void main(String[] args) {
         // TODO code application logic here
         Piloto piloto = new Piloto();
-        piloto.setIdPiloto(1);
-        piloto.setNombre("Dios Danielito");
+        piloto.setIdPiloto(6);
+        piloto.setNombre("Dios ");
         Date fecha = new Date();
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(fecha);
@@ -43,7 +43,7 @@ public class AppClienteWS {
         piloto.setFoto("jeje xd");
         piloto.setMultiplicador(1.4);
         
-        //create(piloto);  //-->>C
+        create(piloto);  //-->>C
         //System.out.println(findAll().size());  //-->>R
         //edit(piloto);  //-->>U
         //remove(0);  //-->>D
