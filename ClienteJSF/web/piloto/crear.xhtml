@@ -7,10 +7,10 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Crear piloto
-        
+        <h2>Crear piloto
+        </h2>
         <p:tooltip />
-        <h:form>
+        <h:form enctype="multipart/form-data">
             <p:growl id="messages" showDetail="true"/>
             <h:panelGrid columns="2">
                 <p:outputLabel value="id:"></p:outputLabel>
@@ -33,17 +33,15 @@
                 <p:outputLabel value="Bibliografia:" />                
                <p:inputTextarea value="#{wsPilotoBean.piloto.biografia}" cols="30" rows="10"/>
           
+         
+                <p:outputLabel value="Foto:" />                
+            <p:fileUpload value="#{wsPilotoBean.file}" mode="simple"   />
+
                 
             </h:panelGrid>
             
-            <p:commandButton value="Guardar"  action="#{wsPilotoBean.save}"  />
+                <p:commandButton value="Guardar"  ajax="false " action="#{wsPilotoBean.save}"  />
             
-        </h:form>
-        <h:form enctype="multipart/form-data">
-         
-            <p:fileUpload value="#{fileUploadView.file}" mode="simple"   />
-
-            <p:commandButton value="Subir" ajax="false" actionListener="#{fileUploadView.upload}"  />
         </h:form>
     </h:body>
 </html>

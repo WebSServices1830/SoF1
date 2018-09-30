@@ -80,7 +80,8 @@ public class wsPilotoBean {
         ws.CRUDPiloto port = service.getCRUDPilotoPort();
         return port.findAll();
     }
-    public String save(){
+    public String save() throws IOException{
+     upload();
         System.out.println(""+piloto.getNombre());
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(fecha);
@@ -156,11 +157,12 @@ public class wsPilotoBean {
         //System.out.println("Name " + getName());
         //System.out.println("tmp directory" System.getProperty("java.io.tmpdir"));
         System.out.println("File Name " + file.getFileName());
+        System.out.println("File New Name " + piloto.getNombre());
         System.out.println("Size " + file.getSize());
         byte[] bytes = null;
 
         if (null != file) {
-            copyFile(file.getFileName(), file.getInputstream());
+            copyFile(piloto.getNombre()+".jpg", file.getInputstream());
           FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }

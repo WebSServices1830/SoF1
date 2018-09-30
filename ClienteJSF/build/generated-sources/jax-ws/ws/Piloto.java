@@ -139,7 +139,8 @@ public class Piloto {
      *     
      */
     public String getFoto() {
-        return foto;
+        
+        return "http://localhost/images/"+nombre+".jpg";
     }
 
     /**

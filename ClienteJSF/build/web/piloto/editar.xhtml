@@ -12,6 +12,8 @@
         <p:tooltip />
         <h:form>
             <p:growl id="messages" showDetail="true"/>
+            
+            <h:panelGrid columns="2">
             <h:panelGrid columns="2">
                 <p:outputLabel value="id:"></p:outputLabel>
                 <p:inputText value="#{wsPilotoBean.piloto.idPiloto}"/>
@@ -32,6 +34,12 @@
 
                 <p:outputLabel value="Bibliografia:" />                
                 <p:inputTextarea value="#{wsPilotoBean.piloto.biografia}" cols="30" rows="10"/>
+            </h:panelGrid>
+                <p:column style=" position: relative; top: -200px;">
+                    
+                
+                <img src="#{wsPilotoBean.piloto.foto}" width="140px" height="180px" style="vertical-align: top;"/>;
+            </p:column>
             </h:panelGrid>
             
             <p:commandButton value="Guardar"  action="#{wsPilotoBean.edit}"  />
