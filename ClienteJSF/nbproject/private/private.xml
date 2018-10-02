@@ -3,17 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/src/java/controllers/wsPilotoBean.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/build/generated-sources/jax-ws/ws/Piloto.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/web/piloto/listado.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/build/generated-sources/jax-ws/ws/Edit.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/src/java/controllers/FileUploadView.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/web/index.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/web/welcomePrimefaces.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/src/java/entities/Piloto.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/web/piloto/crear.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/ClienteJSF/web/piloto/editar.xhtml</file>
+            <file>file:/C:/SoF1/ClienteJSF/web/monoplaza/listado.xhtml</file>
+            <file>file:/C:/SoF1/ClienteJSF/web/monoplaza/crear.xhtml</file>
+            <file>file:/C:/SoF1/ClienteJSF/web/piloto/crear.xhtml</file>
         </group>
     </open-files>
 </project-private>

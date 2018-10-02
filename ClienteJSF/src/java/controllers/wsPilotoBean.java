@@ -64,6 +64,7 @@ public class wsPilotoBean {
     
     public List<Piloto> getPilotos() {
         pilotos=findAll();
+        
         return pilotos;
     }
 
