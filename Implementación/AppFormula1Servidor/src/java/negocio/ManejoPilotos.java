@@ -55,7 +55,7 @@ public class ManejoPilotos {
             entities.Piloto pil = new entities.Piloto(
                     p.getNombre(),null, p.getLugarNacimiento(), p.getPodios(), p.getCampeonatos(), p.getNumero(),
                     p.getBiografia(), p.getFoto(),p.getMultiplicador()  );
-            
+            pil.setIdPiloto(p.getIdPiloto());
             pts.add(pil);
             
         }
@@ -114,7 +114,7 @@ public class ManejoPilotos {
                 Piloto pil = new Piloto(
                     p.getNombre(),null, p.getLugarNacimiento(), p.getPodios(), p.getCampeonatos(), p.getNumero(),
                     p.getBiografia(), p.getFoto(),p.getMultiplicador()  );
-                
+                pil.setIdPiloto(id);
                 return pil;
             }
         }
