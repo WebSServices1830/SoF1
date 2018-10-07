@@ -31,7 +31,7 @@ public class wsEscuderiaBean {
     public wsEscuderiaBean() {
     }
     List<Piloto> pilotos=new ArrayList<>();
-    Piloto piloto;
+    Piloto piloto=new Piloto();
 
     public Piloto getPiloto() {
         return piloto;

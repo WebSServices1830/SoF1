@@ -17,7 +17,18 @@
             
 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
                     <div id="top">
-            <ui:insert name="top">Top</ui:insert>
+                        <ui:insert name="top">
+                            top
+                            
+ 
+                        </ui:insert>
+                        <p:link value="Registrarse"  outcome="/registro" />
+                        <h:form>
+                            
+                        <p:outputLabel value="#{wsSessionBean.estadoSession}"/>
+                        <p:commandButton action="#{wsSessionBean.login}" ajax="false" value="Iniciar Sesión"/>
+                        <p:commandButton action="#{wsSessionBean.salir}" ajax="false" value="salir"/>
+                        </h:form>
         </div>
                 </p:layoutUnit>
            
@@ -37,6 +48,7 @@
  <p:menuitem value="agregar monoplaza"  outcome="/monoplaza/crear" icon="ui-icon-star" />
 <p:menuitem value="escuderia"  outcome="/escuderia/listado" icon="ui-icon-star" />
 <p:menuitem value="agregar escuderia"  outcome="/escuderia/crear" icon="ui-icon-star" />
+<p:menuitem value="editar"  outcome="/escuderia/editar" icon="ui-icon-star" />
 
                         </p:submenu>
 
@@ -61,6 +73,7 @@
             </p:layoutUnit>
         
             </p:layout>
+        
     </h:body>
 
 </html>
