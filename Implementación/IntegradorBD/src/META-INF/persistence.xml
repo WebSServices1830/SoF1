@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="IntegradorBDPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>entities.Premio</class>
+    <class>entities.Sesioncarrera</class>
+    <class>entities.Calificacion</class>
+    <class>entities.Foto</class>
+    <class>entities.Resultadoclasificacion</class>
+    <class>entities.Monoplaza</class>
+    <class>entities.Usuario</class>
+    <class>entities.Circuito</class>
+    <class>entities.Resultadopractica</class>
+    <class>entities.Sesionpractica</class>
+    <class>entities.Sesionclasificacion</class>
+    <class>entities.Apuesta</class>
+    <class>entities.Resultadocarrera</class>
+    <class>entities.Piloto</class>
+    <class>entities.Campeonato</class>
+    <class>entities.Pais</class>
+    <class>entities.Escuderia</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Formula1DB"/>
+      <property name="javax.persistence.jdbc.user" value="michael"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.password" value="vargas"/>
+    </properties>
+  </persistence-unit>
+</persistence>
