@@ -162,7 +162,7 @@ public class Gestor {
     }
     
     @WebMethod(operationName = "findAllPremio")
-    public List<Escuderia> findAllPremio() {
+    public List<Premio> findAllPremio() {
         return null;
     }
 }

@@ -1,16 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
         <ui:composition template="./../Template.xhtml">
 
             <ui:define name="content">
-                <h1> Escuderias </h1>
-                
-                
+              <h1>Clasificacion</h1>
+        <h:panelGrid columns="8" cellpadding="5">
+            <h:outputText  value="POS" />
+            <h:outputText  value="No" />
+            <h:outputText  value="DRIVE" />
+            <h:outputText  value="CAR" />
+            <h:outputText  value="Q1" />
+            <h:outputText  value="Q2" />
+            <h:outputText  value="Q3" />
+            <h:outputText  value="LAPS" />
+
+        </h:panelGrid>
+        <ui:repeat value="#{wsResultados.sesionClasificacion.resultados}" var="res">
+            <h:panelGrid columns="8" cellpadding="5">
+                <h:outputText  value="#{res.posicion}" />
+                <h:outputText  value="#{res.piloto.numero}" />
+                <h:outputText  value="#{res.piloto.nombre}" />
+                <h:outputText  value="#{res.piloto.monoplaza.escuderia.nombre}" />
+                <h:outputText  value="#{res.q1}" />
+                <h:outputText  value="#{res.q2}" />
+                <h:outputText  value="#{res.q3}" />
+                <h:outputText  value="#{res.vueltas}" />
+            </h:panelGrid>
+        </ui:repeat>
                 
             </ui:define>
 

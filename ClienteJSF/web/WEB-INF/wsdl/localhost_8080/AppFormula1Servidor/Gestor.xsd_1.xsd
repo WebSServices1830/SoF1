@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws/">
+
+<xs:element name="createCircuito" type="tns:createCircuito"/>
+
+<xs:element name="createEscuderia" type="tns:createEscuderia"/>
+
+<xs:element name="createMonoplaza" type="tns:createMonoplaza"/>
+
+<xs:element name="createPiloto" type="tns:createPiloto"/>
+
+<xs:element name="createPremio" type="tns:createPremio"/>
+
+<xs:element name="editCircuito" type="tns:editCircuito"/>
+
+<xs:element name="editEscuderia" type="tns:editEscuderia"/>
+
+<xs:element name="editMonoplaza" type="tns:editMonoplaza"/>
+
+<xs:element name="editPiloto" type="tns:editPiloto"/>
+
+<xs:element name="editPremio" type="tns:editPremio"/>
+
+<xs:element name="findAllCircuito" type="tns:findAllCircuito"/>
+
+<xs:element name="findAllCircuitoResponse" type="tns:findAllCircuitoResponse"/>
+
+<xs:element name="findAllEscuderia" type="tns:findAllEscuderia"/>
+
+<xs:element name="findAllEscuderiaResponse" type="tns:findAllEscuderiaResponse"/>
+
+<xs:element name="findAllMonoplaza" type="tns:findAllMonoplaza"/>
+
+<xs:element name="findAllMonoplazaResponse" type="tns:findAllMonoplazaResponse"/>
+
+<xs:element name="findAllPiloto" type="tns:findAllPiloto"/>
+
+<xs:element name="findAllPilotoResponse" type="tns:findAllPilotoResponse"/>
+
+<xs:element name="findAllPremio" type="tns:findAllPremio"/>
+
+<xs:element name="findAllPremioResponse" type="tns:findAllPremioResponse"/>
+
+<xs:element name="findCircuito" type="tns:findCircuito"/>
+
+<xs:element name="findCircuitoResponse" type="tns:findCircuitoResponse"/>
+
+<xs:element name="findEscuderia" type="tns:findEscuderia"/>
+
+<xs:element name="findEscuderiaResponse" type="tns:findEscuderiaResponse"/>
+
+<xs:element name="findMonoplaza" type="tns:findMonoplaza"/>
+
+<xs:element name="findMonoplazaResponse" type="tns:findMonoplazaResponse"/>
+
+<xs:element name="findPiloto" type="tns:findPiloto"/>
+
+<xs:element name="findPilotoResponse" type="tns:findPilotoResponse"/>
+
+<xs:element name="findPremio" type="tns:findPremio"/>
+
+<xs:element name="findPremioResponse" type="tns:findPremioResponse"/>
+
+<xs:element name="removeCircuito" type="tns:removeCircuito"/>
+
+<xs:element name="removeEscuderia" type="tns:removeEscuderia"/>
+
+<xs:element name="removeMonoplaza" type="tns:removeMonoplaza"/>
+
+<xs:element name="removePiloto" type="tns:removePiloto"/>
+
+<xs:element name="removePremio" type="tns:removePremio"/>
+
+<xs:complexType name="findAllMonoplaza">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllMonoplazaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:monoplaza" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="monoplaza">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
+<xs:element name="idMonoplaza" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="marca" type="xs:string" minOccurs="0"/>
+<xs:element name="modelo" type="xs:string" minOccurs="0"/>
+<xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
+<xs:element name="numCilindros" type="xs:double" minOccurs="0"/>
+<xs:element name="potencia" type="xs:double" minOccurs="0"/>
+<xs:element name="torque" type="xs:double" minOccurs="0"/>
+<xs:element name="velMax" type="xs:double" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="campeonato">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="escuderia">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="detalle" type="xs:string" minOccurs="0"/>
+<xs:element name="idEscuderia" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="lider" type="xs:string" minOccurs="0"/>
+<xs:element name="monoplazas" type="tns:monoplaza" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
+<xs:element name="pilotos" type="tns:piloto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="tecnicoLider" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pais">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="idPais" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="piloto">
+<xs:sequence>
+<xs:element name="biografia" type="xs:string" minOccurs="0"/>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="campeonatos" type="xs:int" minOccurs="0"/>
+<xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
+<xs:element name="experiencia" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idPiloto" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="monoplaza" type="tns:monoplaza" minOccurs="0"/>
+<xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="numero" type="xs:int" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
+<xs:element name="paisNacimiento" type="xs:string" minOccurs="0"/>
+<xs:element name="podios" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findPremio">
+<xs:sequence>
+<xs:element name="idPremio" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findPremioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:premio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="premio">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
+<xs:element name="fechaFin" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fechaInicio" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idPremio" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="sesionCarrera" type="tns:sesionCarrera" minOccurs="0"/>
+<xs:element name="sesionClasificacion" type="tns:sesionClasificacion" minOccurs="0"/>
+<xs:element name="sesionPractica" type="tns:sesionPractica" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="circuito">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="fechRecord" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fotos" type="tns:foto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="idCircuito" type="xs:int" minOccurs="0"/>
+<xs:element name="longitud" type="xs:double" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+<xs:element name="record" type="xs:double" minOccurs="0"/>
+<xs:element name="ultimoGanador" type="xs:string" minOccurs="0"/>
+<xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="foto">
+<xs:sequence>
+<xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idFoto" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionCarrera">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionClasificacion">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="resultados" type="tns:resultadoClasificacion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resultadoClasificacion">
+<xs:sequence>
+<xs:element name="idResultado" type="xs:int" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+<xs:element name="posicion" type="xs:int" minOccurs="0"/>
+<xs:element name="q1" type="xs:double" minOccurs="0"/>
+<xs:element name="q2" type="xs:double" minOccurs="0"/>
+<xs:element name="q3" type="xs:double" minOccurs="0"/>
+<xs:element name="recordVuelta" type="xs:double" minOccurs="0"/>
+<xs:element name="sesionClasificacion" type="tns:sesionClasificacion" minOccurs="0"/>
+<xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionPractica">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="resultados" type="tns:resultadoPractica" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resultadoPractica">
+<xs:sequence>
+<xs:element name="idResultado" type="xs:int" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+<xs:element name="posicion" type="xs:int" minOccurs="0"/>
+<xs:element name="recordVuelta" type="xs:double" minOccurs="0"/>
+<xs:element name="sesionPractica" type="tns:sesionPractica" minOccurs="0"/>
+<xs:element name="tiempo" type="xs:double" minOccurs="0"/>
+<xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removePremio">
+<xs:sequence>
+<xs:element name="premio" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findPiloto">
+<xs:sequence>
+<xs:element name="idPiloto" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findPilotoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:piloto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findEscuderia">
+<xs:sequence>
+<xs:element name="idEscuderia" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findEscuderiaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:escuderia" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCircuito">
+<xs:sequence>
+<xs:element name="idCircuito" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCircuitoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:piloto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createEscuderia">
+<xs:sequence>
+<xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createPiloto">
+<xs:sequence>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllPremio">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllPremioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:premio" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editPiloto">
+<xs:sequence>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeEscuderia">
+<xs:sequence>
+<xs:element name="escuderia" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editCircuito">
+<xs:sequence>
+<xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createMonoplaza">
+<xs:sequence>
+<xs:element name="monoplaza" type="tns:monoplaza" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editMonoplaza">
+<xs:sequence>
+<xs:element name="monoplaza" type="tns:monoplaza" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeMonoplaza">
+<xs:sequence>
+<xs:element name="monoplaza" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createCircuito">
+<xs:sequence>
+<xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removePiloto">
+<xs:sequence>
+<xs:element name="piloto" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllCircuito">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllCircuitoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:circuito" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editEscuderia">
+<xs:sequence>
+<xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllPiloto">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllPilotoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:piloto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editPremio">
+<xs:sequence>
+<xs:element name="premio" type="tns:premio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createPremio">
+<xs:sequence>
+<xs:element name="premio" type="tns:premio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllEscuderia">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllEscuderiaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:escuderia" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMonoplaza">
+<xs:sequence>
+<xs:element name="idMonoplaza" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMonoplazaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:monoplaza" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeCircuito">
+<xs:sequence>
+<xs:element name="escuderia" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

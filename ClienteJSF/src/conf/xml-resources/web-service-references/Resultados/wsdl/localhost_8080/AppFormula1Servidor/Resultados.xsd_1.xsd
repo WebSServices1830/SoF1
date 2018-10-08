@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws/">
+
+<xs:element name="obtenerCircuitoByPremio" type="tns:obtenerCircuitoByPremio"/>
+
+<xs:element name="obtenerCircuitoByPremioResponse" type="tns:obtenerCircuitoByPremioResponse"/>
+
+<xs:element name="obtenerPilotosByEscuderia" type="tns:obtenerPilotosByEscuderia"/>
+
+<xs:element name="obtenerPilotosByEscuderiaResponse" type="tns:obtenerPilotosByEscuderiaResponse"/>
+
+<xs:element name="obtenerResultadoCarreraByPremio" type="tns:obtenerResultadoCarreraByPremio"/>
+
+<xs:element name="obtenerResultadoCarreraByPremioResponse" type="tns:obtenerResultadoCarreraByPremioResponse"/>
+
+<xs:element name="obtenerResultadoClasificacionByPremio" type="tns:obtenerResultadoClasificacionByPremio"/>
+
+<xs:element name="obtenerResultadoClasificacionByPremioResponse" type="tns:obtenerResultadoClasificacionByPremioResponse"/>
+
+<xs:element name="obtenerResultadoPracticaByPremio" type="tns:obtenerResultadoPracticaByPremio"/>
+
+<xs:element name="obtenerResultadoPracticaByPremioResponse" type="tns:obtenerResultadoPracticaByPremioResponse"/>
+
+<xs:element name="simularTorneo" type="tns:simularTorneo"/>
+
+<xs:element name="verResultadoGeneral" type="tns:verResultadoGeneral"/>
+
+<xs:element name="verResultadoGeneralResponse" type="tns:verResultadoGeneralResponse"/>
+
+<xs:complexType name="simularTorneo">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="obtenerResultadoClasificacionByPremio">
+<xs:sequence>
+<xs:element name="idPremio" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerResultadoClasificacionByPremioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:resultadoClasificacion" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resultadoClasificacion">
+<xs:sequence>
+<xs:element name="idResultado" type="xs:int" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+<xs:element name="posicion" type="xs:int" minOccurs="0"/>
+<xs:element name="q1" type="xs:double" minOccurs="0"/>
+<xs:element name="q2" type="xs:double" minOccurs="0"/>
+<xs:element name="q3" type="xs:double" minOccurs="0"/>
+<xs:element name="recordVuelta" type="xs:double" minOccurs="0"/>
+<xs:element name="sesionClasificacion" type="tns:sesionClasificacion" minOccurs="0"/>
+<xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="piloto">
+<xs:sequence>
+<xs:element name="biografia" type="xs:string" minOccurs="0"/>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="campeonatos" type="xs:int" minOccurs="0"/>
+<xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
+<xs:element name="experiencia" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idPiloto" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="monoplaza" type="tns:monoplaza" minOccurs="0"/>
+<xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="numero" type="xs:int" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
+<xs:element name="paisNacimiento" type="xs:string" minOccurs="0"/>
+<xs:element name="podios" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="campeonato">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="escuderia">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="detalle" type="xs:string" minOccurs="0"/>
+<xs:element name="idEscuderia" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="lider" type="xs:string" minOccurs="0"/>
+<xs:element name="monoplazas" type="tns:monoplaza" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
+<xs:element name="pilotos" type="tns:piloto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="tecnicoLider" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="monoplaza">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
+<xs:element name="idMonoplaza" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="marca" type="xs:string" minOccurs="0"/>
+<xs:element name="modelo" type="xs:string" minOccurs="0"/>
+<xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
+<xs:element name="numCilindros" type="xs:double" minOccurs="0"/>
+<xs:element name="potencia" type="xs:double" minOccurs="0"/>
+<xs:element name="torque" type="xs:double" minOccurs="0"/>
+<xs:element name="velMax" type="xs:double" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pais">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="idPais" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionClasificacion">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="resultados" type="tns:resultadoClasificacion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerCircuitoByPremio">
+<xs:sequence>
+<xs:element name="idPremio" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerCircuitoByPremioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:circuito" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="circuito">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="fechRecord" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fotos" type="tns:foto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="idCircuito" type="xs:int" minOccurs="0"/>
+<xs:element name="longitud" type="xs:double" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+<xs:element name="record" type="xs:double" minOccurs="0"/>
+<xs:element name="ultimoGanador" type="xs:string" minOccurs="0"/>
+<xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="foto">
+<xs:sequence>
+<xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idFoto" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verResultadoGeneral">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="verResultadoGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:resultadoCarrera" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resultadoCarrera">
+<xs:sequence>
+<xs:element name="idResultado" type="xs:int" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+<xs:element name="posicion" type="xs:int" minOccurs="0"/>
+<xs:element name="puntos" type="xs:double" minOccurs="0"/>
+<xs:element name="recordVuelta" type="xs:double" minOccurs="0"/>
+<xs:element name="sesionCarrera" type="tns:sesionCarrera" minOccurs="0"/>
+<xs:element name="tiempo" type="xs:double" minOccurs="0"/>
+<xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionCarrera">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerResultadoPracticaByPremio">
+<xs:sequence>
+<xs:element name="idPremio" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerResultadoPracticaByPremioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:resultadoPractica" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resultadoPractica">
+<xs:sequence>
+<xs:element name="idResultado" type="xs:int" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
+<xs:element name="posicion" type="xs:int" minOccurs="0"/>
+<xs:element name="recordVuelta" type="xs:double" minOccurs="0"/>
+<xs:element name="sesionPractica" type="tns:sesionPractica" minOccurs="0"/>
+<xs:element name="tiempo" type="xs:double" minOccurs="0"/>
+<xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionPractica">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="resultados" type="tns:resultadoPractica" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerResultadoCarreraByPremio">
+<xs:sequence>
+<xs:element name="idPremio" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerResultadoCarreraByPremioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:resultadoCarrera" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerPilotosByEscuderia">
+<xs:sequence>
+<xs:element name="idEscuderia" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerPilotosByEscuderiaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

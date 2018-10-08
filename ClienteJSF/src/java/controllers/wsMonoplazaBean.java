@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import entities.Monoplaza;
+import proxy.Monoplaza;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Template.xhtml">
+
+            <ui:define name="content">
+                <h1>Calendario</h1>
+                <h:form>
+                  
+                    <ui:repeat value="#{wsCampeonato.premios}" var="item">
+                        <p:fieldset legend="#{item.idPremio}" style="margin-bottom:20px;">
+                            <h:panelGrid columns="1">
+                                <h2>#{item.nombre}</h2>
+                                <h:outputText
+                                    value="#{item.fechaInicio} to #{item.fechaFin}" />
+                                <h:outputText
+                                    value="Campeonatos: #{item.circuito}" />
+                            </h:panelGrid>
+                            <p:toolbar>
+                                <f:facet name="right">
+                                    <p:menuButton value="Options">
+                                        <p:menuitem value="Ver más" action="#{wsCampeonato.detalle(item.idPiloto)}" ajax="false" icon="ui-icon-close"/>
+                                        <p:menuitem value="Comentarios" action="#{wsCampeonato.comentarios(item.idPiloto)}" ajax="false" icon="ui-icon-close"/>
+                                    </p:menuButton>
+                                </f:facet>
+                            </p:toolbar>
+                        </p:fieldset>
+                    </ui:repeat>
+                </h:form>
+                <p:commandButton value="Detalle" id="ajax" actionListener="#{wsCampeonato.detalle(10)}" styleClass="ui-priority-primary" />
+                <p:link outcome="/calendario/detalle" value="Detalle">
+                    <f:param name="productId" value="10" />
+                </p:link>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

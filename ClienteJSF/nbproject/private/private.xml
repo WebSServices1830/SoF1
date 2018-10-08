@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/SoF1/ClienteJSF/web/monoplaza/listado.xhtml</file>
-            <file>file:/C:/SoF1/ClienteJSF/web/monoplaza/crear.xhtml</file>
-            <file>file:/C:/SoF1/ClienteJSF/web/piloto/crear.xhtml</file>
+            <file>file:/D:/WEBSERV/SoF1/ClienteJSF/src/java/controllers/wsPilotoBean.java</file>
+            <file>file:/D:/WEBSERV/SoF1/ClienteJSF/web/calendario/detalle.xhtml</file>
+            <file>file:/D:/WEBSERV/SoF1/ClienteJSF/src/java/controllers/wsCampeonato.java</file>
+            <file>file:/D:/WEBSERV/SoF1/ClienteJSF/web/piloto/editar.xhtml</file>
+            <file>file:/D:/WEBSERV/SoF1/ClienteJSF/web/calendario/listar.xhtml</file>
+            <file>file:/D:/WEBSERV/SoF1/ClienteJSF/web/piloto/listado.xhtml</file>
         </group>
     </open-files>
 </project-private>

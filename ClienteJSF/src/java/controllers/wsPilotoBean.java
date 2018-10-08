@@ -114,7 +114,6 @@ public class wsPilotoBean {
        piloto=(Piloto) find(id);
         System.out.println("find piloto tal "+piloto.getNombre());
          return "editar";
- 
     }
 
     public String edit() {
@@ -170,8 +169,7 @@ public class wsPilotoBean {
     }
     public void copyFile(String fileName, InputStream in) {
            try {
-              
-              
+   
                 // write the inputStream to a FileOutputStream
                 OutputStream out = new FileOutputStream(new File(filePath + fileName));
               

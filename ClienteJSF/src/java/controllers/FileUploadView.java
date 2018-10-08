@@ -51,8 +51,6 @@ public class FileUploadView {
     }
     public void copyFile(String fileName, InputStream in) {
            try {
-              
-              
                 // write the inputStream to a FileOutputStream
                 OutputStream out = new FileOutputStream(new File(filePath + fileName));
               

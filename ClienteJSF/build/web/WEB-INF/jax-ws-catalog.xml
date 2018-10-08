@@ -2,4 +2,10 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/AppFormula1Servidor/CRUDPiloto?WSDL" uri="wsdl/localhost_8080/AppFormula1Servidor/CRUDPiloto.wsdl"/>
     <system systemId="http://localhost:8080/AppFormula1Servidor/CRUDPiloto?xsd=1" uri="wsdl/localhost_8080/AppFormula1Servidor/CRUDPiloto.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Gestor?WSDL" uri="wsdl/localhost_8080/AppFormula1Servidor/Gestor.wsdl"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Gestor?xsd=1" uri="wsdl/localhost_8080/AppFormula1Servidor/Gestor.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Opiniones?WSDL" uri="wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Opiniones?xsd=1" uri="wsdl/localhost_8080/AppFormula1Servidor/Opiniones.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Resultados?WSDL" uri="wsdl/localhost_8080/AppFormula1Servidor/Resultados.wsdl"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Resultados?xsd=1" uri="wsdl/localhost_8080/AppFormula1Servidor/Resultados.xsd_1.xsd"/>
 </catalog>
