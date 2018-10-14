@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+        
+        <h1>Monoplazas</h1>
+        <h:form>
+            <ui:repeat value="#{wsMonoplazaBean.monoplazas}" var="item">
+                
+                <p:fieldset legend="#{item.idMonoplaza}" style="margin-bottom:20px;">
+
+
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <img width="100px" height="150px" alt="#{item.marca}" src="#{item.imagen}"/>
+
+                        <h:panelGrid columns="1">
+                            <h2>#{item.marca}</h2>
+                            <h:outputText
+                                value="Modelo: #{item.modelo}" />
+
+                            <h:outputText
+                                value="Cilindros: #{item.numCilindros}" />
+
+                            <h:outputText
+                                value="potencia: #{item.potencia}" />
+                            <h:outputText
+                                value="Torque:  #{item.torque}"/>
+                            
+
+                        </h:panelGrid>
+
+
+                    </h:panelGrid>
+                   <!-- <c:if test="#{wsSessionBean.admin}">-->
+                    <p:toolbar>
+                        <f:facet name="right">
+                            <p:menuButton value="Options">
+
+                                    <p:menuitem value="Delete" ajax="false" action  ="#{wsMonoplazaBean.delete(item.idMonoplaza)}" icon="ui-icon-close" />
+                                    <p:menuitem value="Edit" action="#{wsMonoplazaBean.editarView(item.idMonoplaza)}" ajax="false" icon="ui-icon-close" />
+                            </p:menuButton>
+                        </f:facet>
+                    </p:toolbar>
+                        
+                </p:fieldset>
+            </ui:repeat>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

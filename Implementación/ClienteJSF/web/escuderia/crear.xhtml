@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form enctype="multipart/form-data">
+
+            Crear Escuderia
+
+            
+
+            <h:panelGrid columns="2">
+
+                <p:outputLabel for="nombre" value="Nombre:"/>
+                <p:inputText id="nombre" value="#{wsEscuderiaBean.escuderia.nombre}"/>
+                <p:outputLabel for="lider" value="Lider:"/>
+                <p:inputText id="lider" value="#{wsEscuderiaBean.escuderia.lider}"/>
+                
+                <p:outputLabel for="lidert" value="Lider técnico:"/>
+                <p:inputText id="lidert" value="#{wsEscuderiaBean.escuderia.tecnicoLider}"/>
+         <!--       
+                <p:outputLabel for="car" value="Piloto 1:    " />
+              <p:selectOneMenu id="car" value="#{wsEscuderiaBean.piloto}">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p1" itemLabel="#{p1.nombre}">           
+            </f:selectItems>
+        </p:selectOneMenu>
+                
+                <p:outputLabel for="m1" value="Monoplaza 1:    " />
+                <p:selectOneMenu id="m1" value="#{wsEscuderiaBean.m1}">
+                    <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m1" itemLabel="#{m1.marca}">           
+            </f:selectItems>
+        </p:selectOneMenu>
+                
+                
+                
+                <p:outputLabel for="car2" value="Piloto 2:    " />
+              <p:selectOneMenu id="car2" value="#{wsEscuderiaBean.piloto2}">
+            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p2" itemLabel="#{p2.nombre}">           
+            </f:selectItems>
+        </p:selectOneMenu>-->
+          <p:outputLabel for="m1" value="Monoplaza 1:    " />
+                <p:selectOneMenu id="m1" value="#{wsEscuderiaBean.mid1}">
+                    <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m1"
+                                   itemValue="#{m1.idMonoplaza}"   itemLabel="#{m1.marca}">           
+            </f:selectItems>
+        </p:selectOneMenu>
+         
+                    <p:outputLabel for="m2" value="Monoplaza 2:    " />
+                    <p:selectOneMenu id="m2" value="#{wsEscuderiaBean.mid2}">
+                    <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m2" 
+                                   itemValue="#{m2.idMonoplaza}"   itemLabel="#{m2.marca}">           
+            </f:selectItems>
+        </p:selectOneMenu>
+                
+          
+
+            </h:panelGrid>
+            <p:commandButton value="Guardar" action="#{wsEscuderiaBean.save}" ajax="false"  />
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

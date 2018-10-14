@@ -1,0 +1,46 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        Crear piloto
+        
+        <p:tooltip />
+        <h:form enctype="multipart/form-data">
+            <h:panelGrid columns="2">
+                
+                <p:outputLabel for="nombre" value="nombre:"></p:outputLabel>
+                <p:inputText id="nombre" required="true"  value="#{wsPilotoBean.piloto.nombre}"/>
+                
+                <p:outputLabel for="num" value="Numero"></p:outputLabel>
+                <p:inputText  id="num" required="true"  value="#{wsPilotoBean.piloto.numero}"/>
+               <p:outputLabel value="Pais de nacimiento:"></p:outputLabel>
+                <p:inputText value="#{wsPilotoBean.piloto.paisNacimiento}"/>
+                 
+                <p:outputLabel for="button" value="Fecha Nacimiento:" />
+                <p:calendar id="button" value="#{wsPilotoBean.fecha}" required="true" requiredMessage="Fecha obligatoria" showOn="button" />
+ 
+                <p:outputLabel value="Campeonatos:"></p:outputLabel>
+                <p:inputText value="#{wsPilotoBean.piloto.campeonatos}"  />
+                <p:outputLabel value="Podios:"></p:outputLabel>
+                <p:inputText value="#{wsPilotoBean.piloto.podios}" />
+
+                <p:outputLabel value="Bibliografia:" />                
+               <p:inputTextarea value="#{wsPilotoBean.piloto.biografia}" cols="30" rows="10"/>
+          <p:outputLabel value="multiplicador" />        
+          <p:inputText value="#{wsPilotoBean.piloto.multiplicador}" />
+         
+                <p:outputLabel value="Foto:" />                
+            <p:fileUpload value="#{wsPilotoBean.file}" mode="simple"   />
+
+            <p:inputText value="#{wsPilotoBean.c.idCampeonato}"/>
+            </h:panelGrid>
+            
+                <p:commandButton value="Guardar"  ajax="false " action="#{wsPilotoBean.save}"  />
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>
