@@ -26,21 +26,85 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-CRUDPiloto" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/CRUDPiloto"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CRUDPiloto" destdir="${build.generated.dir}/jax-wsCache/CRUDPiloto" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CRUDPiloto/wsdl/localhost_8080/AppFormula1Servidor/CRUDPiloto.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/AppFormula1Servidor/CRUDPiloto?WSDL" xnocompile="true" xendorsed="true" package="ws">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CRUDPiloto/wsdl/localhost_8080/AppFormula1Servidor/CRUDPiloto.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/CRUDPiloto"/>
+    <target name="wsimport-client-Opiniones" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Opiniones"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Opiniones" destdir="${build.generated.dir}/jax-wsCache/Opiniones" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Opiniones/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/AppFormula1Servidor/Opiniones?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Opiniones/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Opiniones"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/CRUDPiloto">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Opiniones">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-CRUDPiloto" depends="-init-project">
+    <target name="wsimport-client-clean-Opiniones" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/CRUDPiloto"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Opiniones"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-CRUDPiloto"/>
+    <target name="wsimport-client-Gestor" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Gestor"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Gestor" destdir="${build.generated.dir}/jax-wsCache/Gestor" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Gestor/Gestor?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Gestor"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Gestor">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Gestor" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Gestor"/>
+    </target>
+    <target name="wsimport-client-Resultados" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Resultados"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Resultados" destdir="${build.generated.dir}/jax-wsCache/Resultados" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Resultados/wsdl/localhost_8080/Resultados/Resultados.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Resultados/Resultados?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Resultados/wsdl/localhost_8080/Resultados/Resultados.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Resultados"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Resultados">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Resultados" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Resultados"/>
+    </target>
+    <target name="wsimport-client-Auth" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Auth"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Auth" destdir="${build.generated.dir}/jax-wsCache/Auth" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Auth/wsdl/localhost_8080/Auth/Auth.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Auth/Auth?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Auth/wsdl/localhost_8080/Auth/Auth.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Auth"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Auth">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Auth" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Auth"/>
+    </target>
+    <target name="wsimport-client-Apuestas" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Apuestas"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Apuestas" destdir="${build.generated.dir}/jax-wsCache/Apuestas" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Apuestas/wsdl/localhost_8080/AppFormula1Servidor/Apuestas.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/AppFormula1Servidor/Apuestas?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Apuestas/wsdl/localhost_8080/AppFormula1Servidor/Apuestas.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Apuestas"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Apuestas">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Apuestas" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Apuestas"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-Opiniones, wsimport-client-Gestor, wsimport-client-Resultados, wsimport-client-Auth, wsimport-client-Apuestas"/>
 </project>

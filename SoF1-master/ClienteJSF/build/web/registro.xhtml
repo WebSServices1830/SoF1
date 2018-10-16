@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Regístratre</title>
+    </h:head>
+    <h:body
+        style="background-image: url('http://#{wsSessionBean.ip}/images/soft1/registro.jpg'); 
+                     -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   height: 100%;
+   width: 100% ;
+   text-align: center;
+                     "
+        >
+        <center>
+        <div style="background-color: #ffffff;
+             width: 50%;
+             border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 122px inherit #262526;
+padding: 10px;
+   opacity: 0.8;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+             ">
+            <div style="">
+        <h1>Regístratre</h1>
+            
+        
+        <h:form enctype="multipart/form-data">
+            
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:outputLabel for="nombre" value="Nombre" />
+                                <p:inputText id="nombre" required="true" value="#{wsSessionBean.usuarioSession.nombre}"/>
+                                <p:outputLabel for="edad" value="Edad" />
+                                <p:inputText id="edad"  value="#{wsSessionBean.usuarioSession.edad}"/>
+                                <p:outputLabel for="des" value="Descripcion" />
+                                <p:inputTextarea  id="des" value="#{wsSessionBean.usuarioSession.descripcion}"/>
+                               
+                                <p:outputLabel for="usuario" value="usuario" />
+                                <p:inputText id="usuario" required="true" value="#{wsSessionBean.usuarioSession.usuario}"/>
+                                <p:outputLabel for="clave" value="Contraseña" />
+                                <p:password id="clave" required="true" value="#{wsSessionBean.usuarioSession.contrasena}"/>
+                                
+                <p:outputLabel value="Foto:" />                
+                <p:fileUpload value="#{wsSessionBean.file}" mode="simple"   />
+
+                            </h:panelGrid>
+            <p:commandButton value="Registro" ajax="false" action="#{wsSessionBean.registro}"/>
+        </h:form>
+        </div>
+            </div>
+    </center>
+    </h:body>
+</html>
+
