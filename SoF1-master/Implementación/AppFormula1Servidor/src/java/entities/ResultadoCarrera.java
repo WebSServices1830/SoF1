@@ -40,11 +40,9 @@ public class ResultadoCarrera implements Serializable {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sesioncarrera_id")
-    @XmlIDREF
     private SesionCarrera sesionCarrera;
     
     @JoinColumn(name="piloto_id")
-    @XmlIDREF
     private Piloto piloto;
     
     @Column
@@ -70,10 +68,11 @@ public class ResultadoCarrera implements Serializable {
      *     {@link Piloto }
      *     
      */
+    @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }
-
+    @XmlIDREF
     public SesionCarrera getSesionCarrera() {
         return sesionCarrera;
     }
