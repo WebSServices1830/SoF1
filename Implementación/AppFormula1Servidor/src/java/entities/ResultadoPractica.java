@@ -12,6 +12,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +25,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -32,10 +35,14 @@ public class ResultadoPractica implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idResultado", nullable = false, unique = true)
+    @Column(name="resultadopractica_id", nullable = false, unique = true)
     private Integer idResultado;
     
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sesionpractica_id")
+    private SesionPractica sesionPractica;
+    
+    @JoinColumn(name="piloto_id")
     private Piloto piloto;
 
     @Column
@@ -58,9 +65,19 @@ public class ResultadoPractica implements Serializable {
      *     {@link Piloto }
      *     
      */
+        @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }
+    @XmlIDREF
+    public SesionPractica getSesionPractica() {
+        return sesionPractica;
+    }
+
+    public void setSesionPractica(SesionPractica sesionPractica) {
+        this.sesionPractica = sesionPractica;
+    }
+
 
     /**
      * Sets the value of the piloto property.
@@ -91,6 +108,10 @@ public class ResultadoPractica implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idResultado+"";
+    }
     public Integer getIdResultado() {
         return idResultado;
     }

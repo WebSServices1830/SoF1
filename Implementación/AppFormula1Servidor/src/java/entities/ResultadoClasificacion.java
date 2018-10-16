@@ -12,6 +12,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +25,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -32,10 +35,14 @@ public class ResultadoClasificacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idResultado", nullable = false, unique = true)
+    @Column(name="resultadoclasificacion_id", nullable = false, unique = true)
     private Integer idResultado;
     
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sesionclasificacion_id")
+    private SesionClasificacion sesionClasificacion;
+    
+    @JoinColumn(name="piloto_id")
     private Piloto piloto;
 
     @Column
@@ -56,6 +63,18 @@ public class ResultadoClasificacion implements Serializable {
     @Column
     private Double recordVuelta;
 
+        @XmlIDREF
+    public SesionClasificacion getSesionClasificacion() {
+        return sesionClasificacion;
+    }
+
+    public void setSesionClasificacion(SesionClasificacion sesionClasificacion) {
+        this.sesionClasificacion = sesionClasificacion;
+    }
+
+
+
+    
     /**
      * Gets the value of the piloto property.
      * 
@@ -64,6 +83,7 @@ public class ResultadoClasificacion implements Serializable {
      *     {@link Piloto }
      *     
      */
+        @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }
@@ -98,6 +118,10 @@ public class ResultadoClasificacion implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idResultado+"";
+    }
     public Integer getIdResultado() {
         return idResultado;
     }

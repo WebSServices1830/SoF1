@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -39,15 +42,22 @@ public class Piloto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idPiloto", nullable = false, unique = true)
+    @Column(name="piloto_id", nullable = false, unique = true)
     private Integer idPiloto;
     
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "campeonato_id")
+    private Campeonato campeonato;
+    
+    @JoinColumn(name="pais_id")
     private Pais pais;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "escuderia_id")
+    private Escuderia escuderia;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "piloto")
-    private List<Calificacion> calificaciones;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy="piloto")
+    private Monoplaza monoplaza;
     
     @Size(max = 30)
     @Column
@@ -73,7 +83,7 @@ public class Piloto implements Serializable {
     @Column
     private String biografia;
     
-    @Size(max = 50)
+    @Size(max = 150)
     @Column
     private String imagen;
     
@@ -83,10 +93,7 @@ public class Piloto implements Serializable {
     
     @Column
     private Double multiplicador;
-
-     @ManyToOne(fetch=FetchType.LAZY)
-    private Campeonato campeonato;
-
+    @XmlIDREF
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -95,33 +102,48 @@ public class Piloto implements Serializable {
         this.campeonato = campeonato;
     }
 
-    
-    
-    
-    /**
-     * Gets the value of the pais property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Pais }
-     *     
-     */
+    @XmlIDREF
     public Pais getPais() {
         return pais;
     }
 
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+    @XmlTransient
+    public Monoplaza getMonoplaza() {
+        return monoplaza;
+    }
+
+    public void setMonoplaza(Monoplaza monoplaza) {
+        this.monoplaza = monoplaza;
+    }
+
+
     /**
-     * Sets the value of the pais property.
+     * Gets the value of the escuderia property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Piloto }
+     *     
+     */
+    @XmlIDREF
+    public Escuderia getEscuderia() {
+        return escuderia;
+    }
+
+    /**
+     * Sets the value of the escuderia property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Pais }
+     *     {@link Piloto }
      *     
      */
-    public void setPais(Pais value) {
-        this.pais = value;
+    public void setEscuderia(Escuderia value) {
+        this.escuderia = value;
     }
-
 
     /**
      * Gets the value of the monoplaza property.
@@ -154,12 +176,6 @@ public class Piloto implements Serializable {
      * 
      * 
      */
-    public List<Calificacion> getCalificaciones() {
-        if (calificaciones == null) {
-            calificaciones = new ArrayList<Calificacion>();
-        }
-        return this.calificaciones;
-    }
 
     /**
      * Gets the value of the idPiloto property.
@@ -169,6 +185,10 @@ public class Piloto implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idPiloto+"";
+    }
     public Integer getIdPiloto() {
         return idPiloto;
     }

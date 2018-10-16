@@ -3,28 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/welcomePrimefaces.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/registro.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/src/java/controllers/wsMonoplazaBean.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/escuderia/listado.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/monoplaza/listado.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/src/java/controllers/wsSessionBean.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/src/java/controllers/wsEscuderiaBean.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/Template.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/src/conf/MANIFEST.MF</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/piloto/listado.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/build/generated-sources/jax-ws/ws/Monoplaza.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/piloto/crear.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/src/java/controllers/wsPilotoBean.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/escuderia/crear.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/monoplaza/edit.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/piloto/editar.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/build/generated-sources/jax-ws/ws/Piloto.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/build/generated-sources/jax-ws/ws/Auth.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/build/generated-sources/jax-ws/ws/Escuderia.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/monoplaza/crear.xhtml</file>
-            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/git/SoF1/ClienteJSF/web/escuderia/editar.xhtml</file>
+            <file>file:/C:/Users/Michael/Documents/WS/GitHub/SoF1/Implementación/ClienteJSF/web/apuesta/listado.xhtml</file>
+            <file>file:/C:/Users/Michael/Documents/WS/GitHub/SoF1/Implementación/ClienteJSF/build/generated-sources/jax-ws/wsApuesta/Premio.java</file>
+            <file>file:/C:/Users/Michael/Documents/WS/GitHub/SoF1/Implementación/ClienteJSF/src/java/controllers/wsApuestaBean.java</file>
         </group>
     </open-files>
 </project-private>

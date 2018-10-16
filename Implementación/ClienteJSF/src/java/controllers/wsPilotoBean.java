@@ -82,7 +82,9 @@ public class wsPilotoBean {
     }
 
     public List<Piloto> getPilotos() {
-      pilotos=findAllPilotoByEscuderia(c.getIdCampeonato());
+      //pilotos=findAllPilotoByEscuderia(1);
+      pilotos = findAllPiloto();
+      
         return pilotos;
     }
 
@@ -222,6 +224,8 @@ public class wsPilotoBean {
         ws.Gestor port = service.getGestorPort();
         return port.findAllPilotoByEscuderia(arg0);
     }
+
+    
     
 
     

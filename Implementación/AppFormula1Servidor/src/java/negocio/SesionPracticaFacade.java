@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.SesionPractica;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,9 +25,19 @@ public class SesionPracticaFacade extends AbstractFacade<SesionPractica> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+} 
 
     public SesionPracticaFacade() {
         super(SesionPractica.class);
     }
     
+    public SesionPractica obtenerSesionPracticaByPremio(int idPremio) {
+        return getEntityManager().createQuery("select sp "+"from SesionPractica sp "+"where sp.premio.idPremio = :idPremio",SesionPractica.class)
+                .setParameter("idPremio", idPremio).getSingleResult();
+    }
 }

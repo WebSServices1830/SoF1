@@ -15,6 +15,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +30,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -37,28 +41,25 @@ public class Escuderia implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idEscuderia", nullable = false, unique = true)
+    @Column(name="escuderia_id", nullable = false, unique = true)
     private Integer idEscuderia;
     
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "campeonato_id")
+    private Campeonato campeonato;
+    
+    @JoinColumn(name = "pais_id")
     private Pais pais;
     
-    @Size(max = 50)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "escuderia")
+    private List<Piloto> pilotos;
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "escuderia")
+    private List<Monoplaza> monoplazas;
+    
+    @Size(max=150)
     @Column
     private String imagen;
-    
-    @OneToOne
-    Monoplaza monoplaza1;
-    
-    @OneToOne
-    Monoplaza monoplaza2;
-            
-    @OneToOne
-    private Piloto piloto1;
-    
-    @OneToOne
-    private Piloto piloto2;
-    
     
     @Size(max = 100)
     @Column
@@ -84,21 +85,39 @@ public class Escuderia implements Serializable {
      *     {@link Pais }
      *     
      */
+        @XmlTransient
+       public List<Piloto> getPilotos() {
+        return pilotos;
+    }
+       @XmlIDREF
+    public Campeonato getCampeonato() {
+        return campeonato;
+    }
+
+    public void setCampeonato(Campeonato campeonato) {
+        this.campeonato = campeonato;
+    }
+       @XmlIDREF
     public Pais getPais() {
         return pais;
     }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+    @XmlTransient
+    public List<Monoplaza> getMonoplazas() {
+        return monoplazas;
+    }
+
+    public void setMonoplazas(List<Monoplaza> monoplazas) {
+        this.monoplazas = monoplazas;
+    }
+
     
-   
-    /**
-     * Sets the value of the pais property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Pais }
-     *     
-     */
-    public void setPais(Pais value) {
-        this.pais = value;
+       
+    public void setPilotos(List<Piloto> pilotos) {
+        this.pilotos = pilotos;
     }
 
     /**
@@ -125,6 +144,74 @@ public class Escuderia implements Serializable {
         this.imagen = value;
     }
 
+    /**
+     * Gets the value of the monoplazas property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the monoplazas property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getMonoplazas().add(newItem);
+     * </pre>
+     *
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Monoplaza }
+     *
+     * 
+     */
+
+    /**
+     * Gets the value of the pilotos property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the pilotos property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getPilotos().add(newItem);
+     * </pre>
+     *
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Piloto }
+     *
+     * 
+     */
+
+    /**
+     * Gets the value of the detalles property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the detalles property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getDetalles().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
     public String getDetalles() {
         
         return this.detalle;
@@ -138,6 +225,10 @@ public class Escuderia implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idEscuderia+"";
+    }
     public Integer getIdEscuderia() {
         return idEscuderia;
     }
@@ -232,38 +323,6 @@ public class Escuderia implements Serializable {
 
     public void setDetalle(String detalle) {
         this.detalle = detalle;
-    }
-
-    public Monoplaza getMonoplaza1() {
-        return monoplaza1;
-    }
-
-    public void setMonoplaza1(Monoplaza monoplaza1) {
-        this.monoplaza1 = monoplaza1;
-    }
-
-    public Monoplaza getMonoplaza2() {
-        return monoplaza2;
-    }
-
-    public void setMonoplaza2(Monoplaza monoplaza2) {
-        this.monoplaza2 = monoplaza2;
-    }
-
-    public Piloto getPiloto1() {
-        return piloto1;
-    }
-
-    public void setPiloto1(Piloto piloto1) {
-        this.piloto1 = piloto1;
-    }
-
-    public Piloto getPiloto2() {
-        return piloto2;
-    }
-
-    public void setPiloto2(Piloto piloto2) {
-        this.piloto2 = piloto2;
     }
 
     

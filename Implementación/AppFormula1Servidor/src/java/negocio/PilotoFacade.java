@@ -7,6 +7,7 @@ package negocio;
 
 import entities.Piloto;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,13 +26,24 @@ public class PilotoFacade extends AbstractFacade<Piloto> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public PilotoFacade() {
         super(Piloto.class);
     }
-    public List<Piloto> findPilotosByEscuderia(int idcampeonato){
-           return getEntityManager().createQuery("select p from Piloto p where p.campeonato.idCampeonato ="+idcampeonato).getResultList();     
+    
+    public List<Piloto> obtenerPilotosByEscuderia(int idEscuderia){
+        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.escuderia.idEscuderia = :idEscuderia", Piloto.class)
+                .setParameter("idEscuderia", idEscuderia).getResultList();
     }
     
-    
+    public List<Piloto> obtenerPilotosByCampeonato(int idCampeonato){
+        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.campeonato.idCampeonato = :idCampeonato "+"order by p.multiplicador desc", Piloto.class)
+                .setParameter("idCampeonato", idCampeonato).getResultList();
+    }
 }

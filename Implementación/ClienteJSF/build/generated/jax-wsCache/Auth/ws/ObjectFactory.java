@@ -191,8 +191,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesion }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesion }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CerrarSesion }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "cerrarSesion")
     public JAXBElement<CerrarSesion> createCerrarSesion(CerrarSesion value) {
@@ -200,8 +204,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesionResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CerrarSesionResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "cerrarSesionResponse")
     public JAXBElement<CerrarSesionResponse> createCerrarSesionResponse(CerrarSesionResponse value) {
@@ -209,8 +217,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesion }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesion }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link IniciarSesion }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "iniciarSesion")
     public JAXBElement<IniciarSesion> createIniciarSesion(IniciarSesion value) {
@@ -218,8 +230,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesionResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link IniciarSesionResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "iniciarSesionResponse")
     public JAXBElement<IniciarSesionResponse> createIniciarSesionResponse(IniciarSesionResponse value) {
@@ -227,8 +243,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuario }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuario }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RegistrarUsuario }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "registrarUsuario")
     public JAXBElement<RegistrarUsuario> createRegistrarUsuario(RegistrarUsuario value) {
@@ -236,8 +256,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuarioResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuarioResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RegistrarUsuarioResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "registrarUsuarioResponse")
     public JAXBElement<RegistrarUsuarioResponse> createRegistrarUsuarioResponse(RegistrarUsuarioResponse value) {

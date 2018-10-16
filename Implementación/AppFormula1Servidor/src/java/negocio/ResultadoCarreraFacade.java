@@ -6,6 +6,8 @@
 package negocio;
 
 import entities.ResultadoCarrera;
+import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,9 +26,19 @@ public class ResultadoCarreraFacade extends AbstractFacade<ResultadoCarrera> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public ResultadoCarreraFacade() {
         super(ResultadoCarrera.class);
     }
     
+    public List<ResultadoCarrera> obtenerResultadoCarreraBySesionCarrera(int idSesionCarrera) {
+        return getEntityManager().createQuery("select rc "+"from ResultadoCarrera rc "+"where rc.sesionCarrera.idSesion = :idSesionCarrera",ResultadoCarrera.class)
+                .setParameter("idSesionCarrera", idSesionCarrera).getResultList();
+    }
 }

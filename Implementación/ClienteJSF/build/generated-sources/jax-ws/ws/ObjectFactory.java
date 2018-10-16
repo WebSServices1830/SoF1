@@ -488,8 +488,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateCircuito }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateCircuito }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CreateCircuito }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "createCircuito")
     public JAXBElement<CreateCircuito> createCreateCircuito(CreateCircuito value) {
@@ -497,8 +501,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateEscuderia }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateEscuderia }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CreateEscuderia }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "createEscuderia")
     public JAXBElement<CreateEscuderia> createCreateEscuderia(CreateEscuderia value) {
@@ -506,8 +514,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateMonoplaza }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateMonoplaza }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CreateMonoplaza }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "createMonoplaza")
     public JAXBElement<CreateMonoplaza> createCreateMonoplaza(CreateMonoplaza value) {
@@ -515,8 +527,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePiloto }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePiloto }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CreatePiloto }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "createPiloto")
     public JAXBElement<CreatePiloto> createCreatePiloto(CreatePiloto value) {
@@ -524,8 +540,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePremio }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePremio }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CreatePremio }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "createPremio")
     public JAXBElement<CreatePremio> createCreatePremio(CreatePremio value) {
@@ -533,8 +553,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EditCircuito }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EditCircuito }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EditCircuito }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "editCircuito")
     public JAXBElement<EditCircuito> createEditCircuito(EditCircuito value) {
@@ -542,8 +566,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EditEscuderia }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EditEscuderia }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EditEscuderia }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "editEscuderia")
     public JAXBElement<EditEscuderia> createEditEscuderia(EditEscuderia value) {
@@ -551,8 +579,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EditMonoplaza }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EditMonoplaza }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EditMonoplaza }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "editMonoplaza")
     public JAXBElement<EditMonoplaza> createEditMonoplaza(EditMonoplaza value) {
@@ -560,8 +592,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EditPiloto }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EditPiloto }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EditPiloto }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "editPiloto")
     public JAXBElement<EditPiloto> createEditPiloto(EditPiloto value) {
@@ -569,8 +605,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EditPremio }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EditPremio }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link EditPremio }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "editPremio")
     public JAXBElement<EditPremio> createEditPremio(EditPremio value) {
@@ -578,8 +618,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCampeonato }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCampeonato }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllCampeonato }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllCampeonato")
     public JAXBElement<FindAllCampeonato> createFindAllCampeonato(FindAllCampeonato value) {
@@ -587,8 +631,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCampeonatoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCampeonatoResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllCampeonatoResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllCampeonatoResponse")
     public JAXBElement<FindAllCampeonatoResponse> createFindAllCampeonatoResponse(FindAllCampeonatoResponse value) {
@@ -596,8 +644,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCircuito }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCircuito }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllCircuito }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllCircuito")
     public JAXBElement<FindAllCircuito> createFindAllCircuito(FindAllCircuito value) {
@@ -605,8 +657,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCircuitoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllCircuitoResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllCircuitoResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllCircuitoResponse")
     public JAXBElement<FindAllCircuitoResponse> createFindAllCircuitoResponse(FindAllCircuitoResponse value) {
@@ -614,8 +670,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEscuderia }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEscuderia }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllEscuderia }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllEscuderia")
     public JAXBElement<FindAllEscuderia> createFindAllEscuderia(FindAllEscuderia value) {
@@ -623,8 +683,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEscuderiaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEscuderiaResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllEscuderiaResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllEscuderiaResponse")
     public JAXBElement<FindAllEscuderiaResponse> createFindAllEscuderiaResponse(FindAllEscuderiaResponse value) {
@@ -632,8 +696,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllMonoplaza }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllMonoplaza }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllMonoplaza }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllMonoplaza")
     public JAXBElement<FindAllMonoplaza> createFindAllMonoplaza(FindAllMonoplaza value) {
@@ -641,8 +709,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllMonoplazaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllMonoplazaResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllMonoplazaResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllMonoplazaResponse")
     public JAXBElement<FindAllMonoplazaResponse> createFindAllMonoplazaResponse(FindAllMonoplazaResponse value) {
@@ -650,8 +722,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPiloto }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPiloto }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllPiloto }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllPiloto")
     public JAXBElement<FindAllPiloto> createFindAllPiloto(FindAllPiloto value) {
@@ -659,8 +735,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPilotoByEscuderia }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPilotoByEscuderia }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllPilotoByEscuderia }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllPilotoByEscuderia")
     public JAXBElement<FindAllPilotoByEscuderia> createFindAllPilotoByEscuderia(FindAllPilotoByEscuderia value) {
@@ -668,8 +748,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPilotoByEscuderiaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPilotoByEscuderiaResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllPilotoByEscuderiaResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllPilotoByEscuderiaResponse")
     public JAXBElement<FindAllPilotoByEscuderiaResponse> createFindAllPilotoByEscuderiaResponse(FindAllPilotoByEscuderiaResponse value) {
@@ -677,8 +761,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPilotoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPilotoResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllPilotoResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllPilotoResponse")
     public JAXBElement<FindAllPilotoResponse> createFindAllPilotoResponse(FindAllPilotoResponse value) {
@@ -686,8 +774,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPremio }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPremio }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllPremio }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllPremio")
     public JAXBElement<FindAllPremio> createFindAllPremio(FindAllPremio value) {
@@ -695,8 +787,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPremioResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPremioResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindAllPremioResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findAllPremioResponse")
     public JAXBElement<FindAllPremioResponse> createFindAllPremioResponse(FindAllPremioResponse value) {
@@ -704,8 +800,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindCircuito }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindCircuito }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindCircuito }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findCircuito")
     public JAXBElement<FindCircuito> createFindCircuito(FindCircuito value) {
@@ -713,8 +813,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindCircuitoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindCircuitoResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindCircuitoResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findCircuitoResponse")
     public JAXBElement<FindCircuitoResponse> createFindCircuitoResponse(FindCircuitoResponse value) {
@@ -722,8 +826,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindEscuderia }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindEscuderia }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindEscuderia }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findEscuderia")
     public JAXBElement<FindEscuderia> createFindEscuderia(FindEscuderia value) {
@@ -731,8 +839,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindEscuderiaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindEscuderiaResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindEscuderiaResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findEscuderiaResponse")
     public JAXBElement<FindEscuderiaResponse> createFindEscuderiaResponse(FindEscuderiaResponse value) {
@@ -740,8 +852,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindMonoplaza }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindMonoplaza }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindMonoplaza }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findMonoplaza")
     public JAXBElement<FindMonoplaza> createFindMonoplaza(FindMonoplaza value) {
@@ -749,8 +865,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindMonoplazaResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindMonoplazaResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindMonoplazaResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findMonoplazaResponse")
     public JAXBElement<FindMonoplazaResponse> createFindMonoplazaResponse(FindMonoplazaResponse value) {
@@ -758,8 +878,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindPiloto }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPiloto }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindPiloto }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findPiloto")
     public JAXBElement<FindPiloto> createFindPiloto(FindPiloto value) {
@@ -767,8 +891,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindPilotoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPilotoResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindPilotoResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findPilotoResponse")
     public JAXBElement<FindPilotoResponse> createFindPilotoResponse(FindPilotoResponse value) {
@@ -776,8 +904,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindPremio }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPremio }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindPremio }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findPremio")
     public JAXBElement<FindPremio> createFindPremio(FindPremio value) {
@@ -785,8 +917,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindPremioResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPremioResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link FindPremioResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "findPremioResponse")
     public JAXBElement<FindPremioResponse> createFindPremioResponse(FindPremioResponse value) {
@@ -794,8 +930,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveCircuito }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveCircuito }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RemoveCircuito }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "removeCircuito")
     public JAXBElement<RemoveCircuito> createRemoveCircuito(RemoveCircuito value) {
@@ -803,8 +943,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveEscuderia }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveEscuderia }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RemoveEscuderia }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "removeEscuderia")
     public JAXBElement<RemoveEscuderia> createRemoveEscuderia(RemoveEscuderia value) {
@@ -812,8 +956,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveMonoplaza }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveMonoplaza }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RemoveMonoplaza }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "removeMonoplaza")
     public JAXBElement<RemoveMonoplaza> createRemoveMonoplaza(RemoveMonoplaza value) {
@@ -821,8 +969,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemovePiloto }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemovePiloto }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RemovePiloto }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "removePiloto")
     public JAXBElement<RemovePiloto> createRemovePiloto(RemovePiloto value) {
@@ -830,8 +982,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RemovePremio }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemovePremio }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RemovePremio }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "removePremio")
     public JAXBElement<RemovePremio> createRemovePremio(RemovePremio value) {

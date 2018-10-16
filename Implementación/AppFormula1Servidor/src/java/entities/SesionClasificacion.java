@@ -9,24 +9,31 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -37,10 +44,15 @@ public class SesionClasificacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idSesion", nullable = false, unique = true)
+    @Column(name="sesionclasificacion_id", nullable = false, unique = true)
     private Integer idSesion;
     
-    @OneToMany
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="premio_id")
+
+    private Premio premio;
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionClasificacion")
     private List<ResultadoClasificacion> resultados;
     
     
@@ -49,6 +61,7 @@ public class SesionClasificacion implements Serializable {
     private String nombre;
 
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
     /**
@@ -59,8 +72,20 @@ public class SesionClasificacion implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idSesion+"";
+    }
     public Integer getIdSesion() {
         return idSesion;
+    }
+    @XmlIDREF
+    public Premio getPremio() {
+        return premio;
+    }
+
+    public void setPremio(Premio premio) {
+        this.premio = premio;
     }
 
     /**
@@ -122,7 +147,7 @@ public class SesionClasificacion implements Serializable {
     public void setFecha(Date value) {
         this.fecha = value;
     }
-
+        @XmlTransient
     public List<ResultadoClasificacion> getResultados() {
         return resultados;
     }

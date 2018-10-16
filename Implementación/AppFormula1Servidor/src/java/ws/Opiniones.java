@@ -5,14 +5,22 @@
  */
 package ws;
 
-import entities.Calificacion;
+import entities.CalificacionPremio;
+import entities.CalificacionPiloto;
 import entities.Piloto;
 import entities.Premio;
+import entities.Usuario;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.jws.Oneway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import negocio.CalificacionPilotoFacade;
+import negocio.CalificacionPremioFacade;
+import negocio.PilotoFacade;
+import negocio.PremioFacade;
+import negocio.UsuarioFacade;
 
 /**
  *
@@ -20,14 +28,33 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "Opiniones")
 public class Opiniones {
+    
+    @EJB
+    private CalificacionPremioFacade calificacionPremioFacade;
+    
+    @EJB
+    private CalificacionPilotoFacade calificacionPilotoFacade;
+    
+    @EJB
+    private UsuarioFacade usuarioFacade;
+    
+    @EJB
+    private PilotoFacade pilotoFacade;
+    
+    @EJB
+    private PremioFacade premioFacade;
 
     /**
      * Web service operation
      */
     @WebMethod(operationName = "calificarPremio")
     @Oneway
-    public void calificarPremio(@WebParam(name = "idUsuario") int idUsuario, @WebParam(name = "idPremio") int idPremio, @WebParam(name = "calificacion")Calificacion calificacion) {
-        
+    public void calificarPremio(@WebParam(name = "idUsuario") int idUsuario, @WebParam(name = "idPremio") int idPremio, @WebParam(name = "calificacionPremio")CalificacionPremio calificacionPremio) {
+        Usuario u = usuarioFacade.find(idUsuario);
+        Premio p = premioFacade.find(idPremio);
+        calificacionPremio.setPremio(p);
+        calificacionPremio.setUsuario(u);
+        calificacionPremioFacade.create(calificacionPremio);
     }
     
     /**
@@ -35,8 +62,12 @@ public class Opiniones {
      */
     @WebMethod(operationName = "calificarPiloto")
     @Oneway
-    public void calificarPiloto(@WebParam(name = "idUsuario") int idUsuario, @WebParam(name = "idPiloto") int idPiloto, @WebParam(name = "calificacion")Calificacion calificacion) {
-        
+    public void calificarPiloto(@WebParam(name = "idUsuario") int idUsuario, @WebParam(name = "idPiloto") int idPiloto, @WebParam(name = "calificacionPiloto")CalificacionPiloto calificacionPiloto) {
+        Usuario u = usuarioFacade.find(idUsuario);
+        Piloto p = pilotoFacade.find(idPiloto);
+        calificacionPiloto.setPiloto(p);
+        calificacionPiloto.setUsuario(u);
+        calificacionPilotoFacade.create(calificacionPiloto);
     }
 
     /**
@@ -45,7 +76,7 @@ public class Opiniones {
     @WebMethod(operationName = "obtenerTopPilotos")
     public List<Piloto> obtenerTopPilotos() {
         //TODO write your implementation code here:
-        return null;
+        return calificacionPilotoFacade.obtenerTopPilotos();
     }
     
     /**
@@ -54,25 +85,34 @@ public class Opiniones {
     @WebMethod(operationName = "obtenerTopPremios")
     public List<Premio> obtenerTopPremios() {
         //TODO write your implementation code here:
-        return null;
+        return calificacionPremioFacade.obtenerTopPremios();
     }
 
     /**
      * Web service operation
      */
     @WebMethod(operationName = "obtenerCalificacionesPiloto")
-    public List<Calificacion> obtenerCalificacionesPiloto(@WebParam(name = "idPiloto") int idPiloto) {
-        //TODO write your implementation code here:
-        return null;
+    public List<CalificacionPiloto> obtenerCalificacionesPiloto(@WebParam(name = "idPiloto") int idPiloto) {
+        return calificacionPilotoFacade.obtenerCalificacionesPiloto(idPiloto);
     }
 
     /**
      * Web service operation
      */
     @WebMethod(operationName = "obtenerCalificacionesPremio")
-    public List<Calificacion> obtenerCalificacionesPremio(@WebParam(name = "idPremio") int idPremio) {
-        //TODO write your implementation code here:
-        return null;
+    public List<CalificacionPremio> obtenerCalificacionesPremio(@WebParam(name = "idPremio") int idPremio) {
+        return calificacionPremioFacade.obtenerCalificacionesPremio(idPremio);
+    }
+    
+    @WebMethod(operationName = "obtenerCalificacionPromedioPiloto")
+    public double obtenerCalificacionPromedioPiloto(@WebParam(name = "idPiloto") int idPiloto) {
+        return calificacionPilotoFacade.obtenerCalificacionPromedioPiloto(idPiloto);
+    }
+    
+    @WebMethod(operationName = "obtenerCalificacionPromedioPremio")
+    public double obtenerCalificacionPromedioPremio(@WebParam(name = "idPremio") int idPremio) {
+        return calificacionPremioFacade.obtenerCalificacionPromedioPremio(idPremio);
     }
     
 }
+

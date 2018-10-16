@@ -6,6 +6,8 @@
 package negocio;
 
 import entities.Monoplaza;
+import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,9 +26,29 @@ public class MonoplazaFacade extends AbstractFacade<Monoplaza> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public MonoplazaFacade() {
         super(Monoplaza.class);
     }
     
+    public List<Monoplaza> obtenerMonoplazasByEscuderia(int idEscuderia) {
+        return getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.escuderia.idEscuderia = :idEscuderia", Monoplaza.class)
+                .setParameter("idEscuderia", idEscuderia).getResultList();
+    }
+    
+    public Monoplaza obtenerMonoplazaByPiloto(int idPiloto) {
+        return getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.piloto.idPiloto = :idPiloto", Monoplaza.class)
+                .setParameter("idPiloto", idPiloto).getSingleResult();
+    }
+    
+    public List<Monoplaza> obtenerMonoplazasByCampeonato(int idCampeonato) {
+        return getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.campeonato.idCampeonato = :idCampeonato", Monoplaza.class)
+                .setParameter("idCampeonato", idCampeonato).getResultList();
+    }
 }
