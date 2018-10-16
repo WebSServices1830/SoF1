@@ -8,6 +8,7 @@ package negocio;
 import entities.CalificacionPiloto;
 import entities.Piloto;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,12 @@ public class CalificacionPilotoFacade extends AbstractFacade<CalificacionPiloto>
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public CalificacionPilotoFacade() {
         super(CalificacionPiloto.class);
@@ -36,12 +43,12 @@ public class CalificacionPilotoFacade extends AbstractFacade<CalificacionPiloto>
     }
     
     public List<CalificacionPiloto> obtenerCalificacionesPiloto(int idPiloto) {
-        return getEntityManager().createQuery("select cp "+"from CalificacionPiloto cp "+"where cp.piloto_id = :idPiloto",CalificacionPiloto.class)
+        return getEntityManager().createQuery("select cp "+"from CalificacionPiloto cp "+"where cp.piloto.idPiloto = :idPiloto",CalificacionPiloto.class)
                 .setParameter("idPiloto", idPiloto).getResultList();
     }
     
     public double obtenerCalificacionPromedioPiloto(int idPiloto){
-        return getEntityManager().createQuery("select AVG(cp.puntaje) "+"from CalificacionPiloto cp "+"where cp.piloto_id = :idPiloto",double.class)
+        return getEntityManager().createQuery("select AVG(cp.puntaje) "+"from CalificacionPiloto cp "+"where cp.piloto.idPiloto = :idPiloto",double.class)
                 .setParameter("idPiloto", idPiloto).getSingleResult();
     }
 }

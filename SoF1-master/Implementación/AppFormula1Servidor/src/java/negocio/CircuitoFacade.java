@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.Circuito;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,6 +25,12 @@ public class CircuitoFacade extends AbstractFacade<Circuito> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public CircuitoFacade() {
         super(Circuito.class);

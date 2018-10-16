@@ -26,6 +26,7 @@ import negocio.ResultadoPracticaFacade;
 import negocio.SesionCarreraFacade;
 import negocio.SesionClasificacionFacade;
 import negocio.SesionPracticaFacade;
+import negocio.SimularFacade;
 import negocio.TablaGeneralFacade;
 
 
@@ -57,6 +58,9 @@ public class Resultados {
     
     @EJB
     private TablaGeneralFacade tablaGeneralFacade;
+    
+    @EJB
+    private SimularFacade simularFacade;
 
     /**
      * Web service operation
@@ -72,7 +76,7 @@ public class Resultados {
     @WebMethod(operationName = "simularTorneo")
     @Oneway
     public void simularTorneo(int idCampeonato) {
-        
+        simularFacade.simularTorneo(idCampeonato);
     }
     
     @WebMethod(operationName = "obtenerSesionCarreraByPremio")

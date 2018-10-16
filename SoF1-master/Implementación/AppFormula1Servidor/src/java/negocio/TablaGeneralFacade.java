@@ -7,6 +7,7 @@ package negocio;
 
 import entities.TablaGeneral;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,13 +31,18 @@ public class TablaGeneralFacade extends AbstractFacade<TablaGeneral> {
         super(TablaGeneral.class);
     }
     
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
     public List<TablaGeneral> verResultadosGeneralesByCampeonato(int idCampeonato) {
-        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.campeonato_id = :idCampeonato "+"order by tg.puntos", TablaGeneral.class)
+        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.campeonato.idCampeonato = :idCampeonato "+"order by tg.puntos", TablaGeneral.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
     }
     
     public TablaGeneral obtenerTablaGeneralByPiloto(int idPiloto){
-        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.piloto_id = :idPiloto", TablaGeneral.class)
+        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.piloto.idPiloto = :idPiloto", TablaGeneral.class)
                 .setParameter("idPiloto", idPiloto).getSingleResult();
     }
 }

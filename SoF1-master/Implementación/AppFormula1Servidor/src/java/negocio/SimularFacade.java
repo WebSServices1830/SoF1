@@ -23,6 +23,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.concurrent.ThreadLocalRandom;
+import javax.annotation.PreDestroy;
 
 /**
  *
@@ -61,11 +62,18 @@ public class SimularFacade {
     @EJB
     private TablaGeneralFacade tablaGeneralFacade;
     
-    @EJB CampeonatoFacade campeonatoFacade;
+    @EJB 
+    private CampeonatoFacade campeonatoFacade;
     
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
     
     public void simularTorneo(int idCampeonato){
         List<Premio> premios = premioFacade.obtenerPremiosByCampeonato(idCampeonato);
@@ -73,26 +81,31 @@ public class SimularFacade {
         initTablaGeneral(idCampeonato,pilotos);
         for(Premio p: premios){
             simularPremio(p, pilotos, idCampeonato);
+            System.out.println("entro");
         }
     }
     
     private void simularPremio(Premio premio, List<Piloto> pilotos, int idCampeonato){
         SesionPractica sp = new SesionPractica();
-        sp.setFecha(new Date());
-        sp.setNombre("Sesion practica "+premio.getNombre());
+        //sp.setFecha(new Date());
+        //sp.setNombre("Sesion practica "+premio.getNombre());
         sp.setPremio(premio);
+        //sp.setResultados(new ArrayList<>());
         sesionPracticaFacade.create(sp);
         sp = sesionPracticaFacade.find(sesionPracticaFacade.count());
         SesionClasificacion scl = new SesionClasificacion();
-        scl.setFecha(new Date());
-        scl.setNombre("Sesion clasificacion "+premio.getNombre());
+        //scl.setFecha(new Date());
+        //scl.setResultados(null);
+        //scl.setNombre("Sesion clasificacion "+premio.getNombre());
         scl.setPremio(premio);
+        //scl.setResultados(new ArrayList<>());
         sesionClasificacionFacade.create(scl);
         scl = sesionClasificacionFacade.find(sesionClasificacionFacade.count());
         SesionCarrera sc = new SesionCarrera();
-        sc.setFecha(new Date());
-        sc.setNombre("Sesion carrera "+premio.getNombre());
+        //sc.setFecha(new Date());
+        //sc.setNombre("Sesion carrera "+premio.getNombre());
         sc.setPremio(premio);
+        //sc.setResultados(new ArrayList<>());
         sesionCarreraFacade.create(sc);
         sc = sesionCarreraFacade.find(sesionCarreraFacade.count());
         simularSesionPractica(sp, pilotos);
@@ -173,7 +186,7 @@ public class SimularFacade {
     }
     
     private int obtenerPuesto(List<Integer> vectorProbabilidad){
-        int randomNum = ThreadLocalRandom.current().nextInt(0, vectorProbabilidad.size() + 1);
+        int randomNum = ThreadLocalRandom.current().nextInt(0, vectorProbabilidad.size());
         return vectorProbabilidad.get(randomNum);
     }
     

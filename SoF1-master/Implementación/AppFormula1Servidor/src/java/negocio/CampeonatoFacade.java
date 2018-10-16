@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.Campeonato;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,6 +25,12 @@ public class CampeonatoFacade extends AbstractFacade<Campeonato> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public CampeonatoFacade() {
         super(Campeonato.class);

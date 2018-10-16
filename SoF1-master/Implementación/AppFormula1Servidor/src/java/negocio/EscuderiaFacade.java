@@ -7,6 +7,7 @@ package negocio;
 
 import entities.Escuderia;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,13 +26,19 @@ public class EscuderiaFacade extends AbstractFacade<Escuderia> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public EscuderiaFacade() {
         super(Escuderia.class);
     }
     
     public List<Escuderia> obtenerEscuderiasByCampeonato(int idCampeonato) {
-        return getEntityManager().createQuery("select e "+"from Escuderia e "+"where e.campeonato_id = :idCampeonato", Escuderia.class)
+        return getEntityManager().createQuery("select e "+"from Escuderia e "+"where e.campeonato.idCampenato = :idCampeonato", Escuderia.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
     }
 }

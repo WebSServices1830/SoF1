@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.SesionClasificacion;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,13 +25,19 @@ public class SesionClasificacionFacade extends AbstractFacade<SesionClasificacio
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public SesionClasificacionFacade() {
         super(SesionClasificacion.class);
     }
     
     public SesionClasificacion obtenerSesionClasificacionByPremio(int idPremio) {
-        return getEntityManager().createQuery("select sc "+"from SesionClasificacion sc "+"where sc.premio_id = :idPremio",SesionClasificacion.class)
+        return getEntityManager().createQuery("select sc "+"from SesionClasificacion sc "+"where sc.premio.idPremio = :idPremio",SesionClasificacion.class)
                 .setParameter("idPremio", idPremio).getSingleResult();
     }
     

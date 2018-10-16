@@ -8,6 +8,7 @@ package negocio;
 import entities.CalificacionPremio;
 import entities.Premio;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,12 @@ public class CalificacionPremioFacade extends AbstractFacade<CalificacionPremio>
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public CalificacionPremioFacade() {
         super(CalificacionPremio.class);
@@ -36,12 +43,12 @@ public class CalificacionPremioFacade extends AbstractFacade<CalificacionPremio>
     }
     
     public List<CalificacionPremio> obtenerCalificacionesPremio(int idPremio) {
-        return getEntityManager().createQuery("select cp "+"from CalificacionPremio cp "+"where cp.premio_id = :idPremio",CalificacionPremio.class)
+        return getEntityManager().createQuery("select cp "+"from CalificacionPremio cp "+"where cp.premio.idPremio = :idPremio",CalificacionPremio.class)
                 .setParameter("idPremio", idPremio).getResultList();
     }
     
     public double obtenerCalificacionPromedioPremio(int idPremio){
-        return getEntityManager().createQuery("select AVG(cp.puntaje) "+"from CalificacionPremio cp "+"where cp.premio_id = :idPremio",double.class)
+        return getEntityManager().createQuery("select AVG(cp.puntaje) "+"from CalificacionPremio cp "+"where cp.premio.idPremio = :idPremio",double.class)
                 .setParameter("idPremio", idPremio).getSingleResult();
     }
 }

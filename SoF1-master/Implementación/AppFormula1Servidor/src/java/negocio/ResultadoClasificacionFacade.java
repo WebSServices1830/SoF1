@@ -7,6 +7,7 @@ package negocio;
 
 import entities.ResultadoClasificacion;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,13 +26,19 @@ public class ResultadoClasificacionFacade extends AbstractFacade<ResultadoClasif
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public ResultadoClasificacionFacade() {
         super(ResultadoClasificacion.class);
     }
     
     public List<ResultadoClasificacion> obtenerResultadoClasificacionBySesionClasificacion(int idSesionClasificacion) {
-        return getEntityManager().createQuery("select rc "+"from ResultadoClasificacion rc "+"where rc.sesionclasificacion_id = :idSesionClasificacion",ResultadoClasificacion.class)
+        return getEntityManager().createQuery("select rc "+"from ResultadoClasificacion rc "+"where rc.sesionClasificacion.idSesion = :idSesionClasificacion",ResultadoClasificacion.class)
                 .setParameter("idSesionClasificacion", idSesionClasificacion).getResultList();
     }
 }

@@ -7,6 +7,7 @@ package negocio;
 
 import entities.ResultadoPractica;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,13 +26,19 @@ public class ResultadoPracticaFacade extends AbstractFacade<ResultadoPractica> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public ResultadoPracticaFacade() {
         super(ResultadoPractica.class);
     }
     
     public List<ResultadoPractica> obtenerResultadoPracticaBySesionPractica(int idSesionPractica) {
-        return getEntityManager().createQuery("select rp "+"from ResultadoPractica rp "+"where rp.sesionpractica_id = :idSesionPractica",ResultadoPractica.class)
+        return getEntityManager().createQuery("select rp "+"from ResultadoPractica rp "+"where rp.sesionPractica.idSesion = :idSesionPractica",ResultadoPractica.class)
                 .setParameter("idSesionPractica", idSesionPractica).getResultList();
     }
 }

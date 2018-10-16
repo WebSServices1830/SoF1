@@ -7,6 +7,7 @@ package negocio;
 
 import entities.Apuesta;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +26,12 @@ public class ApuestaFacade extends AbstractFacade<Apuesta> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public ApuestaFacade() {
         super(Apuesta.class);
@@ -32,7 +39,7 @@ public class ApuestaFacade extends AbstractFacade<Apuesta> {
     
     
     public List<Apuesta> obtenerApuestasByUsuario(int idUsuario) {
-        return getEntityManager().createQuery("select a "+"from Apuesta a "+"where a.usuario_id = :idUsuario", Apuesta.class)
+        return getEntityManager().createQuery("select a "+"from Apuesta a "+"where a.usuario.idUsuario = :idUsuario", Apuesta.class)
                 .setParameter("idUsuario", idUsuario).getResultList();
     }
     

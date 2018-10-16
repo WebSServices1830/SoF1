@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.SesionCarrera;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,13 +25,19 @@ public class SesionCarreraFacade extends AbstractFacade<SesionCarrera> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public SesionCarreraFacade() {
         super(SesionCarrera.class);
     }
     
     public SesionCarrera obtenerSesionCarreraByPremio(int idPremio) {
-        return getEntityManager().createQuery("select sc "+"from SesionCarrera sc "+"where sc.premio_id = :idPremio",SesionCarrera.class)
+        return getEntityManager().createQuery("select sc "+"from SesionCarrera sc "+"where sc.premio.idPremio = :idPremio",SesionCarrera.class)
                 .setParameter("idPremio", idPremio).getSingleResult();
     }
     

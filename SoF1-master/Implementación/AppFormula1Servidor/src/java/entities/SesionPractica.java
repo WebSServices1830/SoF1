@@ -24,6 +24,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -55,6 +56,7 @@ public class SesionPractica {
     private String nombre;
 
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
     @XmlIDREF
