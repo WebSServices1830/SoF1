@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -72,7 +74,7 @@ public class Monoplaza implements Serializable {
     @Column
     private Double multiplicador;
 
-    @Size (max = 50)
+    @Size (max = 150)
     @Column
     private String imagen;
 
@@ -85,11 +87,11 @@ public class Monoplaza implements Serializable {
      *     
      */
     
-    
+        @XmlIDREF
     public Escuderia getEscuderia() {
         return escuderia;
     }
-
+    @XmlIDREF
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -97,7 +99,7 @@ public class Monoplaza implements Serializable {
     public void setCampeonato(Campeonato campeonato) {
         this.campeonato = campeonato;
     }
-
+    @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }
@@ -126,6 +128,10 @@ public class Monoplaza implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idMonoplaza+"";
+    }
     public Integer getIdMonoplaza() {
         return idMonoplaza;
     }

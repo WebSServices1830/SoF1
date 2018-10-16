@@ -29,6 +29,9 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -45,7 +48,7 @@ public class SesionPractica {
     private Premio premio;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionPractica")
-    private List<ResultadoPractica> resultados=new ArrayList<>();
+    private List<ResultadoPractica> resultados;
 
     @Size(max = 30)
     @Column
@@ -54,7 +57,7 @@ public class SesionPractica {
     @Column
     private Date fecha;
 
-    
+    @XmlIDREF
     public Premio getPremio() {
         return premio;
     }
@@ -71,6 +74,10 @@ public class SesionPractica {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idSesion+"";
+    }
     public Integer getIdSesion() {
         return idSesion;
     }
@@ -134,7 +141,7 @@ public class SesionPractica {
     public void setFecha(Date value) {
         this.fecha = value;
     }
-
+    @XmlTransient
     public List<ResultadoPractica> getResultados() {
         return resultados;
     }

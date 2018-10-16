@@ -26,7 +26,10 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -42,20 +45,21 @@ public class Campeonato implements Serializable {
     protected String nombre;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "campeonato")
-    private List<Escuderia> escuderias = new ArrayList<>();
+    private List<Escuderia> escuderias;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "campeonato")
-    private List<Monoplaza> monoplazas= new ArrayList<>();
+    private List<Monoplaza> monoplazas;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "campeonato")
-    private List<Piloto> pilotos= new ArrayList<>();
+    private List<Piloto> pilotos;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "campeonato")
-    protected List<Premio> calendario= new ArrayList<>();
+    protected List<Premio> calendario;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "campeonato")
     private List<TablaGeneral> tablaGeneral;
 
+    @XmlTransient
     public List<TablaGeneral> getTablaGeneral() {
         return tablaGeneral;
     }
@@ -67,11 +71,14 @@ public class Campeonato implements Serializable {
     public String getNombre() {
         return nombre;
     }
-
+    @XmlID
+    public String getIdXml() {
+        return idCampeonato+"";
+    }
     public Integer getIdCampeonato() {
         return idCampeonato;
     }
-
+    @XmlTransient
     public List<Escuderia> getEscuderias() {
         return escuderias;
     }
@@ -83,7 +90,7 @@ public class Campeonato implements Serializable {
     public void setEscuderias(List<Escuderia> escuderias) {
         this.escuderias = escuderias;
     }
-
+    @XmlTransient
     public List<Monoplaza> getMonoplazas() {
         return monoplazas;
     }
@@ -91,7 +98,7 @@ public class Campeonato implements Serializable {
     public void setMonoplazas(List<Monoplaza> monoplazas) {
         this.monoplazas = monoplazas;
     }
-
+    @XmlTransient
     public List<Piloto> getPilotos() {
         return pilotos;
     }
@@ -280,6 +287,7 @@ public class Campeonato implements Serializable {
      * 
      * 
      */
+    @XmlTransient
     public List<Premio> getCalendario() {
         if (calendario == null) {
             calendario = new ArrayList<Premio>();

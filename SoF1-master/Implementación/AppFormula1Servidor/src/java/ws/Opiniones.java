@@ -104,5 +104,15 @@ public class Opiniones {
         return calificacionPremioFacade.obtenerCalificacionesPremio(idPremio);
     }
     
+    @WebMethod(operationName = "obtenerCalificacionPromedioPiloto")
+    public double obtenerCalificacionPromedioPiloto(@WebParam(name = "idPiloto") int idPiloto) {
+        return calificacionPilotoFacade.obtenerCalificacionPromedioPiloto(idPiloto);
+    }
+    
+    @WebMethod(operationName = "obtenerCalificacionPromedioPremio")
+    public double obtenerCalificacionPromedioPremio(@WebParam(name = "idPremio") int idPremio) {
+        return calificacionPremioFacade.obtenerCalificacionPromedioPremio(idPremio);
+    }
+    
 }
 

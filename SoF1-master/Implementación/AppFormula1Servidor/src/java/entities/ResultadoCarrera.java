@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -38,9 +40,11 @@ public class ResultadoCarrera implements Serializable {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sesioncarrera_id")
+    @XmlIDREF
     private SesionCarrera sesionCarrera;
     
     @JoinColumn(name="piloto_id")
+    @XmlIDREF
     private Piloto piloto;
     
     @Column
@@ -108,6 +112,10 @@ public class ResultadoCarrera implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idResultado+"";
+    }
     public Integer getIdResultado() {
         return idResultado;
     }

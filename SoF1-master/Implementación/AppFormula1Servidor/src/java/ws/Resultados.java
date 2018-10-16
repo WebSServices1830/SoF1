@@ -71,7 +71,8 @@ public class Resultados {
      */
     @WebMethod(operationName = "simularTorneo")
     @Oneway
-    public void simularTorneo() {
+    public void simularTorneo(int idCampeonato) {
+        
     }
     
     @WebMethod(operationName = "obtenerSesionCarreraByPremio")

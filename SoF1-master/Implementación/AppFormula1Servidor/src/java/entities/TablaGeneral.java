@@ -15,17 +15,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 
 /**
  *
  * @author andre
  */
 @Entity
+@Table(name = "TablaGeneral")
 public class TablaGeneral implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="tablageneral_id", nullable = false, unique = true)
+    private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="campeonato_id")
@@ -46,11 +51,14 @@ public class TablaGeneral implements Serializable {
     @Column
     private Integer puntos;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
-
-    public void setId(Long id) {
+    @XmlID
+    public String getIdXml() {
+        return id+"";
+    }
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -61,7 +69,7 @@ public class TablaGeneral implements Serializable {
     public void setPosicion(Integer posicion) {
         this.posicion = posicion;
     }
-
+    @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }
@@ -93,7 +101,7 @@ public class TablaGeneral implements Serializable {
     public void setPuntos(Integer puntos) {
         this.puntos = puntos;
     }
-
+    @XmlIDREF
     public Campeonato getCampeonato() {
         return campeonato;
     }

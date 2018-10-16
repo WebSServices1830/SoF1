@@ -18,6 +18,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -78,7 +80,7 @@ public class Apuesta implements Serializable{
     public void setCantidadGanada(Double cantidadGanada) {    
         this.cantidadGanada = cantidadGanada;
     }
-
+    @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }
@@ -103,6 +105,7 @@ public class Apuesta implements Serializable{
      *     {@link Premio }
      *     
      */
+    @XmlIDREF
     public Premio getPremio() {
         return premio;
     }
@@ -127,6 +130,7 @@ public class Apuesta implements Serializable{
      *     {@link Usuario }
      *     
      */
+    @XmlIDREF
     public Usuario getUsuario() {
         return usuario;
     }
@@ -222,7 +226,11 @@ public class Apuesta implements Serializable{
     public void setId(Integer id) {
         this.idApuesta = id;
     }
-
+    @XmlID
+    public String getIdXml() {
+        return idApuesta+"";
+    }
+    
     public Integer getIdApuesta() {
         return idApuesta;
     }

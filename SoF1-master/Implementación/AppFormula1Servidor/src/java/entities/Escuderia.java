@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -49,11 +52,12 @@ public class Escuderia implements Serializable {
     private Pais pais;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "escuderia")
-    private List<Piloto> pilotos = new ArrayList<>();
+    private List<Piloto> pilotos;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "escuderia")
-    private List<Monoplaza> monoplazas = new ArrayList<>();
+    private List<Monoplaza> monoplazas;
     
+    @Size(max=150)
     @Column
     private String imagen;
     
@@ -81,11 +85,11 @@ public class Escuderia implements Serializable {
      *     {@link Pais }
      *     
      */
-    
+        @XmlTransient
        public List<Piloto> getPilotos() {
         return pilotos;
     }
-
+       @XmlIDREF
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -93,7 +97,7 @@ public class Escuderia implements Serializable {
     public void setCampeonato(Campeonato campeonato) {
         this.campeonato = campeonato;
     }
-
+       @XmlIDREF
     public Pais getPais() {
         return pais;
     }
@@ -101,7 +105,7 @@ public class Escuderia implements Serializable {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
-
+    @XmlTransient
     public List<Monoplaza> getMonoplazas() {
         return monoplazas;
     }
@@ -221,6 +225,10 @@ public class Escuderia implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idEscuderia+"";
+    }
     public Integer getIdEscuderia() {
         return idEscuderia;
     }

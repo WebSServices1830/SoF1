@@ -30,6 +30,9 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -45,10 +48,11 @@ public class SesionClasificacion implements Serializable {
     
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="premio_id")
+
     private Premio premio;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionClasificacion")
-    private List<ResultadoClasificacion> resultados=new ArrayList<>();;
+    private List<ResultadoClasificacion> resultados;
     
     
     @Size(max = 30)
@@ -66,10 +70,14 @@ public class SesionClasificacion implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idSesion+"";
+    }
     public Integer getIdSesion() {
         return idSesion;
     }
-
+    @XmlIDREF
     public Premio getPremio() {
         return premio;
     }
@@ -137,7 +145,7 @@ public class SesionClasificacion implements Serializable {
     public void setFecha(Date value) {
         this.fecha = value;
     }
-
+        @XmlTransient
     public List<ResultadoClasificacion> getResultados() {
         return resultados;
     }

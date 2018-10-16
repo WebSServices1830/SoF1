@@ -31,12 +31,12 @@ public class PilotoFacade extends AbstractFacade<Piloto> {
     }
     
     public List<Piloto> obtenerPilotosByEscuderia(int idEscuderia){
-        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.escuderia_id =:idEscuderia", Piloto.class)
+        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.escuderia_id = :idEscuderia", Piloto.class)
                 .setParameter("idEscuderia", idEscuderia).getResultList();
     }
     
     public List<Piloto> obtenerPilotosByCampeonato(int idCampeonato){
-        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.campeonato_id =:idCampeonato", Piloto.class)
+        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.campeonato_id = :idCampeonato "+"order by p.multiplicador", Piloto.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
     }
 }

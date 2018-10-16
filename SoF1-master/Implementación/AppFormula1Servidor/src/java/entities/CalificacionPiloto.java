@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -61,6 +63,7 @@ public class CalificacionPiloto implements Serializable {
      *     {@link Usuario }
      *     
      */
+    @XmlIDREF
     public Usuario getUsuario() {
         return usuario;
     }
@@ -94,6 +97,10 @@ public class CalificacionPiloto implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idCalificacion+"";
+    }
     public Integer getIdCalificacion() {
         return idCalificacion;
     }
@@ -181,7 +188,7 @@ public class CalificacionPiloto implements Serializable {
     public void setFecha(Date value) {
         this.fecha = value;
     }
-
+    @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }

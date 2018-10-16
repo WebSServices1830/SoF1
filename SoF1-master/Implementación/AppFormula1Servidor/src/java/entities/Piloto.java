@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -80,7 +83,7 @@ public class Piloto implements Serializable {
     @Column
     private String biografia;
     
-    @Size(max = 50)
+    @Size(max = 150)
     @Column
     private String imagen;
     
@@ -90,7 +93,7 @@ public class Piloto implements Serializable {
     
     @Column
     private Double multiplicador;
-
+    @XmlIDREF
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -99,7 +102,7 @@ public class Piloto implements Serializable {
         this.campeonato = campeonato;
     }
 
-    
+    @XmlIDREF
     public Pais getPais() {
         return pais;
     }
@@ -107,7 +110,7 @@ public class Piloto implements Serializable {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
-
+    @XmlTransient
     public Monoplaza getMonoplaza() {
         return monoplaza;
     }
@@ -125,6 +128,7 @@ public class Piloto implements Serializable {
      *     {@link Piloto }
      *     
      */
+    @XmlIDREF
     public Escuderia getEscuderia() {
         return escuderia;
     }
@@ -181,6 +185,10 @@ public class Piloto implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idPiloto+"";
+    }
     public Integer getIdPiloto() {
         return idPiloto;
     }

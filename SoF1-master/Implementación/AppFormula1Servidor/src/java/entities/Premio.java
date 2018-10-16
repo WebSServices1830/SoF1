@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -62,7 +65,7 @@ public class Premio implements Serializable {
         this.finalizado = finalizado;
     }
 
-    
+        @XmlTransient
     public SesionCarrera getSesionCarrera() {
         return sesionCarrera;
     }
@@ -71,7 +74,7 @@ public class Premio implements Serializable {
     public void setSesionCarrera(SesionCarrera sesionCarrera) {
         this.sesionCarrera = sesionCarrera;
     }
-
+    @XmlTransient
     public SesionClasificacion getSesionClasificacion() {
         return sesionClasificacion;
     }
@@ -79,7 +82,7 @@ public class Premio implements Serializable {
     public void setSesionClasificacion(SesionClasificacion sesionClasificacion) {
         this.sesionClasificacion = sesionClasificacion;
     }
-
+    @XmlTransient
     public SesionPractica getSesionPractica() {
         return sesionPractica;
     }
@@ -162,6 +165,7 @@ public class Premio implements Serializable {
      *     {@link Circuito }
      *     
      */
+        @XmlIDREF
     public Circuito getCircuito() {
         return circuito;
     }
@@ -210,6 +214,10 @@ public class Premio implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idPremio+"";
+    }
     public Integer getIdPremio() {
         return idPremio;
     }
@@ -297,7 +305,7 @@ public class Premio implements Serializable {
     public void setFechaFin(Date value) {
         this.fechaFin = value;
     }
-
+        @XmlIDREF
     public Campeonato getCampeonato() {
         return campeonato;
     }

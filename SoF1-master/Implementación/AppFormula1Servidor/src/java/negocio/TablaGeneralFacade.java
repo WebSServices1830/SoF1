@@ -31,7 +31,7 @@ public class TablaGeneralFacade extends AbstractFacade<TablaGeneral> {
     }
     
     public List<TablaGeneral> verResultadosGeneralesByCampeonato(int idCampeonato) {
-        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.campeonato_id = :idCampeonato", TablaGeneral.class)
+        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.campeonato_id = :idCampeonato "+"order by tg.puntos", TablaGeneral.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
     }
     

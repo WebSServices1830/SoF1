@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -36,7 +37,11 @@ public class Pais implements Serializable {
     @Size(max = 50)
     @Column
     private String nombre;
-
+    
+    @XmlID
+    public String getIdXml() {
+        return idPais+"";
+    }
     public Integer getIdPais() {
         return idPais;
     }

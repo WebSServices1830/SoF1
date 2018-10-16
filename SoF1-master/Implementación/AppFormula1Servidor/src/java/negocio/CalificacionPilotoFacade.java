@@ -39,4 +39,9 @@ public class CalificacionPilotoFacade extends AbstractFacade<CalificacionPiloto>
         return getEntityManager().createQuery("select cp "+"from CalificacionPiloto cp "+"where cp.piloto_id = :idPiloto",CalificacionPiloto.class)
                 .setParameter("idPiloto", idPiloto).getResultList();
     }
+    
+    public double obtenerCalificacionPromedioPiloto(int idPiloto){
+        return getEntityManager().createQuery("select AVG(cp.puntaje) "+"from CalificacionPiloto cp "+"where cp.piloto_id = :idPiloto",double.class)
+                .setParameter("idPiloto", idPiloto).getSingleResult();
+    }
 }

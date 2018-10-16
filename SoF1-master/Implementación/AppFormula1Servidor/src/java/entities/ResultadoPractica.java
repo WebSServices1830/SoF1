@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -63,11 +65,11 @@ public class ResultadoPractica implements Serializable {
      *     {@link Piloto }
      *     
      */
-    
+        @XmlIDREF
     public Piloto getPiloto() {
         return piloto;
     }
-
+    @XmlIDREF
     public SesionPractica getSesionPractica() {
         return sesionPractica;
     }
@@ -106,6 +108,10 @@ public class ResultadoPractica implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idResultado+"";
+    }
     public Integer getIdResultado() {
         return idResultado;
     }

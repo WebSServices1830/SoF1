@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -44,7 +46,7 @@ public class Circuito implements Serializable {
     @JoinColumn(name="pais_id")
     private Pais pais;
 
-    @Size(max = 20)
+    @Size(max = 50)
     @Column
     private String nombre;
 
@@ -60,10 +62,11 @@ public class Circuito implements Serializable {
     @Column
     private Date fechRecord;
 
-    @Size(max = 30)
+    @Size(max = 50)
     @Column
     private String ultimoGanador;
 
+    @Size(max = 200)
     @Column
     private String foto;
 
@@ -76,6 +79,7 @@ public class Circuito implements Serializable {
      *     {@link Pais }
      *     
      */
+    @XmlIDREF
     public Pais getPais() {
         return pais;
     }
@@ -108,6 +112,10 @@ public class Circuito implements Serializable {
      *     {@link Integer }
      *     
      */
+    @XmlID
+    public String getIdXml() {
+        return idCircuito+"";
+    }
     public Integer getIdCircuito() {
         return idCircuito;
     }

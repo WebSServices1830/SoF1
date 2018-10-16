@@ -5,6 +5,7 @@
  */
 package ws;
 
+import entities.Campeonato;
 import entities.Circuito;
 import entities.Escuderia;
 import entities.Monoplaza;
@@ -17,6 +18,7 @@ import javax.jws.Oneway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import negocio.CampeonatoFacade;
 import negocio.CircuitoFacade;
 import negocio.EscuderiaFacade;
 import negocio.MonoplazaFacade;
@@ -41,6 +43,16 @@ public class Gestor {
     private CircuitoFacade circuitoFacade;
     @EJB
     private PremioFacade premioFacade;
+    
+    @EJB
+    private CampeonatoFacade campeonatoFacade;
+    
+    @WebMethod(operationName = "createCampeonato")
+    @Oneway
+    public void createCampeonato(@WebParam(name = "campeonato") Campeonato campeonato) {
+        campeonatoFacade.create(campeonato);
+        System.out.println("llego create campeonato");
+    }
     
     @WebMethod(operationName = "createEscuderia")
     @Oneway
@@ -73,6 +85,12 @@ public class Gestor {
         premioFacade.create(premio);
     }
 
+    @WebMethod(operationName = "editCampeonato")
+    @Oneway
+    public void editCampeonato(@WebParam(name = "campeonato") Campeonato campeonato) {
+        campeonatoFacade.edit(campeonato);
+    }
+    
     @WebMethod(operationName = "editEscuderia")
     @Oneway
     public void editEscuderia(@WebParam(name = "escuderia") Escuderia escuderia) {
@@ -99,7 +117,14 @@ public class Gestor {
     public void editPremio(@WebParam(name = "premio") Premio premio) {
         premioFacade.edit(premio);
     }
-
+    
+    @WebMethod(operationName = "removeCampeonato")
+    @Oneway
+    public void removeCampeonato(@WebParam(name = "campeonato") int idCampeonato) {
+        Campeonato c = campeonatoFacade.find(idCampeonato);
+        campeonatoFacade.remove(c);
+    }
+    
     @WebMethod(operationName = "removeEscuderia")
     @Oneway
     public void removeEscuderia(@WebParam(name = "escuderia") int idEscuderia) {
@@ -135,6 +160,11 @@ public class Gestor {
         premioFacade.remove(p);
     }
     
+    @WebMethod(operationName = "findCampeonato")
+    public Campeonato findCampeonato(@WebParam(name = "idCampeonato") int idCampeonato) {
+        return campeonatoFacade.find(idCampeonato);
+    }
+    
     @WebMethod(operationName = "findEscuderia")
     public Escuderia findEscuderia(@WebParam(name = "idEscuderia") int idEscuderia) {
         return escuderiaFacade.find(idEscuderia);
@@ -158,6 +188,11 @@ public class Gestor {
     @WebMethod(operationName = "findPremio")
     public Premio findPremio(@WebParam(name = "idPremio") int idPremio) {
         return premioFacade.find(idPremio);
+    }
+    
+    @WebMethod(operationName = "findAllCampeonato")
+    public List<Campeonato> findAllCampeonato() {
+        return campeonatoFacade.findAll();
     }
 
     @WebMethod(operationName = "findAllEscuderia")
