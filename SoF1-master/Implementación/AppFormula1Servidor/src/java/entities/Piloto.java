@@ -25,6 +25,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -50,13 +51,11 @@ public class Piloto implements Serializable {
     private Campeonato campeonato;
     
     @JoinColumn(name="pais_id")
+    @OneToOne
     private Pais pais;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "escuderia_id")
-    private Escuderia escuderia;
-    
-    @OneToOne(fetch = FetchType.LAZY, mappedBy="piloto")
+    @JoinColumn(name="monoplaza_id")
+    @OneToOne
     private Monoplaza monoplaza;
     
     @Size(max = 30)
@@ -64,6 +63,7 @@ public class Piloto implements Serializable {
     private String nombre;
     
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaNacimiento;
     
     @Size(max = 20)
@@ -93,7 +93,7 @@ public class Piloto implements Serializable {
     
     @Column
     private Double multiplicador;
-    @XmlIDREF
+    //
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -102,7 +102,7 @@ public class Piloto implements Serializable {
         this.campeonato = campeonato;
     }
 
-    @XmlIDREF
+    //
     public Pais getPais() {
         return pais;
     }
@@ -110,7 +110,7 @@ public class Piloto implements Serializable {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
-    @XmlTransient
+
     public Monoplaza getMonoplaza() {
         return monoplaza;
     }
@@ -120,30 +120,6 @@ public class Piloto implements Serializable {
     }
 
 
-    /**
-     * Gets the value of the escuderia property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Piloto }
-     *     
-     */
-    @XmlIDREF
-    public Escuderia getEscuderia() {
-        return escuderia;
-    }
-
-    /**
-     * Sets the value of the escuderia property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Piloto }
-     *     
-     */
-    public void setEscuderia(Escuderia value) {
-        this.escuderia = value;
-    }
 
     /**
      * Gets the value of the monoplaza property.
@@ -185,7 +161,7 @@ public class Piloto implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idPiloto+"";
     }

@@ -45,9 +45,6 @@ public class SesionCarrera implements Serializable {
     @Column(name="sesioncarrera_id", nullable = false, unique = true)
     private Integer idSesion;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="premio_id")
-    private Premio premio;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionCarrera")
     private List<ResultadoCarrera> resultados;
@@ -60,10 +57,8 @@ public class SesionCarrera implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
-        @XmlIDREF
-    public Premio getPremio() {
-        return premio;
-    }
+        //
+
 
     public void setResultados(List<ResultadoCarrera> resultados) {
         this.resultados = resultados;
@@ -91,9 +86,7 @@ public class SesionCarrera implements Serializable {
      *
      * 
      */
-    public void setPremio(Premio premio) {    
-        this.premio = premio;
-    }
+
     @XmlTransient
     public List<ResultadoCarrera> getResultados() {
         if (resultados == null) {
@@ -110,7 +103,7 @@ public class SesionCarrera implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idSesion+"";
     }

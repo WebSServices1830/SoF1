@@ -89,28 +89,31 @@ public void destruct()
         SesionPractica sp = new SesionPractica();
         //sp.setFecha(new Date());
         //sp.setNombre("Sesion practica "+premio.getNombre());
-        sp.setPremio(premio);
         //sp.setResultados(new ArrayList<>());
         sesionPracticaFacade.create(sp);
         sp = sesionPracticaFacade.find(sesionPracticaFacade.count());
+        premio.setSesionPractica(sp);
         SesionClasificacion scl = new SesionClasificacion();
         //scl.setFecha(new Date());
         //scl.setResultados(null);
         //scl.setNombre("Sesion clasificacion "+premio.getNombre());
-        scl.setPremio(premio);
         //scl.setResultados(new ArrayList<>());
         sesionClasificacionFacade.create(scl);
         scl = sesionClasificacionFacade.find(sesionClasificacionFacade.count());
+        premio.setSesionClasificacion(scl);
         SesionCarrera sc = new SesionCarrera();
         //sc.setFecha(new Date());
         //sc.setNombre("Sesion carrera "+premio.getNombre());
-        sc.setPremio(premio);
         //sc.setResultados(new ArrayList<>());
         sesionCarreraFacade.create(sc);
         sc = sesionCarreraFacade.find(sesionCarreraFacade.count());
+        premio.setSesionCarrera(sc);
+        premio.setFinalizado(true);       
         simularSesionPractica(sp, pilotos);
         simularSesionClasificacion(scl, pilotos);
         simularSesionCarrera(sc, pilotos,idCampeonato);
+        premioFacade.edit(premio);
+        //Falta Definir resultado apuestas
     }
     
     private void simularSesionPractica(SesionPractica sesion, List<Piloto> pilotos){

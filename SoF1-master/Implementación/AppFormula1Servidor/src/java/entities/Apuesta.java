@@ -80,7 +80,7 @@ public class Apuesta implements Serializable{
     public void setCantidadGanada(Double cantidadGanada) {    
         this.cantidadGanada = cantidadGanada;
     }
-    @XmlIDREF
+    
     public Piloto getPiloto() {
         return piloto;
     }
@@ -105,7 +105,7 @@ public class Apuesta implements Serializable{
      *     {@link Premio }
      *     
      */
-    @XmlIDREF
+    
     public Premio getPremio() {
         return premio;
     }
@@ -130,7 +130,7 @@ public class Apuesta implements Serializable{
      *     {@link Usuario }
      *     
      */
-    @XmlIDREF
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -226,7 +226,7 @@ public class Apuesta implements Serializable{
     public void setId(Integer id) {
         this.idApuesta = id;
     }
-    @XmlID
+    //
     public String getIdXml() {
         return idApuesta+"";
     }

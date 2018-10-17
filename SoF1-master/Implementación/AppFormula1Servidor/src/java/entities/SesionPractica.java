@@ -44,9 +44,6 @@ public class SesionPractica {
     @Column(name="sesionpractica_id", nullable = false, unique = true)
     private Integer idSesion;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="premio_id")
-    private Premio premio;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionPractica")
     private List<ResultadoPractica> resultados;
@@ -59,14 +56,6 @@ public class SesionPractica {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
-    @XmlIDREF
-    public Premio getPremio() {
-        return premio;
-    }
-
-    public void setPremio(Premio premio) {
-        this.premio = premio;
-    }
 
     /**
      * Gets the value of the idSesion property.
@@ -76,10 +65,7 @@ public class SesionPractica {
      *     {@link Integer }
      *     
      */
-    @XmlID
-    public String getIdXml() {
-        return idSesion+"";
-    }
+
     public Integer getIdSesion() {
         return idSesion;
     }

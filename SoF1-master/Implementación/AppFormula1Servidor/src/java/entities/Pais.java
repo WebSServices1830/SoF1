@@ -38,10 +38,8 @@ public class Pais implements Serializable {
     @Column
     private String nombre;
     
-    @XmlID
-    public String getIdXml() {
-        return idPais+"";
-    }
+    //
+
     public Integer getIdPais() {
         return idPais;
     }

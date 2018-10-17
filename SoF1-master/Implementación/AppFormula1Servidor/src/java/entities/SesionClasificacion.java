@@ -47,10 +47,6 @@ public class SesionClasificacion implements Serializable {
     @Column(name="sesionclasificacion_id", nullable = false, unique = true)
     private Integer idSesion;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="premio_id")
-
-    private Premio premio;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionClasificacion")
     private List<ResultadoClasificacion> resultados;
@@ -72,21 +68,15 @@ public class SesionClasificacion implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idSesion+"";
     }
     public Integer getIdSesion() {
         return idSesion;
     }
-    @XmlIDREF
-    public Premio getPremio() {
-        return premio;
-    }
+    //
 
-    public void setPremio(Premio premio) {
-        this.premio = premio;
-    }
 
     /**
      * Sets the value of the idSesion property.

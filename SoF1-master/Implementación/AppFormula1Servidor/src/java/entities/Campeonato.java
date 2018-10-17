@@ -71,10 +71,7 @@ public class Campeonato implements Serializable {
     public String getNombre() {
         return nombre;
     }
-    @XmlID
-    public String getIdXml() {
-        return idCampeonato+"";
-    }
+    
     public Integer getIdCampeonato() {
         return idCampeonato;
     }

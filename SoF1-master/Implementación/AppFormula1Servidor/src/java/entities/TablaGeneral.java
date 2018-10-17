@@ -40,6 +40,7 @@ public class TablaGeneral implements Serializable {
     private Integer posicion;
     
     @JoinColumn(name="piloto_id")
+    @OneToOne
     private Piloto piloto;
     
     @Column
@@ -54,7 +55,7 @@ public class TablaGeneral implements Serializable {
     public Integer getId() {
         return id;
     }
-    @XmlID
+    //
     public String getIdXml() {
         return id+"";
     }
@@ -69,7 +70,7 @@ public class TablaGeneral implements Serializable {
     public void setPosicion(Integer posicion) {
         this.posicion = posicion;
     }
-    @XmlIDREF
+    //
     public Piloto getPiloto() {
         return piloto;
     }
@@ -101,7 +102,7 @@ public class TablaGeneral implements Serializable {
     public void setPuntos(Integer puntos) {
         this.puntos = puntos;
     }
-    @XmlIDREF
+    //
     public Campeonato getCampeonato() {
         return campeonato;
     }

@@ -79,7 +79,7 @@ public class Circuito implements Serializable {
      *     {@link Pais }
      *     
      */
-    @XmlIDREF
+    //
     public Pais getPais() {
         return pais;
     }
@@ -112,7 +112,7 @@ public class Circuito implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idCircuito+"";
     }

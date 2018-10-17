@@ -79,23 +79,38 @@ public class Resultados {
         simularFacade.simularTorneo(idCampeonato);
     }
     
-    @WebMethod(operationName = "obtenerSesionCarreraByPremio")
+    @WebMethod(operationName = "findSesionCarrera")
+    public SesionCarrera findSesionCarrera(@WebParam(name = "idSesionCarrera") int idSesionCarrera) {
+        return sesionCarreraFacade.find(idSesionCarrera);
+    }
+    
+    @WebMethod(operationName = "findSesionClasificacion")
+    public SesionClasificacion findSesionClasificacion(@WebParam(name = "idSesionClasificacion") int idSesionClasificacion) {
+        return sesionClasificacionFacade.find(idSesionClasificacion);
+    }
+    
+    @WebMethod(operationName = "findSesionPractica")
+    public SesionPractica findSesionPractica(@WebParam(name = "idSesionPractica") int idSesionPractica) {
+        return sesionPracticaFacade.find(idSesionPractica);
+    }
+    
+    /*@WebMethod(operationName = "obtenerSesionCarreraByPremio")
     public SesionCarrera obtenerSesionCarreraByPremio(@WebParam(name = "idPremio") int idPremio) {
         //TODO write your implementation code here:
         return sesionCarreraFacade.obtenerSesionCarreraByPremio(idPremio);
-    }
+    }*/
     
-    @WebMethod(operationName = "obtenerSesionClasificacionByPremio")
+    /*@WebMethod(operationName = "obtenerSesionClasificacionByPremio")
     public SesionClasificacion obtenerSesionClasificacionByPremio(@WebParam(name = "idPremio") int idPremio) {
         //TODO write your implementation code here:
         return sesionClasificacionFacade.obtenerSesionClasificacionByPremio(idPremio);
-    }
+    }*/
     
-    @WebMethod(operationName = "obtenerSesionPracticaByPremio")
+    /*@WebMethod(operationName = "obtenerSesionPracticaByPremio")
     public SesionPractica obtenerSesionPracticaByPremio(@WebParam(name = "idPremio") int idPremio) {
         //TODO write your implementation code here:
         return sesionPracticaFacade.obtenerSesionPracticaByPremio(idPremio);
-    }
+    }*/
 
 
     @WebMethod(operationName = "obtenerResultadoCarreraBySesionCarrera")
@@ -112,6 +127,8 @@ public class Resultados {
     @WebMethod(operationName = "obtenerResultadoPracticaBySesionPractica")
     public List<ResultadoPractica> obtenerResultadoPracticaBySesionPractica(@WebParam(name = "idSesionPractica") int idSesionPractica) {
         return resultadoPracticaFacade.obtenerResultadoPracticaBySesionPractica(idSesionPractica);
-    }  
+    }
+    
+    
     
 }
