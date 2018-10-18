@@ -27,11 +27,7 @@ public class ResultadoPracticaFacade extends AbstractFacade<ResultadoPractica> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public ResultadoPracticaFacade() {
         super(ResultadoPractica.class);

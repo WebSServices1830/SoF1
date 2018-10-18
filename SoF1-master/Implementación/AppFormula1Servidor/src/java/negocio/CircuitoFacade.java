@@ -26,11 +26,7 @@ public class CircuitoFacade extends AbstractFacade<Circuito> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public CircuitoFacade() {
         super(Circuito.class);

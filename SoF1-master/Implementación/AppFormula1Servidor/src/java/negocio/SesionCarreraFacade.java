@@ -26,11 +26,7 @@ public class SesionCarreraFacade extends AbstractFacade<SesionCarrera> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public SesionCarreraFacade() {
         super(SesionCarrera.class);

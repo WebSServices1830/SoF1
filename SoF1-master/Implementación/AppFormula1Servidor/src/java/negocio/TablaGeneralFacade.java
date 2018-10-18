@@ -30,12 +30,7 @@ public class TablaGeneralFacade extends AbstractFacade<TablaGeneral> {
     public TablaGeneralFacade() {
         super(TablaGeneral.class);
     }
-    
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
     public List<TablaGeneral> verResultadosGeneralesByCampeonato(int idCampeonato) {
         return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.campeonato.idCampeonato = :idCampeonato "+"order by tg.puntos", TablaGeneral.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();

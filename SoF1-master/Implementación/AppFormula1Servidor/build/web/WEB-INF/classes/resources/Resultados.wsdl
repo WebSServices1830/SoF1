@@ -6,26 +6,20 @@
       <xsd:import namespace="http://ws/" schemaLocation="Resultados_schema1.xsd"/>
     </xsd:schema>
   </types>
+  <message name="obtenerSesionPracticaByPremio">
+    <part name="parameters" element="tns:obtenerSesionPracticaByPremio"/>
+  </message>
+  <message name="obtenerSesionPracticaByPremioResponse">
+    <part name="parameters" element="tns:obtenerSesionPracticaByPremioResponse"/>
+  </message>
+  <message name="obtenerSesionCarreraByPremio">
+    <part name="parameters" element="tns:obtenerSesionCarreraByPremio"/>
+  </message>
+  <message name="obtenerSesionCarreraByPremioResponse">
+    <part name="parameters" element="tns:obtenerSesionCarreraByPremioResponse"/>
+  </message>
   <message name="simularTorneo">
     <part name="parameters" element="tns:simularTorneo"/>
-  </message>
-  <message name="findSesionClasificacion">
-    <part name="parameters" element="tns:findSesionClasificacion"/>
-  </message>
-  <message name="findSesionClasificacionResponse">
-    <part name="parameters" element="tns:findSesionClasificacionResponse"/>
-  </message>
-  <message name="findSesionCarrera">
-    <part name="parameters" element="tns:findSesionCarrera"/>
-  </message>
-  <message name="findSesionCarreraResponse">
-    <part name="parameters" element="tns:findSesionCarreraResponse"/>
-  </message>
-  <message name="findSesionPractica">
-    <part name="parameters" element="tns:findSesionPractica"/>
-  </message>
-  <message name="findSesionPracticaResponse">
-    <part name="parameters" element="tns:findSesionPracticaResponse"/>
   </message>
   <message name="obtenerResultadoClasificacionBySesionClasificacion">
     <part name="parameters" element="tns:obtenerResultadoClasificacionBySesionClasificacion"/>
@@ -33,11 +27,11 @@
   <message name="obtenerResultadoClasificacionBySesionClasificacionResponse">
     <part name="parameters" element="tns:obtenerResultadoClasificacionBySesionClasificacionResponse"/>
   </message>
-  <message name="obtenerResultadoCarreraBySesionCarrera">
-    <part name="parameters" element="tns:obtenerResultadoCarreraBySesionCarrera"/>
+  <message name="obtenerResultadoPracticaBySesionPractica">
+    <part name="parameters" element="tns:obtenerResultadoPracticaBySesionPractica"/>
   </message>
-  <message name="obtenerResultadoCarreraBySesionCarreraResponse">
-    <part name="parameters" element="tns:obtenerResultadoCarreraBySesionCarreraResponse"/>
+  <message name="obtenerResultadoPracticaBySesionPracticaResponse">
+    <part name="parameters" element="tns:obtenerResultadoPracticaBySesionPracticaResponse"/>
   </message>
   <message name="verResultadoGeneral">
     <part name="parameters" element="tns:verResultadoGeneral"/>
@@ -45,79 +39,76 @@
   <message name="verResultadoGeneralResponse">
     <part name="parameters" element="tns:verResultadoGeneralResponse"/>
   </message>
-  <message name="obtenerResultadoPracticaBySesionPractica">
-    <part name="parameters" element="tns:obtenerResultadoPracticaBySesionPractica"/>
+  <message name="obtenerResultadoCarreraBySesionCarrera">
+    <part name="parameters" element="tns:obtenerResultadoCarreraBySesionCarrera"/>
   </message>
-  <message name="obtenerResultadoPracticaBySesionPracticaResponse">
-    <part name="parameters" element="tns:obtenerResultadoPracticaBySesionPracticaResponse"/>
+  <message name="obtenerResultadoCarreraBySesionCarreraResponse">
+    <part name="parameters" element="tns:obtenerResultadoCarreraBySesionCarreraResponse"/>
+  </message>
+  <message name="obtenerSesionClasificacionByPremio">
+    <part name="parameters" element="tns:obtenerSesionClasificacionByPremio"/>
+  </message>
+  <message name="obtenerSesionClasificacionByPremioResponse">
+    <part name="parameters" element="tns:obtenerSesionClasificacionByPremioResponse"/>
   </message>
   <portType name="Resultados">
+    <operation name="obtenerSesionPracticaByPremio">
+      <input wsam:Action="http://ws/Resultados/obtenerSesionPracticaByPremioRequest" message="tns:obtenerSesionPracticaByPremio"/>
+      <output wsam:Action="http://ws/Resultados/obtenerSesionPracticaByPremioResponse" message="tns:obtenerSesionPracticaByPremioResponse"/>
+    </operation>
+    <operation name="obtenerSesionCarreraByPremio">
+      <input wsam:Action="http://ws/Resultados/obtenerSesionCarreraByPremioRequest" message="tns:obtenerSesionCarreraByPremio"/>
+      <output wsam:Action="http://ws/Resultados/obtenerSesionCarreraByPremioResponse" message="tns:obtenerSesionCarreraByPremioResponse"/>
+    </operation>
     <operation name="simularTorneo">
       <input wsam:Action="http://ws/Resultados/simularTorneo" message="tns:simularTorneo"/>
-    </operation>
-    <operation name="findSesionClasificacion">
-      <input wsam:Action="http://ws/Resultados/findSesionClasificacionRequest" message="tns:findSesionClasificacion"/>
-      <output wsam:Action="http://ws/Resultados/findSesionClasificacionResponse" message="tns:findSesionClasificacionResponse"/>
-    </operation>
-    <operation name="findSesionCarrera">
-      <input wsam:Action="http://ws/Resultados/findSesionCarreraRequest" message="tns:findSesionCarrera"/>
-      <output wsam:Action="http://ws/Resultados/findSesionCarreraResponse" message="tns:findSesionCarreraResponse"/>
-    </operation>
-    <operation name="findSesionPractica">
-      <input wsam:Action="http://ws/Resultados/findSesionPracticaRequest" message="tns:findSesionPractica"/>
-      <output wsam:Action="http://ws/Resultados/findSesionPracticaResponse" message="tns:findSesionPracticaResponse"/>
     </operation>
     <operation name="obtenerResultadoClasificacionBySesionClasificacion">
       <input wsam:Action="http://ws/Resultados/obtenerResultadoClasificacionBySesionClasificacionRequest" message="tns:obtenerResultadoClasificacionBySesionClasificacion"/>
       <output wsam:Action="http://ws/Resultados/obtenerResultadoClasificacionBySesionClasificacionResponse" message="tns:obtenerResultadoClasificacionBySesionClasificacionResponse"/>
     </operation>
-    <operation name="obtenerResultadoCarreraBySesionCarrera">
-      <input wsam:Action="http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraRequest" message="tns:obtenerResultadoCarreraBySesionCarrera"/>
-      <output wsam:Action="http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraResponse" message="tns:obtenerResultadoCarreraBySesionCarreraResponse"/>
+    <operation name="obtenerResultadoPracticaBySesionPractica">
+      <input wsam:Action="http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaRequest" message="tns:obtenerResultadoPracticaBySesionPractica"/>
+      <output wsam:Action="http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaResponse" message="tns:obtenerResultadoPracticaBySesionPracticaResponse"/>
     </operation>
     <operation name="verResultadoGeneral">
       <input wsam:Action="http://ws/Resultados/verResultadoGeneralRequest" message="tns:verResultadoGeneral"/>
       <output wsam:Action="http://ws/Resultados/verResultadoGeneralResponse" message="tns:verResultadoGeneralResponse"/>
     </operation>
-    <operation name="obtenerResultadoPracticaBySesionPractica">
-      <input wsam:Action="http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaRequest" message="tns:obtenerResultadoPracticaBySesionPractica"/>
-      <output wsam:Action="http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaResponse" message="tns:obtenerResultadoPracticaBySesionPracticaResponse"/>
+    <operation name="obtenerResultadoCarreraBySesionCarrera">
+      <input wsam:Action="http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraRequest" message="tns:obtenerResultadoCarreraBySesionCarrera"/>
+      <output wsam:Action="http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraResponse" message="tns:obtenerResultadoCarreraBySesionCarreraResponse"/>
+    </operation>
+    <operation name="obtenerSesionClasificacionByPremio">
+      <input wsam:Action="http://ws/Resultados/obtenerSesionClasificacionByPremioRequest" message="tns:obtenerSesionClasificacionByPremio"/>
+      <output wsam:Action="http://ws/Resultados/obtenerSesionClasificacionByPremioResponse" message="tns:obtenerSesionClasificacionByPremioResponse"/>
     </operation>
   </portType>
   <binding name="ResultadosPortBinding" type="tns:Resultados">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="obtenerSesionPracticaByPremio">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="obtenerSesionCarreraByPremio">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
     <operation name="simularTorneo">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
       </input>
-    </operation>
-    <operation name="findSesionClasificacion">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
-    <operation name="findSesionCarrera">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
-    <operation name="findSesionPractica">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
     </operation>
     <operation name="obtenerResultadoClasificacionBySesionClasificacion">
       <soap:operation soapAction=""/>
@@ -128,7 +119,7 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="obtenerResultadoCarreraBySesionCarrera">
+    <operation name="obtenerResultadoPracticaBySesionPractica">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
@@ -146,7 +137,16 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="obtenerResultadoPracticaBySesionPractica">
+    <operation name="obtenerResultadoCarreraBySesionCarrera">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="obtenerSesionClasificacionByPremio">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

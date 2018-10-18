@@ -27,11 +27,7 @@ public class ResultadoClasificacionFacade extends AbstractFacade<ResultadoClasif
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public ResultadoClasificacionFacade() {
         super(ResultadoClasificacion.class);

@@ -105,7 +105,7 @@
       <xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
       <xs:element name="fechaFin" type="xs:dateTime" minOccurs="0"/>
       <xs:element name="fechaInicio" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="finalizado" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="fin" type="xs:boolean" minOccurs="0"/>
       <xs:element name="idPremio" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
       <xs:element name="sesionCarrera" type="tns:sesionCarrera" minOccurs="0"/>
@@ -131,24 +131,27 @@
   <xs:complexType name="sesionCarrera">
     <xs:sequence>
       <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+      <xs:element name="idSesionCarrera" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="premio" type="tns:premio" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="sesionClasificacion">
     <xs:sequence>
       <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+      <xs:element name="idSesionClasificacion" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="premio" type="tns:premio" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="sesionPractica">
     <xs:sequence>
       <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+      <xs:element name="idSesionPractica" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="premio" type="tns:premio" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

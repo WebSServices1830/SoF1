@@ -26,11 +26,6 @@ public class SesionPracticaFacade extends AbstractFacade<SesionPractica> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-} 
 
     public SesionPracticaFacade() {
         super(SesionPractica.class);

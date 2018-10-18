@@ -150,7 +150,7 @@
       <xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
       <xs:element name="fechaFin" type="xs:dateTime" minOccurs="0"/>
       <xs:element name="fechaInicio" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="finalizado" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="fin" type="xs:boolean" minOccurs="0"/>
       <xs:element name="idPremio" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
       <xs:element name="sesionCarrera" type="tns:sesionCarrera" minOccurs="0"/>
@@ -183,24 +183,27 @@
   <xs:complexType name="sesionCarrera">
     <xs:sequence>
       <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+      <xs:element name="idSesionCarrera" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="premio" type="tns:premio" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="sesionClasificacion">
     <xs:sequence>
       <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+      <xs:element name="idSesionClasificacion" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="premio" type="tns:premio" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="sesionPractica">
     <xs:sequence>
       <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="idSesion" type="xs:int" minOccurs="0"/>
+      <xs:element name="idSesionPractica" type="xs:int" minOccurs="0"/>
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="premio" type="tns:premio" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -465,12 +468,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="editEscuderia">
-    <xs:sequence>
-      <xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="findAllPiloto">
     <xs:sequence/>
   </xs:complexType>
@@ -478,6 +475,12 @@
   <xs:complexType name="findAllPilotoResponse">
     <xs:sequence>
       <xs:element name="return" type="tns:piloto" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="editEscuderia">
+    <xs:sequence>
+      <xs:element name="escuderia" type="tns:escuderia" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -503,18 +506,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="obtenerMonoplazasByCampeonato">
-    <xs:sequence>
-      <xs:element name="idCampeonato" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="obtenerMonoplazasByCampeonatoResponse">
-    <xs:sequence>
-      <xs:element name="return" type="tns:monoplaza" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="findMonoplaza">
     <xs:sequence>
       <xs:element name="idMonoplaza" type="xs:int"/>
@@ -524,6 +515,18 @@
   <xs:complexType name="findMonoplazaResponse">
     <xs:sequence>
       <xs:element name="return" type="tns:monoplaza" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerMonoplazasByCampeonato">
+    <xs:sequence>
+      <xs:element name="idCampeonato" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerMonoplazasByCampeonatoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:monoplaza" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 

@@ -45,11 +45,7 @@ public class SesionClasificacion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sesionclasificacion_id", nullable = false, unique = true)
-    private Integer idSesion;
-    
-    
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionClasificacion")
-    private List<ResultadoClasificacion> resultados;
+    private Integer idSesionClasificacion;
     
     
     @Size(max = 30)
@@ -59,36 +55,34 @@ public class SesionClasificacion implements Serializable {
     @Column
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionClasificacion")
+    private List<ResultadoClasificacion> resultados;
+    
+    @JoinColumn(name="premio_id")
+    @OneToOne
+    private Premio premio;
 
-    /**
-     * Gets the value of the idSesion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    //
-    public String getIdXml() {
-        return idSesion+"";
+    public Premio getPremio() {
+        return premio;
     }
-    public Integer getIdSesion() {
-        return idSesion;
+
+    public void setPremio(Premio premio) {
+        this.premio = premio;
     }
-    //
+    
+
+    public Integer getIdSesionClasificacion() {
+        return idSesionClasificacion;
+    }
+
+    public void setIdSesionClasificacion(Integer idSesionClasificacion) {
+        this.idSesionClasificacion = idSesionClasificacion;
+    }
 
 
-    /**
-     * Sets the value of the idSesion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIdSesion(Integer value) {
-        this.idSesion = value;
-    }
+
+
 
     /**
      * Gets the value of the nombre property.

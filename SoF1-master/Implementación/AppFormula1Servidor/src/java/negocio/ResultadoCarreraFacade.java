@@ -27,11 +27,7 @@ public class ResultadoCarreraFacade extends AbstractFacade<ResultadoCarrera> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public ResultadoCarreraFacade() {
         super(ResultadoCarrera.class);
