@@ -34,7 +34,7 @@ public class ResultadoCarreraFacade extends AbstractFacade<ResultadoCarrera> {
     }
     
     public List<ResultadoCarrera> obtenerResultadoCarreraBySesionCarrera(int idSesionCarrera) {
-        return getEntityManager().createQuery("select rc "+"from ResultadoCarrera rc "+"where rc.sesionCarrera.idSesion = :idSesionCarrera",ResultadoCarrera.class)
+        return getEntityManager().createQuery("select rc "+"from ResultadoCarrera rc "+"where rc.sesionCarrera.idSesion = :idSesionCarrera"+" order by rc.puntos desc",ResultadoCarrera.class)
                 .setParameter("idSesionCarrera", idSesionCarrera).getResultList();
     }
 }

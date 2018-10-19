@@ -48,7 +48,7 @@ public class Premio implements Serializable {
     @JoinColumn(name="circuito_id")
     @OneToOne
     private Circuito circuito;
-
+    
     @Size(max = 30)
     @Column
     private String nombre;
@@ -81,7 +81,7 @@ public class Premio implements Serializable {
         return sesionCarrera;
     }
 
-
+    
     public void setSesionCarrera(SesionCarrera sesionCarrera) {
         this.sesionCarrera = sesionCarrera;
     }
