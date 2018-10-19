@@ -53,10 +53,6 @@ public class SimularFacade {
             simularPremio(premios.get(j), pilotos, idCampeonato);
             definirGanadoresApuesta(premios.get(j));
         }
-        for(int j=0;j<premios.size();++j){
-            //premios.get(j).setFin(true);
-            premios.get(j).setFill("cc");
-        }
         actualizarPosiciones(idCampeonato);
     }
     
