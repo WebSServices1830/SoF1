@@ -12,21 +12,20 @@
         <h:form>
             <h:panelGrid columns="2"  >
                 <h:panelGrid columns="1"  >
-            <h1>GP #{wsCampeonato.premio.nombre}</h1>
+                    <h1>GP #{wsSessionBean.campeonato.nombre}</h1>
             <h:outputText value="#{wsCampeonato.premio.fechaInicio} - #{wsCampeonato.premio.fechaFin}"/>
             <p:rating value="#{wsCampeonato.puntaje()}" readonly="true" />
             <p:tooltip />
             <p:growl id="messages" showDetail="true"/>
-            
-                <p:galleria value="#{wsCampeonato.premio.circuito.fotos}" var="foto" panelWidth="400" panelHeight="270" showCaption="true"  >
-                    <p:graphicImage name="demo/images/nature/#{foto.imagen}" alt="#{foto.descripcion}" title="#{foto.nombre}"/>
-                </p:galleria>  </h:panelGrid>
+            <img width="300px" height="450px" alt="#{wsCampeonato.premio.circuito.nombre}" src="#{wsCampeonato.premio.circuito.foto}"/>
+
+                </h:panelGrid>
+                
                 <p:menu>
                     <p:submenu label="Informacion">
                         <p:menuitem value="Circuito" actionListener="#{wsCampeonato.detallePista}" update="messages" icon="ui-icon-disk" />
                         <p:menuitem value="Ultimo ganador  #{wsCampeonato.premio.circuito.ultimoGanador}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                         <p:menuitem value="Comentarios" actionListener="#{wsCampeonato.comentarios}" update="messages" icon="ui-icon-disk" />
-                      
                     </p:submenu>
                     <p:submenu label="Sesiones">
                         <p:menuitem value="Carrera" action="#{wsResultados.detCarrera(wsCampeonato.premio.idPremio)}"  icon="ui-icon-flag" update="messages" ajax="false" />

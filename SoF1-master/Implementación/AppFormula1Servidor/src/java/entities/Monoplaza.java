@@ -43,14 +43,6 @@ public class Monoplaza implements Serializable {
     @JoinColumn(name = "campeonato_id")
     private Campeonato campeonato;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="escuderia_id")
-    private Escuderia escuderia;
-    
-    @OneToOne(fetch =FetchType.LAZY)
-    @JoinColumn(name="piloto_id")
-    private Piloto piloto;
-    
     @Size (max = 30)
     @Column
     private String marca;
@@ -87,11 +79,7 @@ public class Monoplaza implements Serializable {
      *     
      */
     
-        @XmlIDREF
-    public Escuderia getEscuderia() {
-        return escuderia;
-    }
-    @XmlIDREF
+    //
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -99,26 +87,7 @@ public class Monoplaza implements Serializable {
     public void setCampeonato(Campeonato campeonato) {
         this.campeonato = campeonato;
     }
-    @XmlIDREF
-    public Piloto getPiloto() {
-        return piloto;
-    }
-
-    public void setPiloto(Piloto piloto) {
-        this.piloto = piloto;
-    }
-
-    /**
-     * Sets the value of the escuderia property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Escuderia }
-     *     
-     */
-    public void setEscuderia(Escuderia value) {
-        this.escuderia = value;
-    }
+    //
 
     /**
      * Gets the value of the idMonoplaza property.
@@ -128,7 +97,7 @@ public class Monoplaza implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idMonoplaza+"";
     }

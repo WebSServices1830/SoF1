@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -85,15 +86,14 @@
                             </p:submenu>
                             <p:submenu label="Campeonatos" >
                                 <c:forEach items="#{wsSessionBean.campeonatos}" var="item">
-                                    <p:menuitem value="#{item.idCampeonato}" outcome="/calendario/detalle" ajax="false" actionListener="#{wsSessionBean.change(item)}"/>
+                                    <p:menuitem value="#{item.nombre}" outcome="/calendario/detalle" ajax="false" >
+                                        <f:actionListener binding="#{wsCampeonato.setCampeonato(item)}"/>
+                                        <f:actionListener binding="#{wsSessionBean.setCampeonato(item)}"/>
+                                    </p:menuitem>
                                 </c:forEach>
                             </p:submenu>   
                         </p:menu>
-                        <h:form>
-                            <c:forEach items="#{wsSessionBean.campeonatos}" var="item">
-                                <p:commandButton id="btncampeonato#{item.idCampeonato}" value="#{item.idCampeonato}" ajax="false" actionListener="#{wsSessionBean.change(item)}"/>
-                            </c:forEach>
-                        </h:form>
+
 
                     </ui:insert>
                 </div>

@@ -28,11 +28,7 @@ public class CalificacionPremioFacade extends AbstractFacade<CalificacionPremio>
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public CalificacionPremioFacade() {
         super(CalificacionPremio.class);

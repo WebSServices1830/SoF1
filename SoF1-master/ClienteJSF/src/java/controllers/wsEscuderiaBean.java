@@ -135,8 +135,9 @@ public class wsEscuderiaBean {
         Monoplaza m2=findMonoplaza(mid2);
         m1.setIdMonoplaza(mid1);
         m2.setIdMonoplaza(mid2);
-        m1.setEscuderia(escuderia);
-        m2.setEscuderia(escuderia);
+        escuderia.setMonoplaza1(m1);
+        escuderia.setMonoplaza2(m2);
+
         //escuderia.getMonoplazas().add(m1);
        // escuderia.getMonoplazas().add(m2);
         createEscuderia(escuderia);

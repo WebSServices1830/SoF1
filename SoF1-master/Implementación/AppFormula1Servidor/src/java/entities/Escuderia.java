@@ -49,13 +49,24 @@ public class Escuderia implements Serializable {
     private Campeonato campeonato;
     
     @JoinColumn(name = "pais_id")
+    @OneToOne
     private Pais pais;
     
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "escuderia")
-    private List<Piloto> pilotos;
+    @JoinColumn(name ="piloto1_id")
+    @OneToOne
+    private Piloto piloto1;
     
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "escuderia")
-    private List<Monoplaza> monoplazas;
+    @JoinColumn(name ="piloto2_id")
+    @OneToOne
+    private Piloto piloto2;
+    
+    @JoinColumn(name ="monoplaza1_id")
+    @OneToOne
+    private Monoplaza monoplaza1;
+    
+    @JoinColumn(name ="monoplaza2_id")
+    @OneToOne
+    private Monoplaza monoplaza2;
     
     @Size(max=150)
     @Column
@@ -77,19 +88,9 @@ public class Escuderia implements Serializable {
     @Column
     private String tecnicoLider;
 
-    /**
-     * Gets the value of the pais property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Pais }
-     *     
-     */
-        @XmlTransient
-       public List<Piloto> getPilotos() {
-        return pilotos;
-    }
-       @XmlIDREF
+    
+    
+    
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -97,7 +98,7 @@ public class Escuderia implements Serializable {
     public void setCampeonato(Campeonato campeonato) {
         this.campeonato = campeonato;
     }
-       @XmlIDREF
+       //
     public Pais getPais() {
         return pais;
     }
@@ -105,20 +106,42 @@ public class Escuderia implements Serializable {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
-    @XmlTransient
-    public List<Monoplaza> getMonoplazas() {
-        return monoplazas;
+
+    public Piloto getPiloto1() {
+        return piloto1;
     }
 
-    public void setMonoplazas(List<Monoplaza> monoplazas) {
-        this.monoplazas = monoplazas;
+    public void setPiloto1(Piloto piloto1) {
+        this.piloto1 = piloto1;
     }
+
+    public Piloto getPiloto2() {
+        return piloto2;
+    }
+
+    public void setPiloto2(Piloto piloto2) {
+        this.piloto2 = piloto2;
+    }
+
+    public Monoplaza getMonoplaza1() {
+        return monoplaza1;
+    }
+
+    public void setMonoplaza1(Monoplaza monoplaza1) {
+        this.monoplaza1 = monoplaza1;
+    }
+
+    public Monoplaza getMonoplaza2() {
+        return monoplaza2;
+    }
+
+    public void setMonoplaza2(Monoplaza monoplaza2) {
+        this.monoplaza2 = monoplaza2;
+    }
+    
 
     
-       
-    public void setPilotos(List<Piloto> pilotos) {
-        this.pilotos = pilotos;
-    }
+    
 
     /**
      * Gets the value of the imagen property.
@@ -225,7 +248,7 @@ public class Escuderia implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idEscuderia+"";
     }

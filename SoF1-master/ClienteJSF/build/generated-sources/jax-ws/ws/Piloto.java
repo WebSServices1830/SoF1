@@ -3,12 +3,8 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
@@ -23,18 +19,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="biografia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="campeonato" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="campeonato" type="{http://ws/}campeonato" minOccurs="0"/&gt;
  *         &lt;element name="campeonatos" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="escuderia" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
  *         &lt;element name="experiencia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="idPiloto" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="monoplaza" type="{http://ws/}monoplaza" minOccurs="0"/&gt;
  *         &lt;element name="multiplicador" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="numero" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="pais" type="{http://ws/}pais" minOccurs="0"/&gt;
  *         &lt;element name="paisNacimiento" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="podios" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
@@ -50,12 +45,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "biografia",
     "campeonato",
     "campeonatos",
-    "escuderia",
     "experiencia",
     "fechaNacimiento",
     "idPiloto",
-    "idXml",
     "imagen",
+    "monoplaza",
     "multiplicador",
     "nombre",
     "numero",
@@ -66,28 +60,18 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class Piloto {
 
     protected String biografia;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object campeonato;
+    protected Campeonato campeonato;
     protected Integer campeonatos;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object escuderia;
     protected String experiencia;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechaNacimiento;
     protected Integer idPiloto;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
     protected String imagen;
+    protected Monoplaza monoplaza;
     protected Double multiplicador;
     protected String nombre;
     protected Integer numero;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object pais;
+    protected Pais pais;
     protected String paisNacimiento;
     protected Integer podios;
 
@@ -120,10 +104,10 @@ public class Piloto {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public Object getCampeonato() {
+    public Campeonato getCampeonato() {
         return campeonato;
     }
 
@@ -132,10 +116,10 @@ public class Piloto {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public void setCampeonato(Object value) {
+    public void setCampeonato(Campeonato value) {
         this.campeonato = value;
     }
 
@@ -161,30 +145,6 @@ public class Piloto {
      */
     public void setCampeonatos(Integer value) {
         this.campeonatos = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad escuderia.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getEscuderia() {
-        return escuderia;
-    }
-
-    /**
-     * Define el valor de la propiedad escuderia.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setEscuderia(Object value) {
-        this.escuderia = value;
     }
 
     /**
@@ -260,30 +220,6 @@ public class Piloto {
     }
 
     /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
-    }
-
-    /**
      * Obtiene el valor de la propiedad imagen.
      * 
      * @return
@@ -305,6 +241,30 @@ public class Piloto {
      */
     public void setImagen(String value) {
         this.imagen = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad monoplaza.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public Monoplaza getMonoplaza() {
+        return monoplaza;
+    }
+
+    /**
+     * Define el valor de la propiedad monoplaza.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public void setMonoplaza(Monoplaza value) {
+        this.monoplaza = value;
     }
 
     /**
@@ -384,10 +344,10 @@ public class Piloto {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Pais }
      *     
      */
-    public Object getPais() {
+    public Pais getPais() {
         return pais;
     }
 
@@ -396,10 +356,10 @@ public class Piloto {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Pais }
      *     
      */
-    public void setPais(Object value) {
+    public void setPais(Pais value) {
         this.pais = value;
     }
 

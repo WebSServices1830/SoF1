@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://ws/" xmlns:tns="http://ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="cerrarSesion" type="tns:cerrarSesion"/>
+
+  <xs:element name="cerrarSesionResponse" type="tns:cerrarSesionResponse"/>
+
+  <xs:element name="iniciarSesion" type="tns:iniciarSesion"/>
+
+  <xs:element name="iniciarSesionResponse" type="tns:iniciarSesionResponse"/>
+
+  <xs:element name="registrarUsuario" type="tns:registrarUsuario"/>
+
+  <xs:element name="registrarUsuarioResponse" type="tns:registrarUsuarioResponse"/>
+
+  <xs:complexType name="cerrarSesion">
+    <xs:sequence>
+      <xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="contrasena" type="xs:string" minOccurs="0"/>
+      <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="edad" type="xs:int" minOccurs="0"/>
+      <xs:element name="idUsuario" type="xs:int" minOccurs="0"/>
+      <xs:element name="imagen" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="rol" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cerrarSesionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registrarUsuario">
+    <xs:sequence>
+      <xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registrarUsuarioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iniciarSesion">
+    <xs:sequence>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="contrasena" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iniciarSesionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:usuario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

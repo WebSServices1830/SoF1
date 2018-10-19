@@ -6,11 +6,14 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
 import javax.xml.ws.WebServiceRef;
 import ws.CalificacionPremio;
 import ws.Campeonato;
@@ -24,10 +27,8 @@ import ws.Premio;
  * @author nikme
  */
 @Named(value = "wsCampeonato")
-@Dependent
+@ManagedBean
 public class wsCampeonato {
-
-
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl")
     private Opiniones_Service service_1;

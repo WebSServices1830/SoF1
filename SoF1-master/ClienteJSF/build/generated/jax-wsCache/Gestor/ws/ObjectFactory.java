@@ -28,12 +28,14 @@ public class ObjectFactory {
     private final static QName _CreateCircuito_QNAME = new QName("http://ws/", "createCircuito");
     private final static QName _CreateEscuderia_QNAME = new QName("http://ws/", "createEscuderia");
     private final static QName _CreateMonoplaza_QNAME = new QName("http://ws/", "createMonoplaza");
+    private final static QName _CreatePais_QNAME = new QName("http://ws/", "createPais");
     private final static QName _CreatePiloto_QNAME = new QName("http://ws/", "createPiloto");
     private final static QName _CreatePremio_QNAME = new QName("http://ws/", "createPremio");
     private final static QName _EditCampeonato_QNAME = new QName("http://ws/", "editCampeonato");
     private final static QName _EditCircuito_QNAME = new QName("http://ws/", "editCircuito");
     private final static QName _EditEscuderia_QNAME = new QName("http://ws/", "editEscuderia");
     private final static QName _EditMonoplaza_QNAME = new QName("http://ws/", "editMonoplaza");
+    private final static QName _EditPais_QNAME = new QName("http://ws/", "editPais");
     private final static QName _EditPiloto_QNAME = new QName("http://ws/", "editPiloto");
     private final static QName _EditPremio_QNAME = new QName("http://ws/", "editPremio");
     private final static QName _FindAllCampeonato_QNAME = new QName("http://ws/", "findAllCampeonato");
@@ -44,6 +46,8 @@ public class ObjectFactory {
     private final static QName _FindAllEscuderiaResponse_QNAME = new QName("http://ws/", "findAllEscuderiaResponse");
     private final static QName _FindAllMonoplaza_QNAME = new QName("http://ws/", "findAllMonoplaza");
     private final static QName _FindAllMonoplazaResponse_QNAME = new QName("http://ws/", "findAllMonoplazaResponse");
+    private final static QName _FindAllPais_QNAME = new QName("http://ws/", "findAllPais");
+    private final static QName _FindAllPaisResponse_QNAME = new QName("http://ws/", "findAllPaisResponse");
     private final static QName _FindAllPiloto_QNAME = new QName("http://ws/", "findAllPiloto");
     private final static QName _FindAllPilotoResponse_QNAME = new QName("http://ws/", "findAllPilotoResponse");
     private final static QName _FindAllPremio_QNAME = new QName("http://ws/", "findAllPremio");
@@ -56,28 +60,25 @@ public class ObjectFactory {
     private final static QName _FindEscuderiaResponse_QNAME = new QName("http://ws/", "findEscuderiaResponse");
     private final static QName _FindMonoplaza_QNAME = new QName("http://ws/", "findMonoplaza");
     private final static QName _FindMonoplazaResponse_QNAME = new QName("http://ws/", "findMonoplazaResponse");
+    private final static QName _FindPais_QNAME = new QName("http://ws/", "findPais");
+    private final static QName _FindPaisResponse_QNAME = new QName("http://ws/", "findPaisResponse");
     private final static QName _FindPiloto_QNAME = new QName("http://ws/", "findPiloto");
     private final static QName _FindPilotoResponse_QNAME = new QName("http://ws/", "findPilotoResponse");
     private final static QName _FindPremio_QNAME = new QName("http://ws/", "findPremio");
     private final static QName _FindPremioResponse_QNAME = new QName("http://ws/", "findPremioResponse");
     private final static QName _ObtenerEscuderiasByCampeonato_QNAME = new QName("http://ws/", "obtenerEscuderiasByCampeonato");
     private final static QName _ObtenerEscuderiasByCampeonatoResponse_QNAME = new QName("http://ws/", "obtenerEscuderiasByCampeonatoResponse");
-    private final static QName _ObtenerMonoplazaByPiloto_QNAME = new QName("http://ws/", "obtenerMonoplazaByPiloto");
-    private final static QName _ObtenerMonoplazaByPilotoResponse_QNAME = new QName("http://ws/", "obtenerMonoplazaByPilotoResponse");
     private final static QName _ObtenerMonoplazasByCampeonato_QNAME = new QName("http://ws/", "obtenerMonoplazasByCampeonato");
     private final static QName _ObtenerMonoplazasByCampeonatoResponse_QNAME = new QName("http://ws/", "obtenerMonoplazasByCampeonatoResponse");
-    private final static QName _ObtenerMonoplazasByEscuderia_QNAME = new QName("http://ws/", "obtenerMonoplazasByEscuderia");
-    private final static QName _ObtenerMonoplazasByEscuderiaResponse_QNAME = new QName("http://ws/", "obtenerMonoplazasByEscuderiaResponse");
     private final static QName _ObtenerPilotosByCampeonato_QNAME = new QName("http://ws/", "obtenerPilotosByCampeonato");
     private final static QName _ObtenerPilotosByCampeonatoResponse_QNAME = new QName("http://ws/", "obtenerPilotosByCampeonatoResponse");
-    private final static QName _ObtenerPilotosByEscuderia_QNAME = new QName("http://ws/", "obtenerPilotosByEscuderia");
-    private final static QName _ObtenerPilotosByEscuderiaResponse_QNAME = new QName("http://ws/", "obtenerPilotosByEscuderiaResponse");
     private final static QName _ObtenerPremiosByCampeonato_QNAME = new QName("http://ws/", "obtenerPremiosByCampeonato");
     private final static QName _ObtenerPremiosByCampeonatoResponse_QNAME = new QName("http://ws/", "obtenerPremiosByCampeonatoResponse");
     private final static QName _RemoveCampeonato_QNAME = new QName("http://ws/", "removeCampeonato");
     private final static QName _RemoveCircuito_QNAME = new QName("http://ws/", "removeCircuito");
     private final static QName _RemoveEscuderia_QNAME = new QName("http://ws/", "removeEscuderia");
     private final static QName _RemoveMonoplaza_QNAME = new QName("http://ws/", "removeMonoplaza");
+    private final static QName _RemovePais_QNAME = new QName("http://ws/", "removePais");
     private final static QName _RemovePiloto_QNAME = new QName("http://ws/", "removePiloto");
     private final static QName _RemovePremio_QNAME = new QName("http://ws/", "removePremio");
 
@@ -118,6 +119,14 @@ public class ObjectFactory {
      */
     public CreateMonoplaza createCreateMonoplaza() {
         return new CreateMonoplaza();
+    }
+
+    /**
+     * Create an instance of {@link CreatePais }
+     * 
+     */
+    public CreatePais createCreatePais() {
+        return new CreatePais();
     }
 
     /**
@@ -166,6 +175,14 @@ public class ObjectFactory {
      */
     public EditMonoplaza createEditMonoplaza() {
         return new EditMonoplaza();
+    }
+
+    /**
+     * Create an instance of {@link EditPais }
+     * 
+     */
+    public EditPais createEditPais() {
+        return new EditPais();
     }
 
     /**
@@ -246,6 +263,22 @@ public class ObjectFactory {
      */
     public FindAllMonoplazaResponse createFindAllMonoplazaResponse() {
         return new FindAllMonoplazaResponse();
+    }
+
+    /**
+     * Create an instance of {@link FindAllPais }
+     * 
+     */
+    public FindAllPais createFindAllPais() {
+        return new FindAllPais();
+    }
+
+    /**
+     * Create an instance of {@link FindAllPaisResponse }
+     * 
+     */
+    public FindAllPaisResponse createFindAllPaisResponse() {
+        return new FindAllPaisResponse();
     }
 
     /**
@@ -345,6 +378,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindPais }
+     * 
+     */
+    public FindPais createFindPais() {
+        return new FindPais();
+    }
+
+    /**
+     * Create an instance of {@link FindPaisResponse }
+     * 
+     */
+    public FindPaisResponse createFindPaisResponse() {
+        return new FindPaisResponse();
+    }
+
+    /**
      * Create an instance of {@link FindPiloto }
      * 
      */
@@ -393,22 +442,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObtenerMonoplazaByPiloto }
-     * 
-     */
-    public ObtenerMonoplazaByPiloto createObtenerMonoplazaByPiloto() {
-        return new ObtenerMonoplazaByPiloto();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerMonoplazaByPilotoResponse }
-     * 
-     */
-    public ObtenerMonoplazaByPilotoResponse createObtenerMonoplazaByPilotoResponse() {
-        return new ObtenerMonoplazaByPilotoResponse();
-    }
-
-    /**
      * Create an instance of {@link ObtenerMonoplazasByCampeonato }
      * 
      */
@@ -425,22 +458,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObtenerMonoplazasByEscuderia }
-     * 
-     */
-    public ObtenerMonoplazasByEscuderia createObtenerMonoplazasByEscuderia() {
-        return new ObtenerMonoplazasByEscuderia();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerMonoplazasByEscuderiaResponse }
-     * 
-     */
-    public ObtenerMonoplazasByEscuderiaResponse createObtenerMonoplazasByEscuderiaResponse() {
-        return new ObtenerMonoplazasByEscuderiaResponse();
-    }
-
-    /**
      * Create an instance of {@link ObtenerPilotosByCampeonato }
      * 
      */
@@ -454,22 +471,6 @@ public class ObjectFactory {
      */
     public ObtenerPilotosByCampeonatoResponse createObtenerPilotosByCampeonatoResponse() {
         return new ObtenerPilotosByCampeonatoResponse();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerPilotosByEscuderia }
-     * 
-     */
-    public ObtenerPilotosByEscuderia createObtenerPilotosByEscuderia() {
-        return new ObtenerPilotosByEscuderia();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerPilotosByEscuderiaResponse }
-     * 
-     */
-    public ObtenerPilotosByEscuderiaResponse createObtenerPilotosByEscuderiaResponse() {
-        return new ObtenerPilotosByEscuderiaResponse();
     }
 
     /**
@@ -521,6 +522,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemovePais }
+     * 
+     */
+    public RemovePais createRemovePais() {
+        return new RemovePais();
+    }
+
+    /**
      * Create an instance of {@link RemovePiloto }
      * 
      */
@@ -534,30 +543,6 @@ public class ObjectFactory {
      */
     public RemovePremio createRemovePremio() {
         return new RemovePremio();
-    }
-
-    /**
-     * Create an instance of {@link Premio }
-     * 
-     */
-    public Premio createPremio() {
-        return new Premio();
-    }
-
-    /**
-     * Create an instance of {@link Campeonato }
-     * 
-     */
-    public Campeonato createCampeonato() {
-        return new Campeonato();
-    }
-
-    /**
-     * Create an instance of {@link Circuito }
-     * 
-     */
-    public Circuito createCircuito() {
-        return new Circuito();
     }
 
     /**
@@ -577,11 +562,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Escuderia }
+     * Create an instance of {@link Campeonato }
      * 
      */
-    public Escuderia createEscuderia() {
-        return new Escuderia();
+    public Campeonato createCampeonato() {
+        return new Campeonato();
+    }
+
+    /**
+     * Create an instance of {@link Premio }
+     * 
+     */
+    public Premio createPremio() {
+        return new Premio();
+    }
+
+    /**
+     * Create an instance of {@link Circuito }
+     * 
+     */
+    public Circuito createCircuito() {
+        return new Circuito();
+    }
+
+    /**
+     * Create an instance of {@link SesionCarrera }
+     * 
+     */
+    public SesionCarrera createSesionCarrera() {
+        return new SesionCarrera();
+    }
+
+    /**
+     * Create an instance of {@link SesionClasificacion }
+     * 
+     */
+    public SesionClasificacion createSesionClasificacion() {
+        return new SesionClasificacion();
+    }
+
+    /**
+     * Create an instance of {@link SesionPractica }
+     * 
+     */
+    public SesionPractica createSesionPractica() {
+        return new SesionPractica();
     }
 
     /**
@@ -590,6 +615,14 @@ public class ObjectFactory {
      */
     public Piloto createPiloto() {
         return new Piloto();
+    }
+
+    /**
+     * Create an instance of {@link Escuderia }
+     * 
+     */
+    public Escuderia createEscuderia() {
+        return new Escuderia();
     }
 
     /**
@@ -626,6 +659,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws/", name = "createMonoplaza")
     public JAXBElement<CreateMonoplaza> createCreateMonoplaza(CreateMonoplaza value) {
         return new JAXBElement<CreateMonoplaza>(_CreateMonoplaza_QNAME, CreateMonoplaza.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreatePais }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "createPais")
+    public JAXBElement<CreatePais> createCreatePais(CreatePais value) {
+        return new JAXBElement<CreatePais>(_CreatePais_QNAME, CreatePais.class, null, value);
     }
 
     /**
@@ -680,6 +722,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws/", name = "editMonoplaza")
     public JAXBElement<EditMonoplaza> createEditMonoplaza(EditMonoplaza value) {
         return new JAXBElement<EditMonoplaza>(_EditMonoplaza_QNAME, EditMonoplaza.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EditPais }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "editPais")
+    public JAXBElement<EditPais> createEditPais(EditPais value) {
+        return new JAXBElement<EditPais>(_EditPais_QNAME, EditPais.class, null, value);
     }
 
     /**
@@ -770,6 +821,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws/", name = "findAllMonoplazaResponse")
     public JAXBElement<FindAllMonoplazaResponse> createFindAllMonoplazaResponse(FindAllMonoplazaResponse value) {
         return new JAXBElement<FindAllMonoplazaResponse>(_FindAllMonoplazaResponse_QNAME, FindAllMonoplazaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPais }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "findAllPais")
+    public JAXBElement<FindAllPais> createFindAllPais(FindAllPais value) {
+        return new JAXBElement<FindAllPais>(_FindAllPais_QNAME, FindAllPais.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllPaisResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "findAllPaisResponse")
+    public JAXBElement<FindAllPaisResponse> createFindAllPaisResponse(FindAllPaisResponse value) {
+        return new JAXBElement<FindAllPaisResponse>(_FindAllPaisResponse_QNAME, FindAllPaisResponse.class, null, value);
     }
 
     /**
@@ -881,6 +950,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPais }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "findPais")
+    public JAXBElement<FindPais> createFindPais(FindPais value) {
+        return new JAXBElement<FindPais>(_FindPais_QNAME, FindPais.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindPaisResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "findPaisResponse")
+    public JAXBElement<FindPaisResponse> createFindPaisResponse(FindPaisResponse value) {
+        return new JAXBElement<FindPaisResponse>(_FindPaisResponse_QNAME, FindPaisResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FindPiloto }{@code >}}
      * 
      */
@@ -935,24 +1022,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerMonoplazaByPiloto }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws/", name = "obtenerMonoplazaByPiloto")
-    public JAXBElement<ObtenerMonoplazaByPiloto> createObtenerMonoplazaByPiloto(ObtenerMonoplazaByPiloto value) {
-        return new JAXBElement<ObtenerMonoplazaByPiloto>(_ObtenerMonoplazaByPiloto_QNAME, ObtenerMonoplazaByPiloto.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerMonoplazaByPilotoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws/", name = "obtenerMonoplazaByPilotoResponse")
-    public JAXBElement<ObtenerMonoplazaByPilotoResponse> createObtenerMonoplazaByPilotoResponse(ObtenerMonoplazaByPilotoResponse value) {
-        return new JAXBElement<ObtenerMonoplazaByPilotoResponse>(_ObtenerMonoplazaByPilotoResponse_QNAME, ObtenerMonoplazaByPilotoResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerMonoplazasByCampeonato }{@code >}}
      * 
      */
@@ -971,24 +1040,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerMonoplazasByEscuderia }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws/", name = "obtenerMonoplazasByEscuderia")
-    public JAXBElement<ObtenerMonoplazasByEscuderia> createObtenerMonoplazasByEscuderia(ObtenerMonoplazasByEscuderia value) {
-        return new JAXBElement<ObtenerMonoplazasByEscuderia>(_ObtenerMonoplazasByEscuderia_QNAME, ObtenerMonoplazasByEscuderia.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerMonoplazasByEscuderiaResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws/", name = "obtenerMonoplazasByEscuderiaResponse")
-    public JAXBElement<ObtenerMonoplazasByEscuderiaResponse> createObtenerMonoplazasByEscuderiaResponse(ObtenerMonoplazasByEscuderiaResponse value) {
-        return new JAXBElement<ObtenerMonoplazasByEscuderiaResponse>(_ObtenerMonoplazasByEscuderiaResponse_QNAME, ObtenerMonoplazasByEscuderiaResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerPilotosByCampeonato }{@code >}}
      * 
      */
@@ -1004,24 +1055,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws/", name = "obtenerPilotosByCampeonatoResponse")
     public JAXBElement<ObtenerPilotosByCampeonatoResponse> createObtenerPilotosByCampeonatoResponse(ObtenerPilotosByCampeonatoResponse value) {
         return new JAXBElement<ObtenerPilotosByCampeonatoResponse>(_ObtenerPilotosByCampeonatoResponse_QNAME, ObtenerPilotosByCampeonatoResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerPilotosByEscuderia }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws/", name = "obtenerPilotosByEscuderia")
-    public JAXBElement<ObtenerPilotosByEscuderia> createObtenerPilotosByEscuderia(ObtenerPilotosByEscuderia value) {
-        return new JAXBElement<ObtenerPilotosByEscuderia>(_ObtenerPilotosByEscuderia_QNAME, ObtenerPilotosByEscuderia.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerPilotosByEscuderiaResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws/", name = "obtenerPilotosByEscuderiaResponse")
-    public JAXBElement<ObtenerPilotosByEscuderiaResponse> createObtenerPilotosByEscuderiaResponse(ObtenerPilotosByEscuderiaResponse value) {
-        return new JAXBElement<ObtenerPilotosByEscuderiaResponse>(_ObtenerPilotosByEscuderiaResponse_QNAME, ObtenerPilotosByEscuderiaResponse.class, null, value);
     }
 
     /**
@@ -1076,6 +1109,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws/", name = "removeMonoplaza")
     public JAXBElement<RemoveMonoplaza> createRemoveMonoplaza(RemoveMonoplaza value) {
         return new JAXBElement<RemoveMonoplaza>(_RemoveMonoplaza_QNAME, RemoveMonoplaza.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemovePais }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws/", name = "removePais")
+    public JAXBElement<RemovePais> createRemovePais(RemovePais value) {
+        return new JAXBElement<RemovePais>(_RemovePais_QNAME, RemovePais.class, null, value);
     }
 
     /**

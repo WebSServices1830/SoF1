@@ -27,18 +27,14 @@ public class ResultadoPracticaFacade extends AbstractFacade<ResultadoPractica> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public ResultadoPracticaFacade() {
         super(ResultadoPractica.class);
     }
     
     public List<ResultadoPractica> obtenerResultadoPracticaBySesionPractica(int idSesionPractica) {
-        return getEntityManager().createQuery("select rp "+"from ResultadoPractica rp "+"where rp.sesionPractica.idSesion = :idSesionPractica",ResultadoPractica.class)
+        return getEntityManager().createQuery("select rp "+"from ResultadoPractica rp "+"where rp.sesionPractica.idSesion = :idSesionPractica"+" order by rp.tiempo asc",ResultadoPractica.class)
                 .setParameter("idSesionPractica", idSesionPractica).getResultList();
     }
 }

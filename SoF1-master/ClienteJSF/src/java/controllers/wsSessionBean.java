@@ -52,11 +52,10 @@ public class wsSessionBean implements Serializable {
         if(campeonatos.size()>0 && campeonato == null) campeonato=campeonatos.get(0);
         return campeonatos;
     }
-     public String change(Campeonato c){
+     public void change(Campeonato c){
          System.err.println("cambiando "+c.getNombre());
          campeonato=c;
-         return "/calendario/detalle";
-        
+              
     }
 
     public void setCampeonatos(List<Campeonato> campeonatos) {

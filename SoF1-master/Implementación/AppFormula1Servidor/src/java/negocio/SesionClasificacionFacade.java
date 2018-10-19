@@ -26,11 +26,7 @@ public class SesionClasificacionFacade extends AbstractFacade<SesionClasificacio
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public SesionClasificacionFacade() {
         super(SesionClasificacion.class);

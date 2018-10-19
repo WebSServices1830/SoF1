@@ -28,11 +28,7 @@ public class CalificacionPilotoFacade extends AbstractFacade<CalificacionPiloto>
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public CalificacionPilotoFacade() {
         super(CalificacionPiloto.class);

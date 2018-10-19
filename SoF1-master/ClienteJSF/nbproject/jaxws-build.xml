@@ -42,22 +42,6 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
         <delete dir="${build.generated.dir}/jax-wsCache/Opiniones"/>
     </target>
-    <target name="wsimport-client-Gestor" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/Gestor"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Gestor" destdir="${build.generated.dir}/jax-wsCache/Gestor" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Gestor/Gestor?WSDL" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/Gestor"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/Gestor">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-Gestor" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/Gestor"/>
-    </target>
     <target name="wsimport-client-Resultados" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Resultados"/>
         <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Resultados" destdir="${build.generated.dir}/jax-wsCache/Resultados" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Resultados/wsdl/localhost_8080/Resultados/Resultados.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Resultados/Resultados?WSDL" xnocompile="true" xendorsed="true">
@@ -106,5 +90,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
         <delete dir="${build.generated.dir}/jax-wsCache/Apuestas"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-Opiniones, wsimport-client-Gestor, wsimport-client-Resultados, wsimport-client-Auth, wsimport-client-Apuestas"/>
+    <target name="wsimport-client-Gestor" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Gestor"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Gestor" destdir="${build.generated.dir}/jax-wsCache/Gestor" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Gestor/Gestor?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Gestor"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Gestor">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Gestor" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Gestor"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-Opiniones, wsimport-client-Resultados, wsimport-client-Auth, wsimport-client-Apuestas, wsimport-client-Gestor"/>
 </project>

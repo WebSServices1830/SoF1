@@ -82,7 +82,8 @@ public class wsPilotoBean {
     }
 
     public List<Piloto> getPilotos() {
-      pilotos=findAllPilotoByEscuderia(c.getIdCampeonato());
+        
+      pilotos=obtenerPilotosByCampeonato(c.getIdCampeonato());
         return pilotos;
     }
 
@@ -216,15 +217,12 @@ public class wsPilotoBean {
         return port.findPiloto(idPiloto);
     }
 
-    private java.util.List<ws.Piloto> findAllPilotoByEscuderia(int arg0) {
+    private java.util.List<ws.Piloto> obtenerPilotosByCampeonato(int idCampeonato) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Gestor port = service.getGestorPort();
-        return port.findAllPilotoByEscuderia(arg0);
+        return port.obtenerPilotosByCampeonato(idCampeonato);
     }
-    
-
-    
 
     
     

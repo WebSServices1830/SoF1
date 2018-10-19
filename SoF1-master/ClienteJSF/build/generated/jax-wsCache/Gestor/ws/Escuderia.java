@@ -3,12 +3,7 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -21,14 +16,17 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="campeonato" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="campeonato" type="{http://ws/}campeonato" minOccurs="0"/&gt;
  *         &lt;element name="detalle" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="idEscuderia" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="lider" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="monoplaza1" type="{http://ws/}monoplaza" minOccurs="0"/&gt;
+ *         &lt;element name="monoplaza2" type="{http://ws/}monoplaza" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="pais" type="{http://ws/}pais" minOccurs="0"/&gt;
+ *         &lt;element name="piloto1" type="{http://ws/}piloto" minOccurs="0"/&gt;
+ *         &lt;element name="piloto2" type="{http://ws/}piloto" minOccurs="0"/&gt;
  *         &lt;element name="tecnicoLider" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -43,30 +41,29 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "campeonato",
     "detalle",
     "idEscuderia",
-    "idXml",
     "imagen",
     "lider",
+    "monoplaza1",
+    "monoplaza2",
     "nombre",
     "pais",
+    "piloto1",
+    "piloto2",
     "tecnicoLider"
 })
 public class Escuderia {
 
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object campeonato;
+    protected Campeonato campeonato;
     protected String detalle;
     protected Integer idEscuderia;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
     protected String imagen;
     protected String lider;
+    protected Monoplaza monoplaza1;
+    protected Monoplaza monoplaza2;
     protected String nombre;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object pais;
+    protected Pais pais;
+    protected Piloto piloto1;
+    protected Piloto piloto2;
     protected String tecnicoLider;
 
     /**
@@ -74,10 +71,10 @@ public class Escuderia {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public Object getCampeonato() {
+    public Campeonato getCampeonato() {
         return campeonato;
     }
 
@@ -86,10 +83,10 @@ public class Escuderia {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public void setCampeonato(Object value) {
+    public void setCampeonato(Campeonato value) {
         this.campeonato = value;
     }
 
@@ -142,30 +139,6 @@ public class Escuderia {
     }
 
     /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
-    }
-
-    /**
      * Obtiene el valor de la propiedad imagen.
      * 
      * @return
@@ -214,6 +187,54 @@ public class Escuderia {
     }
 
     /**
+     * Obtiene el valor de la propiedad monoplaza1.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public Monoplaza getMonoplaza1() {
+        return monoplaza1;
+    }
+
+    /**
+     * Define el valor de la propiedad monoplaza1.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public void setMonoplaza1(Monoplaza value) {
+        this.monoplaza1 = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad monoplaza2.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public Monoplaza getMonoplaza2() {
+        return monoplaza2;
+    }
+
+    /**
+     * Define el valor de la propiedad monoplaza2.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public void setMonoplaza2(Monoplaza value) {
+        this.monoplaza2 = value;
+    }
+
+    /**
      * Obtiene el valor de la propiedad nombre.
      * 
      * @return
@@ -242,10 +263,10 @@ public class Escuderia {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Pais }
      *     
      */
-    public Object getPais() {
+    public Pais getPais() {
         return pais;
     }
 
@@ -254,11 +275,59 @@ public class Escuderia {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Pais }
      *     
      */
-    public void setPais(Object value) {
+    public void setPais(Pais value) {
         this.pais = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad piloto1.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Piloto }
+     *     
+     */
+    public Piloto getPiloto1() {
+        return piloto1;
+    }
+
+    /**
+     * Define el valor de la propiedad piloto1.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Piloto }
+     *     
+     */
+    public void setPiloto1(Piloto value) {
+        this.piloto1 = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad piloto2.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Piloto }
+     *     
+     */
+    public Piloto getPiloto2() {
+        return piloto2;
+    }
+
+    /**
+     * Define el valor de la propiedad piloto2.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Piloto }
+     *     
+     */
+    public void setPiloto2(Piloto value) {
+        this.piloto2 = value;
     }
 
     /**

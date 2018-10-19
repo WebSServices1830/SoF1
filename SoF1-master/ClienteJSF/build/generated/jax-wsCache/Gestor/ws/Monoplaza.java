@@ -3,12 +3,7 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -21,16 +16,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="campeonato" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
- *         &lt;element name="escuderia" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="campeonato" type="{http://ws/}campeonato" minOccurs="0"/&gt;
  *         &lt;element name="idMonoplaza" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="marca" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="modelo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="multiplicador" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="numCilindros" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
- *         &lt;element name="piloto" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
  *         &lt;element name="potencia" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="torque" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="velMax" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
@@ -45,40 +37,25 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "monoplaza", propOrder = {
     "campeonato",
-    "escuderia",
     "idMonoplaza",
-    "idXml",
     "imagen",
     "marca",
     "modelo",
     "multiplicador",
     "numCilindros",
-    "piloto",
     "potencia",
     "torque",
     "velMax"
 })
 public class Monoplaza {
 
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object campeonato;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object escuderia;
+    protected Campeonato campeonato;
     protected Integer idMonoplaza;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
     protected String imagen;
     protected String marca;
     protected String modelo;
     protected Double multiplicador;
     protected Double numCilindros;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object piloto;
     protected Double potencia;
     protected Double torque;
     protected Double velMax;
@@ -88,10 +65,10 @@ public class Monoplaza {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public Object getCampeonato() {
+    public Campeonato getCampeonato() {
         return campeonato;
     }
 
@@ -100,35 +77,11 @@ public class Monoplaza {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public void setCampeonato(Object value) {
+    public void setCampeonato(Campeonato value) {
         this.campeonato = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad escuderia.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getEscuderia() {
-        return escuderia;
-    }
-
-    /**
-     * Define el valor de la propiedad escuderia.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setEscuderia(Object value) {
-        this.escuderia = value;
     }
 
     /**
@@ -153,30 +106,6 @@ public class Monoplaza {
      */
     public void setIdMonoplaza(Integer value) {
         this.idMonoplaza = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
     }
 
     /**
@@ -297,30 +226,6 @@ public class Monoplaza {
      */
     public void setNumCilindros(Double value) {
         this.numCilindros = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad piloto.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getPiloto() {
-        return piloto;
-    }
-
-    /**
-     * Define el valor de la propiedad piloto.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setPiloto(Object value) {
-        this.piloto = value;
     }
 
     /**

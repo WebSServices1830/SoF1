@@ -133,7 +133,7 @@ public class Usuario implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idUsuario+"";
     }

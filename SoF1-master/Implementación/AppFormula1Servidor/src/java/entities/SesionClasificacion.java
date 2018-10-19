@@ -45,15 +45,7 @@ public class SesionClasificacion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sesionclasificacion_id", nullable = false, unique = true)
-    private Integer idSesion;
-    
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="premio_id")
-
-    private Premio premio;
-    
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionClasificacion")
-    private List<ResultadoClasificacion> resultados;
+    private Integer idSesionClasificacion;
     
     
     @Size(max = 30)
@@ -63,23 +55,14 @@ public class SesionClasificacion implements Serializable {
     @Column
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionClasificacion")
+    private List<ResultadoClasificacion> resultados;
+    
+    @JoinColumn(name="premio_id")
+    @OneToOne
+    private Premio premio;
 
-    /**
-     * Gets the value of the idSesion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    @XmlID
-    public String getIdXml() {
-        return idSesion+"";
-    }
-    public Integer getIdSesion() {
-        return idSesion;
-    }
-    @XmlIDREF
     public Premio getPremio() {
         return premio;
     }
@@ -87,18 +70,19 @@ public class SesionClasificacion implements Serializable {
     public void setPremio(Premio premio) {
         this.premio = premio;
     }
+    
 
-    /**
-     * Sets the value of the idSesion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIdSesion(Integer value) {
-        this.idSesion = value;
+    public Integer getIdSesionClasificacion() {
+        return idSesionClasificacion;
     }
+
+    public void setIdSesionClasificacion(Integer idSesionClasificacion) {
+        this.idSesionClasificacion = idSesionClasificacion;
+    }
+
+
+
+
 
     /**
      * Gets the value of the nombre property.
