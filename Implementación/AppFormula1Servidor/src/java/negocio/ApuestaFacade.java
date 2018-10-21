@@ -26,12 +26,7 @@ public class ApuestaFacade extends AbstractFacade<Apuesta> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public ApuestaFacade() {
         super(Apuesta.class);

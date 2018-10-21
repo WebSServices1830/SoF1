@@ -27,11 +27,7 @@ public class PilotoFacade extends AbstractFacade<Piloto> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public PilotoFacade() {
         super(Piloto.class);

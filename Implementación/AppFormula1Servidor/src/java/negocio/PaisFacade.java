@@ -26,11 +26,7 @@ public class PaisFacade extends AbstractFacade<Pais> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public PaisFacade() {
         super(Pais.class);

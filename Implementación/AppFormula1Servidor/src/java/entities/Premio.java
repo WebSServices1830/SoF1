@@ -30,28 +30,25 @@ public class Premio implements Serializable {
     private Integer idPremio;
     
     @Column
-    private Boolean finalizado;
+    private Boolean fin;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="campeonato_id")
     private Campeonato campeonato;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="sesioncarrera_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "premio")
     private SesionCarrera sesionCarrera;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="sesionclasificacion_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "premio")
     private SesionClasificacion sesionClasificacion;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="sesionpractica_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "premio")
     private SesionPractica sesionPractica;
 
     @JoinColumn(name="circuito_id")
     @OneToOne
     private Circuito circuito;
-
+    
     @Size(max = 30)
     @Column
     private String nombre;
@@ -64,20 +61,27 @@ public class Premio implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
 
-    public Boolean getFinalizado() {
-        return finalizado;
+    
+    
+    
+    
+    
+    public Boolean getFin() {
+        return fin;
     }
 
-    public void setFinalizado(Boolean finalizado) {
-        this.finalizado = finalizado;
+    public void setFin(Boolean fin) {
+        this.fin = fin;
     }
+
+    
 
 
     public SesionCarrera getSesionCarrera() {
         return sesionCarrera;
     }
 
-
+    
     public void setSesionCarrera(SesionCarrera sesionCarrera) {
         this.sesionCarrera = sesionCarrera;
     }
@@ -116,9 +120,7 @@ public class Premio implements Serializable {
      *     
      */
     //
-    public String getIdXml() {
-        return idPremio+"";
-    }
+
     public Integer getIdPremio() {
         return idPremio;
     }

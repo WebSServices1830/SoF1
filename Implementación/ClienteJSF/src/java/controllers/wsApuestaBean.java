@@ -55,6 +55,7 @@ public class wsApuestaBean {
     }
 
 
+
     public String getFechaConFormato(String day){
         
         return day.substring(0,10);
@@ -65,6 +66,11 @@ public class wsApuestaBean {
             return "Si";
         }
         return "No";
+    }
+    
+    public String crearApuesta(){
+    
+        return "crear";
     }
     
     //----------------------------------------------------------------------------------------------

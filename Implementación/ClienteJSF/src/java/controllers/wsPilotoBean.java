@@ -28,6 +28,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
+import ws.CalificacionPiloto;
 import ws.Campeonato;
 import ws.Gestor_Service;
 import ws.Piloto;
@@ -48,7 +49,9 @@ public class wsPilotoBean {
     private Campeonato c;
     
     String filePath = "C:\\xampp\\htdocs\\images\\pilots\\";
-
+    
+    CalificacionPiloto calificacion = new CalificacionPiloto();
+    
     public Campeonato getC() {
         return c;
     }
@@ -181,6 +184,15 @@ public class wsPilotoBean {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public String calificar(){
+        
+        //this.calificacion.setFecha(new Date());
+
+       // this.calificacion.setPiloto(p);
+
+        return "editar";
     }
 
     private void createPiloto(ws.Piloto piloto) {

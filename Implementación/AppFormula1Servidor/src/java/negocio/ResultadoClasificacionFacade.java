@@ -27,18 +27,14 @@ public class ResultadoClasificacionFacade extends AbstractFacade<ResultadoClasif
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public ResultadoClasificacionFacade() {
         super(ResultadoClasificacion.class);
     }
     
     public List<ResultadoClasificacion> obtenerResultadoClasificacionBySesionClasificacion(int idSesionClasificacion) {
-        return getEntityManager().createQuery("select rc "+"from ResultadoClasificacion rc "+"where rc.sesionClasificacion.idSesion = :idSesionClasificacion",ResultadoClasificacion.class)
+        return getEntityManager().createQuery("select rc "+"from ResultadoClasificacion rc "+"where rc.sesionClasificacion.idSesion = :idSesionClasificacion"+" order by rc.q1 asc",ResultadoClasificacion.class)
                 .setParameter("idSesionClasificacion", idSesionClasificacion).getResultList();
     }
 }

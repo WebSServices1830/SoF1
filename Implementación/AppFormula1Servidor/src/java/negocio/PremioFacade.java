@@ -5,9 +5,10 @@
  */
 package negocio;
 
+
 import entities.Premio;
 import java.util.List;
-import javax.annotation.PreDestroy;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,18 +28,12 @@ public class PremioFacade extends AbstractFacade<Premio> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
-
     public PremioFacade() {
         super(Premio.class);
     }
     
     public List<Premio> obtenerPremiosByCampeonato(int idCampeonato) {
-        return getEntityManager().createQuery("select p "+"from Premio p "+"where p.campeonato.idCampeonato = :idCampeonato",Premio.class)
+        return getEntityManager().createQuery("select p "+"from Premio p "+"where p.campeonato.idCampeonato = :idCampeonato", Premio.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
     }
 }

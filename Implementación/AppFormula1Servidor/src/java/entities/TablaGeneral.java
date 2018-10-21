@@ -30,7 +30,7 @@ public class TablaGeneral implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="tablageneral_id", nullable = false, unique = true)
-    private Integer id;
+    private Integer idTablaGeneral;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="campeonato_id")
@@ -52,16 +52,14 @@ public class TablaGeneral implements Serializable {
     @Column
     private Integer puntos;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdTablaGeneral() {
+        return idTablaGeneral;
     }
-    //
-    public String getIdXml() {
-        return id+"";
+
+    public void setIdTablaGeneral(Integer idTablaGeneral) {
+        this.idTablaGeneral = idTablaGeneral;
     }
-    public void setId(Integer id) {
-        this.id = id;
-    }
+
 
     public Integer getPosicion() {
         return posicion;

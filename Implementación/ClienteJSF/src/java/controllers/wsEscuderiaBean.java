@@ -47,7 +47,7 @@ public class wsEscuderiaBean {
     int mid2 ;//= new Monoplaza();
     int mid1 ;//= new Monoplaza();
 
-     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
+    @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato c;
 
     public Campeonato getC() {

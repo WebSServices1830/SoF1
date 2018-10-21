@@ -43,11 +43,7 @@ public class SesionCarrera implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sesioncarrera_id", nullable = false, unique = true)
-    private Integer idSesion;
-    
-    
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionCarrera")
-    private List<ResultadoCarrera> resultados;
+    private Integer idSesionCarrera;
     
     @Size(max = 30)
     @Column
@@ -56,14 +52,28 @@ public class SesionCarrera implements Serializable {
     @Column
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-
-        //
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionCarrera")
+    private List<ResultadoCarrera> resultados;
+    
+    @JoinColumn(name="premio_id")
+    @OneToOne
+    private Premio premio;
 
 
     public void setResultados(List<ResultadoCarrera> resultados) {
         this.resultados = resultados;
     }
 
+    public Premio getPremio() {
+        return premio;
+    }
+
+    public void setPremio(Premio premio) {
+        this.premio = premio;
+    }
+
+    
     /**
      * Gets the value of the resultados property.
      * 
@@ -85,43 +95,26 @@ public class SesionCarrera implements Serializable {
      * {@link ResultadoCarrera }
      *
      * 
+     * @return 
      */
 
     @XmlTransient
     public List<ResultadoCarrera> getResultados() {
         if (resultados == null) {
-            resultados = new ArrayList<ResultadoCarrera>();
+            resultados = new ArrayList<>();
         }
         return this.resultados;
     }
 
-    /**
-     * Gets the value of the idSesion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    //
-    public String getIdXml() {
-        return idSesion+"";
-    }
-    public Integer getIdSesion() {
-        return idSesion;
+    public Integer getIdSesionCarrera() {
+        return idSesionCarrera;
     }
 
-    /**
-     * Sets the value of the idSesion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIdSesion(Integer value) {
-        this.idSesion = value;
+    public void setIdSesionCarrera(Integer idSesionCarrera) {
+        this.idSesionCarrera = idSesionCarrera;
     }
+
+
 
     /**
      * Gets the value of the nombre property.

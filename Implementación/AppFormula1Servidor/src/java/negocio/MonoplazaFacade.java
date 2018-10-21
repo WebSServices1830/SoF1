@@ -27,11 +27,7 @@ public class MonoplazaFacade extends AbstractFacade<Monoplaza> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public MonoplazaFacade() {
         super(Monoplaza.class);

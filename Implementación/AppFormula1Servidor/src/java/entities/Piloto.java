@@ -162,9 +162,7 @@ public class Piloto implements Serializable {
      *     
      */
     //
-    public String getIdXml() {
-        return idPiloto+"";
-    }
+
     public Integer getIdPiloto() {
         return idPiloto;
     }

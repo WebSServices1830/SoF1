@@ -33,18 +33,22 @@ public class Apuesta implements Serializable{
     private Integer idApuesta;
      
     @JoinColumn(name="piloto_id", nullable = false)
+    @OneToOne
     private Piloto piloto;
     
     @JoinColumn(name="premio_id", nullable = false)
+    @OneToOne
     private Premio premio;
     
     @JoinColumn(name="usuario_id")
+    @OneToOne
     private Usuario usuario;
     
     @Column
     private Double puntos;
     
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     
     @Column

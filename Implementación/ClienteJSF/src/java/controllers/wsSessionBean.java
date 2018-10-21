@@ -76,7 +76,7 @@ public class wsSessionBean implements Serializable {
     private boolean estado = false;
     private String usuario;
     private String clave;
-    private Usuario usuarioSession = new Usuario();
+    Usuario usuarioSession = new Usuario();
 
     public UploadedFile getFile() {
         return file;
@@ -130,6 +130,7 @@ public class wsSessionBean implements Serializable {
     public boolean getEstadoSession() {
         return estado;
     }
+    
 
     public boolean isAdmin() {
         boolean res = false;
