@@ -63,10 +63,10 @@ public class Opiniones {
     @WebMethod(operationName = "calificarPiloto")
     @Oneway
     public void calificarPiloto(@WebParam(name = "idUsuario") int idUsuario, @WebParam(name = "idPiloto") int idPiloto, @WebParam(name = "calificacionPiloto")CalificacionPiloto calificacionPiloto) {
-        Usuario u = usuarioFacade.find(idUsuario);
-        Piloto p = pilotoFacade.find(idPiloto);
-        calificacionPiloto.setPiloto(p);
-        calificacionPiloto.setUsuario(u);
+        //Usuario u = usuarioFacade.find(idUsuario);
+        //Piloto p = pilotoFacade.find(idPiloto);
+        //calificacionPiloto.setPiloto(p);
+        //calificacionPiloto.setUsuario(u);
         calificacionPilotoFacade.create(calificacionPiloto);
     }
 

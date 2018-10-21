@@ -10,6 +10,18 @@
 <message name="calificarPiloto">
 <part name="parameters" element="tns:calificarPiloto"/>
 </message>
+<message name="obtenerCalificacionPromedioPiloto">
+<part name="parameters" element="tns:obtenerCalificacionPromedioPiloto"/>
+</message>
+<message name="obtenerCalificacionPromedioPilotoResponse">
+<part name="parameters" element="tns:obtenerCalificacionPromedioPilotoResponse"/>
+</message>
+<message name="obtenerCalificacionPromedioPremio">
+<part name="parameters" element="tns:obtenerCalificacionPromedioPremio"/>
+</message>
+<message name="obtenerCalificacionPromedioPremioResponse">
+<part name="parameters" element="tns:obtenerCalificacionPromedioPremioResponse"/>
+</message>
 <message name="obtenerTopPremios">
 <part name="parameters" element="tns:obtenerTopPremios"/>
 </message>
@@ -22,29 +34,17 @@
 <message name="obtenerCalificacionesPremioResponse">
 <part name="parameters" element="tns:obtenerCalificacionesPremioResponse"/>
 </message>
-<message name="obtenerTopPilotos">
-<part name="parameters" element="tns:obtenerTopPilotos"/>
-</message>
-<message name="obtenerTopPilotosResponse">
-<part name="parameters" element="tns:obtenerTopPilotosResponse"/>
-</message>
 <message name="obtenerCalificacionesPiloto">
 <part name="parameters" element="tns:obtenerCalificacionesPiloto"/>
 </message>
 <message name="obtenerCalificacionesPilotoResponse">
 <part name="parameters" element="tns:obtenerCalificacionesPilotoResponse"/>
 </message>
-<message name="obtenerCalificacionPromedioPremio">
-<part name="parameters" element="tns:obtenerCalificacionPromedioPremio"/>
+<message name="obtenerTopPilotos">
+<part name="parameters" element="tns:obtenerTopPilotos"/>
 </message>
-<message name="obtenerCalificacionPromedioPremioResponse">
-<part name="parameters" element="tns:obtenerCalificacionPromedioPremioResponse"/>
-</message>
-<message name="obtenerCalificacionPromedioPiloto">
-<part name="parameters" element="tns:obtenerCalificacionPromedioPiloto"/>
-</message>
-<message name="obtenerCalificacionPromedioPilotoResponse">
-<part name="parameters" element="tns:obtenerCalificacionPromedioPilotoResponse"/>
+<message name="obtenerTopPilotosResponse">
+<part name="parameters" element="tns:obtenerTopPilotosResponse"/>
 </message>
 <portType name="Opiniones">
 <operation name="calificarPremio">
@@ -52,6 +52,14 @@
 </operation>
 <operation name="calificarPiloto">
 <input wsam:Action="http://ws/Opiniones/calificarPiloto" message="tns:calificarPiloto"/>
+</operation>
+<operation name="obtenerCalificacionPromedioPiloto">
+<input wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPilotoRequest" message="tns:obtenerCalificacionPromedioPiloto"/>
+<output wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPilotoResponse" message="tns:obtenerCalificacionPromedioPilotoResponse"/>
+</operation>
+<operation name="obtenerCalificacionPromedioPremio">
+<input wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPremioRequest" message="tns:obtenerCalificacionPromedioPremio"/>
+<output wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPremioResponse" message="tns:obtenerCalificacionPromedioPremioResponse"/>
 </operation>
 <operation name="obtenerTopPremios">
 <input wsam:Action="http://ws/Opiniones/obtenerTopPremiosRequest" message="tns:obtenerTopPremios"/>
@@ -61,21 +69,13 @@
 <input wsam:Action="http://ws/Opiniones/obtenerCalificacionesPremioRequest" message="tns:obtenerCalificacionesPremio"/>
 <output wsam:Action="http://ws/Opiniones/obtenerCalificacionesPremioResponse" message="tns:obtenerCalificacionesPremioResponse"/>
 </operation>
-<operation name="obtenerTopPilotos">
-<input wsam:Action="http://ws/Opiniones/obtenerTopPilotosRequest" message="tns:obtenerTopPilotos"/>
-<output wsam:Action="http://ws/Opiniones/obtenerTopPilotosResponse" message="tns:obtenerTopPilotosResponse"/>
-</operation>
 <operation name="obtenerCalificacionesPiloto">
 <input wsam:Action="http://ws/Opiniones/obtenerCalificacionesPilotoRequest" message="tns:obtenerCalificacionesPiloto"/>
 <output wsam:Action="http://ws/Opiniones/obtenerCalificacionesPilotoResponse" message="tns:obtenerCalificacionesPilotoResponse"/>
 </operation>
-<operation name="obtenerCalificacionPromedioPremio">
-<input wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPremioRequest" message="tns:obtenerCalificacionPromedioPremio"/>
-<output wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPremioResponse" message="tns:obtenerCalificacionPromedioPremioResponse"/>
-</operation>
-<operation name="obtenerCalificacionPromedioPiloto">
-<input wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPilotoRequest" message="tns:obtenerCalificacionPromedioPiloto"/>
-<output wsam:Action="http://ws/Opiniones/obtenerCalificacionPromedioPilotoResponse" message="tns:obtenerCalificacionPromedioPilotoResponse"/>
+<operation name="obtenerTopPilotos">
+<input wsam:Action="http://ws/Opiniones/obtenerTopPilotosRequest" message="tns:obtenerTopPilotos"/>
+<output wsam:Action="http://ws/Opiniones/obtenerTopPilotosResponse" message="tns:obtenerTopPilotosResponse"/>
 </operation>
 </portType>
 <binding name="OpinionesPortBinding" type="tns:Opiniones">
@@ -92,6 +92,24 @@
 <soap:body use="literal"/>
 </input>
 </operation>
+<operation name="obtenerCalificacionPromedioPiloto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerCalificacionPromedioPremio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="obtenerTopPremios">
 <soap:operation soapAction=""/>
 <input>
@@ -110,15 +128,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="obtenerTopPilotos">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="obtenerCalificacionesPiloto">
 <soap:operation soapAction=""/>
 <input>
@@ -128,16 +137,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="obtenerCalificacionPromedioPremio">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="obtenerCalificacionPromedioPiloto">
+<operation name="obtenerTopPilotos">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

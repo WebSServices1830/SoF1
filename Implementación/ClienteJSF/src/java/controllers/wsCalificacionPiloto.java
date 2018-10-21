@@ -17,6 +17,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
 import ws.CalificacionPiloto;
 import ws.Campeonato;
+import ws.Gestor_Service;
 import ws.Opiniones_Service;
 import ws.Piloto;
 import ws.Usuario;
@@ -29,6 +30,9 @@ import ws.Usuario;
 @ManagedBean
 public class wsCalificacionPiloto {
 
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
+    private Gestor_Service service_1;
+
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl")
     private Opiniones_Service service;
 
@@ -38,39 +42,60 @@ public class wsCalificacionPiloto {
     /**
      * Creates a new instance of wsCalificacionPiloto
      */
+    @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
+    private Usuario usuario;
+    
     CalificacionPiloto calificacion = new CalificacionPiloto();
+    
+    
     
     List<CalificacionPiloto> calificaciones = new ArrayList<CalificacionPiloto>();
     List<Piloto> pilotos = new ArrayList<Piloto>();
-
-
-    
+    Piloto piloto = new Piloto();
+    int idPiloto = 0;
+    double promedioPiloto = 0;
+    Integer rating = new Integer(0);
+            
     public wsCalificacionPiloto() {
         this.calificacion.setComentario("");
     }
     
     
     public String calificar(Piloto p){
-        
+       
+       CalificacionPiloto cali = new CalificacionPiloto();
        //this.calificacion.setFecha(new XMLGregorianCalendarImpl () );
        //this.calificacion.setUsuario(usuarioSession);
-       this.calificacion.setPiloto(p);
-       this.calificarPiloto(1, p.getIdPiloto(), this.calificacion);
+       cali.setPiloto(p);
+       //this.calificacion.setPuntaje(rating.doubleValue());
+       cali.setPuntaje(2.8);
+       cali.setComentario("sadas");
+       Usuario u = new Usuario();
+       u.setIdUsuario(1);
+       cali.setUsuario(u);
+       this.calificarPiloto(1,3, cali);
+        
+       
         return "listado";
     }
     
-    public String comentarios(int idPiloto){
-        return "editar";
+    public String comentarios(int idP){
+        this.idPiloto = idP;
+        this.piloto = findPiloto(idP);
+        this.rating = (int) this.getPromedioPiloto();
+        return "comentarios";
+    }
+    public int calificacionINT(double d){
+        return (int) d;
+    }
+    
+    public String getFechaConFormato(String day){
+        
+        return day.substring(0,10);
     }
     
     //---------------------------------------------------------------------------------------
-    private void calificarPiloto(int idUsuario, int idPiloto, ws.CalificacionPiloto calificacionPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        port.calificarPiloto(idUsuario, idPiloto, calificacionPiloto);
-    }
-
+    
     private java.util.List<ws.CalificacionPiloto> obtenerCalificacionesPiloto(int idPiloto) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
@@ -92,6 +117,24 @@ public class wsCalificacionPiloto {
         return port.obtenerTopPilotos();
     }
     
+    private java.util.List<ws.CalificacionPiloto> obtenerCalificacionesPiloto_1(int idPiloto) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Opiniones port = service.getOpinionesPort();
+        return port.obtenerCalificacionesPiloto(idPiloto);
+    }
+    
+    private Piloto findPiloto(int idPiloto) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Gestor port = service_1.getGestorPort();
+        return port.findPiloto(idPiloto);
+    }
+    
+    
+   
+    
+    
     //---------------------------------------------------------------------------------------
 
     public CalificacionPiloto getCalificacion() {
@@ -103,6 +146,8 @@ public class wsCalificacionPiloto {
     }
 
     public List<CalificacionPiloto> getCalificaciones() {
+        this.calificaciones.clear();
+        this.calificaciones = this.obtenerCalificacionesPiloto(idPiloto);
         return calificaciones;
     }
 
@@ -111,12 +156,56 @@ public class wsCalificacionPiloto {
     }
 
     public List<Piloto> getPilotos() {
+        this.pilotos = this.obtenerTopPilotos();
         return pilotos;
     }
 
     public void setPilotos(List<Piloto> pilotos) {
         this.pilotos = pilotos;
     }
+
+    public Piloto getPiloto() {
+        return piloto;
+    }
+
+    public void setPiloto(Piloto piloto) {
+        this.piloto = piloto;
+    }
+
+    public int getIdPiloto() {
+        return idPiloto;
+    }
+
+    public void setIdPiloto(int idPiloto) {
+        this.idPiloto = idPiloto;
+    }
+
+    public double getPromedioPiloto() {
+         this.promedioPiloto = obtenerCalificacionPromedioPiloto(this.idPiloto);
+        return promedioPiloto;
+    }
+
+    public void setPromedioPiloto(double promedioPiloto) {
+        this.promedioPiloto = promedioPiloto;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    private void calificarPiloto(int idUsuario, int idPiloto, ws.CalificacionPiloto calificacionPiloto) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Opiniones port = service.getOpinionesPort();
+        port.calificarPiloto(idUsuario, idPiloto, calificacionPiloto);
+    }
+
+
+    
 
     
 }

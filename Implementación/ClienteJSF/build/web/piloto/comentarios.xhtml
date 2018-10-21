@@ -1,0 +1,71 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <h1>Comentarios</h1>
+        
+        <h:form>
+                    
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <h:panelGrid columns="2">
+                            
+                            <img width="150px" height="150px" alt="#{wsCalificacionPiloto.piloto.nombre}" src="#{wsCalificacionPiloto.piloto.imagen}"/>    
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h2>#{wsCalificacionPiloto.piloto.nombre}</h2>
+                            <h4>(#{wsCalificacionPiloto.piloto.paisNacimiento})</h4>
+                            <h5>Calificación Promedio:#{wsCalificacionPiloto.promedioPiloto}</h5>
+                            <br/>
+                            
+                            <p:rating  value="#{wsCalificacionPiloto.rating}" readonly="true" style="float:left"/>
+                             
+                            <p>#{wsCalificacionPiloto.piloto.biografia}</p>
+                        </h:panelGrid>
+                    
+                    </h:panelGrid>
+                    
+            <ui:repeat value="#{wsCalificacionPiloto.calificaciones}" var="item">
+                <p:fieldset legend="Identificador: #{item.idCalificacion}" style="margin-bottom:20px;">
+               
+                    <h:panelGrid columns="2" cellpadding="10">    
+                   
+                    
+                   <h3>Usuario:</h3>
+                   
+                        <center>
+                            <img width="50px" height="50px" alt="#{wsCalificacionPiloto.piloto.nombre}" src="#{wsCalificacionPiloto.piloto.imagen}"/>    
+                            <p>#{wsCalificacionPiloto.getFechaConFormato(item.fecha)}</p>
+                        </center>
+                    
+                    <h:panelGrid columns="2" >
+                         
+                        <h2>Comentario:</h2>
+                        <p>#{item.comentario}"</p>
+                        <br/>
+                        
+                        
+                        <h:panelGrid columns="1" style = "display:block; text-align:center" >
+                            
+                            <h4>Calificación:</h4>
+                            <p:rating  value="#{wsCalificacionPiloto.calificacionINT(item.puntaje)}" readonly="true" />
+                            <p>#{item.puntaje}</p>
+                            
+                        </h:panelGrid>
+                            
+                        
+                  </h:panelGrid>
+                    
+                    
+                    </h:panelGrid>          
+
+                    
+                </p:fieldset>
+            </ui:repeat>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -10,13 +10,13 @@
         <h:form>
             <center>
                <p:commandButton value="Top de ¨Pilotos" ajax="false" action="#{wsApuestaBean.crearApuesta}"/>
-            
             </center>
+            
             <ui:repeat value="#{wsPilotoBean.pilotos}" var="item">
                 <p:fieldset legend="#{item.idPiloto}" style="margin-bottom:20px;">
 
 
-                    <h:panelGrid columns="2" cellpadding="5">
+                    <h:panelGrid columns="3" cellpadding="5">
                         <img width="100px" height="150px" alt="#{item.nombre}" src="#{item.imagen}"/>
 
                         <h:panelGrid columns="1">
@@ -37,29 +37,29 @@
                                 value="fecha nacimiento: #{item.fechaNacimiento}" >
                                 <f:convertDateTime pattern="MM/dd/yyyy" type="date"/>
                             </h:outputText>
-
-
+                        
+                                                       
                         </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                              
+                            <p:outputLabel for="comentario" value="Comentario:"></p:outputLabel>
+                            <left>  
+                            <p:inputText id="comentario"  value="#{wsCalificacionPiloto.calificacion.comentario}"/>
+                            <br/>
+                            <p:outputLabel for="calificacion" value="Calificación:" />
+                            <br/>
+                            <p:rating id="calificacion" value="#{wsCalificacionPiloto.rating}"/>
+                            <br/>
+                            </left>
+                            <p:commandButton value="Calificar"  ajax="false " action="#{wsCalificacionPiloto.calificar(item)}"/>
+
+                        </h:panelGrid>  
+                        
 
 
                     </h:panelGrid>
                     <p:toolbar>
-                        <f:facet name="left">
-                            
-                            <p:outputLabel for="comentario" value="Comentario:"></p:outputLabel>
-                            <p:inputText id="comentario"  value="#{wsCalificacionPiloto.calificacion.comentario}"/>
-
-                            <p:outputLabel for="calificacion" value="Calificacion: " />
-                                <p:selectOneMenu id="calificacion" value="#{wsCalificacionPiloto.calificacion.puntaje}" style="width:50px">
-                                    <f:selectItem itemLabel="1" itemValue="1" />
-                                    <f:selectItem itemLabel="2" itemValue="2" />
-                                    <f:selectItem itemLabel="3" itemValue="3" />
-                                    <f:selectItem itemLabel="4" itemValue="4" />
-                                    <f:selectItem itemLabel="5" itemValue="5" />         
-                                </p:selectOneMenu>
-
-                            <p:commandButton value="Calificar"  ajax="false " action="#{wsCalificacionPiloto.calificar(item)}"/>
-                        </f:facet>
+                        
                         
                         <f:facet name="right">
                             <p:menuButton value="Options">

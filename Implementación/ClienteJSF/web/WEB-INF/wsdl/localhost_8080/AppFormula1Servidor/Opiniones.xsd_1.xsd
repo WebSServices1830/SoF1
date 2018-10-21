@@ -28,6 +28,18 @@
 
 <xs:element name="obtenerTopPremiosResponse" type="tns:obtenerTopPremiosResponse"/>
 
+<xs:complexType name="obtenerCalificacionPromedioPiloto">
+<xs:sequence>
+<xs:element name="idPiloto" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerCalificacionPromedioPilotoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="obtenerTopPilotos">
 <xs:sequence/>
 </xs:complexType>
@@ -83,18 +95,6 @@
 <xs:sequence>
 <xs:element name="idPais" type="xs:int" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="obtenerCalificacionPromedioPiloto">
-<xs:sequence>
-<xs:element name="idPiloto" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="obtenerCalificacionPromedioPilotoResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:double"/>
 </xs:sequence>
 </xs:complexType>
 
