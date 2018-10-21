@@ -6,11 +6,11 @@
       <xsd:import namespace="http://ws/" schemaLocation="Auth_schema1.xsd"/>
     </xsd:schema>
   </types>
-  <message name="iniciarSesion">
-    <part name="parameters" element="tns:iniciarSesion"/>
+  <message name="registrarUsuario">
+    <part name="parameters" element="tns:registrarUsuario"/>
   </message>
-  <message name="iniciarSesionResponse">
-    <part name="parameters" element="tns:iniciarSesionResponse"/>
+  <message name="registrarUsuarioResponse">
+    <part name="parameters" element="tns:registrarUsuarioResponse"/>
   </message>
   <message name="cerrarSesion">
     <part name="parameters" element="tns:cerrarSesion"/>
@@ -18,29 +18,29 @@
   <message name="cerrarSesionResponse">
     <part name="parameters" element="tns:cerrarSesionResponse"/>
   </message>
-  <message name="registrarUsuario">
-    <part name="parameters" element="tns:registrarUsuario"/>
+  <message name="iniciarSesion">
+    <part name="parameters" element="tns:iniciarSesion"/>
   </message>
-  <message name="registrarUsuarioResponse">
-    <part name="parameters" element="tns:registrarUsuarioResponse"/>
+  <message name="iniciarSesionResponse">
+    <part name="parameters" element="tns:iniciarSesionResponse"/>
   </message>
   <portType name="Auth">
-    <operation name="iniciarSesion">
-      <input wsam:Action="http://ws/Auth/iniciarSesionRequest" message="tns:iniciarSesion"/>
-      <output wsam:Action="http://ws/Auth/iniciarSesionResponse" message="tns:iniciarSesionResponse"/>
+    <operation name="registrarUsuario">
+      <input wsam:Action="http://ws/Auth/registrarUsuarioRequest" message="tns:registrarUsuario"/>
+      <output wsam:Action="http://ws/Auth/registrarUsuarioResponse" message="tns:registrarUsuarioResponse"/>
     </operation>
     <operation name="cerrarSesion">
       <input wsam:Action="http://ws/Auth/cerrarSesionRequest" message="tns:cerrarSesion"/>
       <output wsam:Action="http://ws/Auth/cerrarSesionResponse" message="tns:cerrarSesionResponse"/>
     </operation>
-    <operation name="registrarUsuario">
-      <input wsam:Action="http://ws/Auth/registrarUsuarioRequest" message="tns:registrarUsuario"/>
-      <output wsam:Action="http://ws/Auth/registrarUsuarioResponse" message="tns:registrarUsuarioResponse"/>
+    <operation name="iniciarSesion">
+      <input wsam:Action="http://ws/Auth/iniciarSesionRequest" message="tns:iniciarSesion"/>
+      <output wsam:Action="http://ws/Auth/iniciarSesionResponse" message="tns:iniciarSesionResponse"/>
     </operation>
   </portType>
   <binding name="AuthPortBinding" type="tns:Auth">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-    <operation name="iniciarSesion">
+    <operation name="registrarUsuario">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
@@ -58,7 +58,7 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="registrarUsuario">
+    <operation name="iniciarSesion">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.Pais;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,6 +25,12 @@ public class PaisFacade extends AbstractFacade<Pais> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public PaisFacade() {
         super(Pais.class);

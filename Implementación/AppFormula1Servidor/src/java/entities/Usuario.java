@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -43,10 +44,6 @@ public class Usuario implements Serializable {
     @Size(max = 20)
     @Column
     private String rol;
-    
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<Apuesta> apuestas;
    
     @Size(max = 30)
     @Column
@@ -104,9 +101,6 @@ public class Usuario implements Serializable {
         this.rol = value;
     }
 
-    public void setApuestas(List<Apuesta> apuestas) {
-        this.apuestas = apuestas;
-    }
 
     /**
      * Gets the value of the apuestas property.
@@ -130,12 +124,6 @@ public class Usuario implements Serializable {
      * 
      * 
      */
-    public List<Apuesta> getApuestas() {
-        if (apuestas == null) {
-            apuestas = new ArrayList<Apuesta>();
-        }
-        return this.apuestas;
-    }
 
     /**
      * Gets the value of the idUsuario property.
@@ -145,6 +133,10 @@ public class Usuario implements Serializable {
      *     {@link Integer }
      *     
      */
+    //
+    public String getIdXml() {
+        return idUsuario+"";
+    }
     public Integer getIdUsuario() {
         return idUsuario;
     }

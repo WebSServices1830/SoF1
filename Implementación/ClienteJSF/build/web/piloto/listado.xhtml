@@ -30,7 +30,9 @@
                             <h:outputText
                                 value="Pais de nacimiento:  #{item.paisNacimiento}"/>
                             <h:outputText
-                                value="fecha nacimiento: #{item.fechaNacimiento}" />
+                                value="fecha nacimiento: #{item.fechaNacimiento}" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" type="date"/>
+                            </h:outputText>
 
 
                         </h:panelGrid>

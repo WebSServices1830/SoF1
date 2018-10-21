@@ -32,7 +32,7 @@
 
                     </ui:insert>
                     <div align="left">
-                        <p:outputLabel value="CAMPEONATO #{wsSessionBean.campeonato.anio}"/>
+                        <p:outputLabel value="CAMPEONATO #{wsSessionBean.campeonato.nombre}"/>
                     </div>
                     <div align="right">
                         <h:form>
@@ -49,12 +49,12 @@
                                 Hola, <p:outputLabel value="#{wsSessionBean.usuarioSession.nombre}"/>
 
                                 <p:outputLabel value=" (#{wsSessionBean.usuarioSession.usuario})"/>
-                                <img width="30px" height="30px" alt="" src="http://#{wsSessionBean.usuarioSession.imagen}"/>
+                                <img width="30px" height="30px" alt="" src="#{wsSessionBean.usuarioSession.imagen}"/>
                                 &nbsp;&nbsp;
                                 <p:commandButton action="#{wsSessionBean.salir}" ajax="false" value="salir"/>
                             </c:if>
                             <c:if test="#{!wsSessionBean.estado}">
-                                <br/>
+                                
                                 <p:link value="Regístrarse"  outcome="/registro" />
 
                             </c:if>
@@ -81,17 +81,13 @@
                                 <p:menuitem value="Escuderia"  outcome="/escuderia/listado" icon="ui-icon-flag" />
                                 <p:menuitem value="Pilotos"  outcome="/piloto/listado" icon="ui-icon-person" />
                                 <p:menuitem value="Monoplazas"  outcome="/monoplaza/listado" icon="ui-icon-radio-on" />
+                                <p:menuitem value="Apuestas"  outcome="/apuesta/listado" icon="ui-icon-bookmark" />
 
                             </p:submenu>
-                            <p:submenu label="Campeonatos" >
-                                <c:forEach items="#{wsSessionBean.campeonatos}" var="item">
-                                    <p:menuitem value="#{item.anio}" outcome="/index" ajax="false" actionListener="#{wsSessionBean.change(item)}"/>
-                                </c:forEach>
-                            </p:submenu>   
-                        </p:menu>
+                           </p:menu>
                         <h:form>
                             <c:forEach items="#{wsSessionBean.campeonatos}" var="item">
-                                <p:commandButton id="btncampeonato#{item.idCampeonato}" value="#{item.anio}" ajax="false" actionListener="#{wsSessionBean.change(item)}"/>
+                                <p:commandButton id="btncampeonato#{item.idCampeonato}" value="#{item.nombre}" ajax="false" actionListener="#{wsSessionBean.change(item)}"/>
                             </c:forEach>
                         </h:form>
 

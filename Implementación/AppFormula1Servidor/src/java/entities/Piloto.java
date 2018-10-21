@@ -25,12 +25,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -39,21 +43,27 @@ public class Piloto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idPiloto", nullable = false, unique = true)
+    @Column(name="piloto_id", nullable = false, unique = true)
     private Integer idPiloto;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "campeonato_id")
+    private Campeonato campeonato;
+    
+    @JoinColumn(name="pais_id")
     @OneToOne
     private Pais pais;
 
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "piloto")
-    private List<Calificacion> calificaciones;
+    @JoinColumn(name="monoplaza_id")
+    @OneToOne
+    private Monoplaza monoplaza;
     
     @Size(max = 30)
     @Column
     private String nombre;
     
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaNacimiento;
     
     @Size(max = 20)
@@ -73,7 +83,7 @@ public class Piloto implements Serializable {
     @Column
     private String biografia;
     
-    @Size(max = 50)
+    @Size(max = 150)
     @Column
     private String imagen;
     
@@ -83,10 +93,7 @@ public class Piloto implements Serializable {
     
     @Column
     private Double multiplicador;
-
-     @ManyToOne(fetch=FetchType.LAZY)
-    private Campeonato campeonato;
-
+    //
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -95,32 +102,23 @@ public class Piloto implements Serializable {
         this.campeonato = campeonato;
     }
 
-    
-    
-    
-    /**
-     * Gets the value of the pais property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Pais }
-     *     
-     */
+    //
     public Pais getPais() {
         return pais;
     }
 
-    /**
-     * Sets the value of the pais property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Pais }
-     *     
-     */
-    public void setPais(Pais value) {
-        this.pais = value;
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
+
+    public Monoplaza getMonoplaza() {
+        return monoplaza;
+    }
+
+    public void setMonoplaza(Monoplaza monoplaza) {
+        this.monoplaza = monoplaza;
+    }
+
 
 
     /**
@@ -154,12 +152,6 @@ public class Piloto implements Serializable {
      * 
      * 
      */
-    public List<Calificacion> getCalificaciones() {
-        if (calificaciones == null) {
-            calificaciones = new ArrayList<Calificacion>();
-        }
-        return this.calificaciones;
-    }
 
     /**
      * Gets the value of the idPiloto property.
@@ -169,6 +161,10 @@ public class Piloto implements Serializable {
      *     {@link Integer }
      *     
      */
+    //
+    public String getIdXml() {
+        return idPiloto+"";
+    }
     public Integer getIdPiloto() {
         return idPiloto;
     }

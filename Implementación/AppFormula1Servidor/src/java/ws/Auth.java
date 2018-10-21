@@ -27,30 +27,28 @@ public class Auth {
     @WebMethod(operationName = "iniciarSesion")
     public Usuario iniciarSesion(@WebParam(name = "usuario") String usuario, @WebParam(name = "contrasena") String contrasena) {
         //TODO write your implementation code here:
-        System.out.println("valiandando....");
         List<Usuario> usuarios = usuarioFacade.findAll();
         for(Usuario u: usuarios){
-            if(u.getUsuario().equals(usuario) ){
+            if(u.getUsuario().equals(usuario) && u.getContrasena().equals(contrasena)){
                 return u;
             }
         }
-        Usuario u= new Usuario(); 
-        u.setIdUsuario(-1);
-        return u;
+        Usuario us = new Usuario();
+        us.setIdUsuario(-1);
+        return us;
     }
 
     @WebMethod(operationName = "registrarUsuario")
     public Boolean registrarUsuario(@WebParam(name = "usuario") Usuario usuario) {
-        System.out.println("registrando..... "+usuario.getNombre());
         usuarioFacade.create(usuario);
         return true;
     }
 
     @WebMethod(operationName = "cerrarSesion")
     public Boolean cerrarSesion(@WebParam(name = "usuario") Usuario usuario) {
-        //TODO write your implementation code here:
         return true;
     }
     
     
 }
+

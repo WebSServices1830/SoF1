@@ -18,6 +18,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -30,13 +32,13 @@ public class Apuesta implements Serializable{
     @Column(name="idApuesta", nullable = false, unique = true)
     private Integer idApuesta;
      
-    @OneToOne
+    @JoinColumn(name="piloto_id", nullable = false)
     private Piloto piloto;
     
-    @OneToOne
+    @JoinColumn(name="premio_id", nullable = false)
     private Premio premio;
     
-    @ManyToOne
+    @JoinColumn(name="usuario_id")
     private Usuario usuario;
     
     @Column
@@ -47,6 +49,25 @@ public class Apuesta implements Serializable{
     
     @Column
     private Double cantidad;
+    
+    @Column
+    private boolean efectuada;
+    
+    @Column
+    private Double cantidadGanada;
+
+    
+    public boolean isEfectuada() {
+        return efectuada;
+    }
+
+    public void setEfectuada(boolean efectuada) {
+        this.efectuada = efectuada;
+    }
+
+    public Double getCantidadGanada() {
+        return cantidadGanada;
+    }
 
     /**
      * Gets the value of the piloto property.
@@ -56,6 +77,10 @@ public class Apuesta implements Serializable{
      *     {@link Piloto }
      *     
      */
+    public void setCantidadGanada(Double cantidadGanada) {    
+        this.cantidadGanada = cantidadGanada;
+    }
+    
     public Piloto getPiloto() {
         return piloto;
     }
@@ -80,6 +105,7 @@ public class Apuesta implements Serializable{
      *     {@link Premio }
      *     
      */
+    
     public Premio getPremio() {
         return premio;
     }
@@ -104,6 +130,7 @@ public class Apuesta implements Serializable{
      *     {@link Usuario }
      *     
      */
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -199,7 +226,11 @@ public class Apuesta implements Serializable{
     public void setId(Integer id) {
         this.idApuesta = id;
     }
-
+    //
+    public String getIdXml() {
+        return idApuesta+"";
+    }
+    
     public Integer getIdApuesta() {
         return idApuesta;
     }

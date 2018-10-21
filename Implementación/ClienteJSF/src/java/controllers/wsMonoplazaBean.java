@@ -15,11 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
+import ws.Campeonato;
 import ws.Gestor_Service;
 
 /**
@@ -32,6 +34,9 @@ public class wsMonoplazaBean {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
     private Gestor_Service service;
+
+   
+    
   String filePath = "C:\\xampp\\htdocs\\images\\cars\\";
     /**
      * Creates a new instance of wsMonoplazaBean
@@ -39,6 +44,17 @@ public class wsMonoplazaBean {
     private List<Monoplaza> monoplazas=new ArrayList<>();
     
     Monoplaza monoplaza=new Monoplaza();
+    
+     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
+    private Campeonato c;
+
+    public Campeonato getC() {
+        return c;
+    }
+
+    public void setC(Campeonato c) {
+        this.c = c;
+    }
     
     
     
@@ -58,6 +74,7 @@ public class wsMonoplazaBean {
     public String save() throws IOException{
         upload();
          monoplaza.setImagen("http://"+wsSessionBean.IP + "/images/cars/" + monoplaza.getMarca()+ ".jpg");
+         monoplaza.setCampeonato(c);
          createMonoplaza(monoplaza);
         return "listado";//endava   12 de actubre 8 am
     } 
@@ -73,7 +90,7 @@ public class wsMonoplazaBean {
 
     
     public List<Monoplaza> getMonoplazas() {
-        monoplazas=findAllMonoplaza();
+        monoplazas=findAllMonoplaza(c.getIdCampeonato());
         return monoplazas;
     }
 
@@ -132,12 +149,12 @@ public void upload() throws IOException {
                 }
     }    
 
-    private java.util.List<ws.Monoplaza> findAllMonoplaza() {
+    private java.util.List<ws.Monoplaza> findAllMonoplaza(int idCampeonato) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Gestor port = service.getGestorPort();
-        return port.findAllMonoplaza();
-    }
+        return port.obtenerMonoplazasByCampeonato(idCampeonato);
+        }
 
     private void createMonoplaza(ws.Monoplaza monoplaza) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.

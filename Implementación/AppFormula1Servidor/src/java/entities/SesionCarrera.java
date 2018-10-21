@@ -16,18 +16,24 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -36,10 +42,11 @@ public class SesionCarrera implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idSesion", nullable = false, unique = true)
+    @Column(name="sesioncarrera_id", nullable = false, unique = true)
     private Integer idSesion;
     
-    @OneToMany
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionCarrera")
     private List<ResultadoCarrera> resultados;
     
     @Size(max = 30)
@@ -47,7 +54,15 @@ public class SesionCarrera implements Serializable {
     private String nombre;
     
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+
+        //
+
+
+    public void setResultados(List<ResultadoCarrera> resultados) {
+        this.resultados = resultados;
+    }
 
     /**
      * Gets the value of the resultados property.
@@ -63,14 +78,16 @@ public class SesionCarrera implements Serializable {
      * <pre>
      *    getResultados().add(newItem);
      * </pre>
-     * 
+     *
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link ResultadoCarrera }
-     * 
+     *
      * 
      */
+
+    @XmlTransient
     public List<ResultadoCarrera> getResultados() {
         if (resultados == null) {
             resultados = new ArrayList<ResultadoCarrera>();
@@ -86,6 +103,10 @@ public class SesionCarrera implements Serializable {
      *     {@link Integer }
      *     
      */
+    //
+    public String getIdXml() {
+        return idSesion+"";
+    }
     public Integer getIdSesion() {
         return idSesion;
     }

@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.Usuario;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,9 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 }

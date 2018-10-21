@@ -1,11 +1,8 @@
 
 package ws;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -24,7 +21,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="idSesion" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="resultados" type="{http://ws/}resultadoPractica" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,8 +33,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "sesionPractica", propOrder = {
     "fecha",
     "idSesion",
-    "nombre",
-    "resultados"
+    "nombre"
 })
 public class SesionPractica {
 
@@ -46,8 +41,6 @@ public class SesionPractica {
     protected XMLGregorianCalendar fecha;
     protected Integer idSesion;
     protected String nombre;
-    @XmlElement(nillable = true)
-    protected List<ResultadoPractica> resultados;
 
     /**
      * Obtiene el valor de la propiedad fecha.
@@ -119,35 +112,6 @@ public class SesionPractica {
      */
     public void setNombre(String value) {
         this.nombre = value;
-    }
-
-    /**
-     * Gets the value of the resultados property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the resultados property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getResultados().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ResultadoPractica }
-     * 
-     * 
-     */
-    public List<ResultadoPractica> getResultados() {
-        if (resultados == null) {
-            resultados = new ArrayList<ResultadoPractica>();
-        }
-        return this.resultados;
     }
 
 }

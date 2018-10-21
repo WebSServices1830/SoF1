@@ -9,6 +9,7 @@ import entities.Campeonato;
 import entities.Circuito;
 import entities.Escuderia;
 import entities.Monoplaza;
+import entities.Pais;
 import entities.Piloto;
 import entities.Premio;
 import java.util.List;
@@ -22,6 +23,7 @@ import negocio.CampeonatoFacade;
 import negocio.CircuitoFacade;
 import negocio.EscuderiaFacade;
 import negocio.MonoplazaFacade;
+import negocio.PaisFacade;
 import negocio.PilotoFacade;
 import negocio.PremioFacade;
 
@@ -47,11 +49,25 @@ public class Gestor {
     @EJB
     private CampeonatoFacade campeonatoFacade;
     
+    @EJB
+    private PaisFacade paisFacade;
+    
+    @WebMethod(operationName = "createPais")
+    @Oneway
+    public void createPais(@WebParam(name = "pais") Pais pais) {
+        paisFacade.create(pais);
+    }
+    
+    @WebMethod(operationName = "createCampeonato")
+    @Oneway
+    public void createCampeonato(@WebParam(name = "campeonato") Campeonato campeonato) {
+        campeonatoFacade.create(campeonato);
+    }
+    
     @WebMethod(operationName = "createEscuderia")
     @Oneway
     public void createEscuderia(@WebParam(name = "escuderia") Escuderia escuderia) {
         escuderiaFacade.create(escuderia);
-        System.out.println("llego create escuderia");
     }
     
     @WebMethod(operationName = "createMonoplaza")
@@ -62,11 +78,8 @@ public class Gestor {
     
     @WebMethod(operationName = "createPiloto")
     @Oneway
-    public void createPiloto(@WebParam(name = "piloto") Piloto piloto) {
-        System.out.println("piloto "+piloto.getNombre());
-        System.out.println("Cameonato "+piloto.getCampeonato().getIdCampeonato());
-        
-        pilotoFacade.create(piloto);
+    public void createPiloto(@WebParam(name = "piloto") Piloto piloto) { 
+       pilotoFacade.create(piloto);
     }
     
     @WebMethod(operationName = "createCircuito")
@@ -81,6 +94,18 @@ public class Gestor {
         premioFacade.create(premio);
     }
 
+    @WebMethod(operationName = "editPais")
+    @Oneway
+    public void editPais(@WebParam(name = "pais") Pais pais) {
+        paisFacade.edit(pais);
+    }
+    
+    @WebMethod(operationName = "editCampeonato")
+    @Oneway
+    public void editCampeonato(@WebParam(name = "campeonato") Campeonato campeonato) {
+        campeonatoFacade.edit(campeonato);
+    }
+    
     @WebMethod(operationName = "editEscuderia")
     @Oneway
     public void editEscuderia(@WebParam(name = "escuderia") Escuderia escuderia) {
@@ -107,7 +132,21 @@ public class Gestor {
     public void editPremio(@WebParam(name = "premio") Premio premio) {
         premioFacade.edit(premio);
     }
-
+    
+    @WebMethod(operationName = "removePais")
+    @Oneway
+    public void removePais(@WebParam(name = "pais") int idPais) {
+        Pais p = paisFacade.find(idPais);
+        paisFacade.remove(p);
+    }
+    
+    @WebMethod(operationName = "removeCampeonato")
+    @Oneway
+    public void removeCampeonato(@WebParam(name = "campeonato") int idCampeonato) {
+        Campeonato c = campeonatoFacade.find(idCampeonato);
+        campeonatoFacade.remove(c);
+    }
+    
     @WebMethod(operationName = "removeEscuderia")
     @Oneway
     public void removeEscuderia(@WebParam(name = "escuderia") int idEscuderia) {
@@ -143,6 +182,16 @@ public class Gestor {
         premioFacade.remove(p);
     }
     
+    @WebMethod(operationName = "findPais")
+    public Pais findPais(@WebParam(name = "idPais") int idPais) {
+        return paisFacade.find(idPais);
+    }
+    
+    @WebMethod(operationName = "findCampeonato")
+    public Campeonato findCampeonato(@WebParam(name = "idCampeonato") int idCampeonato) {
+        return campeonatoFacade.find(idCampeonato);
+    }
+    
     @WebMethod(operationName = "findEscuderia")
     public Escuderia findEscuderia(@WebParam(name = "idEscuderia") int idEscuderia) {
         return escuderiaFacade.find(idEscuderia);
@@ -167,6 +216,16 @@ public class Gestor {
     public Premio findPremio(@WebParam(name = "idPremio") int idPremio) {
         return premioFacade.find(idPremio);
     }
+    
+    @WebMethod(operationName = "findAllPais")
+    public List<Pais> findAllPais() {
+        return paisFacade.findAll();
+    }
+    
+    @WebMethod(operationName = "findAllCampeonato")
+    public List<Campeonato> findAllCampeonato() {
+        return campeonatoFacade.findAll();
+    }
 
     @WebMethod(operationName = "findAllEscuderia")
     public List<Escuderia> findAllEscuderia() {
@@ -182,11 +241,6 @@ public class Gestor {
     public List<Piloto> findAllPiloto() {
         return pilotoFacade.findAll();
     }
-    @WebMethod(operationName = "findAllPilotoByEscuderia")  
-    public List<Piloto> findPilotosByEscuderia(int idcampeonato){
-           return pilotoFacade.findPilotosByEscuderia(idcampeonato);     
-    }
-    
     
     @WebMethod(operationName = "findAllCircuito")
     public List<Circuito> findAllCircuito() {
@@ -198,9 +252,39 @@ public class Gestor {
         return premioFacade.findAll();
     }
     
-    @WebMethod(operationName = "findAllCampeonato")
-    public List<Campeonato> findAllCampeonatos() {
-        
-        return campeonatoFacade.findCampeonatos();
+    /*@WebMethod(operationName = "obtenerPilotosByEscuderia")
+    public List<Piloto> obtenerPilotosByEscuderia(@WebParam(name = "idEscuderia")int idEscuderia) {
+        return pilotoFacade.obtenerPilotosByEscuderia(idEscuderia);
+    }*/
+    
+    @WebMethod(operationName = "obtenerPilotosByCampeonato")
+    public List<Piloto> obtenerPilotosByCampeonato(@WebParam(name = "idCampeonato")int idCampeonato) {
+        return pilotoFacade.obtenerPilotosByCampeonato(idCampeonato);
     }
+ 
+    /*@WebMethod(operationName = "obtenerMonoplazasByEscuderia")
+    public List<Monoplaza> obtenerMonoplazasByEscuderia(@WebParam(name = "idEscuderia")int idEscuderia) {
+        return monoplazaFacade.obtenerMonoplazasByEscuderia(idEscuderia);
+    }*/
+    
+    /*@WebMethod(operationName = "obtenerMonoplazaByPiloto")
+    public Monoplaza obtenerMonoplazaByPiloto(@WebParam(name = "idPiloto")int idPiloto) {
+        return monoplazaFacade.obtenerMonoplazaByPiloto(idPiloto);
+    }*/
+    
+    @WebMethod(operationName = "obtenerMonoplazasByCampeonato")
+    public List<Monoplaza> obtenerMonoplazasByCampeonato(@WebParam(name = "idCampeonato")int idCampeonato) {
+        return monoplazaFacade.obtenerMonoplazasByCampeonato(idCampeonato);
+    }
+    
+    @WebMethod(operationName = "obtenerEscuderiasByCampeonato")
+    public List<Escuderia> obtenerEscuderiasByCampeonato(@WebParam(name = "idCampeonato")int idCampeonato) {
+        return escuderiaFacade.obtenerEscuderiasByCampeonato(idCampeonato);
+    }
+    
+    @WebMethod(operationName = "obtenerPremiosByCampeonato")
+    public List<Premio> obtenerPremiosByCampeonato(@WebParam(name = "idCampeonato")int idCampeonato) {
+        return premioFacade.obtenerPremiosByCampeonato(idCampeonato);
+    }
+    
 }

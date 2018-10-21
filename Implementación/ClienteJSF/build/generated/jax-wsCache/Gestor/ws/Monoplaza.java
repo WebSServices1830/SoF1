@@ -17,7 +17,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="campeonato" type="{http://ws/}campeonato" minOccurs="0"/&gt;
- *         &lt;element name="escuderia" type="{http://ws/}escuderia" minOccurs="0"/&gt;
  *         &lt;element name="idMonoplaza" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="marca" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -38,7 +37,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "monoplaza", propOrder = {
     "campeonato",
-    "escuderia",
     "idMonoplaza",
     "imagen",
     "marca",
@@ -52,7 +50,6 @@ import javax.xml.bind.annotation.XmlType;
 public class Monoplaza {
 
     protected Campeonato campeonato;
-    protected Escuderia escuderia;
     protected Integer idMonoplaza;
     protected String imagen;
     protected String marca;
@@ -85,30 +82,6 @@ public class Monoplaza {
      */
     public void setCampeonato(Campeonato value) {
         this.campeonato = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad escuderia.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Escuderia }
-     *     
-     */
-    public Escuderia getEscuderia() {
-        return escuderia;
-    }
-
-    /**
-     * Define el valor de la propiedad escuderia.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Escuderia }
-     *     
-     */
-    public void setEscuderia(Escuderia value) {
-        this.escuderia = value;
     }
 
     /**

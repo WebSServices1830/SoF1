@@ -95,104 +95,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Apuesta }
+     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesion }{@code >}
      * 
-     */
-    public Apuesta createApuesta() {
-        return new Apuesta();
-    }
-
-    /**
-     * Create an instance of {@link Piloto }
-     * 
-     */
-    public Piloto createPiloto() {
-        return new Piloto();
-    }
-
-    /**
-     * Create an instance of {@link Campeonato }
-     * 
-     */
-    public Campeonato createCampeonato() {
-        return new Campeonato();
-    }
-
-    /**
-     * Create an instance of {@link Pais }
-     * 
-     */
-    public Pais createPais() {
-        return new Pais();
-    }
-
-    /**
-     * Create an instance of {@link Premio }
-     * 
-     */
-    public Premio createPremio() {
-        return new Premio();
-    }
-
-    /**
-     * Create an instance of {@link Circuito }
-     * 
-     */
-    public Circuito createCircuito() {
-        return new Circuito();
-    }
-
-    /**
-     * Create an instance of {@link Foto }
-     * 
-     */
-    public Foto createFoto() {
-        return new Foto();
-    }
-
-    /**
-     * Create an instance of {@link SesionCarrera }
-     * 
-     */
-    public SesionCarrera createSesionCarrera() {
-        return new SesionCarrera();
-    }
-
-    /**
-     * Create an instance of {@link SesionClasificacion }
-     * 
-     */
-    public SesionClasificacion createSesionClasificacion() {
-        return new SesionClasificacion();
-    }
-
-    /**
-     * Create an instance of {@link ResultadoClasificacion }
-     * 
-     */
-    public ResultadoClasificacion createResultadoClasificacion() {
-        return new ResultadoClasificacion();
-    }
-
-    /**
-     * Create an instance of {@link SesionPractica }
-     * 
-     */
-    public SesionPractica createSesionPractica() {
-        return new SesionPractica();
-    }
-
-    /**
-     * Create an instance of {@link ResultadoPractica }
-     * 
-     */
-    public ResultadoPractica createResultadoPractica() {
-        return new ResultadoPractica();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesion }{@code >}}
-     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CerrarSesion }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "cerrarSesion")
     public JAXBElement<CerrarSesion> createCerrarSesion(CerrarSesion value) {
@@ -200,8 +108,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CerrarSesionResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CerrarSesionResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "cerrarSesionResponse")
     public JAXBElement<CerrarSesionResponse> createCerrarSesionResponse(CerrarSesionResponse value) {
@@ -209,8 +121,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesion }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesion }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link IniciarSesion }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "iniciarSesion")
     public JAXBElement<IniciarSesion> createIniciarSesion(IniciarSesion value) {
@@ -218,8 +134,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarSesionResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link IniciarSesionResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "iniciarSesionResponse")
     public JAXBElement<IniciarSesionResponse> createIniciarSesionResponse(IniciarSesionResponse value) {
@@ -227,8 +147,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuario }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuario }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RegistrarUsuario }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "registrarUsuario")
     public JAXBElement<RegistrarUsuario> createRegistrarUsuario(RegistrarUsuario value) {
@@ -236,8 +160,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuarioResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrarUsuarioResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RegistrarUsuarioResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ws/", name = "registrarUsuarioResponse")
     public JAXBElement<RegistrarUsuarioResponse> createRegistrarUsuarioResponse(RegistrarUsuarioResponse value) {

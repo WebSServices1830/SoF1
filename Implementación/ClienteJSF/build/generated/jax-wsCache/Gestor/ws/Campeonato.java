@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="anio" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="idCampeonato" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
@@ -29,31 +28,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "campeonato", propOrder = {
-    "anio",
     "idCampeonato",
     "nombre"
 })
 public class Campeonato {
 
-    protected int anio;
     protected Integer idCampeonato;
     protected String nombre;
-
-    /**
-     * Obtiene el valor de la propiedad anio.
-     * 
-     */
-    public int getAnio() {
-        return anio;
-    }
-
-    /**
-     * Define el valor de la propiedad anio.
-     * 
-     */
-    public void setAnio(int value) {
-        this.anio = value;
-    }
 
     /**
      * Obtiene el valor de la propiedad idCampeonato.

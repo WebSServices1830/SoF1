@@ -82,7 +82,7 @@ public class wsPilotoBean {
     }
 
     public List<Piloto> getPilotos() {
-      pilotos=findAllPilotoByEscuderia(c.getIdCampeonato());
+      pilotos=findAllPilotoByCampeonato(c.getIdCampeonato());
         return pilotos;
     }
 
@@ -95,9 +95,9 @@ public class wsPilotoBean {
 
     public String save() throws IOException {
         piloto.setCampeonato(c);
-        System.out.println("estableciendo el campeontato "+c.getAnio());
+        
         upload();
-        System.out.println("" + piloto.getNombre());
+        System.out.println("" + piloto.getNombre()+" "+piloto);
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(fecha);
         try {
@@ -107,10 +107,11 @@ public class wsPilotoBean {
         piloto.setImagen("http://"+wsSessionBean.IP + "/images/pilots/" + piloto.getNumero()+ ".jpg");
 
        createPiloto(piloto);
-
+       
         System.out.println("save");
         return "listado";
     }
+    
 
 
     public void delete(int id) {
@@ -216,11 +217,11 @@ public class wsPilotoBean {
         return port.findPiloto(idPiloto);
     }
 
-    private java.util.List<ws.Piloto> findAllPilotoByEscuderia(int arg0) {
+    private java.util.List<ws.Piloto> findAllPilotoByCampeonato(int arg0) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Gestor port = service.getGestorPort();
-        return port.findAllPilotoByEscuderia(arg0);
+        return port.obtenerPilotosByCampeonato(arg0);
     }
     
 

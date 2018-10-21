@@ -1,11 +1,8 @@
 
 package ws;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -22,12 +19,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="fechRecord" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="fotos" type="{http://ws/}foto" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="foto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="idCircuito" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="longitud" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="pais" type="{http://ws/}pais" minOccurs="0"/&gt;
- *         &lt;element name="piloto" type="{http://ws/}piloto" minOccurs="0"/&gt;
  *         &lt;element name="record" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="ultimoGanador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="vueltas" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -42,12 +38,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "circuito", propOrder = {
     "fechRecord",
-    "fotos",
+    "foto",
     "idCircuito",
     "longitud",
     "nombre",
     "pais",
-    "piloto",
     "record",
     "ultimoGanador",
     "vueltas"
@@ -56,13 +51,11 @@ public class Circuito {
 
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechRecord;
-    @XmlElement(nillable = true)
-    protected List<Foto> fotos;
+    protected String foto;
     protected Integer idCircuito;
     protected Double longitud;
     protected String nombre;
     protected Pais pais;
-    protected Piloto piloto;
     protected Double record;
     protected String ultimoGanador;
     protected Integer vueltas;
@@ -92,32 +85,27 @@ public class Circuito {
     }
 
     /**
-     * Gets the value of the fotos property.
+     * Obtiene el valor de la propiedad foto.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the fotos property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getFotos().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Foto }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<Foto> getFotos() {
-        if (fotos == null) {
-            fotos = new ArrayList<Foto>();
-        }
-        return this.fotos;
+    public String getFoto() {
+        return foto;
+    }
+
+    /**
+     * Define el valor de la propiedad foto.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFoto(String value) {
+        this.foto = value;
     }
 
     /**
@@ -214,30 +202,6 @@ public class Circuito {
      */
     public void setPais(Pais value) {
         this.pais = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad piloto.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Piloto }
-     *     
-     */
-    public Piloto getPiloto() {
-        return piloto;
-    }
-
-    /**
-     * Define el valor de la propiedad piloto.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Piloto }
-     *     
-     */
-    public void setPiloto(Piloto value) {
-        this.piloto = value;
     }
 
     /**

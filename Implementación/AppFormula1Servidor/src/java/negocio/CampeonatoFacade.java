@@ -6,7 +6,7 @@
 package negocio;
 
 import entities.Campeonato;
-import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,14 +25,15 @@ public class CampeonatoFacade extends AbstractFacade<Campeonato> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+        @PreDestroy
+public void destruct()
+{
+    em.close();
+}
 
     public CampeonatoFacade() {
         super(Campeonato.class);
     }
-   
-   
-   public List<Campeonato> findCampeonatos(){
-              return getEntityManager()
-                      .createQuery("select c from Campeonato c order by c.anio DESC").getResultList();
-   } 
+    
 }

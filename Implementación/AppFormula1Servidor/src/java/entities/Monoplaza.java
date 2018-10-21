@@ -12,11 +12,13 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,21 +26,22 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Table(name = "Monoplaza")
 public class Monoplaza implements Serializable {
 
-    @ManyToOne(optional = true)
-    private Escuderia escuderia;
-    
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idMonoplaza", nullable = false, unique = true)
+    @Column(name="monoplaza_id", nullable = false, unique = true)
     private Integer idMonoplaza;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "campeonato_id")
+    private Campeonato campeonato;
     
     @Size (max = 30)
     @Column
@@ -63,21 +66,9 @@ public class Monoplaza implements Serializable {
     @Column
     private Double multiplicador;
 
-    @Size (max = 50)
+    @Size (max = 150)
     @Column
     private String imagen;
-
-      @ManyToOne
-    private Campeonato campeonato;
-
-    public Campeonato getCampeonato() {
-        return campeonato;
-    }
-
-    public void setCampeonato(Campeonato campeonato) {
-        this.campeonato = campeonato;
-    }
-
 
     /**
      * Gets the value of the escuderia property.
@@ -87,21 +78,16 @@ public class Monoplaza implements Serializable {
      *     {@link Escuderia }
      *     
      */
-    public Escuderia getEscuderia() {
-        return escuderia;
+    
+    //
+    public Campeonato getCampeonato() {
+        return campeonato;
     }
 
-    /**
-     * Sets the value of the escuderia property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Escuderia }
-     *     
-     */
-    public void setEscuderia(Escuderia value) {
-        this.escuderia = value;
+    public void setCampeonato(Campeonato campeonato) {
+        this.campeonato = campeonato;
     }
+    //
 
     /**
      * Gets the value of the idMonoplaza property.
@@ -111,6 +97,10 @@ public class Monoplaza implements Serializable {
      *     {@link Integer }
      *     
      */
+    //
+    public String getIdXml() {
+        return idMonoplaza+"";
+    }
     public Integer getIdMonoplaza() {
         return idMonoplaza;
     }

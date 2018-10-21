@@ -12,6 +12,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +25,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -32,9 +35,14 @@ public class ResultadoCarrera implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idResultado", nullable = false, unique = true)
+    @Column(name="resultadocarrera_id", nullable = false, unique = true)
     private Integer idResultado;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sesioncarrera_id")
+    private SesionCarrera sesionCarrera;
+    
+    @JoinColumn(name="piloto_id")
     @OneToOne
     private Piloto piloto;
     
@@ -61,10 +69,20 @@ public class ResultadoCarrera implements Serializable {
      *     {@link Piloto }
      *     
      */
+    //
     public Piloto getPiloto() {
         return piloto;
     }
+    //
+    public SesionCarrera getSesionCarrera() {
+        return sesionCarrera;
+    }
 
+    public void setSesionCarrera(SesionCarrera sesionCarrera) {
+        this.sesionCarrera = sesionCarrera;
+    }
+
+     
     /**
      * Sets the value of the piloto property.
      * 
@@ -94,6 +112,10 @@ public class ResultadoCarrera implements Serializable {
      *     {@link Integer }
      *     
      */
+    //
+    public String getIdXml() {
+        return idResultado+"";
+    }
     public Integer getIdResultado() {
         return idResultado;
     }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
+    <service name="Gestor">
+      <implementation-class>ws.Gestor</implementation-class>
+    </service>
     <service name="Resultados">
       <implementation-class>ws.Resultados</implementation-class>
     </service>
@@ -9,9 +12,6 @@
     </service>
     <service name="Apuestas">
       <implementation-class>ws.Apuestas</implementation-class>
-    </service>
-    <service name="Gestor">
-      <implementation-class>ws.Gestor</implementation-class>
     </service>
     <service name="Auth">
       <implementation-class>ws.Auth</implementation-class>

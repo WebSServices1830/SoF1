@@ -15,6 +15,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +30,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity
@@ -37,16 +40,13 @@ public class Circuito implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idCampeonato", nullable = false, unique = true)
+    @Column(name="circuito_id", nullable = false, unique = true)
     private Integer idCircuito;
-        
-    @OneToOne
-    private Piloto piloto;
 
-    @OneToOne
+    @JoinColumn(name="pais_id")
     private Pais pais;
 
-    @Size(max = 20)
+    @Size(max = 50)
     @Column
     private String nombre;
 
@@ -62,36 +62,14 @@ public class Circuito implements Serializable {
     @Column
     private Date fechRecord;
 
-    @Size(max = 30)
+    @Size(max = 50)
     @Column
     private String ultimoGanador;
 
-    
-    @OneToMany
-    private List<Foto> fotos;
-    /**
-     * Gets the value of the piloto property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Piloto }
-     *     
-     */
-    public Piloto getPiloto() {
-        return piloto;
-    }
+    @Size(max = 200)
+    @Column
+    private String foto;
 
-    /**
-     * Sets the value of the piloto property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Piloto }
-     *     
-     */
-    public void setPiloto(Piloto value) {
-        this.piloto = value;
-    }
 
     /**
      * Gets the value of the pais property.
@@ -101,8 +79,17 @@ public class Circuito implements Serializable {
      *     {@link Pais }
      *     
      */
+    //
     public Pais getPais() {
         return pais;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     /**
@@ -125,6 +112,10 @@ public class Circuito implements Serializable {
      *     {@link Integer }
      *     
      */
+    //
+    public String getIdXml() {
+        return idCircuito+"";
+    }
     public Integer getIdCircuito() {
         return idCircuito;
     }
@@ -284,15 +275,6 @@ public class Circuito implements Serializable {
     public void setUltimoGanador(String value) {
         this.ultimoGanador = value;
     }
-
-    public List<Foto> getFotos() {
-        return fotos;
-    }
-
-    public void setFotos(List<Foto> fotos) {
-        this.fotos = fotos;
-    }
-
     
     
 }

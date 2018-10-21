@@ -10,6 +10,7 @@ import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.xml.ws.WebServiceRef;
 import ws.Campeonato;
 import ws.Escuderia;
@@ -28,6 +29,8 @@ public class wsEscuderiaBean {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
     private Gestor_Service service;
 
+
+   
     /**
      * Creates a new instance of wsEscuderiaBean
      */
@@ -44,6 +47,17 @@ public class wsEscuderiaBean {
     int mid2 ;//= new Monoplaza();
     int mid1 ;//= new Monoplaza();
 
+     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
+    private Campeonato c;
+
+    public Campeonato getC() {
+        return c;
+    }
+
+    public void setC(Campeonato c) {
+        this.c = c;
+    }
+   
     public int getMid1() {
         return mid1;
     }
@@ -54,7 +68,7 @@ public class wsEscuderiaBean {
     }
 
     public List<Escuderia> getEscuderias() {
-        escuderias=findAllEscuderia();
+        escuderias=findAllEscuderia(c.getIdCampeonato());
         return escuderias;
     }
 
@@ -97,7 +111,7 @@ public class wsEscuderiaBean {
     }
 
     public List<Monoplaza> getMonoplazas() {
-        monoplazas=findAllMonoplaza();
+        monoplazas=findAllMonoplaza(c.getIdCampeonato());
         return monoplazas;
     }
 
@@ -135,13 +149,16 @@ public class wsEscuderiaBean {
         Monoplaza m2=findMonoplaza(mid2);
         m1.setIdMonoplaza(mid1);
         m2.setIdMonoplaza(mid2);
-        m1.setEscuderia(escuderia);
-        m2.setEscuderia(escuderia);
-        //escuderia.getMonoplazas().add(m1);
+        escuderia.setCampeonato(c);
+        escuderia.setMonoplaza1(m1);
+        escuderia.setMonoplaza2(m2);
        // escuderia.getMonoplazas().add(m2);
-        createEscuderia(escuderia);
-        return null;
-      //  return "listado";
+       createEscuderia(escuderia);
+      
+        editMonoplaza(m1);
+        editMonoplaza(m2);
+      //      return null;
+        return "listado";
     }
 
     private java.util.List<ws.Piloto> findAllPiloto() {
@@ -151,11 +168,11 @@ public class wsEscuderiaBean {
         return port.findAllPiloto();
     }
 
-    private java.util.List<ws.Monoplaza> findAllMonoplaza() {
+    private java.util.List<ws.Monoplaza> findAllMonoplaza(int idcampeonato) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Gestor port = service.getGestorPort();
-        return port.findAllMonoplaza();
+        return port.obtenerMonoplazasByCampeonato(idcampeonato);
     }
 
     private Monoplaza findMonoplaza(int idMonoplaza) {
@@ -179,11 +196,19 @@ public class wsEscuderiaBean {
         port.removeEscuderia(escuderia);
     }
 
-    private java.util.List<ws.Escuderia> findAllEscuderia() {
+    private java.util.List<ws.Escuderia> findAllEscuderia(int idcampeonato) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Gestor port = service.getGestorPort();
+     //   return port.obtenerEscuderiasByCampeonato(idcampeonato);
         return port.findAllEscuderia();
+    }
+
+    private void editMonoplaza(ws.Monoplaza monoplaza) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Gestor port = service.getGestorPort();
+        port.editMonoplaza(monoplaza);
     }
     
     
