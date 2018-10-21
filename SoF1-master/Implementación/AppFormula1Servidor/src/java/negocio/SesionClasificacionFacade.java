@@ -33,8 +33,12 @@ public class SesionClasificacionFacade extends AbstractFacade<SesionClasificacio
     }
     
     public SesionClasificacion obtenerSesionClasificacionByPremio(int idPremio) {
-        return getEntityManager().createQuery("select sc "+"from SesionClasificacion sc "+"where sc.premio.idPremio = :idPremio",SesionClasificacion.class)
+        SesionClasificacion res = getEntityManager().createQuery("select sc "+"from SesionClasificacion sc "+"where sc.premio.idPremio = :idPremio",SesionClasificacion.class)
                 .setParameter("idPremio", idPremio).getSingleResult();
+        if(res == null){
+            return new SesionClasificacion();
+        }
+        return res;
     }
     
 }

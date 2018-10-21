@@ -7,6 +7,7 @@ package negocio;
 
 import entities.CalificacionPremio;
 import entities.Premio;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
@@ -35,16 +36,28 @@ public class CalificacionPremioFacade extends AbstractFacade<CalificacionPremio>
     }
     
     public List<Premio> obtenerTopPremios() {
-        return getEntityManager().createQuery("select cp "+" from CalificacionPremio cp "+"order by cp.puntaje").getResultList().subList(0, 4);
+        List<Premio> res = getEntityManager().createQuery("select cp.premio "+" from CalificacionPremio cp "+"group by cp.premio "+"order by sum(cp.puntaje) desc", Premio.class).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
     
     public List<CalificacionPremio> obtenerCalificacionesPremio(int idPremio) {
-        return getEntityManager().createQuery("select cp "+"from CalificacionPremio cp "+"where cp.premio.idPremio = :idPremio",CalificacionPremio.class)
+        List<CalificacionPremio> cali = getEntityManager().createQuery("select cp "+"from CalificacionPremio cp "+"where cp.premio.idPremio = :idPremio",CalificacionPremio.class)
                 .setParameter("idPremio", idPremio).getResultList();
+        if(cali ==null){
+            return new ArrayList<>();
+        }
+        return cali;
     }
     
     public double obtenerCalificacionPromedioPremio(int idPremio){
-        return getEntityManager().createQuery("select AVG(cp.puntaje) "+"from CalificacionPremio cp "+"where cp.premio.idPremio = :idPremio",double.class)
+        Double rest=  getEntityManager().createQuery("select AVG(cp.puntaje) "+"from CalificacionPremio cp "+"where cp.premio.idPremio = :idPremio",Double.class)
                 .setParameter("idPremio", idPremio).getSingleResult();
+        if(rest == null){
+            return 0;
+        }
+        return rest;
     }
 }

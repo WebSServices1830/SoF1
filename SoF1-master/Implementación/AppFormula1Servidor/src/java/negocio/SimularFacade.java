@@ -41,6 +41,7 @@ public class SimularFacade {
     @PersistenceContext(unitName = "AppFormula1ServidorPU")
     private EntityManager em;
     
+    
     protected EntityManager getEntityManager() {
         return em;
     }

@@ -7,6 +7,7 @@ package negocio;
 
 
 import entities.Premio;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -33,7 +34,11 @@ public class PremioFacade extends AbstractFacade<Premio> {
     }
     
     public List<Premio> obtenerPremiosByCampeonato(int idCampeonato) {
-        return getEntityManager().createQuery("select p "+"from Premio p "+"where p.campeonato.idCampeonato = :idCampeonato", Premio.class)
+        List<Premio> res = getEntityManager().createQuery("select p "+"from Premio p "+"where p.campeonato.idCampeonato = :idCampeonato", Premio.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
 }

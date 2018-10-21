@@ -32,7 +32,11 @@ public class SesionPracticaFacade extends AbstractFacade<SesionPractica> {
     }
     
     public SesionPractica obtenerSesionPracticaByPremio(int idPremio) {
-        return getEntityManager().createQuery("select sp "+"from SesionPractica sp "+"where sp.premio.idPremio = :idPremio",SesionPractica.class)
+        SesionPractica res = getEntityManager().createQuery("select sp "+"from SesionPractica sp "+"where sp.premio.idPremio = :idPremio",SesionPractica.class)
                 .setParameter("idPremio", idPremio).getSingleResult();
+        if(res == null){
+            return new SesionPractica();
+        }
+        return res;
     }
 }

@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.Monoplaza;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
@@ -34,17 +35,29 @@ public class MonoplazaFacade extends AbstractFacade<Monoplaza> {
     }
     
     public List<Monoplaza> obtenerMonoplazasByEscuderia(int idEscuderia) {
-        return getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.escuderia.idEscuderia = :idEscuderia", Monoplaza.class)
+        List<Monoplaza> res =  getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.escuderia.idEscuderia = :idEscuderia", Monoplaza.class)
                 .setParameter("idEscuderia", idEscuderia).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
     
     public Monoplaza obtenerMonoplazaByPiloto(int idPiloto) {
-        return getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.piloto.idPiloto = :idPiloto", Monoplaza.class)
+        Monoplaza res = getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.piloto.idPiloto = :idPiloto", Monoplaza.class)
                 .setParameter("idPiloto", idPiloto).getSingleResult();
+        if(res == null){
+            return new Monoplaza();
+        }
+        return res;
     }
     
     public List<Monoplaza> obtenerMonoplazasByCampeonato(int idCampeonato) {
-        return getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.campeonato.idCampeonato = :idCampeonato", Monoplaza.class)
+        List<Monoplaza> res = getEntityManager().createQuery("select m "+"from Monoplaza m "+"where m.campeonato.idCampeonato = :idCampeonato", Monoplaza.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
 }

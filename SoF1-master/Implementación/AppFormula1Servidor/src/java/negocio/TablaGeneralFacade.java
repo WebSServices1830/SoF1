@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.TablaGeneral;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
@@ -32,12 +33,20 @@ public class TablaGeneralFacade extends AbstractFacade<TablaGeneral> {
     }
 
     public List<TablaGeneral> verResultadosGeneralesByCampeonato(int idCampeonato) {
-        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.campeonato.idCampeonato = :idCampeonato"+" order by tg.puntos desc", TablaGeneral.class)
+        List<TablaGeneral> res = getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.campeonato.idCampeonato = :idCampeonato"+" order by tg.puntos desc", TablaGeneral.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
     
     public TablaGeneral obtenerTablaGeneralByPiloto(int idPiloto){
-        return getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.piloto.idPiloto = :idPiloto", TablaGeneral.class)
+        TablaGeneral res = getEntityManager().createQuery("select tg "+"from TablaGeneral tg "+"where tg.piloto.idPiloto = :idPiloto", TablaGeneral.class)
                 .setParameter("idPiloto", idPiloto).getSingleResult();
+        if(res == null){
+            return new TablaGeneral();
+        }
+        return res;
     }
 }

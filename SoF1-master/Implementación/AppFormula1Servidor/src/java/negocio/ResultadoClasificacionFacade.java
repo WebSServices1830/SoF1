@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.ResultadoClasificacion;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
@@ -34,7 +35,11 @@ public class ResultadoClasificacionFacade extends AbstractFacade<ResultadoClasif
     }
     
     public List<ResultadoClasificacion> obtenerResultadoClasificacionBySesionClasificacion(int idSesionClasificacion) {
-        return getEntityManager().createQuery("select rc "+"from ResultadoClasificacion rc "+"where rc.sesionClasificacion.idSesion = :idSesionClasificacion"+" order by rc.q1 asc",ResultadoClasificacion.class)
+        List<ResultadoClasificacion> res = getEntityManager().createQuery("select rc "+"from ResultadoClasificacion rc "+"where rc.sesionClasificacion.idSesionClasificacion = :idSesionClasificacion"+" order by rc.q1 asc",ResultadoClasificacion.class)
                 .setParameter("idSesionClasificacion", idSesionClasificacion).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
 }

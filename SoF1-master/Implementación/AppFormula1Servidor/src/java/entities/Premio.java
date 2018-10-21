@@ -35,7 +35,7 @@ public class Premio implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="campeonato_id")
     private Campeonato campeonato;
-
+    
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "premio")
     private SesionCarrera sesionCarrera;
 
@@ -76,7 +76,7 @@ public class Premio implements Serializable {
 
     
 
-
+    @XmlTransient
     public SesionCarrera getSesionCarrera() {
         return sesionCarrera;
     }
@@ -85,15 +85,15 @@ public class Premio implements Serializable {
     public void setSesionCarrera(SesionCarrera sesionCarrera) {
         this.sesionCarrera = sesionCarrera;
     }
-
+    @XmlTransient
     public SesionClasificacion getSesionClasificacion() {
         return sesionClasificacion;
     }
-
+    
     public void setSesionClasificacion(SesionClasificacion sesionClasificacion) {
         this.sesionClasificacion = sesionClasificacion;
     }
-
+    @XmlTransient
     public SesionPractica getSesionPractica() {
         return sesionPractica;
     }
