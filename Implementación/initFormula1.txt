@@ -1,0 +1,359 @@
+/*Paises*/
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Alemania');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Italia');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Polonia');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Francia');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('USA');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Inglaterra');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Suiza');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Australia');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Bahrain');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('China');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Azerbaijan');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Spain');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Monaco');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Canada');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Austria');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Hungary');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Belgium');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Singapore');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Russia');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Japan');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Mexico');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Brazil');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('United Arab Emirates');
+INSERT INTO ANDRES.PAIS (NOMBRE)
+	VALUES ('Finland');
+
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2004-10-14 20:33:23.986','http://localhost/images/cir.png;http://localhost/images/cir.png;http://localhost/images/cir.png', 5.303, 'Melbourne Grand Prix Circuit', 5400.0, 'Michael Schumacher', 58, 8);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO, LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2005-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Bahrain_Circuit.png.transform/7col/image.png',5.412, 'Bahrain International Circuit', 5400.0, 'Pedro de la Rosa', 57, 9);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO, LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2004-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/China_Circuit.png.transform/7col/image.png',5.421, 'Shanghai International Circuit', 5400.0, 'Michael Schumacher', 56, 10);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO, LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2017-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Baku_Circuit.png.transform/7col/image.png', 6.003, 'Baku City Circuit', 5760.0, 'Sebastian Vettel ', 58, 11);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO, LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2012-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Spain_Circuit.png.transform/7col/image.png', 4.655, 'Circuit de Barcelona-Catalunya', 4248.0, 'Daniel Ricciardo', 66, 12);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO, LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2018-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Monoco_Circuit.png.transform/7col/image.png',3.337, 'Circuit de Monaco', 4104.0, 'Max Verstappen', 78, 13);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO, LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2004-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Canada_Circuit.png.transform/7col/image.png', 4.361, 'Circuit Gilles-Villeneuve', 4104.0, 'Rubens Barrichello ', 70, 14);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2018-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit.png.transform/7col/image.png', 5.842, 'Circuit Paul Ricard', 4834, 'Valtteri Bottas', 53, 4);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2018-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.png.transform/7col/image.png',4.318, 'Red Bull Ring', 3816.0, 'Kimi R�ikk�nen', 71, 15);
+
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2017-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Great_Britain_Circuit.png.transform/7col/image.png', 5.891, 'Silverstone Circuit', 4680.0, 'Lewis Hamilton', 52, 6);
+
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2004-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Germany_Circuit.png.transform/7col/image.png', 4.574, 'Hockenheimring', 4068.0, 'MKimi R�ikk�nen', 67, 1);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2004-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Hungary_Circuit.png.transform/7col/image.png', 4.381, 'Hungaroring', 4284.0, 'Michael Schumacher', 70, 16);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2018-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.png.transform/7col/image.png', 7.004, 'Circuit de Spa-Francorchamps', 5256.0, 'Michael Schumacher', 44, 17);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2004-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.png.transform/7col/image.png', 5.793, 'Autodromo Nazionale Monza', 4356.0, 'Michael Schumacher', 53, 2);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2018-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Singapore_Circuit.png.transform/7col/image.png', 5.063, 'Marina Bay Street Circuit', 5076.0, 'Michael Schumacher', 61, 18);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2018-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Russia_Circuit.png.transform/7col/image.png', 5.303, 'Sochi Autodrom', 4860.0, 'Valtteri Bottas', 53, 19);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2005-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Japan_Circuit.png.transform/7col/image.png', 5.807, 'Suzuka International Racing Course', 4716.0, 'Kimi R�ikk�nen', 53, 20);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2017-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/USA_Circuit.png.transform/7col/image.png', 5.513, 'Circuit of The Americas', 4932.0, 'Sebastian Vettel ', 56, 5);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2017-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Mexico_Circuit.png.transform/7col/image.png', 4.304, 'Autodromo Hermanos Rodriguez', 4248.0, 'Sebastian Vettel', 71, 21);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2017-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Brazil_Circuit.png.transform/7col/image.png', 4.309, 'Aut�dromo Jos� Carlos Pace', 3996.0, 'Max Verstappen', 71, 22);
+
+INSERT INTO ANDRES.CIRCUITO (FECHRECORD, FOTO,LONGITUD, NOMBRE, RECORD, ULTIMOGANADOR, VUELTAS, PAIS_ID)
+	VALUES ('2009-10-14 20:33:23.986','https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.png.transform/7col/image.png', 5.554, 'Yas Marina Circuit', 5040.0, 'Sebastian Vettel', 55, 23);
+
+/*Campeonatos*/
+INSERT INTO ANDRES.CAMPEONATO (NOMBRE)
+	VALUES ('2018 FIA Formula One World Championship');
+
+INSERT INTO ANDRES.CAMPEONATO (NOMBRE)
+	VALUES ('2017 FIA Formula One World Championship');
+
+	/*Monoplazas*/
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Mercedes/_jcr_content/image16x9.img.2048.medium.jpg/1519732606237.jpg', 'Mercedes', 'd33', 1.0, 8.0, 5000.0, 120.0, 480.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Mercedes/_jcr_content/image16x9.img.2048.medium.jpg/1519732606237.jpg', 'Mercedes', 'd434', 1.0, 8.0, 5044.0, 123.0, 440.0, 1);
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Ferrari/_jcr_content/image16x9.img.2048.medium.jpg/1521018692996.jpg', 'Ferrari', 'ew4', 0.9, 5.0, 5244.0, 123.0, 440.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Ferrari/_jcr_content/image16x9.img.2048.medium.jpg/1521018692996.jpg', 'Ferrari', 'ew34', 0.9, 6.0, 5034.0, 123.0, 440.0, 1 );
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Red-Bull/_jcr_content/image16x9.img.2048.medium.jpg/1519732266132.jpg', 'RedBull', 'df4', 0.8, 8.0, 5434.0, 123.0, 240.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Red-Bull/_jcr_content/image16x9.img.2048.medium.jpg/1519732266132.jpg', 'RedBull', 'f434', 0.8, 8.0, 5244.0, 123.0, 450.0, 1);
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Renault/_jcr_content/image16x9.img.2048.medium.jpg/1536134985257.jpg', 'Renault', '4r34', 0.7, 4.0, 5244.0, 123.0, 442.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Renault/_jcr_content/image16x9.img.2048.medium.jpg/1536134985257.jpg', 'Renault', 'd4r4', 0.7, 5.0, 5044.0, 123.0, 410.0, 1 );
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Haas/_jcr_content/image16x9.img.2048.medium.jpg/1519732415092.jpg', 'Haas', 'dd4', 0.6, 8.0, 5244.0, 123.0, 440.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Haas/_jcr_content/image16x9.img.2048.medium.jpg/1519732415092.jpg', 'Haas', '2334', 0.6, 8.0, 4544.0, 123.0, 455.0, 1 );
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/McLaren/_jcr_content/image16x9.img.2048.medium.jpg/1536134993048.jpg', 'McLaren', '4534', 0.5, 8.0, 5434.0, 123.0, 440.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/McLaren/_jcr_content/image16x9.img.2048.medium.jpg/1536134993048.jpg', 'McLaren', 'gh34', 0.5, 8.0, 5077.0, 123.0, 230.0, 1 );
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Force-India/_jcr_content/image16x9.img.2048.medium.jpg/1536134979984.jpg', 'Force India', 'g434', 0.4, 8.0, 5044.0, 123.0, 454.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Force-India/_jcr_content/image16x9.img.2048.medium.jpg/1536134979984.jpg', 'Force India', 'h734', 0.4, 8.0, 5224.0, 123.0, 440.0, 1);
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Toro-Rosso/_jcr_content/image16x9.img.2048.medium.jpg/1536135015779.jpg', 'Toro Rosso', '6534', 0.3, 8.0, 5984.0, 123.0, 340.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID )
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Toro-Rosso/_jcr_content/image16x9.img.2048.medium.jpg/1536135015779.jpg', 'Toro Rosso', 'd64', 0.3, 8.0, 5534.0, 123.0, 430.0, 1 );
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Sauber/_jcr_content/image16x9.img.2048.medium.jpg/1536135009747.jpg', 'Sauber', 'fr34', 0.2, 8.0, 5444.0, 123.0, 447.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Sauber/_jcr_content/image16x9.img.2048.medium.jpg/1536135009747.jpg', 'Sauber', '7u34', 0.2, 8.0, 5244.0, 123.0, 433.0, 1 );
+
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Williams/_jcr_content/image16x9.img.2048.medium.jpg/1519732384172.jpg', 'Williams', 'j734', 0.1, 8.0, 5040.0, 123.0, 420.0, 1 );
+	INSERT INTO ANDRES.MONOPLAZA (IMAGEN, MARCA, MODELO, MULTIPLICADOR, NUMCILINDROS, POTENCIA, TORQUE, VELMAX, CAMPEONATO_ID)
+	VALUES ('https://www.formula1.com/content/fom-website/en/teams/Williams/_jcr_content/image16x9.img.2048.medium.jpg/1519732384172.jpg', 'Williams', 'k834', 0.1, 8.0, 5048.0, 123.0, 410.0, 1 );
+
+	/*Pilotos*/
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Few drivers have entered Formula 1 racing with as big a bang as Lewis Hamilton, whose sensational maiden season in 2007', 4, 'mucha', '1985-01-07', 'https://www.formula1.com/content/fom-website/en/drivers/lewis-hamilton/_jcr_content/image.img.2048.medium.jpg/1533294345447.jpg', 1.0, 'Lewis Hamilton', 44, 'Stevenage, England', 2941, 1, 1, 6);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('A tour de force as he swept to four straight world championship crowns and countless Formula 1 records, Sebastian Vettel�s relentless hunger for victory', 4, 'mucha', '1987-07-03', 'https://www.formula1.com/content/fom-website/en/drivers/sebastian-vettel/_jcr_content/image.img.2048.medium.jpg/1533294389985.jpg', 0.9, 'Sebastian Vettel', 5, 'Heppenheim, Germany', 2689, 1, 3, 1);
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Valtteri is quite simply one of the most talented young racing drivers I have come across and we expect great things from him in the future.', 4, 'mucha', '1989-08-28', 'https://www.formula1.com/content/fom-website/en/drivers/valtteri-bottas/_jcr_content/image.img.2048.medium.jpg/1536135115661.jpg', 1.0, 'Valtteri Bottas', 77, 'Nastola, Finland', 2941, 1, 2, 24);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Widely regarded as one of the finest drivers of his generation, Raikkonen’s path to the top of F1 racing began in his hometown of Espoo in southern Finland when, as a sports-mad 11 year-old', 0, 'mucha', '1979-10-17', 'https://www.formula1.com/content/fom-website/en/drivers/kimi-raikkonen/_jcr_content/image.img.2048.medium.jpg/1536135072441.jpg', 0.9, 'Kimi Räikkönen', 7, 'Espoo, Finland', 100, 1, 4, 24);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('By any measure, Max Verstappen’s rise has been unprecedented. After just one - extremely successful - season in single-seaters, Red Bull shocked the Formula 1 paddock by placing him with Toro Rosso for 2015.', 4, 'mucha', '1997-09-30', 'https://www.formula1.com/content/fom-website/en/drivers/max-verstappen/_jcr_content/image.img.2048.medium.jpg/1536135200444.jpg', 0.8, 'Max Verstappen', 33, 'Hasselt, Belgium', 18, 1, 5, 17);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS,EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Born in Perth in 1989, Ricciardo started karting aged just nine after finding a hero in Ayrton Senna. After working his way through the go-kart ranks, in 2005 he entered the Australian Formula Ford series ', 0, 'mucha', '1989-07-01', 'https://www.formula1.com/content/fom-website/en/drivers/daniel-ricciardo/_jcr_content/image.img.2048.medium.jpg/1536135061859.jpg', 0.8, 'Daniel Ricciardo', 3, 'Perth, Australia', 29, 1, 6, 8);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('On his 2011 race debut, Sergio Perez Mendoza became only the fifth Mexican to make it into Formula 1racing', 0, 'mucha', '1990-01-26', 'https://www.formula1.com/content/fom-website/en/drivers/sergio-perez/_jcr_content/image.img.2048.medium.jpg/1536135110814.jpg', 0.4, 'Sergio Perez', 11, 'Guadalajara, Mexico', 8, 1, 13, 21);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('In 1995, a promising young Dane made his Formula 1 debut with McLaren. That man was Jan Magnussen and in a delightful twist of fate, some 19 years later', 0, 'mucha', '1992-10-05', 'https://www.formula1.com/content/fom-website/en/drivers/kevin-magnussen/_jcr_content/image.img.2048.medium.jpg/1536135077427.jpg', 0.6, 'Kevin Magnussen', 20, 'Roskilde, Denmark', 1, 1, 9, 14);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('For many in the Formula 1 paddock, Nico Hulkenberg remains a world champion in waiting', 0, 'mucha', '1987-08-19', 'https://www.formula1.com/content/fom-website/en/drivers/nico-hulkenberg/_jcr_content/image.img.2048.medium.jpg/1536135087181.jpg', 0.8, 'Nico Hulkenberg', 27, 'Emmerich am Rhein, Germany', 0, 1, 7, 1);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Fernando Alonso is the man who ended Michael Schumacher’s Formula 1 reign, and became the then-youngest champion in F1 history. A second consecutive crown was confirmation of his brilliance, and with Schumacher retiring', 2, 'mucha', '1981-07-29', 'https://www.formula1.com/content/fom-website/en/drivers/fernando-alonso/_jcr_content/image.img.2048.medium.jpg/1536135067082.jpg', 0.5, 'Lewis Hamilton', 14, 'Oviedo, Spain', 97, 1, 11, 12);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Esteban Ocon may have landed his F1 seat midseason in 2016, following the departure of Rio Haryanto from Manor, but the Frenchman arrived on the grid with plenty of relevant experience, having tested both that season’s Renault and Mercedes F1 machinery.', 0, 'mucha', '1996-09-17', 'https://www.formula1.com/content/fom-website/en/drivers/esteban-ocon/_jcr_content/image.img.2048.medium.jpg/1533294282682.jpg', 0.4, 'Esteban Ocon', 31, 'Évreux, Normandy',0, 1, 14, 4);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('The son of a much-loved double world rally champion, it was perhaps inevitable that Carlos Sainz Junior would choose to pursue a career in motorsport.', 0, 'mucha', '1994-09-01', 'https://www.formula1.com/content/fom-website/en/drivers/carlos-sainz/_jcr_content/image.img.2048.medium.jpg/1536135055948.jpg', 0.7, 'Carlos Sainz', 55, 'Madrid, Spain', 0, 1, 8, 12);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('While Romain Grosjean has firmly established himself among the Formula 1 elite, his path to the top has been as turbulent as it has been glittering', 0, 'mucha', '1986-04-17', 'https://www.formula1.com/content/fom-website/en/drivers/romain-grosjean/_jcr_content/image.img.2048.medium.jpg/1536135092872.jpg', 0.6, 'Romain Grosjean', 8, 'Geneva, Switzerland',10, 1, 10, 4);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Pierre Gaslys name had been well known in F1 circles for some time prior to his mid-2017 race debut with Toro Rosso, particularly after he won the 2016 GP2 title in dramatic style at the Abu Dhabi season finale.', 0, 'mucha', '1996-02-07', 'https://www.formula1.com/content/fom-website/en/drivers/pierre-gasly/_jcr_content/image.img.2048.medium.jpg/1533294246796.jpg', 0.3, 'Pierre Gasly', 10, 'Rouen, France', 0, 1, 15, 4);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('He may be a rookie on the 2018 grid, but Charles Leclerc’s single-seater credentials are impressive. GP3 champion in 2016 F2 champion in 2017', 0, 'mucha', '1997-10-16', 'https://www.formula1.com/content/fom-website/en/drivers/charles-leclerc/_jcr_content/image.img.2048.medium.jpg/1533294000633.jpg', 0.2, 'Charles Leclerc', 16, 'Monte Carlo, Monaco',0, 1, 17, 13);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Born in Kortrijk, Belgium, in 1992, Vandoorne began his motorsport career aged six and earned his first race and championship victories in national karting series', 0, 'mucha', '1992-03-26', 'https://www.formula1.com/content/fom-website/en/drivers/stoffel-vandoorne/_jcr_content/image.img.2048.medium.jpg/1536138121326.jpg', 0.5, 'Stoffel Vandoorne', 2, 'Kortrijk, Belgium', 0, 1, 12, 17);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+		VALUES ('Born in Montreal, Canada in 1998, Stroll was bitten by the racing bug aged five when his father, eminent businessman and occasional amateur sportscar driver Lawrence Stroll, bought him a go-kart.', 0, 'mucha', '1998-10-29', 'https://www.formula1.com/content/fom-website/en/drivers/lance-stroll/_jcr_content/image.img.2048.medium.jpg/1533294264620.jpg', 0.1, 'Lance Stroll', 18, 'Stevenage, England', 1, 1, 19, 14);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+			VALUES ('Born in the city of Kumla on September 2, 1990, like many of his contemporaries Ericsson cut his racing teeth in karts, quickly accumulating a host of trophies', 0, 'mucha', '1990-09-02', 'https://www.formula1.com/content/fom-website/en/drivers/marcus-ericsson/_jcr_content/image.img.2048.medium.jpg/1536135082174.jpg', 0.2, 'Marcus Ericsson', 9, 'Kumla, Sweden', 0, 1, 18, 7);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+			VALUES ('There was a certain irony to Brendon Hartley being given his F1 shot in late 2017 by Toro Rosso, given that only seven years earlier he’d been left at a career crossroads when he was dropped from Red Bull’s vaunted young driver programme.', 0, 'mucha', '1989-11-10', 'https://www.formula1.com/content/fom-website/en/drivers/brendon-hartley/_jcr_content/image.img.2048.medium.jpg/1533294231878.jpg', 0.3, 'Brendon Hartley', 28, 'Palmerston North, New Zealand', 0, 1, 16, 8);
+
+	INSERT INTO ANDRES.PILOTO (BIOGRAFIA, CAMPEONATOS, EXPERIENCIA, FECHANACIMIENTO, IMAGEN, MULTIPLICADOR, NOMBRE, NUMERO, PAISNACIMIENTO, PODIOS, CAMPEONATO_ID, MONOPLAZA_ID, PAIS_ID)
+			VALUES ('Success came quickly. In 2011 he was champion and runner-up respectively in the European and Italian Formula Abarth series, before quickly moving up to bigger and quicker cars in 2012, scoring race wins in the likes of Auto GP and Formula 3', 0, 'mucha', '1995-08-25', 'https://www.formula1.com/content/fom-website/en/drivers/sergey-sirotkin/_jcr_content/image.img.2048.medium.jpg/1537536593086.jpg', 0.1, 'Sergey Sirotkin', 35, 'Stevenage, England', 0, 1, 20, 19);
+
+
+/*Escuderias*/
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID, MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('Mercedes revival of their Formula 1 tradition through the creation of a works team for the 2010 championship was also the platform for a meteoric rise up the Grand Prix order', 'https://www.formula1.com/content/fom-website/en/teams/Mercedes/_jcr_content/logo.img.jpg/1486740144183.jpg', 'Toto Wolff', 'Mercedes', 'James Allison', 1, 1,2,1,1,2);
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('For many, Ferrari and Formula 1 racing have become inseparable. The only team to have competed in every season since the world championship began', 'https://www.formula1.com/content/fom-website/en/teams/Ferrari/_jcr_content/logo.img.jpg/1521797345005.jpg', 'Maurizio Arrivabene', 'Ferrari', 'Mattia Binotto', 1, 3,4,2,3,4);
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('Red Bull had already been a long-term sponsor in Formula One racing before formally entering as a works team following the acquisition of Jaguar in November 2004', 'https://www.formula1.com/content/fom-website/en/teams/Red-Bull/_jcr_content/logo.img.jpg/1514762875081.jpg', 'Christian Horner', 'Red Bull', 'Pierre Wache',1, 5,6,3,5,6);
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('The 2016 season saw Renault return as an F1 works entry following their takeover of the Lotus team - the Enstone-based squad which the French automaker previously ran from 2002 to 2011', 'https://www.formula1.com/content/fom-website/en/teams/Renault/_jcr_content/logo.img.jpg/1509095937427.jpg', 'Cyril Abiteboul', 'Renault', 'Bob Bell', 1, 7,8,4,7,8);
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('The fledgling Haas team made their highly impressive debut in the 2016 FIA Formula One World Championship, and in the process became the first all-American-led F1 team in three decades', 'https://www.formula1.com/content/fom-website/en/teams/Haas/_jcr_content/logo.img.jpg/1496929111587.jpg', 'Guenther Steiner', 'Haas', 'Rob Taylor', 1, 9,10,5,9,10);
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('Since entering the sport in 1966 under the guidance and restless endeavour of eponymous founder Bruce, McLarens success has been nothing short of breathtaking', 'https://www.formula1.com/content/fom-website/en/teams/McLaren/_jcr_content/logo.img.jpg/1515152671364.jpg', 'Zak Brown', 'McLaren', 'Matt Morris', 1, 11,12,6,11,12);
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('Having won races under former guise Jordan, the Silverstone-based team became Force India in 2007 and steadily established themselves as a midfield force', 'https://www.formula1.com/content/fom-website/en/teams/Force-India/_jcr_content/logo.img.jpg/1535288357341.jpg', 'Otmar Szafnauer', 'Force India', 'Andrew Green', 1, 13,14,7,13,14);
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('Formed from the ashes of the plucky Minardi team, Toro Rosso were established in 2006 as a squad in which young drivers from Red Bull�s prodigious talent pool could cut their teeth in Grand Prix racing', 'https://www.formula1.com/content/fom-website/en/teams/Toro-Rosso/_jcr_content/logo.img.jpg/1521797337296.jpg', 'Franz Tost', 'Toro Rosso', 'James Key', 1, 15,16,8,15,16);
+
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('Having enjoyed considerable success in world sportscars, where he helped nurture the emerging talents of future F1 stars Michael Schumacher and Heinz-Harald Frentzen', 'https://www.formula1.com/content/fom-website/en/teams/Sauber/_jcr_content/logo.img.jpg/1516986071412.jpg', 'Fr�d�ric Vasseur', 'Sauber', 'Simone Resta', 1, 17,18,9,17,18);
+
+INSERT INTO ANDRES.ESCUDERIA (DETALLE, IMAGEN, LIDER, NOMBRE, TECNICOLIDER, CAMPEONATO_ID,MONOPLAZA1_ID, MONOPLAZA2_ID, PAIS_ID, PILOTO1_ID, PILOTO2_ID)
+	VALUES ('Driven on by the brilliance and passion of Sir Frank Williams, Williams grew from humble beginnings to become a Formula One behemoth', 'https://www.formula1.com/content/fom-website/en/teams/Williams/_jcr_content/logo.img.jpg/1496922875259.jpg', 'Frank Williams', 'Williams', 'Paddy Lowe', 1, 19,20,10,19,20);
+
+
+/*Premios*/
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-03-25', '2018-03-22', 0, 'FORMULA 1 2018 ROLEX AUSTRALIAN GRAND PRIX', 1, 1);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-04-08', '2018-04-06', 0, 'FORMULA 1 2018 GULF AIR BAHRAIN GRAND PRIX', 1, 2);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 HEINEKEN CHINESE GRAND PRIX', 1, 3);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 AZERBAIJAN GRAND PRIX', 1, 4);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 GRAN PREMIO DE ESPAÑA EMIRATES 2018', 1, 5);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 GRAND PRIX DE MONACO 2018', 1, 6);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 GRAND PRIX HEINEKEN DU CANADA 2018', 1, 7);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 PIRELLI GRAND PRIX DE FRANCE 2018', 1, 8);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 EYETIME GROSSER PREIS VON ÖSTERREICH 2018', 1, 9);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 ROLEX BRITISH GRAND PRIX', 1, 10);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 EMIRATES GROSSER PREIS VON DEUTSCHLAND 2018', 1, 11);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 JOHNNIE WALKER BELGIAN GRAND PRIX', 1, 12);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 GRAN PREMIO HEINEKEN DITALIA 2018', 1, 13);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 SINGAPORE AIRLINES SINGAPORE GRAND PRIX', 1, 14);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 VTB RUSSIAN GRAND PRIX', 1, 15);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 HONDA JAPANESE GRAND PRIX', 1, 16);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 PIRELLI 2018 UNITED STATES GRAND PRIX', 1, 17);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 GRAN PREMIO DE MÉXICO 2018', 1, 18);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 GRANDE PRÊMIO HEINEKEN DO BRASIL 2018', 1, 19);
+
+INSERT INTO ANDRES.PREMIO (FECHAFIN, FECHAINICIO, FIN, NOMBRE, CAMPEONATO_ID, CIRCUITO_ID)
+VALUES ('2018-10-15', '2018-10-15', 0, 'FORMULA 1 2018 ETIHAD AIRWAYS ABU DHABI GRAND PRIX', 1, 20);
+
+/*Usuarios*/
+INSERT INTO ANDRES.USUARIO (CONTRASENA, DESCRIPCION, EDAD, IMAGEN, NOMBRE, ROL, USUARIO)
+	VALUES ('millos', 'Soy friki en f1', 21, 'https://pbs.twimg.com/profile_images/481100918780207106/M5COi9eA.jpeg', 'Andres', 'admin', 'piloandres');
+
+/*Apuestas*/
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 1, 1);
+
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 2, 1);
+
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 3, 1);
+
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 4, 1);
+
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 5, 1);
+
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 6, 1);
+
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 7, 1);
+
+INSERT INTO ANDRES.APUESTA (CANTIDAD, CANTIDADGANADA, EFECTUADA, FECHA, PUNTOS, PILOTO_ID, PREMIO_ID, USUARIO_ID)
+VALUES (12000.0, 0.0, 0, '2018-10-19 01:19:26.081', 0.0, 1, 8, 1); 
