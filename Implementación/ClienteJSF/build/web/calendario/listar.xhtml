@@ -16,7 +16,6 @@
                 <h:form> <p:panelGrid columns="4">                  
                         <ui:repeat value="#{wsCampeonato.premios}" var="item"> 
                      
-                         <p:commandLink id="nonAjax" action="#{wsCampeonato.detalle(item.idPremio)}" ajax="false">
                                     <h:panelGrid columns="1">
                                         <img width="100px" height="100px" alt="" src="#{item.circuito.foto}"/>
                                         <h:outputText
@@ -26,8 +25,10 @@
                                             <p:outputLabel value=" (#{wsCampeonato.ganador(item)})"/>   
                                       
                                             
+                                            <p:commandButton value="detalles" 
+                                                action="#{wsCampeonato.detalle(item.idPremio)}"
+                                                ajax="false"/>
                                     </h:panelGrid>
-                                </p:commandLink>                            
                         </ui:repeat>
                     </p:panelGrid>
                 </h:form>

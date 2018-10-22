@@ -3,10 +3,31 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./Template.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        Bienvenido
+        Bienvenido a SOFT1
+        <h:panelGrid columns="2" width="100%">
+        <h:outputLabel value="Top Pilotos"/>
+        <h:outputLabel value="Top Premios"/>
+            
+        <p:dataTable var="p" value="#{wsCalificacionPiloto.toppilotos}">
+            <p:column headerText="Pilotos">
+                <p:outputLabel value="#{p.nombre}" /> 
+            </p:column>
+            </p:dataTable>
+        
+        <p:dataTable var="pre" value="#{wsCalificacionPiloto.toppremios}">
+            <p:column headerText="Premios">
+                <p:outputLabel value="#{pre.nombre}" /> 
+            </p:column>
+            </p:dataTable>
+        
+        
+        </h:panelGrid>
+        
+        
   
     </ui:define>
 

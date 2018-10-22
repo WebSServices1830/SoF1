@@ -6,9 +6,9 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <h1>Practica  #{wsResultados.premio.nombre}</h1>
+        <h1>Resultados Practica  #{wsResultados.premio.nombre}</h1>
 
-        <p:dataTable var="res" value="#{wsResultados.resultadosPracticas(wsResultados.premio.idPremio)}">
+        <p:dataTable var="res" value="#{wsResultados.resultadosPracticas}">
             <p:column headerText="POS">
                 <h:outputText value="#{res.posicion}" />
             </p:column>

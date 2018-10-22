@@ -7,45 +7,34 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:panelGrid columns="2" style="margin-top: 10px">
-            <h:panelGrid columns="1" style="margin-top: 10px">
                 <h2>Comentarios antiguos</h2>
-                <h:panelGrid columns="1" style="margin-top: 10px">
-                    <ui:repeat value="#{wsCampeonato.obtenerCalificaciones(wsCampeonato.premio.idPremio)}" var="cal">
-                        <p:fieldset legend="#{cal.idCalificacion}" style="margin-bottom:20px;">
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:panelGrid columns="1" >
-                                <h:outputText value="#{cal.usuario.nombre}" />
-                                <p:rating value="#{cal.puntaje}" readonly="true" />
-                                 </h:panelGrid>
-                                <h:outputText value="#{cal.comentario}" />
-                        
-                        </h:panelGrid>
-                    <p:toolbar>
-                        <f:facet name="right">
-                            <p:menuButton value="Options">
-                                <p:menuitem value="Delete" ajax="false" icon="ui-icon-close" />
-                            </p:menuButton>
-                        </f:facet>
-                    </p:toolbar>
-                </p:fieldset>
-            </ui:repeat>
-                </h:panelGrid>
+                <p:dataTable var="item" value="#{wsCampeonato.calificaciones}">
+            <p:column headerText="Usuario">
+                <p:outputLabel value="#{item.usuario.nombre}" /> 
+            </p:column>
+            <p:column headerText="Puntaje">
+                <p:outputLabel value="#{item.puntaje}" /> 
+            </p:column>
+                
+            <p:column headerText="Comentario">
+                <p:outputLabel value="#{item.comentario}" /> 
+            </p:column>
+                </p:dataTable>
                 <h2>Nuevo Comentario</h2>
                 <h:outputText value="Puntaje" />
-                <p:rating value="#{wsCampeonato.newCalificacion.puntaje}" />
                 <h:form>           
+                    <p:rating value="#{wsCampeonato.rating}" />
+                    <h:inputHidden value="#{wsCampeonato.idpremio}" />
+                    <br/>
                     <p:editor id="editor" widgetVar="editorWidget" value="#{wsCampeonato.newCalificacion.comentario}" width="600" />
                     <h:panelGrid columns="2" style="margin-top: 10px">
-                        <p:commandButton value="Enviar" oncomplete="#{wsCampeonato.submitComment((wsSessionBean.usuarioSession))}"  icon="ui-icon-disk" />
+                        <p:commandButton value="Enviar"  action="#{wsCampeonato.submitComment}" ajax="false"  icon="ui-icon-disk" />
                         <p:commandButton value="Limpiar" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
                     </h:panelGrid>
 
-                </h:form> 
-            </h:panelGrid>
+                </h:form>
+        
 
-
-        </h:panelGrid>  
     </ui:define>
 
 </ui:composition>

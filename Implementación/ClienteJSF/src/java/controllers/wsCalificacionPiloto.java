@@ -23,6 +23,7 @@ import ws.Campeonato;
 import ws.Gestor_Service;
 import ws.Opiniones_Service;
 import ws.Piloto;
+import ws.Premio;
 import ws.Usuario;
 
 /**
@@ -44,6 +45,8 @@ public class wsCalificacionPiloto {
     /**
      * Creates a new instance of wsCalificacionPiloto
      */
+    
+    
     @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
     private Usuario usuario;
 
@@ -215,6 +218,41 @@ public class wsCalificacionPiloto {
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Opiniones port = service.getOpinionesPort();
         port.calificarPiloto(idUsuario, idPiloto, calificacionPiloto);
+    }
+
+    private java.util.List<ws.Piloto> obtenerTopPilotos_1() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Opiniones port = service.getOpinionesPort();
+        return port.obtenerTopPilotos();
+    }
+
+    List<Piloto> toppilotos =new ArrayList<>();
+    List<Premio> toppremios =new ArrayList<>();
+
+    public List<Piloto> getToppilotos() {
+       toppilotos=obtenerTopPilotos_1();
+        return toppilotos;
+    }
+
+    public void setToppilotos(List<Piloto> toppilotos) {
+        this.toppilotos = toppilotos;
+    }
+
+    public List<Premio> getToppremios() {
+        toppremios=obtenerTopPremios();
+        return toppremios;
+    }
+
+    public void setToppremios(List<Premio> toppremios) {
+        this.toppremios = toppremios;
+    }
+    
+    private java.util.List<ws.Premio> obtenerTopPremios() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Opiniones port = service.getOpinionesPort();
+        return port.obtenerTopPremios();
     }
 
 }

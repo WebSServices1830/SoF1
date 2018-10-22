@@ -13,30 +13,31 @@
                     <h1>#{wsCampeonato.premio.nombre}</h1>
                     <h:outputText value="#{wsCampeonato.fechas(wsCampeonato.premio)}"/>
                     <p:rating value="#{wsCampeonato.puntaje()}" readonly="true" />
+                    
+                    <h:outputText  value="Ultimo ganador  #{wsCampeonato.ganador(wsCampeonato.premio)}"/>
                     <p:tooltip />
-                    <p:galleria value="#{wsCampeonato.fotos}" var="foto"  panelHeight="270" >
-                        <p:graphicImage url="#{foto}" alt="#{wsCampeonato.premio.nombre}"/>
+                    <p:galleria value="#{wsCampeonato.fotos}" var="foto"  panelHeight="200" >
+                        <img src="#{foto}" width="100%" height="100%" alt="#{wsCampeonato.premio.nombre}"/>
                     </p:galleria> 
                 </h:panelGrid>
                 <h:form>
                  
-                    <p:inputText value="#{wsCampeonato.premio.circuito.idCircuito}"/>
-                    <p:commandButton action="#{wsCampeonato.detallePista}"  value="circuito"/>
-                    <p:panelMenu style="align-content: center;border-bottom-color: #045491;elevation: higher; width:500px">
-                        <p:submenu label="Informacion">
-                            <p:menuitem value="Circuito" action="#{wsCampeonato.detallePista}" ajax="false" icon="ui-icon-disk" />
-                                 
-                            <p:menuitem value="Ultimo ganador  #{wsCampeonato.ganador(wsCampeonato.premio)}" icon="ui-icon-arrowrefresh-1-w"/>
- 
-                            <p:menuitem value="Comentarios" action="#{wsCampeonato.comentarios}" outcome="/comentarios/comentarios" icon="ui-icon-disk" />
-                        </p:submenu>
-                        <p:separator />
-                        <p:submenu label="Sesiones">
-                            <p:menuitem value="Carrera" action="#{wsResultados.detCarrera(wsCampeonato.premio.idPremio)}" outcome="/resultados/resCarrera" icon="ui-icon-flag" ajax="false" />
-                            <p:menuitem value="Clasificacion" action="#{wsResultados.detClasificacion(wsCampeonato.premio.idPremio)}" outcome="/resultados/resClasificacion"  ajax="false" />
-                            <p:menuitem value="Practica" action="#{wsResultados.detPractica(wsCampeonato.premio.idPremio)}" outcome="/resultados/resPractica" ajax="false" icon="ui-icon-flag"/>
-                        </p:submenu>
-                    </p:panelMenu>
+                    
+                    <h:inputHidden value="#{wsCampeonato.idcircuito}"/>
+                    <h:inputHidden value="#{wsResultados.idpremio}"/>
+                    <h:inputHidden value="#{wsCampeonato.idpremio}"/>
+                    
+                    
+                    <h:panelGrid columns="1">
+                        <br/>
+                        <h2>Información del premio</h2>
+                        <p:commandButton style="width: 200px;" action="#{wsCampeonato.detallePista}"  value="circuito"/>
+                    <p:commandButton style="width: 200px;" action="#{wsResultados.detCarrera}" value="Resultados Carrera"/>
+                    <p:commandButton style="width: 200px;" action="#{wsResultados.detClasificacion}" value="Resultados Clasificacion"/>
+                    <p:commandButton style="width: 200px;"  action="#{wsResultados.detPractica}" value="Resultados Práctica"/>
+                    <p:commandButton style="width: 200px;" action="#{wsCampeonato.comentarios}" value="Comentar"/>
+                    </h:panelGrid>    
+
                 </h:form>
             </h:panelGrid>
         </h:form>

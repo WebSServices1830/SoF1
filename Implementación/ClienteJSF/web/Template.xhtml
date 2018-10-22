@@ -21,27 +21,28 @@
                      -webkit-background-size: cover;
                      -moz-background-size: cover;
                      -o-background-size: cover;
-                     background-size: cover;
+                     background-size: 100% 100%;
                      height: 100%;
                      width: 100% ;
                      text-align: center;
+                     opacity: 0.8;
                      ">
                     <ui:insert name="top">
                         <br/>
 
 
                     </ui:insert>
-                    <div align="left">
+                    <div align="left" style="color: gold;">
                         <p:outputLabel value="CAMPEONATO #{wsSessionBean.campeonato.nombre}"/>
                     </div>
-                    <div align="right">
-                        <h:form>
+                    <div align="right" style="color:gold">
+                        <h:form >
 
                             <c:if test="#{!wsSessionBean.estado}">
                                 <p:outputLabel value="Usuario"/>
                                 <p:inputText value="#{wsSessionBean.usuario}"/>
                                 <p:outputLabel value="Contraseña"/>
-                                <p:inputText value="#{wsSessionBean.clave}"/>
+                                <p:password value="#{wsSessionBean.clave}"/>
 
                                 <p:commandButton action="#{wsSessionBean.login}" ajax="false" value="Iniciar Sesión"/>
                             </c:if>
@@ -55,7 +56,7 @@
                             </c:if>
                             <c:if test="#{!wsSessionBean.estado}">
 
-                                <p:link value="Regístrarse"  outcome="/registro" />
+                                <p:link style="color: gold" value="Regístrarse"  outcome="/registro" />
 
                             </c:if>
                         </h:form>
@@ -64,21 +65,23 @@
             </p:layoutUnit>
 
 
-            <p:layoutUnit position="west" size="175" header="Menú" collapsible="true">
+            <p:layoutUnit position="west" size="200" header="Menú" collapsible="true">
                 <div id="left">
                     <ui:insert name="menu">
 
                         <p:menu >
-                            <p:submenu label="Opciones" >
-
-
+                                    <p:menuitem value="Inicio"  outcome="/index" icon="ui-icon-gg" />
                                 <c:if test="#{wsSessionBean.admin}">
+                            <p:submenu label="Admin" >
                                     <p:menuitem value="Agregar escuderia"  outcome="/escuderia/crear" icon="ui-icon-plus" />
                                     <p:menuitem value="Agregar piloto"  outcome="/piloto/crear" icon="ui-icon-plus" />
                                     <p:menuitem value="Agregar monoplaza"  outcome="/monoplaza/crear" icon="ui-icon-plus" />
-
+                            </p:submenu>
                                 </c:if>
+                            <p:submenu label="Opciones" >
+
                                 <p:menuitem value="Escuderia"  outcome="/escuderia/listado" icon="ui-icon-flag" />
+
                                 <p:menuitem value="Pilotos"  outcome="/piloto/listado" icon="ui-icon-person" />
                                 <p:menuitem value="Monoplazas"  outcome="/monoplaza/listado" icon="ui-icon-radio-on" />
                                 <p:menuitem value="Calendario"  outcome="/calendario/listar" icon="ui-icon-star" />
@@ -89,6 +92,7 @@
 
                             </p:submenu>
                         </p:menu>
+                        <h3>Campeonatos</h3>
                         <h:form>
 
                             <c:forEach items="#{wsSessionBean.campeonatos}" var="item">
@@ -110,14 +114,24 @@
             <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
                 <div id="bottom">
                     <ui:insert name="bottom">
+                            <center>
+                        <h:panelGrid columns="2">
+                            
+                        <h:form>
+                            
+                        <p:commandButton value="Simular"  actionListener="#{wsResultados.simular}" ajax="false"/>
+                        </h:form>
+ 
                         <center>
                             &nbsp; <img width="100px" height="60px" src="http://#{wsSessionBean.ip}/images/soft1/bandera.jpg"/>
                             &nbsp; <img width="100px" height="60px" src="http://#{wsSessionBean.ip}/images/soft1/Pirelli-logo.png"/>
                             &nbsp; <img width="100px" height="60px" src="http://#{wsSessionBean.ip}/images/soft1/f1logo.jpg"/>
                             &nbsp; <img width="100px" height="60px" src="http://#{wsSessionBean.ip}/images/soft1/Logo_javeriana.png"/>
-                            <br/>
-                            © Todos los derechos reservados.                        </center>
-
+                                                   </center>
+<br/>
+                            © Todos los derechos reservados. 
+                        </h:panelGrid>
+                            </center>
                     </ui:insert>
                 </div>
             </p:layoutUnit>

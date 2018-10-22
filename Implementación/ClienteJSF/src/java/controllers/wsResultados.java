@@ -6,9 +6,11 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.xml.ws.WebServiceRef;
 import ws.Campeonato;
@@ -27,7 +29,7 @@ import ws.SesionPractica;
  * @author nikme
  */
 @Named(value = "wsResultados")
-@Dependent
+@ManagedBean
 public class wsResultados {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
@@ -37,7 +39,17 @@ public class wsResultados {
     private Resultados_Service service;
     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato campeonato;
+     @ManagedProperty(value = "#{wsCampeonato.idpremio}")
+    private int idpremio;
 
+    public int getIdpremio() {
+        return idpremio;
+    }
+
+    public void setIdpremio(int idpremio) {
+        this.idpremio = idpremio;
+    }
+    
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -55,10 +67,45 @@ public class wsResultados {
     }
    
     int idPremio = 0;
+    
     Premio premio;
+    
     SesionClasificacion sesionClasificacion = new SesionClasificacion();
     SesionPractica sesionPractica = new SesionPractica();
     SesionCarrera sesionCarrea = new SesionCarrera();
+    
+    List<ResultadoCarrera> resultados= new ArrayList<>();
+    List<ResultadoClasificacion> resultadosClasificacions= new ArrayList<>();
+    List<ResultadoPractica> resultadosPracticas= new ArrayList<>();
+
+    public List<ResultadoPractica> getResultadosPracticas() {
+        resultadosPracticas=resultadosPracticas(idpremio);
+        return resultadosPracticas;
+    }
+
+    public void setResultadosPracticas(List<ResultadoPractica> resultadosPracticas) {
+        this.resultadosPracticas = resultadosPracticas;
+    }
+
+    public List<ResultadoClasificacion> getResultadosClasificacions() {
+        resultadosClasificacions=resultadosClasificacion(idpremio);
+        return resultadosClasificacions;
+    }
+
+    public void setResultadosClasificacions(List<ResultadoClasificacion> resultadosClasificacions) {
+        this.resultadosClasificacions = resultadosClasificacions;
+    }
+
+    public List<ResultadoCarrera> getResultados() {
+       resultados=resultadosCarrera(idpremio);
+        
+        return resultados;
+    }
+
+    public void setResultados(List<ResultadoCarrera> resultados) {
+        this.resultados = resultados;
+    }
+    
     
     ResultadoCarrera resCarrera= new ResultadoCarrera();
     ResultadoPractica resPractica = new ResultadoPractica();
@@ -67,7 +114,6 @@ public class wsResultados {
 
 
     public Premio getPremio() {
-        premio= findPremio(idPremio);
         return premio;
     }
 
@@ -131,22 +177,21 @@ public class wsResultados {
     public wsResultados() {
         
     }
-   public void simular(int idCamp){
-        simularTorneo(idCamp);
+   public void simular(){
+       System.out.println("simulando..."+campeonato.getIdCampeonato());
+        simularTorneo(campeonato.getIdCampeonato());
     }
- public String detCarrera(int id) throws IOException{
-     premio= findPremio(id);
+ public String detCarrera() throws IOException{
+     premio= findPremio(idpremio);
      return "/resultados/resCarrera";
     }
- public String detClasificacion(int id) throws IOException{
-       this.idPremio = id;
-       premio= findPremio(id); 
-       System.err.println("find piloto tal "+resClasificacion.getIdResultado());
+ public String detClasificacion() throws IOException{
+       
+       premio= findPremio(idpremio); 
          return "/resultados/resClasificacion";
     }
- public String detPractica(int id) throws IOException{
-       premio= findPremio(id);
-        System.err.println("find piloto tal "+resPractica.getIdResultado());
+ public String detPractica() throws IOException{
+       premio= findPremio(idpremio);
          return "/resultados/resPractica";
     }
 
@@ -171,6 +216,7 @@ public List<ResultadoClasificacion> resultadosClasificacion(int idPremio){
 }
 
 public List<ResultadoCarrera> resultadosCarrera(int idPremio){
+    
     sesionCarrea=obtenerSesionCarreraByPremio(idPremio);
     return obtenerResultadoCarreraBySesionCarrera(sesionCarrea.getIdSesionCarrera());
     

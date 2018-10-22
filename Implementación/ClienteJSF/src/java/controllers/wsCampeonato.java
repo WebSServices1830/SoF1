@@ -38,7 +38,7 @@ import ws.Usuario;
  */
 @Named(value = "wsCampeonato")
 @ManagedBean
-public class wsCampeonato implements Serializable{
+public class wsCampeonato {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Resultados/Resultados.wsdl")
     private Resultados_Service service_2;
@@ -53,7 +53,7 @@ public class wsCampeonato implements Serializable{
     int idcircuito;
 
     public int getIdcircuito() {
-        
+       
         return idcircuito;
     }
 
@@ -68,6 +68,27 @@ public class wsCampeonato implements Serializable{
     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato campeonato;
     
+    @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    private int idpremio;
+
+    public int getIdpremio() {
+        return idpremio;
+    }
+
+    public void setIdpremio(int idpremio) {
+        this.idpremio = idpremio;
+    }
+    
     @ManagedProperty(value = "#{wsSessionBean.premio}")
     private Premio premio;
 
@@ -79,11 +100,12 @@ public class wsCampeonato implements Serializable{
     
     public List<CalificacionPremio> getCalificaciones() {
 
+        calificaciones = obtenerCalificacionesPremio(idpremio);
         return calificaciones;
     }
 
-    public List<CalificacionPremio> obtenerCalificaciones(int idPrem) {
-        calificaciones = obtenerCalificacionesPremio(idPrem);
+    public List<CalificacionPremio> obtenerCalificaciones() {
+        calificaciones = obtenerCalificacionesPremio(idpremio);
         return calificaciones;
     }
 
@@ -147,16 +169,16 @@ public class wsCampeonato implements Serializable{
     }
 
     public String detalle(int id) throws IOException {
-
         premio = findPremio(id);
+        idcircuito=premio.getCircuito().getIdCircuito();
+        idpremio=id;
         return "/calendario/detalle";
     }
 
     public String detallePista() throws IOException {
-        System.out.println("controllers.wsCampeonato.detallePista() --------------  "
-                + premio.getCircuito().getIdCircuito() );
+        System.out.println(idcircuito);
     
-        circuito = findCircuito(premio.getCircuito().getIdCircuito());
+        circuito = findCircuito(idcircuito);
         
         return "detallePista";
     }
@@ -167,8 +189,8 @@ public class wsCampeonato implements Serializable{
     }
 
     public String comentarios() throws IOException {
-
-        return "comentaios/comentarios";
+        
+        return "/comentarios/comentarios";
     }
 
     public String fechas(Premio p) {
@@ -183,15 +205,27 @@ public class wsCampeonato implements Serializable{
             act += c.getPuntaje().shortValue();
         }
 
-        return (calificaciones.size() == 0) ? 3 : (act / calificaciones.size());
+        return (calificaciones.size() == 0) ? 0 : (act / calificaciones.size());
 
     }
+Integer rating = new Integer(0);
 
-    public String submitComment(Usuario usr) throws DatatypeConfigurationException {
-        newCalificacion.setUsuario(usr);
-        newCalificacion.setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar()));
-        calificarPremio(usr.getIdUsuario(), premio.getIdPremio(), newCalificacion);
-        return "comentarios/comentarios";
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public String submitComment() throws DatatypeConfigurationException {
+       // newCalificacion.setUsuario();
+        newCalificacion.setPuntaje(rating.doubleValue());
+       newCalificacion.setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar()));
+       calificarPremio(usuario.getIdUsuario(), idpremio, newCalificacion);
+     rating=0;
+     newCalificacion.setComentario("");
+       return null;
     }
 
     private void calificarPremio(int idUsuario, int idPremio, ws.CalificacionPremio calificacionPremio) {
@@ -301,8 +335,17 @@ public class wsCampeonato implements Serializable{
     }
 
     public List<String> getFotos() {
-        return new ArrayList<String>(Arrays.asList(premio.getCircuito().getFoto().split(";")));
+        List<String> fotos= new ArrayList<String>(Arrays.asList(premio.getCircuito().getFoto().split(";")));
+                return fotos;
+        
     }
+    
+    public List<String> obtenerFotos1(String fotos1) {
+        List<String> fotos= new ArrayList<>(Arrays.asList(fotos1.split(";")));
+                return fotos;
+        
+    }
+    
 
     private Circuito findCircuito(int idCircuito) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.

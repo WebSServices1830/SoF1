@@ -6,15 +6,15 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <h1>CARRERA  #{wsResultados.premio.nombre}</h1>
-
-        <p:dataTable var="res" value="#{wsResultados.resultadosCarrera(wsSessionBean.premio.idPremio)}">
+        <h1>RESULTADOS CARRERA  #{wsResultados.premio.nombre}</h1>
+<!--#   {wsResultados.resultadosCarrera(wsSessionBean.premio.idPremio)}-->
+<p:dataTable var="res" value="#{wsResultados.resultados}">
             <p:column headerText="POS">
-                <h:outputText value="#{res.posicion}" />
+                <p:outputLabel value="#{res.posicion}" /> 
             </p:column>
 
             <p:column headerText="No">
-                <h:outputText value="#{res.piloto.numero}" />
+                <p:outputLabel value="#{res.piloto.numero}" />
             </p:column>
 
             <p:column headerText="DRIVE">
