@@ -67,9 +67,9 @@
       </wsimport-options>
     </client>
     <client name="Apuestas">
-      <wsdl-url>http://localhost:8080/AppFormula1Servidor/Apuestas?wsdl</wsdl-url>
+      <wsdl-url>http://localhost:8080/AppFormula1Servidor/Apuestas?WSDL</wsdl-url>
       <local-wsdl-file>localhost_8080/AppFormula1Servidor/Apuestas.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">wsApuesta</package-name>
+      <package-name>ws</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -86,7 +86,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/AppFormula1Servidor/Apuestas?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/AppFormula1Servidor/Apuestas?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -96,9 +96,69 @@
           <wsimport-option-name>xendorsed</wsimport-option-name>
           <wsimport-option-value>true</wsimport-option-value>
         </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="Opiniones">
+      <wsdl-url>http://localhost:8080/AppFormula1Servidor/Opiniones?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_8080/AppFormula1Servidor/Opiniones.wsdl</local-wsdl-file>
+      <package-name>ws</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
         <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>wsApuesta</wsimport-option-value>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8080/AppFormula1Servidor/Opiniones?WSDL</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="Resultados">
+      <wsdl-url>http://localhost:8080/Resultados/Resultados?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_8080/Resultados/Resultados.wsdl</local-wsdl-file>
+      <package-name>ws</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8080/Resultados/Resultados?WSDL</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>

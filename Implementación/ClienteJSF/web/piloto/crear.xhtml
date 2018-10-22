@@ -16,7 +16,17 @@
                 
                 <p:outputLabel for="num" value="Numero"></p:outputLabel>
                 <p:inputText  id="num" required="true"  value="#{wsPilotoBean.piloto.numero}"/>
-               <p:outputLabel value="Pais de nacimiento:"></p:outputLabel>
+               
+                <p:outputLabel value="Pais de nacimiento:"></p:outputLabel>
+                
+                <p:selectOneMenu value="#{wsPilotoBean.idpais}">
+                    <f:selectItem itemLabel="Selecciona un pais"/>
+                    <f:selectItems value="#{wsPilotoBean.paises}" 
+                                   var="p" itemValue="#{p.idPais}" itemLabel="#{p.nombre}"                >           
+                                  </f:selectItems>
+                </p:selectOneMenu>
+                 
+               <p:outputLabel value="Lugar de nacimiento:"></p:outputLabel>
                 <p:inputText value="#{wsPilotoBean.piloto.paisNacimiento}"/>
                  
                 <p:outputLabel for="button" value="Fecha Nacimiento:" />
@@ -30,12 +40,13 @@
                 <p:outputLabel value="Bibliografia:" />                
                <p:inputTextarea value="#{wsPilotoBean.piloto.biografia}" cols="30" rows="10"/>
           <p:outputLabel value="multiplicador" />        
-          <p:inputText value="#{wsPilotoBean.piloto.multiplicador}" />
-         
+              <p:panelGrid columns="2">
+               <p:inputText id="mul" value="#{wsPilotoBean.piloto.multiplicador}"/>
+            <!--   <p:slider for="mul" minValue="0" maxValue="1" step="0.1" />-->
+              </p:panelGrid>
                 <p:outputLabel value="Foto:" />                
             <p:fileUpload value="#{wsPilotoBean.file}" mode="simple"   />
 
-            <p:inputText value="#{wsPilotoBean.c.idCampeonato}"/>
             </h:panelGrid>
             
                 <p:commandButton value="Guardar"  ajax="false " action="#{wsPilotoBean.save}"  />

@@ -26,11 +26,7 @@ public class CampeonatoFacade extends AbstractFacade<Campeonato> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public CampeonatoFacade() {
         super(Campeonato.class);

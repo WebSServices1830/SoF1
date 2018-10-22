@@ -5,8 +5,6 @@
  */
 package controllers;
 
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
-import static controllers.wsSessionBean.IP;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,20 +14,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.logging.Level;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
 import ws.Campeonato;
 import ws.Gestor_Service;
+import ws.Pais;
 import ws.Piloto;
 //import ws.gestor.Gestor_Service;
 
@@ -47,8 +44,7 @@ public class wsPilotoBean {
     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato c;
     
-    String filePath = "C:\\xampp\\htdocs\\images\\pilots\\";
-
+    
     public Campeonato getC() {
         return c;
     }
@@ -56,6 +52,22 @@ public class wsPilotoBean {
     public void setC(Campeonato c) {
         this.c = c;
     }
+    
+    
+    
+    String filePath = "C:\\xampp\\htdocs\\images\\pilots\\";
+
+    float m;
+    
+
+    public float getM() {
+        return m;
+    }
+
+    public void setM(float m) {
+        this.m = m;
+    }
+
 
     /**
      * Creates a new instance of wsPilotoBean
@@ -63,7 +75,28 @@ public class wsPilotoBean {
     List<Piloto> pilotos = new ArrayList<>();
     Piloto piloto = new Piloto();
     private Date fecha;
+    
+    int idpais;
+    public int getIdpais() {
+        return idpais;
+    }
 
+    public void setIdpais(int idpais) {
+        this.idpais = idpais;
+    }
+    
+     List<Pais> paises=new ArrayList<>();
+
+    public List<Pais> getPaises() {
+        paises=findAllPais();
+        return paises;
+    }
+
+    public void setPaises(List<Pais> paises) {
+        this.paises = paises;
+    }
+     
+    
     public Date getFecha() {
         return fecha;
     }
@@ -82,9 +115,7 @@ public class wsPilotoBean {
     }
 
     public List<Piloto> getPilotos() {
-      //pilotos=findAllPilotoByEscuderia(1);
-      pilotos = findAllPiloto();
-      
+      pilotos=findAllPilotoByCampeonato(c.getIdCampeonato());
         return pilotos;
     }
 
@@ -97,46 +128,62 @@ public class wsPilotoBean {
 
     public String save() throws IOException {
         piloto.setCampeonato(c);
-        System.out.println("estableciendo el campeontato "+c.getAnio());
+        piloto.setPais(findPais(idpais));
         upload();
-        System.out.println("" + piloto.getNombre());
+        System.out.println("" + piloto.getNombre()+" "+piloto);
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(fecha);
         try {
             piloto.setFechaNacimiento(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
         } catch (DatatypeConfigurationException ex) {
         }
-        piloto.setImagen("http://"+wsSessionBean.IP + "/images/pilots/" + piloto.getNumero()+ ".jpg");
-
+      
        createPiloto(piloto);
-
+       
         System.out.println("save");
         return "listado";
     }
+    
 
 
     public void delete(int id) {
+        removePiloto(id);
         System.out.println("borrando " + id);
 
     }
 
     public String editar(int id) throws IOException {
            piloto= findPiloto(id);
-        System.out.println("find piloto tal " + piloto.getNombre());
-        return "editar";
+           idpais=piloto.getPais().getIdPais();
+           fecha=getDate(piloto.getFechaNacimiento());
+     
+           return "editar";
 
     }
 
     public String edit() throws IOException {
+        piloto.setCampeonato(c);
+        piloto.setPais(findPais(idpais));
         upload();
-         editPiloto(piloto);
-        System.out.println("eduado " + piloto.getNombre());
+           GregorianCalendar c = new GregorianCalendar();
+        c.setTime(fecha);
+        try {
+            piloto.setFechaNacimiento(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+        } catch (DatatypeConfigurationException ex) {
+        }
+     
+        editPiloto(piloto);
         return "listado";
 
     }
 
     private UploadedFile file;
 
+    public Date getDate(XMLGregorianCalendar xmlgc){
+        if(xmlgc== null) return null;
+        return xmlgc.toGregorianCalendar().getTime();
+    }
+    
     public UploadedFile getFile() {
         return file;
     }
@@ -148,12 +195,14 @@ public class wsPilotoBean {
     public void upload() throws IOException {
         //System.out.println("Name " + getName());
         //System.out.println("tmp directory" System.getProperty("java.io.tmpdir"));
-        System.out.println("File Name " + file.getFileName());
-        System.out.println("File New Name " + piloto.getNumero());
-        System.out.println("Size " + file.getSize());
         byte[] bytes = null;
 
         if (null != file && file.getSize()>0) {
+         piloto.setImagen("http://"+wsSessionBean.IP + "/images/pilots/" + piloto.getNumero()+ ".jpg");
+
+        System.out.println("File Name " + file.getFileName());
+        System.out.println("File New Name " + piloto.getNumero());
+        System.out.println("Size " + file.getSize());
             copyFile(piloto.getNumero() + ".jpg", file.getInputstream());
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -218,14 +267,33 @@ public class wsPilotoBean {
         return port.findPiloto(idPiloto);
     }
 
-    private java.util.List<ws.Piloto> findAllPilotoByEscuderia(int arg0) {
+    private java.util.List<ws.Piloto> findAllPilotoByCampeonato(int arg0) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Gestor port = service.getGestorPort();
-        return port.findAllPilotoByEscuderia(arg0);
+        return port.obtenerPilotosByCampeonato(arg0);
     }
 
-    
+    private java.util.List<ws.Pais> findAllPais() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Gestor port = service.getGestorPort();
+        return port.findAllPais();
+    }
+
+    private Pais findPais(int idPais) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Gestor port = service.getGestorPort();
+        return port.findPais(idPais);
+    }
+
+    private void removePiloto(int piloto) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Gestor port = service.getGestorPort();
+        port.removePiloto(piloto);
+    }
     
 
     

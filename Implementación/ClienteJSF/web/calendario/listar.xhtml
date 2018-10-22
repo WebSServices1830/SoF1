@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="./../Template.xhtml">
+
+            <ui:define name="content">
+                <h1>#{wsCampeonato.campeonato.nombre}</h1>
+                <h:form> <p:panelGrid columns="4">                  
+                        <ui:repeat value="#{wsCampeonato.premios}" var="item"> 
+                     
+                         <p:commandLink id="nonAjax" action="#{wsCampeonato.detalle(item.idPremio)}" ajax="false">
+                                    <h:panelGrid columns="1">
+                                        <img width="100px" height="100px" alt="" src="#{item.circuito.foto}"/>
+                                        <h:outputText
+                                            value="#{wsCampeonato.fechas(item)}" />
+                                        <h5>#{item.nombre}</h5>
+                                  
+                                            <p:outputLabel value=" (#{wsCampeonato.ganador(item)})"/>   
+                                      
+                                            
+                                    </h:panelGrid>
+                                </p:commandLink>                            
+                        </ui:repeat>
+                    </p:panelGrid>
+                </h:form>
+                
+         
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

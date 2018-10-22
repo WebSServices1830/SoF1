@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
@@ -10,17 +13,62 @@
 
             <ui:define name="content">
                 <h1> Escuderias </h1>
+                <h:form>
+                    
                 <ui:repeat value="#{wsEscuderiaBean.escuderias}" var="item">
-                
                     <p:fieldset legend="#{item.idEscuderia}" style="margin-bottom:20px;">
-                        <p:outputLabel value="#{item.nombre}"/>
-                        <ui:repeat value="#{item.monoplazas}" var="m">
+                    <p:panelGrid columns="3">
                         
-                        <p:outputLabel value="#{m.marca}"/>
-                        </ui:repeat>
+                        <p:panelGrid columns="2" >
+                            
+                            <p:outputLabel value="Logo: "/>
+                        <img width="100px" height="150px" src="#{item.imagen}" 
+                             alt="#{item.nombre}"/>
+                            
+                        <p:outputLabel value="Escuderia:"/>
+                        <p:outputLabel value="#{item.nombre}"/>
+                        <p:outputLabel value="Lider : "/>
+                        <p:outputLabel value="#{item.lider}"/>
+                        <p:outputLabel value="Tecnico Lider: "/>
+                        <p:outputLabel value="#{item.tecnicoLider}"/>
+                      
+                        <p:outputLabel value="Pais: "/>
+                        <p:outputLabel value="#{item.pais.nombre}"/>
+                        <p:outputLabel value="Detalle:"/>
+                        <p:outputLabel value="#{item.detalle}"/>
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="1">
+                            
+                        <img width="100px" height="150px" src="#{item.piloto1.imagen}" 
+                             alt="#{item.monoplaza1.marca}"/>
+                            
+                        <img width="100px" height="150px" src="#{item.monoplaza1.imagen}" 
+                             alt="#{item.monoplaza1.marca}"/>
+                            
+                        <img width="100px" height="150px" src="#{item.piloto2.imagen}" 
+                             alt="#{item.monoplaza1.marca}"/>
+                        <img width="100px" height="150px" src="#{item.monoplaza2.imagen}" 
+                             alt="#{item.monoplaza1.marca}"/>
+                        </p:panelGrid>
+                    </p:panelGrid>
+
+                                            <c:if test="#{wsSessionBean.admin}">
+                    <p:toolbar>
+                        <f:facet name="right">
+                            <p:menuButton value="Options">
+
+                                <p:menuitem value="Delete" ajax="false" action  ="#{wsEscuderiaBean.delete(item.idEscuderia)}" icon="ui-icon-close" />
+                                    <p:menuitem value="Edit" action="#{wsEscuderiaBean.editarView(item.idEscuderia)}" ajax="false" icon="ui-icon-close" />
+                            </p:menuButton>
+                        </f:facet>
+                    </p:toolbar>
+                    </c:if>
+
                 </p:fieldset>
                 
                 </ui:repeat>
+                </h:form>
             </ui:define>
 
         </ui:composition>

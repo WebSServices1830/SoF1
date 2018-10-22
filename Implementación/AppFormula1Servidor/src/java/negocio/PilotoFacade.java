@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.Piloto;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
@@ -27,23 +28,27 @@ public class PilotoFacade extends AbstractFacade<Piloto> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public PilotoFacade() {
         super(Piloto.class);
     }
     
     public List<Piloto> obtenerPilotosByEscuderia(int idEscuderia){
-        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.escuderia.idEscuderia = :idEscuderia", Piloto.class)
+        List<Piloto> res = getEntityManager().createQuery("select p "+"from Piloto p "+"where p.escuderia.idEscuderia = :idEscuderia", Piloto.class)
                 .setParameter("idEscuderia", idEscuderia).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
     
     public List<Piloto> obtenerPilotosByCampeonato(int idCampeonato){
-        return getEntityManager().createQuery("select p "+"from Piloto p "+"where p.campeonato.idCampeonato = :idCampeonato "+"order by p.multiplicador desc", Piloto.class)
+        List<Piloto> res = getEntityManager().createQuery("select p "+"from Piloto p "+"where p.campeonato.idCampeonato = :idCampeonato "+"order by p.multiplicador desc", Piloto.class)
                 .setParameter("idCampeonato", idCampeonato).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
 }

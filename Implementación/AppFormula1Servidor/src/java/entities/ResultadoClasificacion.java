@@ -43,6 +43,7 @@ public class ResultadoClasificacion implements Serializable {
     private SesionClasificacion sesionClasificacion;
     
     @JoinColumn(name="piloto_id")
+    @OneToOne
     private Piloto piloto;
 
     @Column
@@ -63,7 +64,7 @@ public class ResultadoClasificacion implements Serializable {
     @Column
     private Double recordVuelta;
 
-        @XmlIDREF
+        //
     public SesionClasificacion getSesionClasificacion() {
         return sesionClasificacion;
     }
@@ -83,7 +84,7 @@ public class ResultadoClasificacion implements Serializable {
      *     {@link Piloto }
      *     
      */
-        @XmlIDREF
+        //
     public Piloto getPiloto() {
         return piloto;
     }
@@ -118,7 +119,7 @@ public class ResultadoClasificacion implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idResultado+"";
     }

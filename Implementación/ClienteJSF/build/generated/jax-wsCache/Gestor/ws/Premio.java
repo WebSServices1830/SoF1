@@ -22,6 +22,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="circuito" type="{http://ws/}circuito" minOccurs="0"/&gt;
  *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="fechaInicio" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="finalizado" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *         &lt;element name="idPremio" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="sesionCarrera" type="{http://ws/}sesionCarrera" minOccurs="0"/&gt;
@@ -41,6 +42,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "circuito",
     "fechaFin",
     "fechaInicio",
+    "finalizado",
     "idPremio",
     "nombre",
     "sesionCarrera",
@@ -55,6 +57,7 @@ public class Premio {
     protected XMLGregorianCalendar fechaFin;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechaInicio;
+    protected Boolean finalizado;
     protected Integer idPremio;
     protected String nombre;
     protected SesionCarrera sesionCarrera;
@@ -155,6 +158,30 @@ public class Premio {
      */
     public void setFechaInicio(XMLGregorianCalendar value) {
         this.fechaInicio = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad finalizado.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isFinalizado() {
+        return finalizado;
+    }
+
+    /**
+     * Define el valor de la propiedad finalizado.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setFinalizado(Boolean value) {
+        this.finalizado = value;
     }
 
     /**

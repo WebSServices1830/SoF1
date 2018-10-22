@@ -2,7 +2,8 @@
                 template="../Template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="content">
 
@@ -28,22 +29,40 @@
                             <h:outputText
                                 value="Podios: #{item.podios}" />
                             <h:outputText
-                                value="Pais de nacimiento:  #{item.paisNacimiento}"/>
+                                value="Pais de nacimiento:  #{item.pais.nombre}"/>
                             <h:outputText
-                                value="fecha nacimiento: #{item.fechaNacimiento}" />
+                                value="Lugar de nacimiento:  #{item.paisNacimiento}"/>
+                            <h:panelGrid columns="2">
+
+
+                                <h:outputText value="Fecha Nacimiento:"/> <h:outputText
+                                    value="#{wsPilotoBean.getDate(item.fechaNacimiento)}" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy" type="date"/>
+                                </h:outputText>
+                            </h:panelGrid>
 
 
                         </h:panelGrid>
+
+                        <c:if test="#{wsSessionBean.estado}">
+                            <p:commandButton action="#{wsCalificacionPiloto.calificarView(item)}" value="Comentar" ajax="false"/>
+                        </c:if>
 
 
                     </h:panelGrid>
                     <p:toolbar>
                         <f:facet name="right">
                             <p:menuButton value="Options">
+                                <p:menuitem value="Comentarios" action="#{wsCalificacionPiloto.comentarios(item.idPiloto)}" ajax="false" icon="ui-icon-book" />
+                                <c:if test="#{wsSessionBean.admin}">
+                                    <p:menuitem value="Delete" actionListener="#{wsPilotoBean.delete(item.idPiloto)}" ajax="false" icon="ui-icon-close" />
+                                    <p:menuitem value="Edit" action="#{wsPilotoBean.editar(item.idPiloto)}" ajax="false" icon="ui-icon-close" />
+                                </c:if>
 
-                                <p:menuitem value="Delete" actionListener="#{wsPilotoBean.delete(item.idPiloto)}" ajax="false" icon="ui-icon-close" />
-                                <p:menuitem value="Edit" action="#{wsPilotoBean.editar(item.idPiloto)}" ajax="false" icon="ui-icon-close" />
+
+
                             </p:menuButton>
+
                         </f:facet>
                     </p:toolbar>
                 </p:fieldset>

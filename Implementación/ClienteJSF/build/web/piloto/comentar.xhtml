@@ -1,0 +1,31 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+
+        <h1>Comentarios</h1>
+        Comentar <p:outputLabel value="#{wsCalificacionPiloto.piloto.nombre}"/>
+        <h:panelGrid columns="2" cellpadding="5">
+
+                            <p:outputLabel for="comentario" value="Comentario:"></p:outputLabel>
+                            <left>  
+                                <p:inputText id="comentario"  value="#{wsCalificacionPiloto.calificacion.comentario}"/>
+                                <br/>
+                                <p:outputLabel for="calificacion" value="Calificación:" />
+                                <br/>
+                                <p:rating id="calificacion" value="#{wsCalificacionPiloto.rating}"/>
+                                <br/>
+                            </left>
+                            <p:commandButton value="Calificar"  ajax="false " action="#{wsCalificacionPiloto.calificar}"/>
+
+                        </h:panelGrid>  
+        <h:inputHidden value="#{wsCalificacionPiloto.piloto.idPiloto}"/>
+                   
+        </h:form>
+    </ui:define>
+
+</ui:composition>

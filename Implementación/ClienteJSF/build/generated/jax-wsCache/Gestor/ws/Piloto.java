@@ -25,6 +25,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="idPiloto" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="monoplaza" type="{http://ws/}monoplaza" minOccurs="0"/&gt;
  *         &lt;element name="multiplicador" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="numero" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -48,6 +49,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fechaNacimiento",
     "idPiloto",
     "imagen",
+    "monoplaza",
     "multiplicador",
     "nombre",
     "numero",
@@ -65,6 +67,7 @@ public class Piloto {
     protected XMLGregorianCalendar fechaNacimiento;
     protected Integer idPiloto;
     protected String imagen;
+    protected Monoplaza monoplaza;
     protected Double multiplicador;
     protected String nombre;
     protected Integer numero;
@@ -238,6 +241,30 @@ public class Piloto {
      */
     public void setImagen(String value) {
         this.imagen = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad monoplaza.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public Monoplaza getMonoplaza() {
+        return monoplaza;
+    }
+
+    /**
+     * Define el valor de la propiedad monoplaza.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Monoplaza }
+     *     
+     */
+    public void setMonoplaza(Monoplaza value) {
+        this.monoplaza = value;
     }
 
     /**

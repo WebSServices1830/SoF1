@@ -1,11 +1,8 @@
 
 package ws;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -19,7 +16,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="apuestas" type="{http://ws/}apuesta" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="contrasena" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="edad" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -38,7 +34,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "usuario", propOrder = {
-    "apuestas",
     "contrasena",
     "descripcion",
     "edad",
@@ -50,8 +45,6 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Usuario {
 
-    @XmlElement(nillable = true)
-    protected List<Apuesta> apuestas;
     protected String contrasena;
     protected String descripcion;
     protected Integer edad;
@@ -60,35 +53,6 @@ public class Usuario {
     protected String nombre;
     protected String rol;
     protected String usuario;
-
-    /**
-     * Gets the value of the apuestas property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the apuestas property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getApuestas().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Apuesta }
-     * 
-     * 
-     */
-    public List<Apuesta> getApuestas() {
-        if (apuestas == null) {
-            apuestas = new ArrayList<Apuesta>();
-        }
-        return this.apuestas;
-    }
 
     /**
      * Obtiene el valor de la propiedad contrasena.

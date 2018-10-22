@@ -18,12 +18,15 @@ import java.nio.file.StandardCopyOption;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.xml.ws.WebServiceRef;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
+
 @ManagedBean
 public class FileUploadView {
+
      String filePath = "C:\\xampp\\htdocs\\images\\users\\";
     
     private UploadedFile file;
@@ -72,4 +75,6 @@ public class FileUploadView {
                 System.out.println(e.getMessage());
                 }
     }
+
+    
 }

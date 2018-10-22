@@ -26,19 +26,19 @@ public class SesionCarreraFacade extends AbstractFacade<SesionCarrera> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public SesionCarreraFacade() {
         super(SesionCarrera.class);
     }
     
     public SesionCarrera obtenerSesionCarreraByPremio(int idPremio) {
-        return getEntityManager().createQuery("select sc "+"from SesionCarrera sc "+"where sc.premio.idPremio = :idPremio",SesionCarrera.class)
+        SesionCarrera res = getEntityManager().createQuery("select sc "+"from SesionCarrera sc "+"where sc.premio.idPremio = :idPremio",SesionCarrera.class)
                 .setParameter("idPremio", idPremio).getSingleResult();
+        if(res == null){
+            return new SesionCarrera();
+        }
+        return res;
     }
     
 }

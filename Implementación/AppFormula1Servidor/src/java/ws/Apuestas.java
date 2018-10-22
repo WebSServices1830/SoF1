@@ -66,5 +66,5 @@ public class Apuestas {
         //TODO write your implementation code here:
         return apuestaFacade.obtenerApuestasByUsuario(idUsuario);
     }
-        
+       
 }

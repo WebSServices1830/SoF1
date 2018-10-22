@@ -6,6 +6,7 @@
 package negocio;
 
 import entities.ResultadoCarrera;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
@@ -27,18 +28,18 @@ public class ResultadoCarreraFacade extends AbstractFacade<ResultadoCarrera> {
         return em;
     }
     
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 
     public ResultadoCarreraFacade() {
         super(ResultadoCarrera.class);
     }
     
     public List<ResultadoCarrera> obtenerResultadoCarreraBySesionCarrera(int idSesionCarrera) {
-        return getEntityManager().createQuery("select rc "+"from ResultadoCarrera rc "+"where rc.sesionCarrera.idSesion = :idSesionCarrera",ResultadoCarrera.class)
+        List<ResultadoCarrera> res = getEntityManager().createQuery("select rc "+"from ResultadoCarrera rc "+"where rc.sesionCarrera.idSesionCarrera = :idSesionCarrera"+" order by rc.puntos desc",ResultadoCarrera.class)
                 .setParameter("idSesionCarrera", idSesionCarrera).getResultList();
+        if(res == null){
+            return new ArrayList<>();
+        }
+        return res;
     }
 }

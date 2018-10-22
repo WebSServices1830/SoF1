@@ -43,6 +43,7 @@ public class ResultadoPractica implements Serializable {
     private SesionPractica sesionPractica;
     
     @JoinColumn(name="piloto_id")
+    @OneToOne
     private Piloto piloto;
 
     @Column
@@ -65,11 +66,11 @@ public class ResultadoPractica implements Serializable {
      *     {@link Piloto }
      *     
      */
-        @XmlIDREF
+        //
     public Piloto getPiloto() {
         return piloto;
     }
-    @XmlIDREF
+    //
     public SesionPractica getSesionPractica() {
         return sesionPractica;
     }
@@ -108,7 +109,7 @@ public class ResultadoPractica implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idResultado+"";
     }

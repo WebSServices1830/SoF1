@@ -33,18 +33,22 @@ public class Apuesta implements Serializable{
     private Integer idApuesta;
      
     @JoinColumn(name="piloto_id", nullable = false)
+    @OneToOne
     private Piloto piloto;
     
     @JoinColumn(name="premio_id", nullable = false)
+    @OneToOne
     private Premio premio;
     
     @JoinColumn(name="usuario_id")
+    @OneToOne
     private Usuario usuario;
     
     @Column
     private Double puntos;
     
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     
     @Column
@@ -80,7 +84,7 @@ public class Apuesta implements Serializable{
     public void setCantidadGanada(Double cantidadGanada) {    
         this.cantidadGanada = cantidadGanada;
     }
-    @XmlIDREF
+    
     public Piloto getPiloto() {
         return piloto;
     }
@@ -105,7 +109,7 @@ public class Apuesta implements Serializable{
      *     {@link Premio }
      *     
      */
-    @XmlIDREF
+    
     public Premio getPremio() {
         return premio;
     }
@@ -130,7 +134,7 @@ public class Apuesta implements Serializable{
      *     {@link Usuario }
      *     
      */
-    @XmlIDREF
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -226,7 +230,7 @@ public class Apuesta implements Serializable{
     public void setId(Integer id) {
         this.idApuesta = id;
     }
-    @XmlID
+    //
     public String getIdXml() {
         return idApuesta+"";
     }

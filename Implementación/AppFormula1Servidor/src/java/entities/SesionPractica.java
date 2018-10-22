@@ -8,6 +8,7 @@
 
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,20 +38,13 @@ import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Table(name = "SesionPractica")
-public class SesionPractica {
+public class SesionPractica implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sesionpractica_id", nullable = false, unique = true)
-    private Integer idSesion;
+    private Integer idSesionPractica;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="premio_id")
-    private Premio premio;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionPractica")
-    private List<ResultadoPractica> resultados;
-
     @Size(max = 30)
     @Column
     private String nombre;
@@ -58,8 +52,23 @@ public class SesionPractica {
     @Column
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sesionPractica")
+    private List<ResultadoPractica> resultados;
 
-    @XmlIDREF
+    @JoinColumn(name="premio_id")
+    @OneToOne
+    private Premio premio;
+    
+
+    public Integer getIdSesionPractica() {
+        return idSesionPractica;
+    }
+
+    public void setIdSesionPractica(Integer idSesionPractica) {
+        this.idSesionPractica = idSesionPractica;
+    }
+
     public Premio getPremio() {
         return premio;
     }
@@ -68,33 +77,8 @@ public class SesionPractica {
         this.premio = premio;
     }
 
-    /**
-     * Gets the value of the idSesion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    @XmlID
-    public String getIdXml() {
-        return idSesion+"";
-    }
-    public Integer getIdSesion() {
-        return idSesion;
-    }
 
-    /**
-     * Sets the value of the idSesion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setIdSesion(Integer value) {
-        this.idSesion = value;
-    }
+    
 
     /**
      * Gets the value of the nombre property.

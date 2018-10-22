@@ -63,7 +63,7 @@ public class CalificacionPiloto implements Serializable {
      *     {@link Usuario }
      *     
      */
-    @XmlIDREF
+    //
     public Usuario getUsuario() {
         return usuario;
     }
@@ -97,7 +97,7 @@ public class CalificacionPiloto implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idCalificacion+"";
     }
@@ -188,7 +188,7 @@ public class CalificacionPiloto implements Serializable {
     public void setFecha(Date value) {
         this.fecha = value;
     }
-    @XmlIDREF
+    //
     public Piloto getPiloto() {
         return piloto;
     }

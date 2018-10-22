@@ -1,13 +1,11 @@
 package entities;
 
 import entities.Campeonato;
-import entities.Escuderia;
-import entities.Piloto;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-16T00:58:46")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-21T21:31:00")
 @StaticMetamodel(Monoplaza.class)
 public class Monoplaza_ { 
 
@@ -21,7 +19,5 @@ public class Monoplaza_ {
     public static volatile SingularAttribute<Monoplaza, Double> velMax;
     public static volatile SingularAttribute<Monoplaza, String> modelo;
     public static volatile SingularAttribute<Monoplaza, Campeonato> campeonato;
-    public static volatile SingularAttribute<Monoplaza, Escuderia> escuderia;
-    public static volatile SingularAttribute<Monoplaza, Piloto> piloto;
 
 }

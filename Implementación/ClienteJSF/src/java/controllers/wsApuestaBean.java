@@ -9,19 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.xml.ws.WebServiceRef;
+import ws.Apuesta;
+import ws.Apuestas_Service;
+import ws.Campeonato;
 import ws.Gestor_Service;
-import wsApuesta.Premio;
-import wsApuesta.Apuesta;
-import wsApuesta.Apuestas_Service;
+import ws.Premio;
+import ws.Usuario;
 
 /**
  *
- * @author Michael
+ * @author USUARIO
  */
 @Named(value = "wsApuestaBean")
-@RequestScoped
+@ManagedBean
 public class wsApuestaBean {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
@@ -30,67 +33,115 @@ public class wsApuestaBean {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/AppFormula1Servidor/Apuestas.wsdl")
     private Apuestas_Service service;
     
-    List<ws.Premio> premios = new ArrayList<ws.Premio>();
+    @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    @ManagedProperty(value = "#{wsSessionBean.campeonato}")
+    private Campeonato c;
     
+    
+    public Campeonato getC() {
+        return c;
+    }
+
+    public void setC(Campeonato c) {
+        this.c = c;
+    }
+    
+    
+    List<Premio> premios = new ArrayList<Premio>();
+
     List<Apuesta> apuestas = new ArrayList<Apuesta>();
-    
-    Apuesta apuesta = new Apuesta();
-    
     int idPremio;
     int idPiloto;
-    
+    Apuesta apuesta = new Apuesta();
+
     /**
      * Creates a new instance of wsApuestaBean
      */
     public wsApuestaBean() {
     }
     
-    public void apostar(){
+    public String apostar(){
         
-        hacerApuesta(1, apuesta.getCantidad(), idPremio, idPiloto);
+        this.hacerApuesta(usuario.getIdUsuario(), apuesta.getCantidad(), idPremio, idPiloto);
+        return "listado";
     }
-    
+
+
+
     public String getFechaConFormato(String day){
         
         return day.substring(0,10);
     }
     
-    public String verNombre(Object o){
-        Premio p = (Premio) o;
-        return p.getNombre();
+    public String getEfectuada(boolean b){
+        if(b){
+            return "Si";
+        }
+        return "No";
     }
-//------------------------------------------------------------------
     
+    public String crearApuesta(){
     
-    private java.util.List<ws.Premio> findAllPremio() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service_1.getGestorPort();
-        return port.findAllPremio();
+        return "crear";
     }
+    
+    //----------------------------------------------------------------------------------------------
 
     private boolean hacerApuesta(int idUsuario, double cantidad, int idPremio, int idPiloto) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        wsApuesta.Apuestas port = service.getApuestasPort();
+        ws.Apuestas port = service.getApuestasPort();
         return port.hacerApuesta(idUsuario, cantidad, idPremio, idPiloto);
     }
 
-    private java.util.List<wsApuesta.Apuesta> obtenerApuestasByUsuario(int idUsuario) {
+    private java.util.List<ws.Apuesta> obtenerApuestasByUsuario(int idUsuario) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        wsApuesta.Apuestas port = service.getApuestasPort();
+        ws.Apuestas port = service.getApuestasPort();
         return port.obtenerApuestasByUsuario(idUsuario);
     }
-    
-//------------------------------------------------------------------
 
-    public Apuesta getApuesta() {
-        return apuesta;
+    private java.util.List<ws.Premio> findAllPremio(int id) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Gestor port = service_1.getGestorPort();
+        return port.obtenerPremiosByCampeonato(id);
+    }
+    
+  //----------------------------------------------------
+
+    public List<Premio> getPremios() {
+        premios = this.findAllPremio(c.getIdCampeonato());
+        return premios;
     }
 
-    public void setApuesta(Apuesta apuesta) {
-        this.apuesta = apuesta;
+    public void setPremios(List<Premio> premios) {
+        this.premios = premios;
+    }
+
+    
+    public List<Apuesta> getApuestas() {
+    /*
+        if(this.usuario != null){
+            apuestas = this.obtenerApuestasByUsuario(this.usuario.getIdUsuario());
+        }else{
+            apuestas = new ArrayList<Apuesta>();
+        }
+    */    
+        return this.obtenerApuestasByUsuario(usuario.getIdUsuario());
+    }
+
+    public void setApuestas(List<Apuesta> apuestas) {
+        this.apuestas = apuestas;
     }
 
     public int getIdPremio() {
@@ -109,26 +160,16 @@ public class wsApuestaBean {
         this.idPiloto = idPiloto;
     }
 
-    public List<ws.Premio> getPremios() {
-        premios = findAllPremio();
-        return premios;
-    }
-
-    public void setPremios(List<ws.Premio> premios) {
-        this.premios = premios;
-    }
-
-    public List<Apuesta> getApuestas() {
-        apuestas = obtenerApuestasByUsuario(1);
-        return apuestas;
-    }
-
-    public void setApuestas(List<Apuesta> apuestas) {
-        this.apuestas = apuestas;
-    }
-
-    
-
+    public Apuesta getApuesta() {
         
+        return apuesta;
+    }
+
+    public void setApuesta(Apuesta apuesta) {
+        this.apuesta = apuesta;
+    }
+    
+    
     
 }
+

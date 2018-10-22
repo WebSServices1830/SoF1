@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="campeonato" type="{http://ws/}campeonato" minOccurs="0"/&gt;
  *         &lt;element name="detalle" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="idEscuderia" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "escuderia", propOrder = {
+    "campeonato",
     "detalle",
     "idEscuderia",
     "imagen",
@@ -51,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Escuderia {
 
+    protected Campeonato campeonato;
     protected String detalle;
     protected Integer idEscuderia;
     protected String imagen;
@@ -62,6 +65,30 @@ public class Escuderia {
     protected Piloto piloto1;
     protected Piloto piloto2;
     protected String tecnicoLider;
+
+    /**
+     * Obtiene el valor de la propiedad campeonato.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Campeonato }
+     *     
+     */
+    public Campeonato getCampeonato() {
+        return campeonato;
+    }
+
+    /**
+     * Define el valor de la propiedad campeonato.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Campeonato }
+     *     
+     */
+    public void setCampeonato(Campeonato value) {
+        this.campeonato = value;
+    }
 
     /**
      * Obtiene el valor de la propiedad detalle.

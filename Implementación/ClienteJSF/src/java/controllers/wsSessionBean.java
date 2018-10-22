@@ -19,8 +19,10 @@ import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
 import ws.Auth_Service;
+
 import ws.Campeonato;
 import ws.Gestor_Service;
+import ws.Premio;
 import ws.Usuario;
 
 /**
@@ -30,25 +32,37 @@ import ws.Usuario;
 @Named(value = "wsSessionBean")
 @SessionScoped
 public class wsSessionBean implements Serializable {
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
+ @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
     private Gestor_Service service_1;
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Auth/Auth.wsdl")
     private Auth_Service service;
+    
+    
     static String IP="localhost";
     String filePath = "C:\\xampp\\htdocs\\images\\users\\";
     
     List<Campeonato> campeonatos;
     Campeonato campeonato;
 
+    Premio premio;
+
+    public Premio getPremio() {
+        return premio;
+    }
+
+    public void setPremio(Premio premio) {
+        this.premio = premio;
+    }
+    
+    
+    
     public List<Campeonato> getCampeonatos() {
         campeonatos=findAllCampeonato();
         if(campeonatos.size()>0 && campeonato == null) campeonato=campeonatos.get(0);
         return campeonatos;
     }
      public void change(Campeonato c){
-         System.out.println("cambiando "+c.getAnio());
         campeonato=c;
     }
 
@@ -111,10 +125,10 @@ public class wsSessionBean implements Serializable {
 
     public String registro() throws IOException {
         usuarioSession.setRol("usuario");
+        upload();
         registrarUsuario(usuarioSession);
         System.out.println("registro.");
         estado = true;
-        upload();
         return "index";
     }
 
@@ -169,6 +183,8 @@ public class wsSessionBean implements Serializable {
         byte[] bytes = null;
 
         if (null != file && file.getSize()>0) {
+        usuarioSession.setImagen("http://"+IP+"/images/users/"+usuarioSession.getUsuario()+".jpg");
+               
             copyFile(usuarioSession.getUsuario()+".jpg", file.getInputstream());
           FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -191,7 +207,6 @@ public class wsSessionBean implements Serializable {
                 in.close();
                 out.flush();
                 out.close();
-                usuarioSession.setImagen(IP+"/images/users/"+usuarioSession.getUsuario()+".jpg");
                 System.out.println("New file created!");
                 } catch (IOException e) {
                 System.out.println(e.getMessage());

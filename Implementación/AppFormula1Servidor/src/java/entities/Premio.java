@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
@@ -29,48 +30,58 @@ public class Premio implements Serializable {
     private Integer idPremio;
     
     @Column
-    private Boolean finalizado;
+    private Boolean fin;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="campeonato_id")
     private Campeonato campeonato;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy ="premio")
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "premio")
     private SesionCarrera sesionCarrera;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy ="premio")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "premio")
     private SesionClasificacion sesionClasificacion;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy ="premio")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "premio")
     private SesionPractica sesionPractica;
 
     @JoinColumn(name="circuito_id")
+    @OneToOne
     private Circuito circuito;
-
+    
     @Size(max = 30)
     @Column
     private String nombre;
 
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaInicio;
 
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaFin;
 
-    public Boolean getFinalizado() {
-        return finalizado;
+    
+    
+    
+    
+    
+    public Boolean getFin() {
+        return fin;
     }
 
-    public void setFinalizado(Boolean finalizado) {
-        this.finalizado = finalizado;
+    public void setFin(Boolean fin) {
+        this.fin = fin;
     }
 
-        @XmlTransient
+    
+
+    @XmlTransient
     public SesionCarrera getSesionCarrera() {
         return sesionCarrera;
     }
 
-
+    
     public void setSesionCarrera(SesionCarrera sesionCarrera) {
         this.sesionCarrera = sesionCarrera;
     }
@@ -78,7 +89,7 @@ public class Premio implements Serializable {
     public SesionClasificacion getSesionClasificacion() {
         return sesionClasificacion;
     }
-
+    
     public void setSesionClasificacion(SesionClasificacion sesionClasificacion) {
         this.sesionClasificacion = sesionClasificacion;
     }
@@ -86,124 +97,18 @@ public class Premio implements Serializable {
     public SesionPractica getSesionPractica() {
         return sesionPractica;
     }
-
-    /**
-     * Gets the value of the sesionesCarrera property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the sesionesCarrera property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSesionesCarrera().add(newItem);
-     * </pre>
-     *
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SesionCarrera }
-     *
-     * 
-     */
-    /**
-     * Gets the value of the sesionesClasificacion property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the sesionesClasificacion property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSesionesClasificacion().add(newItem);
-     * </pre>
-     *
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SesionClasificacion }
-     *
-     * 
-     */
-    /**
-     * Gets the value of the sesionesPractica property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the sesionesPractica property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSesionesPractica().add(newItem);
-     * </pre>
-     *
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SesionPractica }
-     *
-     * 
-     */
     public void setSesionPractica(SesionPractica sesionPractica) {
         this.sesionPractica = sesionPractica;
     }
 
-    /**
-     * Gets the value of the circuito property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Circuito }
-     *     
-     */
-        @XmlIDREF
     public Circuito getCircuito() {
         return circuito;
     }
 
-    /**
-     * Sets the value of the circuito property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Circuito }
-     *     
-     */
     public void setCircuito(Circuito value) {
         this.circuito = value;
     }
 
-    /**
-     * Gets the value of the calificaciones property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the calificaciones property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCalificaciones().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Calificacion }
-     * 
-     * 
-     */
 
 
     /**
@@ -214,10 +119,8 @@ public class Premio implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
-    public String getIdXml() {
-        return idPremio+"";
-    }
+    //
+
     public Integer getIdPremio() {
         return idPremio;
     }
@@ -305,7 +208,7 @@ public class Premio implements Serializable {
     public void setFechaFin(Date value) {
         this.fechaFin = value;
     }
-        @XmlIDREF
+        //
     public Campeonato getCampeonato() {
         return campeonato;
     }

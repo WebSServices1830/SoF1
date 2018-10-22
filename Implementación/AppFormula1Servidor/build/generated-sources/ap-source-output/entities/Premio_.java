@@ -10,7 +10,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-16T00:58:46")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-21T21:31:00")
 @StaticMetamodel(Premio.class)
 public class Premio_ { 
 
@@ -18,7 +18,7 @@ public class Premio_ {
     public static volatile SingularAttribute<Premio, Circuito> circuito;
     public static volatile SingularAttribute<Premio, SesionClasificacion> sesionClasificacion;
     public static volatile SingularAttribute<Premio, Date> fechaInicio;
-    public static volatile SingularAttribute<Premio, Boolean> finalizado;
+    public static volatile SingularAttribute<Premio, Boolean> fin;
     public static volatile SingularAttribute<Premio, String> nombre;
     public static volatile SingularAttribute<Premio, Date> fechaFin;
     public static volatile SingularAttribute<Premio, Campeonato> campeonato;

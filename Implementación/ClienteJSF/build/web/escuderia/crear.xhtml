@@ -22,29 +22,36 @@
                 
                 <p:outputLabel for="lidert" value="Lider técnico:"/>
                 <p:inputText id="lidert" value="#{wsEscuderiaBean.escuderia.tecnicoLider}"/>
-         <!--       
+                
+                <p:outputLabel value="Pais: "/>
+                          <p:selectOneMenu value="#{wsEscuderiaBean.idpais}">
+                    <f:selectItem itemLabel="Selecciona un pais"/>
+                    <f:selectItems value="#{wsPilotoBean.paises}" 
+                                   var="p" itemValue="#{p.idPais}" itemLabel="#{p.nombre}"                >           
+                                  </f:selectItems>
+                </p:selectOneMenu>
+      
                 <p:outputLabel for="car" value="Piloto 1:    " />
-              <p:selectOneMenu id="car" value="#{wsEscuderiaBean.piloto}">
-                    <f:selectItem itemLabel="Select One" itemValue="" />
-            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p1" itemLabel="#{p1.nombre}">           
+                <p:selectOneMenu id="car" value="#{wsEscuderiaBean.idp1}">
+                    <f:selectItem itemLabel="Seleccionar al piloto 1" itemValue="" />
+            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p1" itemLabel="#{p1.nombre}"
+                           itemValue="#{p1.idPiloto}" 
+                           >           
             </f:selectItems>
         </p:selectOneMenu>
-                
-                <p:outputLabel for="m1" value="Monoplaza 1:    " />
-                <p:selectOneMenu id="m1" value="#{wsEscuderiaBean.m1}">
-                    <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m1" itemLabel="#{m1.marca}">           
-            </f:selectItems>
-        </p:selectOneMenu>
-                
-                
-                
+              
                 <p:outputLabel for="car2" value="Piloto 2:    " />
-              <p:selectOneMenu id="car2" value="#{wsEscuderiaBean.piloto2}">
-            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p2" itemLabel="#{p2.nombre}">           
+                <p:selectOneMenu id="car2" value="#{wsEscuderiaBean.idp2}">
+                    <f:selectItem itemLabel="Seleccionar al piloto 2" itemValue="" />
+            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p2" itemLabel="#{p2.nombre}"
+                           itemValue="#{p2.idPiloto}" 
+                           >           
             </f:selectItems>
-        </p:selectOneMenu>-->
-          <p:outputLabel for="m1" value="Monoplaza 1:    " />
+        </p:selectOneMenu>
+              
+          <p:outputLabel for="m1" value="Monoplaza 1:" />
                 <p:selectOneMenu id="m1" value="#{wsEscuderiaBean.mid1}">
+                    <f:selectItem itemLabel="Seleccionar monoplaza 1" itemValue="" />
                     <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m1"
                                    itemValue="#{m1.idMonoplaza}"   itemLabel="#{m1.marca}">           
             </f:selectItems>
@@ -52,12 +59,18 @@
          
                     <p:outputLabel for="m2" value="Monoplaza 2:    " />
                     <p:selectOneMenu id="m2" value="#{wsEscuderiaBean.mid2}">
+                    <f:selectItem itemLabel="Seleccionar monoplaza 2" itemValue="" />
                     <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m2" 
-                                   itemValue="#{m2.idMonoplaza}"   itemLabel="#{m2.marca}">           
+                                    itemValue="#{m2.idMonoplaza}"   itemLabel="#{m2.marca}">           
             </f:selectItems>
         </p:selectOneMenu>
                 
-          
+                   <p:outputLabel value="Detalle:" />                
+                   <p:inputTextarea value="#{wsEscuderiaBean.escuderia.detalle}" cols="30" rows="10"/>
+        
+                    
+          <p:outputLabel value="Foto:" />                
+          <p:fileUpload value="#{wsEscuderiaBean.file}" mode="simple"   />
 
             </h:panelGrid>
             <p:commandButton value="Guardar" action="#{wsEscuderiaBean.save}" ajax="false"  />

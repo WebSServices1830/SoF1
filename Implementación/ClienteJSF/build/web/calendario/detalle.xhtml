@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../Template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid columns="2"  >
+                <h:panelGrid columns="1"  >
+                    <h1>#{wsCampeonato.premio.nombre}</h1>
+                    <h:outputText value="#{wsCampeonato.fechas(wsCampeonato.premio)}"/>
+                    <p:rating value="#{wsCampeonato.puntaje()}" readonly="true" />
+                    <p:tooltip />
+                    <p:galleria value="#{wsCampeonato.fotos}" var="foto"  panelHeight="270" >
+                        <p:graphicImage url="#{foto}" alt="#{wsCampeonato.premio.nombre}"/>
+                    </p:galleria> 
+                </h:panelGrid>
+                <h:form>
+                 
+                    <p:inputText value="#{wsCampeonato.premio.circuito.idCircuito}"/>
+                    <p:commandButton action="#{wsCampeonato.detallePista}"  value="circuito"/>
+                    <p:panelMenu style="align-content: center;border-bottom-color: #045491;elevation: higher; width:500px">
+                        <p:submenu label="Informacion">
+                            <p:menuitem value="Circuito" action="#{wsCampeonato.detallePista}" ajax="false" icon="ui-icon-disk" />
+                                 
+                            <p:menuitem value="Ultimo ganador  #{wsCampeonato.ganador(wsCampeonato.premio)}" icon="ui-icon-arrowrefresh-1-w"/>
+ 
+                            <p:menuitem value="Comentarios" action="#{wsCampeonato.comentarios}" outcome="/comentarios/comentarios" icon="ui-icon-disk" />
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Sesiones">
+                            <p:menuitem value="Carrera" action="#{wsResultados.detCarrera(wsCampeonato.premio.idPremio)}" outcome="/resultados/resCarrera" icon="ui-icon-flag" ajax="false" />
+                            <p:menuitem value="Clasificacion" action="#{wsResultados.detClasificacion(wsCampeonato.premio.idPremio)}" outcome="/resultados/resClasificacion"  ajax="false" />
+                            <p:menuitem value="Practica" action="#{wsResultados.detPractica(wsCampeonato.premio.idPremio)}" outcome="/resultados/resPractica" ajax="false" icon="ui-icon-flag"/>
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Michael/Documents/WS/GitHub/SoF1/Implementación/ClienteJSF/web/apuesta/listado.xhtml</file>
-            <file>file:/C:/Users/Michael/Documents/WS/GitHub/SoF1/Implementación/ClienteJSF/build/generated-sources/jax-ws/wsApuesta/Premio.java</file>
-            <file>file:/C:/Users/Michael/Documents/WS/GitHub/SoF1/Implementación/ClienteJSF/src/java/controllers/wsApuestaBean.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/src/java/controllers/wsEscuderiaBean.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/web/escuderia/listado.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/web/escuderia/crear.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/web/monoplaza/listado.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/web/escuderia/editar.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/src/java/controllers/wsMonoplazaBean.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/web/piloto/crear.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/octavo/ws/rama/SoF1/ClienteJSF/src/java/controllers/wsPilotoBean.java</file>
         </group>
     </open-files>
 </project-private>

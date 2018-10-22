@@ -10,6 +10,10 @@
     <system systemId="http://localhost:8080/Auth/Auth?xsd=1" uri="src/conf/xml-resources/web-service-references/Auth/wsdl/localhost_8080/Auth/Auth.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/Gestor/Gestor?WSDL" uri="src/conf/xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.wsdl"/>
     <system systemId="http://localhost:8080/Gestor/Gestor?xsd=1" uri="src/conf/xml-resources/web-service-references/Gestor/wsdl/localhost_8080/Gestor/Gestor.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/AppFormula1Servidor/Apuestas?wsdl" uri="src/conf/xml-resources/web-service-references/Apuestas/wsdl/localhost_8080/AppFormula1Servidor/Apuestas.wsdl"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Apuestas?WSDL" uri="src/conf/xml-resources/web-service-references/Apuestas/wsdl/localhost_8080/AppFormula1Servidor/Apuestas.wsdl"/>
     <system systemId="http://localhost:8080/AppFormula1Servidor/Apuestas?xsd=1" uri="src/conf/xml-resources/web-service-references/Apuestas/wsdl/localhost_8080/AppFormula1Servidor/Apuestas.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Opiniones?WSDL" uri="src/conf/xml-resources/web-service-references/Opiniones/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl"/>
+    <system systemId="http://localhost:8080/AppFormula1Servidor/Opiniones?xsd=1" uri="src/conf/xml-resources/web-service-references/Opiniones/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Resultados/Resultados?WSDL" uri="src/conf/xml-resources/web-service-references/Resultados/wsdl/localhost_8080/Resultados/Resultados.wsdl"/>
+    <system systemId="http://localhost:8080/Resultados/Resultados?xsd=1" uri="src/conf/xml-resources/web-service-references/Resultados/wsdl/localhost_8080/Resultados/Resultados.xsd_1.xsd"/>
 </catalog>

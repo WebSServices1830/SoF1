@@ -43,6 +43,7 @@ public class ResultadoCarrera implements Serializable {
     private SesionCarrera sesionCarrera;
     
     @JoinColumn(name="piloto_id")
+    @OneToOne
     private Piloto piloto;
     
     @Column
@@ -68,11 +69,11 @@ public class ResultadoCarrera implements Serializable {
      *     {@link Piloto }
      *     
      */
-    @XmlIDREF
+    //
     public Piloto getPiloto() {
         return piloto;
     }
-    @XmlIDREF
+    //
     public SesionCarrera getSesionCarrera() {
         return sesionCarrera;
     }
@@ -111,7 +112,7 @@ public class ResultadoCarrera implements Serializable {
      *     {@link Integer }
      *     
      */
-    @XmlID
+    //
     public String getIdXml() {
         return idResultado+"";
     }

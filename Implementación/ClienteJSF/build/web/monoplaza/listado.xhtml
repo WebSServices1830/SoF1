@@ -32,12 +32,15 @@
                             <h:outputText
                                 value="Torque:  #{item.torque}"/>
                             
+                            <h:outputText
+                                value="velocidad Máxima :  #{item.velMax} km/h"/>
+                            
 
                         </h:panelGrid>
 
 
                     </h:panelGrid>
-                   <!-- <c:if test="#{wsSessionBean.admin}">-->
+                    <c:if test="#{wsSessionBean.admin}">
                     <p:toolbar>
                         <f:facet name="right">
                             <p:menuButton value="Options">
@@ -47,6 +50,7 @@
                             </p:menuButton>
                         </f:facet>
                     </p:toolbar>
+                    </c:if>
                         
                 </p:fieldset>
             </ui:repeat>

@@ -9,7 +9,6 @@
         
         <p:tooltip />
         <h:form enctype="multipart/form-data">
-            <p:growl id="messages" showDetail="true"/>
             
             <h:panelGrid columns="2">
             <h:panelGrid columns="2">
@@ -23,6 +22,14 @@
                 
                
                 <p:outputLabel value="Pais de nacimiento:"></p:outputLabel>
+                 <p:selectOneMenu value="#{wsPilotoBean.idpais}">
+                    <f:selectItem itemLabel="Selecciona un pais"/>
+                    <f:selectItems value="#{wsPilotoBean.paises}" 
+                                   var="p" itemValue="#{p.idPais}" itemLabel="#{p.nombre}"                >           
+                                  </f:selectItems>
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Lugar de nacimiento:"></p:outputLabel>
                 <p:inputText value="#{wsPilotoBean.piloto.paisNacimiento}"/>
                 
                 <p:outputLabel for="button" value="Fecha Nacimiento:" />
@@ -41,7 +48,7 @@
                 <p:column style=" position: relative; top: -200px;">
                     
                 
-                    <img src="#{wsPilotoBean.piloto.imagen}" width="140px" height="180px" style="vertical-align: top;"/>;
+                    <img src="#{wsPilotoBean.piloto.imagen}" width="140px" height="180px" style="vertical-align: top;"/>    
             </p:column>
             </h:panelGrid>
             

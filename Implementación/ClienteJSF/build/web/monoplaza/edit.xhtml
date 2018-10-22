@@ -31,6 +31,12 @@
                  <p:outputLabel value="Torque:"/>
                  <p:inputText value="#{wsMonoplazaBean.monoplaza.torque}"/>
                  
+                 <p:outputLabel value="Velocidad Máxima:"/>
+                 <p:panelGrid columns="2">
+                     
+                 <p:inputText id="vel" value="#{wsMonoplazaBean.monoplaza.velMax}"/>
+                     <p:slider style="width: 150px" for="vel" minValue="0" maxValue="300"/>
+                 </p:panelGrid>
           <p:outputLabel value="Foto:" />                
           <p:fileUpload value="#{wsMonoplazaBean.file}" mode="simple"   />
             </h:panelGrid>

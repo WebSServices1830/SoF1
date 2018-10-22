@@ -4,110 +4,29 @@
 <xsd:import namespace="http://ws/" schemaLocation="http://localhost:8080/Gestor/Gestor?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="createEscuderia">
-<part name="parameters" element="tns:createEscuderia"/>
+<message name="obtenerEscuderiasByCampeonato">
+<part name="parameters" element="tns:obtenerEscuderiasByCampeonato"/>
 </message>
-<message name="createMonoplaza">
-<part name="parameters" element="tns:createMonoplaza"/>
+<message name="obtenerEscuderiasByCampeonatoResponse">
+<part name="parameters" element="tns:obtenerEscuderiasByCampeonatoResponse"/>
 </message>
-<message name="createPiloto">
-<part name="parameters" element="tns:createPiloto"/>
+<message name="obtenerMonoplazasByCampeonato">
+<part name="parameters" element="tns:obtenerMonoplazasByCampeonato"/>
 </message>
-<message name="findAllEscuderia">
-<part name="parameters" element="tns:findAllEscuderia"/>
+<message name="obtenerMonoplazasByCampeonatoResponse">
+<part name="parameters" element="tns:obtenerMonoplazasByCampeonatoResponse"/>
 </message>
-<message name="findAllEscuderiaResponse">
-<part name="parameters" element="tns:findAllEscuderiaResponse"/>
+<message name="obtenerPilotosByCampeonato">
+<part name="parameters" element="tns:obtenerPilotosByCampeonato"/>
 </message>
-<message name="findEscuderia">
-<part name="parameters" element="tns:findEscuderia"/>
+<message name="obtenerPilotosByCampeonatoResponse">
+<part name="parameters" element="tns:obtenerPilotosByCampeonatoResponse"/>
 </message>
-<message name="findEscuderiaResponse">
-<part name="parameters" element="tns:findEscuderiaResponse"/>
+<message name="obtenerPremiosByCampeonato">
+<part name="parameters" element="tns:obtenerPremiosByCampeonato"/>
 </message>
-<message name="editEscuderia">
-<part name="parameters" element="tns:editEscuderia"/>
-</message>
-<message name="findAllPremio">
-<part name="parameters" element="tns:findAllPremio"/>
-</message>
-<message name="findAllPremioResponse">
-<part name="parameters" element="tns:findAllPremioResponse"/>
-</message>
-<message name="removePremio">
-<part name="parameters" element="tns:removePremio"/>
-</message>
-<message name="findMonoplaza">
-<part name="parameters" element="tns:findMonoplaza"/>
-</message>
-<message name="findMonoplazaResponse">
-<part name="parameters" element="tns:findMonoplazaResponse"/>
-</message>
-<message name="removeEscuderia">
-<part name="parameters" element="tns:removeEscuderia"/>
-</message>
-<message name="findAllCircuito">
-<part name="parameters" element="tns:findAllCircuito"/>
-</message>
-<message name="findAllCircuitoResponse">
-<part name="parameters" element="tns:findAllCircuitoResponse"/>
-</message>
-<message name="findAllPiloto">
-<part name="parameters" element="tns:findAllPiloto"/>
-</message>
-<message name="findAllPilotoResponse">
-<part name="parameters" element="tns:findAllPilotoResponse"/>
-</message>
-<message name="editPremio">
-<part name="parameters" element="tns:editPremio"/>
-</message>
-<message name="removeCircuito">
-<part name="parameters" element="tns:removeCircuito"/>
-</message>
-<message name="editMonoplaza">
-<part name="parameters" element="tns:editMonoplaza"/>
-</message>
-<message name="editCircuito">
-<part name="parameters" element="tns:editCircuito"/>
-</message>
-<message name="removeMonoplaza">
-<part name="parameters" element="tns:removeMonoplaza"/>
-</message>
-<message name="findPiloto">
-<part name="parameters" element="tns:findPiloto"/>
-</message>
-<message name="findPilotoResponse">
-<part name="parameters" element="tns:findPilotoResponse"/>
-</message>
-<message name="removePiloto">
-<part name="parameters" element="tns:removePiloto"/>
-</message>
-<message name="findPremio">
-<part name="parameters" element="tns:findPremio"/>
-</message>
-<message name="findPremioResponse">
-<part name="parameters" element="tns:findPremioResponse"/>
-</message>
-<message name="findCircuito">
-<part name="parameters" element="tns:findCircuito"/>
-</message>
-<message name="findCircuitoResponse">
-<part name="parameters" element="tns:findCircuitoResponse"/>
-</message>
-<message name="createPremio">
-<part name="parameters" element="tns:createPremio"/>
-</message>
-<message name="findAllMonoplaza">
-<part name="parameters" element="tns:findAllMonoplaza"/>
-</message>
-<message name="findAllMonoplazaResponse">
-<part name="parameters" element="tns:findAllMonoplazaResponse"/>
-</message>
-<message name="createCircuito">
-<part name="parameters" element="tns:createCircuito"/>
-</message>
-<message name="editPiloto">
-<part name="parameters" element="tns:editPiloto"/>
+<message name="obtenerPremiosByCampeonatoResponse">
+<part name="parameters" element="tns:obtenerPremiosByCampeonatoResponse"/>
 </message>
 <message name="findAllCampeonato">
 <part name="parameters" element="tns:findAllCampeonato"/>
@@ -115,60 +34,170 @@
 <message name="findAllCampeonatoResponse">
 <part name="parameters" element="tns:findAllCampeonatoResponse"/>
 </message>
-<message name="findAllPilotoByEscuderia">
-<part name="parameters" element="tns:findAllPilotoByEscuderia"/>
+<message name="createEscuderia">
+<part name="parameters" element="tns:createEscuderia"/>
 </message>
-<message name="findAllPilotoByEscuderiaResponse">
-<part name="parameters" element="tns:findAllPilotoByEscuderiaResponse"/>
+<message name="editMonoplaza">
+<part name="parameters" element="tns:editMonoplaza"/>
+</message>
+<message name="editCircuito">
+<part name="parameters" element="tns:editCircuito"/>
+</message>
+<message name="removeEscuderia">
+<part name="parameters" element="tns:removeEscuderia"/>
+</message>
+<message name="createCampeonato">
+<part name="parameters" element="tns:createCampeonato"/>
+</message>
+<message name="editCampeonato">
+<part name="parameters" element="tns:editCampeonato"/>
+</message>
+<message name="removeCircuito">
+<part name="parameters" element="tns:removeCircuito"/>
+</message>
+<message name="editPais">
+<part name="parameters" element="tns:editPais"/>
+</message>
+<message name="findCampeonato">
+<part name="parameters" element="tns:findCampeonato"/>
+</message>
+<message name="findCampeonatoResponse">
+<part name="parameters" element="tns:findCampeonatoResponse"/>
+</message>
+<message name="removePiloto">
+<part name="parameters" element="tns:removePiloto"/>
+</message>
+<message name="findEscuderia">
+<part name="parameters" element="tns:findEscuderia"/>
+</message>
+<message name="findEscuderiaResponse">
+<part name="parameters" element="tns:findEscuderiaResponse"/>
+</message>
+<message name="findMonoplaza">
+<part name="parameters" element="tns:findMonoplaza"/>
+</message>
+<message name="findMonoplazaResponse">
+<part name="parameters" element="tns:findMonoplazaResponse"/>
+</message>
+<message name="findPiloto">
+<part name="parameters" element="tns:findPiloto"/>
+</message>
+<message name="findPilotoResponse">
+<part name="parameters" element="tns:findPilotoResponse"/>
+</message>
+<message name="findCircuito">
+<part name="parameters" element="tns:findCircuito"/>
+</message>
+<message name="findCircuitoResponse">
+<part name="parameters" element="tns:findCircuitoResponse"/>
+</message>
+<message name="findPremio">
+<part name="parameters" element="tns:findPremio"/>
+</message>
+<message name="findPremioResponse">
+<part name="parameters" element="tns:findPremioResponse"/>
+</message>
+<message name="removePremio">
+<part name="parameters" element="tns:removePremio"/>
+</message>
+<message name="findAllEscuderia">
+<part name="parameters" element="tns:findAllEscuderia"/>
+</message>
+<message name="findAllEscuderiaResponse">
+<part name="parameters" element="tns:findAllEscuderiaResponse"/>
+</message>
+<message name="createPremio">
+<part name="parameters" element="tns:createPremio"/>
+</message>
+<message name="findAllCircuito">
+<part name="parameters" element="tns:findAllCircuito"/>
+</message>
+<message name="findAllCircuitoResponse">
+<part name="parameters" element="tns:findAllCircuitoResponse"/>
+</message>
+<message name="findAllPais">
+<part name="parameters" element="tns:findAllPais"/>
+</message>
+<message name="findAllPaisResponse">
+<part name="parameters" element="tns:findAllPaisResponse"/>
+</message>
+<message name="createMonoplaza">
+<part name="parameters" element="tns:createMonoplaza"/>
+</message>
+<message name="editPiloto">
+<part name="parameters" element="tns:editPiloto"/>
+</message>
+<message name="removeCampeonato">
+<part name="parameters" element="tns:removeCampeonato"/>
+</message>
+<message name="findAllMonoplaza">
+<part name="parameters" element="tns:findAllMonoplaza"/>
+</message>
+<message name="findAllMonoplazaResponse">
+<part name="parameters" element="tns:findAllMonoplazaResponse"/>
+</message>
+<message name="findAllPiloto">
+<part name="parameters" element="tns:findAllPiloto"/>
+</message>
+<message name="findAllPilotoResponse">
+<part name="parameters" element="tns:findAllPilotoResponse"/>
+</message>
+<message name="findAllPremio">
+<part name="parameters" element="tns:findAllPremio"/>
+</message>
+<message name="findAllPremioResponse">
+<part name="parameters" element="tns:findAllPremioResponse"/>
+</message>
+<message name="editEscuderia">
+<part name="parameters" element="tns:editEscuderia"/>
+</message>
+<message name="editPremio">
+<part name="parameters" element="tns:editPremio"/>
+</message>
+<message name="findPais">
+<part name="parameters" element="tns:findPais"/>
+</message>
+<message name="findPaisResponse">
+<part name="parameters" element="tns:findPaisResponse"/>
+</message>
+<message name="createPais">
+<part name="parameters" element="tns:createPais"/>
+</message>
+<message name="removePais">
+<part name="parameters" element="tns:removePais"/>
+</message>
+<message name="removeMonoplaza">
+<part name="parameters" element="tns:removeMonoplaza"/>
+</message>
+<message name="createPiloto">
+<part name="parameters" element="tns:createPiloto"/>
+</message>
+<message name="createCircuito">
+<part name="parameters" element="tns:createCircuito"/>
 </message>
 <portType name="Gestor">
+<operation name="obtenerEscuderiasByCampeonato">
+<input wsam:Action="http://ws/Gestor/obtenerEscuderiasByCampeonatoRequest" message="tns:obtenerEscuderiasByCampeonato"/>
+<output wsam:Action="http://ws/Gestor/obtenerEscuderiasByCampeonatoResponse" message="tns:obtenerEscuderiasByCampeonatoResponse"/>
+</operation>
+<operation name="obtenerMonoplazasByCampeonato">
+<input wsam:Action="http://ws/Gestor/obtenerMonoplazasByCampeonatoRequest" message="tns:obtenerMonoplazasByCampeonato"/>
+<output wsam:Action="http://ws/Gestor/obtenerMonoplazasByCampeonatoResponse" message="tns:obtenerMonoplazasByCampeonatoResponse"/>
+</operation>
+<operation name="obtenerPilotosByCampeonato">
+<input wsam:Action="http://ws/Gestor/obtenerPilotosByCampeonatoRequest" message="tns:obtenerPilotosByCampeonato"/>
+<output wsam:Action="http://ws/Gestor/obtenerPilotosByCampeonatoResponse" message="tns:obtenerPilotosByCampeonatoResponse"/>
+</operation>
+<operation name="obtenerPremiosByCampeonato">
+<input wsam:Action="http://ws/Gestor/obtenerPremiosByCampeonatoRequest" message="tns:obtenerPremiosByCampeonato"/>
+<output wsam:Action="http://ws/Gestor/obtenerPremiosByCampeonatoResponse" message="tns:obtenerPremiosByCampeonatoResponse"/>
+</operation>
+<operation name="findAllCampeonato">
+<input wsam:Action="http://ws/Gestor/findAllCampeonatoRequest" message="tns:findAllCampeonato"/>
+<output wsam:Action="http://ws/Gestor/findAllCampeonatoResponse" message="tns:findAllCampeonatoResponse"/>
+</operation>
 <operation name="createEscuderia">
 <input wsam:Action="http://ws/Gestor/createEscuderia" message="tns:createEscuderia"/>
-</operation>
-<operation name="createMonoplaza">
-<input wsam:Action="http://ws/Gestor/createMonoplaza" message="tns:createMonoplaza"/>
-</operation>
-<operation name="createPiloto">
-<input wsam:Action="http://ws/Gestor/createPiloto" message="tns:createPiloto"/>
-</operation>
-<operation name="findAllEscuderia">
-<input wsam:Action="http://ws/Gestor/findAllEscuderiaRequest" message="tns:findAllEscuderia"/>
-<output wsam:Action="http://ws/Gestor/findAllEscuderiaResponse" message="tns:findAllEscuderiaResponse"/>
-</operation>
-<operation name="findEscuderia">
-<input wsam:Action="http://ws/Gestor/findEscuderiaRequest" message="tns:findEscuderia"/>
-<output wsam:Action="http://ws/Gestor/findEscuderiaResponse" message="tns:findEscuderiaResponse"/>
-</operation>
-<operation name="editEscuderia">
-<input wsam:Action="http://ws/Gestor/editEscuderia" message="tns:editEscuderia"/>
-</operation>
-<operation name="findAllPremio">
-<input wsam:Action="http://ws/Gestor/findAllPremioRequest" message="tns:findAllPremio"/>
-<output wsam:Action="http://ws/Gestor/findAllPremioResponse" message="tns:findAllPremioResponse"/>
-</operation>
-<operation name="removePremio">
-<input wsam:Action="http://ws/Gestor/removePremio" message="tns:removePremio"/>
-</operation>
-<operation name="findMonoplaza">
-<input wsam:Action="http://ws/Gestor/findMonoplazaRequest" message="tns:findMonoplaza"/>
-<output wsam:Action="http://ws/Gestor/findMonoplazaResponse" message="tns:findMonoplazaResponse"/>
-</operation>
-<operation name="removeEscuderia">
-<input wsam:Action="http://ws/Gestor/removeEscuderia" message="tns:removeEscuderia"/>
-</operation>
-<operation name="findAllCircuito">
-<input wsam:Action="http://ws/Gestor/findAllCircuitoRequest" message="tns:findAllCircuito"/>
-<output wsam:Action="http://ws/Gestor/findAllCircuitoResponse" message="tns:findAllCircuitoResponse"/>
-</operation>
-<operation name="findAllPiloto">
-<input wsam:Action="http://ws/Gestor/findAllPilotoRequest" message="tns:findAllPiloto"/>
-<output wsam:Action="http://ws/Gestor/findAllPilotoResponse" message="tns:findAllPilotoResponse"/>
-</operation>
-<operation name="editPremio">
-<input wsam:Action="http://ws/Gestor/editPremio" message="tns:editPremio"/>
-</operation>
-<operation name="removeCircuito">
-<input wsam:Action="http://ws/Gestor/removeCircuito" message="tns:removeCircuito"/>
 </operation>
 <operation name="editMonoplaza">
 <input wsam:Action="http://ws/Gestor/editMonoplaza" message="tns:editMonoplaza"/>
@@ -176,145 +205,161 @@
 <operation name="editCircuito">
 <input wsam:Action="http://ws/Gestor/editCircuito" message="tns:editCircuito"/>
 </operation>
-<operation name="removeMonoplaza">
-<input wsam:Action="http://ws/Gestor/removeMonoplaza" message="tns:removeMonoplaza"/>
+<operation name="removeEscuderia">
+<input wsam:Action="http://ws/Gestor/removeEscuderia" message="tns:removeEscuderia"/>
+</operation>
+<operation name="createCampeonato">
+<input wsam:Action="http://ws/Gestor/createCampeonato" message="tns:createCampeonato"/>
+</operation>
+<operation name="editCampeonato">
+<input wsam:Action="http://ws/Gestor/editCampeonato" message="tns:editCampeonato"/>
+</operation>
+<operation name="removeCircuito">
+<input wsam:Action="http://ws/Gestor/removeCircuito" message="tns:removeCircuito"/>
+</operation>
+<operation name="editPais">
+<input wsam:Action="http://ws/Gestor/editPais" message="tns:editPais"/>
+</operation>
+<operation name="findCampeonato">
+<input wsam:Action="http://ws/Gestor/findCampeonatoRequest" message="tns:findCampeonato"/>
+<output wsam:Action="http://ws/Gestor/findCampeonatoResponse" message="tns:findCampeonatoResponse"/>
+</operation>
+<operation name="removePiloto">
+<input wsam:Action="http://ws/Gestor/removePiloto" message="tns:removePiloto"/>
+</operation>
+<operation name="findEscuderia">
+<input wsam:Action="http://ws/Gestor/findEscuderiaRequest" message="tns:findEscuderia"/>
+<output wsam:Action="http://ws/Gestor/findEscuderiaResponse" message="tns:findEscuderiaResponse"/>
+</operation>
+<operation name="findMonoplaza">
+<input wsam:Action="http://ws/Gestor/findMonoplazaRequest" message="tns:findMonoplaza"/>
+<output wsam:Action="http://ws/Gestor/findMonoplazaResponse" message="tns:findMonoplazaResponse"/>
 </operation>
 <operation name="findPiloto">
 <input wsam:Action="http://ws/Gestor/findPilotoRequest" message="tns:findPiloto"/>
 <output wsam:Action="http://ws/Gestor/findPilotoResponse" message="tns:findPilotoResponse"/>
 </operation>
-<operation name="removePiloto">
-<input wsam:Action="http://ws/Gestor/removePiloto" message="tns:removePiloto"/>
+<operation name="findCircuito">
+<input wsam:Action="http://ws/Gestor/findCircuitoRequest" message="tns:findCircuito"/>
+<output wsam:Action="http://ws/Gestor/findCircuitoResponse" message="tns:findCircuitoResponse"/>
 </operation>
 <operation name="findPremio">
 <input wsam:Action="http://ws/Gestor/findPremioRequest" message="tns:findPremio"/>
 <output wsam:Action="http://ws/Gestor/findPremioResponse" message="tns:findPremioResponse"/>
 </operation>
-<operation name="findCircuito">
-<input wsam:Action="http://ws/Gestor/findCircuitoRequest" message="tns:findCircuito"/>
-<output wsam:Action="http://ws/Gestor/findCircuitoResponse" message="tns:findCircuitoResponse"/>
+<operation name="removePremio">
+<input wsam:Action="http://ws/Gestor/removePremio" message="tns:removePremio"/>
+</operation>
+<operation name="findAllEscuderia">
+<input wsam:Action="http://ws/Gestor/findAllEscuderiaRequest" message="tns:findAllEscuderia"/>
+<output wsam:Action="http://ws/Gestor/findAllEscuderiaResponse" message="tns:findAllEscuderiaResponse"/>
 </operation>
 <operation name="createPremio">
 <input wsam:Action="http://ws/Gestor/createPremio" message="tns:createPremio"/>
+</operation>
+<operation name="findAllCircuito">
+<input wsam:Action="http://ws/Gestor/findAllCircuitoRequest" message="tns:findAllCircuito"/>
+<output wsam:Action="http://ws/Gestor/findAllCircuitoResponse" message="tns:findAllCircuitoResponse"/>
+</operation>
+<operation name="findAllPais">
+<input wsam:Action="http://ws/Gestor/findAllPaisRequest" message="tns:findAllPais"/>
+<output wsam:Action="http://ws/Gestor/findAllPaisResponse" message="tns:findAllPaisResponse"/>
+</operation>
+<operation name="createMonoplaza">
+<input wsam:Action="http://ws/Gestor/createMonoplaza" message="tns:createMonoplaza"/>
+</operation>
+<operation name="editPiloto">
+<input wsam:Action="http://ws/Gestor/editPiloto" message="tns:editPiloto"/>
+</operation>
+<operation name="removeCampeonato">
+<input wsam:Action="http://ws/Gestor/removeCampeonato" message="tns:removeCampeonato"/>
 </operation>
 <operation name="findAllMonoplaza">
 <input wsam:Action="http://ws/Gestor/findAllMonoplazaRequest" message="tns:findAllMonoplaza"/>
 <output wsam:Action="http://ws/Gestor/findAllMonoplazaResponse" message="tns:findAllMonoplazaResponse"/>
 </operation>
+<operation name="findAllPiloto">
+<input wsam:Action="http://ws/Gestor/findAllPilotoRequest" message="tns:findAllPiloto"/>
+<output wsam:Action="http://ws/Gestor/findAllPilotoResponse" message="tns:findAllPilotoResponse"/>
+</operation>
+<operation name="findAllPremio">
+<input wsam:Action="http://ws/Gestor/findAllPremioRequest" message="tns:findAllPremio"/>
+<output wsam:Action="http://ws/Gestor/findAllPremioResponse" message="tns:findAllPremioResponse"/>
+</operation>
+<operation name="editEscuderia">
+<input wsam:Action="http://ws/Gestor/editEscuderia" message="tns:editEscuderia"/>
+</operation>
+<operation name="editPremio">
+<input wsam:Action="http://ws/Gestor/editPremio" message="tns:editPremio"/>
+</operation>
+<operation name="findPais">
+<input wsam:Action="http://ws/Gestor/findPaisRequest" message="tns:findPais"/>
+<output wsam:Action="http://ws/Gestor/findPaisResponse" message="tns:findPaisResponse"/>
+</operation>
+<operation name="createPais">
+<input wsam:Action="http://ws/Gestor/createPais" message="tns:createPais"/>
+</operation>
+<operation name="removePais">
+<input wsam:Action="http://ws/Gestor/removePais" message="tns:removePais"/>
+</operation>
+<operation name="removeMonoplaza">
+<input wsam:Action="http://ws/Gestor/removeMonoplaza" message="tns:removeMonoplaza"/>
+</operation>
+<operation name="createPiloto">
+<input wsam:Action="http://ws/Gestor/createPiloto" message="tns:createPiloto"/>
+</operation>
 <operation name="createCircuito">
 <input wsam:Action="http://ws/Gestor/createCircuito" message="tns:createCircuito"/>
-</operation>
-<operation name="editPiloto">
-<input wsam:Action="http://ws/Gestor/editPiloto" message="tns:editPiloto"/>
-</operation>
-<operation name="findAllCampeonato">
-<input wsam:Action="http://ws/Gestor/findAllCampeonatoRequest" message="tns:findAllCampeonato"/>
-<output wsam:Action="http://ws/Gestor/findAllCampeonatoResponse" message="tns:findAllCampeonatoResponse"/>
-</operation>
-<operation name="findAllPilotoByEscuderia">
-<input wsam:Action="http://ws/Gestor/findAllPilotoByEscuderiaRequest" message="tns:findAllPilotoByEscuderia"/>
-<output wsam:Action="http://ws/Gestor/findAllPilotoByEscuderiaResponse" message="tns:findAllPilotoByEscuderiaResponse"/>
 </operation>
 </portType>
 <binding name="GestorPortBinding" type="tns:Gestor">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="obtenerEscuderiasByCampeonato">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerMonoplazasByCampeonato">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerPilotosByCampeonato">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtenerPremiosByCampeonato">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findAllCampeonato">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="createEscuderia">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="createMonoplaza">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="createPiloto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findAllEscuderia">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="findEscuderia">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="editEscuderia">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findAllPremio">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="removePremio">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findMonoplaza">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="removeEscuderia">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findAllCircuito">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="findAllPiloto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="editPremio">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="removeCircuito">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -332,13 +377,37 @@
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="removeMonoplaza">
+<operation name="removeEscuderia">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="findPiloto">
+<operation name="createCampeonato">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="editCampeonato">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="removeCircuito">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="editPais">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findCampeonato">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -353,7 +422,25 @@
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="findPremio">
+<operation name="findEscuderia">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findMonoplaza">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findPiloto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -371,7 +458,67 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="findPremio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="removePremio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findAllEscuderia">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="createPremio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findAllCircuito">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findAllPais">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="createMonoplaza">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="editPiloto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="removeCampeonato">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -386,35 +533,74 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="findAllPiloto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findAllPremio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="editEscuderia">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="editPremio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findPais">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="createPais">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="removePais">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="removeMonoplaza">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="createPiloto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
 <operation name="createCircuito">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
-</operation>
-<operation name="editPiloto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findAllCampeonato">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="findAllPilotoByEscuderia">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
 </operation>
 </binding>
 <service name="Gestor">

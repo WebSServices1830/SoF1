@@ -29,9 +29,5 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
-        @PreDestroy
-public void destruct()
-{
-    em.close();
-}
+
 }
