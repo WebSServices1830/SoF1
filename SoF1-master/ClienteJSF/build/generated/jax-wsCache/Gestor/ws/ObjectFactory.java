@@ -546,19 +546,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Pais }
+     * Create an instance of {@link Premio }
      * 
      */
-    public Pais createPais() {
-        return new Pais();
-    }
-
-    /**
-     * Create an instance of {@link Monoplaza }
-     * 
-     */
-    public Monoplaza createMonoplaza() {
-        return new Monoplaza();
+    public Premio createPremio() {
+        return new Premio();
     }
 
     /**
@@ -570,19 +562,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Premio }
-     * 
-     */
-    public Premio createPremio() {
-        return new Premio();
-    }
-
-    /**
      * Create an instance of {@link Circuito }
      * 
      */
     public Circuito createCircuito() {
         return new Circuito();
+    }
+
+    /**
+     * Create an instance of {@link Pais }
+     * 
+     */
+    public Pais createPais() {
+        return new Pais();
     }
 
     /**
@@ -607,6 +599,14 @@ public class ObjectFactory {
      */
     public SesionPractica createSesionPractica() {
         return new SesionPractica();
+    }
+
+    /**
+     * Create an instance of {@link Monoplaza }
+     * 
+     */
+    public Monoplaza createMonoplaza() {
+        return new Monoplaza();
     }
 
     /**

@@ -3,12 +3,8 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
@@ -28,11 +24,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="idApuesta" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
- *         &lt;element name="piloto" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
- *         &lt;element name="premio" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="piloto" type="{http://ws/}piloto" minOccurs="0"/&gt;
+ *         &lt;element name="premio" type="{http://ws/}premio" minOccurs="0"/&gt;
  *         &lt;element name="puntos" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
- *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="usuario" type="{http://ws/}usuario" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -49,7 +44,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fecha",
     "id",
     "idApuesta",
-    "idXml",
     "piloto",
     "premio",
     "puntos",
@@ -64,20 +58,10 @@ public class Apuesta {
     protected XMLGregorianCalendar fecha;
     protected Integer id;
     protected Integer idApuesta;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object piloto;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object premio;
+    protected Piloto piloto;
+    protected Premio premio;
     protected Double puntos;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object usuario;
+    protected Usuario usuario;
 
     /**
      * Obtiene el valor de la propiedad cantidad.
@@ -216,38 +200,14 @@ public class Apuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
-    }
-
-    /**
      * Obtiene el valor de la propiedad piloto.
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Piloto }
      *     
      */
-    public Object getPiloto() {
+    public Piloto getPiloto() {
         return piloto;
     }
 
@@ -256,10 +216,10 @@ public class Apuesta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Piloto }
      *     
      */
-    public void setPiloto(Object value) {
+    public void setPiloto(Piloto value) {
         this.piloto = value;
     }
 
@@ -268,10 +228,10 @@ public class Apuesta {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Premio }
      *     
      */
-    public Object getPremio() {
+    public Premio getPremio() {
         return premio;
     }
 
@@ -280,10 +240,10 @@ public class Apuesta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Premio }
      *     
      */
-    public void setPremio(Object value) {
+    public void setPremio(Premio value) {
         this.premio = value;
     }
 
@@ -316,10 +276,10 @@ public class Apuesta {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Usuario }
      *     
      */
-    public Object getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
@@ -328,10 +288,10 @@ public class Apuesta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Usuario }
      *     
      */
-    public void setUsuario(Object value) {
+    public void setUsuario(Usuario value) {
         this.usuario = value;
     }
 

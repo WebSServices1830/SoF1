@@ -168,19 +168,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SesionCarrera }
+     * Create an instance of {@link TablaGeneral }
      * 
      */
-    public SesionCarrera createSesionCarrera() {
-        return new SesionCarrera();
-    }
-
-    /**
-     * Create an instance of {@link Premio }
-     * 
-     */
-    public Premio createPremio() {
-        return new Premio();
+    public TablaGeneral createTablaGeneral() {
+        return new TablaGeneral();
     }
 
     /**
@@ -192,11 +184,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Circuito }
+     * Create an instance of {@link Piloto }
      * 
      */
-    public Circuito createCircuito() {
-        return new Circuito();
+    public Piloto createPiloto() {
+        return new Piloto();
+    }
+
+    /**
+     * Create an instance of {@link Monoplaza }
+     * 
+     */
+    public Monoplaza createMonoplaza() {
+        return new Monoplaza();
     }
 
     /**
@@ -216,22 +216,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Piloto }
-     * 
-     */
-    public Piloto createPiloto() {
-        return new Piloto();
-    }
-
-    /**
-     * Create an instance of {@link Escuderia }
-     * 
-     */
-    public Escuderia createEscuderia() {
-        return new Escuderia();
-    }
-
-    /**
      * Create an instance of {@link SesionPractica }
      * 
      */
@@ -240,11 +224,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TablaGeneral }
+     * Create an instance of {@link Premio }
      * 
      */
-    public TablaGeneral createTablaGeneral() {
-        return new TablaGeneral();
+    public Premio createPremio() {
+        return new Premio();
+    }
+
+    /**
+     * Create an instance of {@link Circuito }
+     * 
+     */
+    public Circuito createCircuito() {
+        return new Circuito();
+    }
+
+    /**
+     * Create an instance of {@link SesionCarrera }
+     * 
+     */
+    public SesionCarrera createSesionCarrera() {
+        return new SesionCarrera();
     }
 
     /**

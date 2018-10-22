@@ -7,7 +7,7 @@
     <ui:define name="content">
         <h2>Circuito de #{wsCampeonato.circuito.nombre}</h2>
         <h:panelGrid columns="2">
-            <img src="../../test/imgs/Shanghai1.png" alt="#{wsCampeonato.circuito.nombre}"/>
+            <img src="#{wsCampeonato.circuito.foto}" alt="#{wsCampeonato.circuito.nombre}"/>
             <h:panelGrid columns="1">
                 <h:outputText
                     value=" Ubicacion : #{wsCampeonato.circuito.pais.nombre}" />

@@ -3,11 +3,7 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -24,7 +20,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="edad" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="idUsuario" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="rol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -43,7 +38,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "descripcion",
     "edad",
     "idUsuario",
-    "idXml",
     "imagen",
     "nombre",
     "rol",
@@ -55,10 +49,6 @@ public class Usuario {
     protected String descripcion;
     protected Integer edad;
     protected Integer idUsuario;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
     protected String imagen;
     protected String nombre;
     protected String rol;
@@ -158,30 +148,6 @@ public class Usuario {
      */
     public void setIdUsuario(Integer value) {
         this.idUsuario = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
     }
 
     /**

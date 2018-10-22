@@ -3,12 +3,7 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -21,10 +16,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="campeonato" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
- *         &lt;element name="piloto" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="campeonato" type="{http://ws/}campeonato" minOccurs="0"/&gt;
+ *         &lt;element name="idTablaGeneral" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="piloto" type="{http://ws/}piloto" minOccurs="0"/&gt;
  *         &lt;element name="posicion" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="puntos" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="tiempo" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
@@ -40,8 +34,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tablaGeneral", propOrder = {
     "campeonato",
-    "id",
-    "idXml",
+    "idTablaGeneral",
     "piloto",
     "posicion",
     "puntos",
@@ -50,17 +43,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class TablaGeneral {
 
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object campeonato;
-    protected Integer id;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object piloto;
+    protected Campeonato campeonato;
+    protected Integer idTablaGeneral;
+    protected Piloto piloto;
     protected Integer posicion;
     protected Integer puntos;
     protected Double tiempo;
@@ -71,10 +56,10 @@ public class TablaGeneral {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public Object getCampeonato() {
+    public Campeonato getCampeonato() {
         return campeonato;
     }
 
@@ -83,59 +68,35 @@ public class TablaGeneral {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Campeonato }
      *     
      */
-    public void setCampeonato(Object value) {
+    public void setCampeonato(Campeonato value) {
         this.campeonato = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Obtiene el valor de la propiedad idTablaGeneral.
      * 
      * @return
      *     possible object is
      *     {@link Integer }
      *     
      */
-    public Integer getId() {
-        return id;
+    public Integer getIdTablaGeneral() {
+        return idTablaGeneral;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Define el valor de la propiedad idTablaGeneral.
      * 
      * @param value
      *     allowed object is
      *     {@link Integer }
      *     
      */
-    public void setId(Integer value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
+    public void setIdTablaGeneral(Integer value) {
+        this.idTablaGeneral = value;
     }
 
     /**
@@ -143,10 +104,10 @@ public class TablaGeneral {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Piloto }
      *     
      */
-    public Object getPiloto() {
+    public Piloto getPiloto() {
         return piloto;
     }
 
@@ -155,10 +116,10 @@ public class TablaGeneral {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Piloto }
      *     
      */
-    public void setPiloto(Object value) {
+    public void setPiloto(Piloto value) {
         this.piloto = value;
     }
 

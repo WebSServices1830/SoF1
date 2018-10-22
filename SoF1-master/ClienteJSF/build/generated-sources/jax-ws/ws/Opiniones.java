@@ -28,18 +28,6 @@ public interface Opiniones {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<ws.Premio>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerTopPremios", targetNamespace = "http://ws/", className = "ws.ObtenerTopPremios")
-    @ResponseWrapper(localName = "obtenerTopPremiosResponse", targetNamespace = "http://ws/", className = "ws.ObtenerTopPremiosResponse")
-    @Action(input = "http://ws/Opiniones/obtenerTopPremiosRequest", output = "http://ws/Opiniones/obtenerTopPremiosResponse")
-    public List<Premio> obtenerTopPremios();
-
-    /**
-     * 
      * @param idPremio
      * @return
      *     returns java.util.List<ws.CalificacionPremio>
@@ -56,14 +44,14 @@ public interface Opiniones {
     /**
      * 
      * @return
-     *     returns java.util.List<ws.Piloto>
+     *     returns java.util.List<ws.Premio>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerTopPilotos", targetNamespace = "http://ws/", className = "ws.ObtenerTopPilotos")
-    @ResponseWrapper(localName = "obtenerTopPilotosResponse", targetNamespace = "http://ws/", className = "ws.ObtenerTopPilotosResponse")
-    @Action(input = "http://ws/Opiniones/obtenerTopPilotosRequest", output = "http://ws/Opiniones/obtenerTopPilotosResponse")
-    public List<Piloto> obtenerTopPilotos();
+    @RequestWrapper(localName = "obtenerTopPremios", targetNamespace = "http://ws/", className = "ws.ObtenerTopPremios")
+    @ResponseWrapper(localName = "obtenerTopPremiosResponse", targetNamespace = "http://ws/", className = "ws.ObtenerTopPremiosResponse")
+    @Action(input = "http://ws/Opiniones/obtenerTopPremiosRequest", output = "http://ws/Opiniones/obtenerTopPremiosResponse")
+    public List<Premio> obtenerTopPremios();
 
     /**
      * 
@@ -82,21 +70,15 @@ public interface Opiniones {
 
     /**
      * 
-     * @param calificacionPiloto
-     * @param idUsuario
-     * @param idPiloto
+     * @return
+     *     returns java.util.List<ws.Piloto>
      */
     @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "calificarPiloto", targetNamespace = "http://ws/", className = "ws.CalificarPiloto")
-    @Action(input = "http://ws/Opiniones/calificarPiloto")
-    public void calificarPiloto(
-        @WebParam(name = "idUsuario", targetNamespace = "")
-        int idUsuario,
-        @WebParam(name = "idPiloto", targetNamespace = "")
-        int idPiloto,
-        @WebParam(name = "calificacionPiloto", targetNamespace = "")
-        CalificacionPiloto calificacionPiloto);
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerTopPilotos", targetNamespace = "http://ws/", className = "ws.ObtenerTopPilotos")
+    @ResponseWrapper(localName = "obtenerTopPilotosResponse", targetNamespace = "http://ws/", className = "ws.ObtenerTopPilotosResponse")
+    @Action(input = "http://ws/Opiniones/obtenerTopPilotosRequest", output = "http://ws/Opiniones/obtenerTopPilotosResponse")
+    public List<Piloto> obtenerTopPilotos();
 
     /**
      * 
@@ -118,18 +100,21 @@ public interface Opiniones {
 
     /**
      * 
+     * @param calificacionPiloto
+     * @param idUsuario
      * @param idPiloto
-     * @return
-     *     returns double
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerCalificacionPromedioPiloto", targetNamespace = "http://ws/", className = "ws.ObtenerCalificacionPromedioPiloto")
-    @ResponseWrapper(localName = "obtenerCalificacionPromedioPilotoResponse", targetNamespace = "http://ws/", className = "ws.ObtenerCalificacionPromedioPilotoResponse")
-    @Action(input = "http://ws/Opiniones/obtenerCalificacionPromedioPilotoRequest", output = "http://ws/Opiniones/obtenerCalificacionPromedioPilotoResponse")
-    public double obtenerCalificacionPromedioPiloto(
+    @Oneway
+    @RequestWrapper(localName = "calificarPiloto", targetNamespace = "http://ws/", className = "ws.CalificarPiloto")
+    @Action(input = "http://ws/Opiniones/calificarPiloto")
+    public void calificarPiloto(
+        @WebParam(name = "idUsuario", targetNamespace = "")
+        int idUsuario,
         @WebParam(name = "idPiloto", targetNamespace = "")
-        int idPiloto);
+        int idPiloto,
+        @WebParam(name = "calificacionPiloto", targetNamespace = "")
+        CalificacionPiloto calificacionPiloto);
 
     /**
      * 
@@ -145,5 +130,20 @@ public interface Opiniones {
     public double obtenerCalificacionPromedioPremio(
         @WebParam(name = "idPremio", targetNamespace = "")
         int idPremio);
+
+    /**
+     * 
+     * @param idPiloto
+     * @return
+     *     returns double
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerCalificacionPromedioPiloto", targetNamespace = "http://ws/", className = "ws.ObtenerCalificacionPromedioPiloto")
+    @ResponseWrapper(localName = "obtenerCalificacionPromedioPilotoResponse", targetNamespace = "http://ws/", className = "ws.ObtenerCalificacionPromedioPilotoResponse")
+    @Action(input = "http://ws/Opiniones/obtenerCalificacionPromedioPilotoRequest", output = "http://ws/Opiniones/obtenerCalificacionPromedioPilotoResponse")
+    public double obtenerCalificacionPromedioPiloto(
+        @WebParam(name = "idPiloto", targetNamespace = "")
+        int idPiloto);
 
 }

@@ -3,12 +3,8 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
@@ -25,10 +21,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fechRecord" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="foto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="idCircuito" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
  *         &lt;element name="longitud" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="pais" type="{http://ws/}pais" minOccurs="0"/&gt;
  *         &lt;element name="record" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="ultimoGanador" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="vueltas" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -45,7 +40,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fechRecord",
     "foto",
     "idCircuito",
-    "idXml",
     "longitud",
     "nombre",
     "pais",
@@ -59,15 +53,9 @@ public class Circuito {
     protected XMLGregorianCalendar fechRecord;
     protected String foto;
     protected Integer idCircuito;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
     protected Double longitud;
     protected String nombre;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object pais;
+    protected Pais pais;
     protected Double record;
     protected String ultimoGanador;
     protected Integer vueltas;
@@ -145,30 +133,6 @@ public class Circuito {
     }
 
     /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
-    }
-
-    /**
      * Obtiene el valor de la propiedad longitud.
      * 
      * @return
@@ -221,10 +185,10 @@ public class Circuito {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Pais }
      *     
      */
-    public Object getPais() {
+    public Pais getPais() {
         return pais;
     }
 
@@ -233,10 +197,10 @@ public class Circuito {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Pais }
      *     
      */
-    public void setPais(Object value) {
+    public void setPais(Pais value) {
         this.pais = value;
     }
 

@@ -93,11 +93,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Escuderia }
+     * Create an instance of {@link Monoplaza }
      * 
      */
-    public Escuderia createEscuderia() {
-        return new Escuderia();
+    public Monoplaza createMonoplaza() {
+        return new Monoplaza();
     }
 
     /**
@@ -122,6 +122,30 @@ public class ObjectFactory {
      */
     public Circuito createCircuito() {
         return new Circuito();
+    }
+
+    /**
+     * Create an instance of {@link SesionCarrera }
+     * 
+     */
+    public SesionCarrera createSesionCarrera() {
+        return new SesionCarrera();
+    }
+
+    /**
+     * Create an instance of {@link SesionClasificacion }
+     * 
+     */
+    public SesionClasificacion createSesionClasificacion() {
+        return new SesionClasificacion();
+    }
+
+    /**
+     * Create an instance of {@link SesionPractica }
+     * 
+     */
+    public SesionPractica createSesionPractica() {
+        return new SesionPractica();
     }
 
     /**

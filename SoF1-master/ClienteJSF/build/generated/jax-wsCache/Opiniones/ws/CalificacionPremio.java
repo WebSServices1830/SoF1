@@ -3,12 +3,8 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
@@ -25,10 +21,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="comentario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="idCalificacion" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
- *         &lt;element name="premio" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="premio" type="{http://ws/}premio" minOccurs="0"/&gt;
  *         &lt;element name="puntaje" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
- *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="usuario" type="{http://ws/}usuario" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,7 +37,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "comentario",
     "fecha",
     "idCalificacion",
-    "idXml",
     "premio",
     "puntaje",
     "usuario"
@@ -53,17 +47,9 @@ public class CalificacionPremio {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fecha;
     protected Integer idCalificacion;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object premio;
+    protected Premio premio;
     protected Double puntaje;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object usuario;
+    protected Usuario usuario;
 
     /**
      * Obtiene el valor de la propiedad comentario.
@@ -138,38 +124,14 @@ public class CalificacionPremio {
     }
 
     /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
-    }
-
-    /**
      * Obtiene el valor de la propiedad premio.
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Premio }
      *     
      */
-    public Object getPremio() {
+    public Premio getPremio() {
         return premio;
     }
 
@@ -178,10 +140,10 @@ public class CalificacionPremio {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Premio }
      *     
      */
-    public void setPremio(Object value) {
+    public void setPremio(Premio value) {
         this.premio = value;
     }
 
@@ -214,10 +176,10 @@ public class CalificacionPremio {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Usuario }
      *     
      */
-    public Object getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
@@ -226,10 +188,10 @@ public class CalificacionPremio {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Usuario }
      *     
      */
-    public void setUsuario(Object value) {
+    public void setUsuario(Usuario value) {
         this.usuario = value;
     }
 

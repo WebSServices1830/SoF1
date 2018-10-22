@@ -27,21 +27,6 @@ public interface Auth {
     /**
      * 
      * @param usuario
-     * @return
-     *     returns java.lang.Boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "cerrarSesion", targetNamespace = "http://ws/", className = "ws.CerrarSesion")
-    @ResponseWrapper(localName = "cerrarSesionResponse", targetNamespace = "http://ws/", className = "ws.CerrarSesionResponse")
-    @Action(input = "http://ws/Auth/cerrarSesionRequest", output = "http://ws/Auth/cerrarSesionResponse")
-    public Boolean cerrarSesion(
-        @WebParam(name = "usuario", targetNamespace = "")
-        Usuario usuario);
-
-    /**
-     * 
-     * @param usuario
      * @param contrasena
      * @return
      *     returns ws.Usuario
@@ -56,6 +41,21 @@ public interface Auth {
         String usuario,
         @WebParam(name = "contrasena", targetNamespace = "")
         String contrasena);
+
+    /**
+     * 
+     * @param usuario
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "cerrarSesion", targetNamespace = "http://ws/", className = "ws.CerrarSesion")
+    @ResponseWrapper(localName = "cerrarSesionResponse", targetNamespace = "http://ws/", className = "ws.CerrarSesionResponse")
+    @Action(input = "http://ws/Auth/cerrarSesionRequest", output = "http://ws/Auth/cerrarSesionResponse")
+    public Boolean cerrarSesion(
+        @WebParam(name = "usuario", targetNamespace = "")
+        Usuario usuario);
 
     /**
      * 

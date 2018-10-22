@@ -34,6 +34,7 @@ public class wsSessionBean implements Serializable {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
     private Gestor_Service service_1;
 
+
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Auth/Auth.wsdl")
     private Auth_Service service;
     static String IP="localhost";
@@ -200,12 +201,6 @@ public class wsSessionBean implements Serializable {
                 }
     }
 
-    private Boolean registrarUsuario(ws.Usuario usuario) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Auth port = service.getAuthPort();
-        return port.registrarUsuario(usuario);
-    }
 
     private Usuario iniciarSesion(java.lang.String usuario, java.lang.String contrasena) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
@@ -219,6 +214,15 @@ public class wsSessionBean implements Serializable {
         // If the calling of port operations may lead to race condition some synchronization is required.
         ws.Auth port = service.getAuthPort();
         return port.cerrarSesion(usuario);
+    }
+
+
+
+    private Boolean registrarUsuario(ws.Usuario usuario) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        ws.Auth port = service.getAuthPort();
+        return port.registrarUsuario(usuario);
     }
 
     private java.util.List<ws.Campeonato> findAllCampeonato() {

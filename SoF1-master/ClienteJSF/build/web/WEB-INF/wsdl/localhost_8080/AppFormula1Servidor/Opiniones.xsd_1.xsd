@@ -41,18 +41,17 @@
 <xs:complexType name="piloto">
 <xs:sequence>
 <xs:element name="biografia" type="xs:string" minOccurs="0"/>
-<xs:element name="campeonato" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
 <xs:element name="campeonatos" type="xs:int" minOccurs="0"/>
-<xs:element name="escuderia" type="xs:IDREF" minOccurs="0"/>
 <xs:element name="experiencia" type="xs:string" minOccurs="0"/>
 <xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="idPiloto" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
 <xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="monoplaza" type="tns:monoplaza" minOccurs="0"/>
 <xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 <xs:element name="numero" type="xs:int" minOccurs="0"/>
-<xs:element name="pais" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
 <xs:element name="paisNacimiento" type="xs:string" minOccurs="0"/>
 <xs:element name="podios" type="xs:int" minOccurs="0"/>
 </xs:sequence>
@@ -61,29 +60,28 @@
 <xs:complexType name="campeonato">
 <xs:sequence>
 <xs:element name="idCampeonato" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="escuderia">
+<xs:complexType name="monoplaza">
 <xs:sequence>
-<xs:element name="campeonato" type="xs:IDREF" minOccurs="0"/>
-<xs:element name="detalle" type="xs:string" minOccurs="0"/>
-<xs:element name="idEscuderia" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="idMonoplaza" type="xs:int" minOccurs="0"/>
 <xs:element name="imagen" type="xs:string" minOccurs="0"/>
-<xs:element name="lider" type="xs:string" minOccurs="0"/>
-<xs:element name="nombre" type="xs:string" minOccurs="0"/>
-<xs:element name="pais" type="xs:IDREF" minOccurs="0"/>
-<xs:element name="tecnicoLider" type="xs:string" minOccurs="0"/>
+<xs:element name="marca" type="xs:string" minOccurs="0"/>
+<xs:element name="modelo" type="xs:string" minOccurs="0"/>
+<xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
+<xs:element name="numCilindros" type="xs:double" minOccurs="0"/>
+<xs:element name="potencia" type="xs:double" minOccurs="0"/>
+<xs:element name="torque" type="xs:double" minOccurs="0"/>
+<xs:element name="velMax" type="xs:double" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="pais">
 <xs:sequence>
 <xs:element name="idPais" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
@@ -117,10 +115,9 @@
 <xs:element name="comentario" type="xs:string" minOccurs="0"/>
 <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="idCalificacion" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
-<xs:element name="piloto" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="piloto" type="tns:piloto" minOccurs="0"/>
 <xs:element name="puntaje" type="xs:double" minOccurs="0"/>
-<xs:element name="usuario" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -130,7 +127,6 @@
 <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
 <xs:element name="edad" type="xs:int" minOccurs="0"/>
 <xs:element name="idUsuario" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
 <xs:element name="imagen" type="xs:string" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 <xs:element name="rol" type="xs:string" minOccurs="0"/>
@@ -150,14 +146,16 @@
 
 <xs:complexType name="premio">
 <xs:sequence>
-<xs:element name="campeonato" type="xs:IDREF" minOccurs="0"/>
-<xs:element name="circuito" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="circuito" type="tns:circuito" minOccurs="0"/>
 <xs:element name="fechaFin" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="fechaInicio" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="finalizado" type="xs:boolean" minOccurs="0"/>
+<xs:element name="fin" type="xs:boolean" minOccurs="0"/>
 <xs:element name="idPremio" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="sesionCarrera" type="tns:sesionCarrera" minOccurs="0"/>
+<xs:element name="sesionClasificacion" type="tns:sesionClasificacion" minOccurs="0"/>
+<xs:element name="sesionPractica" type="tns:sesionPractica" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -166,13 +164,39 @@
 <xs:element name="fechRecord" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="foto" type="xs:string" minOccurs="0"/>
 <xs:element name="idCircuito" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
 <xs:element name="longitud" type="xs:double" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
-<xs:element name="pais" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="pais" type="tns:pais" minOccurs="0"/>
 <xs:element name="record" type="xs:double" minOccurs="0"/>
 <xs:element name="ultimoGanador" type="xs:string" minOccurs="0"/>
 <xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionCarrera">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesionCarrera" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="premio" type="tns:premio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionClasificacion">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesionClasificacion" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="premio" type="tns:premio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sesionPractica">
+<xs:sequence>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idSesionPractica" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="premio" type="tns:premio" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -213,10 +237,9 @@
 <xs:element name="comentario" type="xs:string" minOccurs="0"/>
 <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="idCalificacion" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
-<xs:element name="premio" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="premio" type="tns:premio" minOccurs="0"/>
 <xs:element name="puntaje" type="xs:double" minOccurs="0"/>
-<xs:element name="usuario" type="xs:IDREF" minOccurs="0"/>
+<xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

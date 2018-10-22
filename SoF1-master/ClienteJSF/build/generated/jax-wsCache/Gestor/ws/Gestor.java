@@ -58,18 +58,15 @@ public interface Gestor {
 
     /**
      * 
-     * @param idCampeonato
      * @return
-     *     returns java.util.List<ws.Piloto>
+     *     returns java.util.List<ws.Campeonato>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerPilotosByCampeonato", targetNamespace = "http://ws/", className = "ws.ObtenerPilotosByCampeonato")
-    @ResponseWrapper(localName = "obtenerPilotosByCampeonatoResponse", targetNamespace = "http://ws/", className = "ws.ObtenerPilotosByCampeonatoResponse")
-    @Action(input = "http://ws/Gestor/obtenerPilotosByCampeonatoRequest", output = "http://ws/Gestor/obtenerPilotosByCampeonatoResponse")
-    public List<Piloto> obtenerPilotosByCampeonato(
-        @WebParam(name = "idCampeonato", targetNamespace = "")
-        int idCampeonato);
+    @RequestWrapper(localName = "findAllCampeonato", targetNamespace = "http://ws/", className = "ws.FindAllCampeonato")
+    @ResponseWrapper(localName = "findAllCampeonatoResponse", targetNamespace = "http://ws/", className = "ws.FindAllCampeonatoResponse")
+    @Action(input = "http://ws/Gestor/findAllCampeonatoRequest", output = "http://ws/Gestor/findAllCampeonatoResponse")
+    public List<Campeonato> findAllCampeonato();
 
     /**
      * 
@@ -88,51 +85,18 @@ public interface Gestor {
 
     /**
      * 
+     * @param idCampeonato
      * @return
-     *     returns java.util.List<ws.Campeonato>
+     *     returns java.util.List<ws.Piloto>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findAllCampeonato", targetNamespace = "http://ws/", className = "ws.FindAllCampeonato")
-    @ResponseWrapper(localName = "findAllCampeonatoResponse", targetNamespace = "http://ws/", className = "ws.FindAllCampeonatoResponse")
-    @Action(input = "http://ws/Gestor/findAllCampeonatoRequest", output = "http://ws/Gestor/findAllCampeonatoResponse")
-    public List<Campeonato> findAllCampeonato();
-
-    /**
-     * 
-     * @param escuderia
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "createEscuderia", targetNamespace = "http://ws/", className = "ws.CreateEscuderia")
-    @Action(input = "http://ws/Gestor/createEscuderia")
-    public void createEscuderia(
-        @WebParam(name = "escuderia", targetNamespace = "")
-        Escuderia escuderia);
-
-    /**
-     * 
-     * @param circuito
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "createCircuito", targetNamespace = "http://ws/", className = "ws.CreateCircuito")
-    @Action(input = "http://ws/Gestor/createCircuito")
-    public void createCircuito(
-        @WebParam(name = "circuito", targetNamespace = "")
-        Circuito circuito);
-
-    /**
-     * 
-     * @param premio
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "createPremio", targetNamespace = "http://ws/", className = "ws.CreatePremio")
-    @Action(input = "http://ws/Gestor/createPremio")
-    public void createPremio(
-        @WebParam(name = "premio", targetNamespace = "")
-        Premio premio);
+    @RequestWrapper(localName = "obtenerPilotosByCampeonato", targetNamespace = "http://ws/", className = "ws.ObtenerPilotosByCampeonato")
+    @ResponseWrapper(localName = "obtenerPilotosByCampeonatoResponse", targetNamespace = "http://ws/", className = "ws.ObtenerPilotosByCampeonatoResponse")
+    @Action(input = "http://ws/Gestor/obtenerPilotosByCampeonatoRequest", output = "http://ws/Gestor/obtenerPilotosByCampeonatoResponse")
+    public List<Piloto> obtenerPilotosByCampeonato(
+        @WebParam(name = "idCampeonato", targetNamespace = "")
+        int idCampeonato);
 
     /**
      * 
@@ -148,51 +112,51 @@ public interface Gestor {
 
     /**
      * 
-     * @param escuderia
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "editEscuderia", targetNamespace = "http://ws/", className = "ws.EditEscuderia")
-    @Action(input = "http://ws/Gestor/editEscuderia")
-    public void editEscuderia(
-        @WebParam(name = "escuderia", targetNamespace = "")
-        Escuderia escuderia);
-
-    /**
-     * 
-     * @param monoplaza
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "editMonoplaza", targetNamespace = "http://ws/", className = "ws.EditMonoplaza")
-    @Action(input = "http://ws/Gestor/editMonoplaza")
-    public void editMonoplaza(
-        @WebParam(name = "monoplaza", targetNamespace = "")
-        Monoplaza monoplaza);
-
-    /**
-     * 
      * @param pais
      */
     @WebMethod
     @Oneway
-    @RequestWrapper(localName = "editPais", targetNamespace = "http://ws/", className = "ws.EditPais")
-    @Action(input = "http://ws/Gestor/editPais")
-    public void editPais(
+    @RequestWrapper(localName = "createPais", targetNamespace = "http://ws/", className = "ws.CreatePais")
+    @Action(input = "http://ws/Gestor/createPais")
+    public void createPais(
         @WebParam(name = "pais", targetNamespace = "")
         Pais pais);
 
     /**
      * 
-     * @param pais
+     * @param circuito
      */
     @WebMethod
     @Oneway
-    @RequestWrapper(localName = "removePais", targetNamespace = "http://ws/", className = "ws.RemovePais")
-    @Action(input = "http://ws/Gestor/removePais")
-    public void removePais(
-        @WebParam(name = "pais", targetNamespace = "")
-        int pais);
+    @RequestWrapper(localName = "editCircuito", targetNamespace = "http://ws/", className = "ws.EditCircuito")
+    @Action(input = "http://ws/Gestor/editCircuito")
+    public void editCircuito(
+        @WebParam(name = "circuito", targetNamespace = "")
+        Circuito circuito);
+
+    /**
+     * 
+     * @param premio
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "editPremio", targetNamespace = "http://ws/", className = "ws.EditPremio")
+    @Action(input = "http://ws/Gestor/editPremio")
+    public void editPremio(
+        @WebParam(name = "premio", targetNamespace = "")
+        Premio premio);
+
+    /**
+     * 
+     * @param campeonato
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "removeCampeonato", targetNamespace = "http://ws/", className = "ws.RemoveCampeonato")
+    @Action(input = "http://ws/Gestor/removeCampeonato")
+    public void removeCampeonato(
+        @WebParam(name = "campeonato", targetNamespace = "")
+        int campeonato);
 
     /**
      * 
@@ -205,33 +169,6 @@ public interface Gestor {
     public void removeEscuderia(
         @WebParam(name = "escuderia", targetNamespace = "")
         int escuderia);
-
-    /**
-     * 
-     * @param premio
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "removePremio", targetNamespace = "http://ws/", className = "ws.RemovePremio")
-    @Action(input = "http://ws/Gestor/removePremio")
-    public void removePremio(
-        @WebParam(name = "premio", targetNamespace = "")
-        int premio);
-
-    /**
-     * 
-     * @param idCampeonato
-     * @return
-     *     returns ws.Campeonato
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findCampeonato", targetNamespace = "http://ws/", className = "ws.FindCampeonato")
-    @ResponseWrapper(localName = "findCampeonatoResponse", targetNamespace = "http://ws/", className = "ws.FindCampeonatoResponse")
-    @Action(input = "http://ws/Gestor/findCampeonatoRequest", output = "http://ws/Gestor/findCampeonatoResponse")
-    public Campeonato findCampeonato(
-        @WebParam(name = "idCampeonato", targetNamespace = "")
-        int idCampeonato);
 
     /**
      * 
@@ -250,18 +187,6 @@ public interface Gestor {
 
     /**
      * 
-     * @param piloto
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "editPiloto", targetNamespace = "http://ws/", className = "ws.EditPiloto")
-    @Action(input = "http://ws/Gestor/editPiloto")
-    public void editPiloto(
-        @WebParam(name = "piloto", targetNamespace = "")
-        Piloto piloto);
-
-    /**
-     * 
      * @param monoplaza
      */
     @WebMethod
@@ -274,39 +199,15 @@ public interface Gestor {
 
     /**
      * 
-     * @param circuito
+     * @param escuderia
      */
     @WebMethod
     @Oneway
-    @RequestWrapper(localName = "editCircuito", targetNamespace = "http://ws/", className = "ws.EditCircuito")
-    @Action(input = "http://ws/Gestor/editCircuito")
-    public void editCircuito(
-        @WebParam(name = "circuito", targetNamespace = "")
-        Circuito circuito);
-
-    /**
-     * 
-     * @param campeonato
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "editCampeonato", targetNamespace = "http://ws/", className = "ws.EditCampeonato")
-    @Action(input = "http://ws/Gestor/editCampeonato")
-    public void editCampeonato(
-        @WebParam(name = "campeonato", targetNamespace = "")
-        Campeonato campeonato);
-
-    /**
-     * 
-     * @param premio
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "editPremio", targetNamespace = "http://ws/", className = "ws.EditPremio")
-    @Action(input = "http://ws/Gestor/editPremio")
-    public void editPremio(
-        @WebParam(name = "premio", targetNamespace = "")
-        Premio premio);
+    @RequestWrapper(localName = "editEscuderia", targetNamespace = "http://ws/", className = "ws.EditEscuderia")
+    @Action(input = "http://ws/Gestor/editEscuderia")
+    public void editEscuderia(
+        @WebParam(name = "escuderia", targetNamespace = "")
+        Escuderia escuderia);
 
     /**
      * 
@@ -322,39 +223,15 @@ public interface Gestor {
 
     /**
      * 
-     * @param monoplaza
+     * @param premio
      */
     @WebMethod
     @Oneway
-    @RequestWrapper(localName = "removeMonoplaza", targetNamespace = "http://ws/", className = "ws.RemoveMonoplaza")
-    @Action(input = "http://ws/Gestor/removeMonoplaza")
-    public void removeMonoplaza(
-        @WebParam(name = "monoplaza", targetNamespace = "")
-        int monoplaza);
-
-    /**
-     * 
-     * @param campeonato
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "removeCampeonato", targetNamespace = "http://ws/", className = "ws.RemoveCampeonato")
-    @Action(input = "http://ws/Gestor/removeCampeonato")
-    public void removeCampeonato(
-        @WebParam(name = "campeonato", targetNamespace = "")
-        int campeonato);
-
-    /**
-     * 
-     * @param piloto
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "removePiloto", targetNamespace = "http://ws/", className = "ws.RemovePiloto")
-    @Action(input = "http://ws/Gestor/removePiloto")
-    public void removePiloto(
-        @WebParam(name = "piloto", targetNamespace = "")
-        int piloto);
+    @RequestWrapper(localName = "removePremio", targetNamespace = "http://ws/", className = "ws.RemovePremio")
+    @Action(input = "http://ws/Gestor/removePremio")
+    public void removePremio(
+        @WebParam(name = "premio", targetNamespace = "")
+        int premio);
 
     /**
      * 
@@ -373,18 +250,18 @@ public interface Gestor {
 
     /**
      * 
-     * @param idMonoplaza
+     * @param idCampeonato
      * @return
-     *     returns ws.Monoplaza
+     *     returns ws.Campeonato
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findMonoplaza", targetNamespace = "http://ws/", className = "ws.FindMonoplaza")
-    @ResponseWrapper(localName = "findMonoplazaResponse", targetNamespace = "http://ws/", className = "ws.FindMonoplazaResponse")
-    @Action(input = "http://ws/Gestor/findMonoplazaRequest", output = "http://ws/Gestor/findMonoplazaResponse")
-    public Monoplaza findMonoplaza(
-        @WebParam(name = "idMonoplaza", targetNamespace = "")
-        int idMonoplaza);
+    @RequestWrapper(localName = "findCampeonato", targetNamespace = "http://ws/", className = "ws.FindCampeonato")
+    @ResponseWrapper(localName = "findCampeonatoResponse", targetNamespace = "http://ws/", className = "ws.FindCampeonatoResponse")
+    @Action(input = "http://ws/Gestor/findCampeonatoRequest", output = "http://ws/Gestor/findCampeonatoResponse")
+    public Campeonato findCampeonato(
+        @WebParam(name = "idCampeonato", targetNamespace = "")
+        int idCampeonato);
 
     /**
      * 
@@ -407,74 +284,11 @@ public interface Gestor {
      */
     @WebMethod
     @Oneway
-    @RequestWrapper(localName = "createPais", targetNamespace = "http://ws/", className = "ws.CreatePais")
-    @Action(input = "http://ws/Gestor/createPais")
-    public void createPais(
+    @RequestWrapper(localName = "editPais", targetNamespace = "http://ws/", className = "ws.EditPais")
+    @Action(input = "http://ws/Gestor/editPais")
+    public void editPais(
         @WebParam(name = "pais", targetNamespace = "")
         Pais pais);
-
-    /**
-     * 
-     * @param campeonato
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "createCampeonato", targetNamespace = "http://ws/", className = "ws.CreateCampeonato")
-    @Action(input = "http://ws/Gestor/createCampeonato")
-    public void createCampeonato(
-        @WebParam(name = "campeonato", targetNamespace = "")
-        Campeonato campeonato);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<ws.Piloto>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findAllPiloto", targetNamespace = "http://ws/", className = "ws.FindAllPiloto")
-    @ResponseWrapper(localName = "findAllPilotoResponse", targetNamespace = "http://ws/", className = "ws.FindAllPilotoResponse")
-    @Action(input = "http://ws/Gestor/findAllPilotoRequest", output = "http://ws/Gestor/findAllPilotoResponse")
-    public List<Piloto> findAllPiloto();
-
-    /**
-     * 
-     * @param idCircuito
-     * @return
-     *     returns ws.Circuito
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findCircuito", targetNamespace = "http://ws/", className = "ws.FindCircuito")
-    @ResponseWrapper(localName = "findCircuitoResponse", targetNamespace = "http://ws/", className = "ws.FindCircuitoResponse")
-    @Action(input = "http://ws/Gestor/findCircuitoRequest", output = "http://ws/Gestor/findCircuitoResponse")
-    public Circuito findCircuito(
-        @WebParam(name = "idCircuito", targetNamespace = "")
-        int idCircuito);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<ws.Pais>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findAllPais", targetNamespace = "http://ws/", className = "ws.FindAllPais")
-    @ResponseWrapper(localName = "findAllPaisResponse", targetNamespace = "http://ws/", className = "ws.FindAllPaisResponse")
-    @Action(input = "http://ws/Gestor/findAllPaisRequest", output = "http://ws/Gestor/findAllPaisResponse")
-    public List<Pais> findAllPais();
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<ws.Monoplaza>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findAllMonoplaza", targetNamespace = "http://ws/", className = "ws.FindAllMonoplaza")
-    @ResponseWrapper(localName = "findAllMonoplazaResponse", targetNamespace = "http://ws/", className = "ws.FindAllMonoplazaResponse")
-    @Action(input = "http://ws/Gestor/findAllMonoplazaRequest", output = "http://ws/Gestor/findAllMonoplazaResponse")
-    public List<Monoplaza> findAllMonoplaza();
 
     /**
      * 
@@ -494,14 +308,65 @@ public interface Gestor {
     /**
      * 
      * @return
-     *     returns java.util.List<ws.Premio>
+     *     returns java.util.List<ws.Pais>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findAllPremio", targetNamespace = "http://ws/", className = "ws.FindAllPremio")
-    @ResponseWrapper(localName = "findAllPremioResponse", targetNamespace = "http://ws/", className = "ws.FindAllPremioResponse")
-    @Action(input = "http://ws/Gestor/findAllPremioRequest", output = "http://ws/Gestor/findAllPremioResponse")
-    public List<Premio> findAllPremio();
+    @RequestWrapper(localName = "findAllPais", targetNamespace = "http://ws/", className = "ws.FindAllPais")
+    @ResponseWrapper(localName = "findAllPaisResponse", targetNamespace = "http://ws/", className = "ws.FindAllPaisResponse")
+    @Action(input = "http://ws/Gestor/findAllPaisRequest", output = "http://ws/Gestor/findAllPaisResponse")
+    public List<Pais> findAllPais();
+
+    /**
+     * 
+     * @param monoplaza
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "editMonoplaza", targetNamespace = "http://ws/", className = "ws.EditMonoplaza")
+    @Action(input = "http://ws/Gestor/editMonoplaza")
+    public void editMonoplaza(
+        @WebParam(name = "monoplaza", targetNamespace = "")
+        Monoplaza monoplaza);
+
+    /**
+     * 
+     * @param escuderia
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "createEscuderia", targetNamespace = "http://ws/", className = "ws.CreateEscuderia")
+    @Action(input = "http://ws/Gestor/createEscuderia")
+    public void createEscuderia(
+        @WebParam(name = "escuderia", targetNamespace = "")
+        Escuderia escuderia);
+
+    /**
+     * 
+     * @param piloto
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "editPiloto", targetNamespace = "http://ws/", className = "ws.EditPiloto")
+    @Action(input = "http://ws/Gestor/editPiloto")
+    public void editPiloto(
+        @WebParam(name = "piloto", targetNamespace = "")
+        Piloto piloto);
+
+    /**
+     * 
+     * @param idCircuito
+     * @return
+     *     returns ws.Circuito
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findCircuito", targetNamespace = "http://ws/", className = "ws.FindCircuito")
+    @ResponseWrapper(localName = "findCircuitoResponse", targetNamespace = "http://ws/", className = "ws.FindCircuitoResponse")
+    @Action(input = "http://ws/Gestor/findCircuitoRequest", output = "http://ws/Gestor/findCircuitoResponse")
+    public Circuito findCircuito(
+        @WebParam(name = "idCircuito", targetNamespace = "")
+        int idCircuito);
 
     /**
      * 
@@ -514,6 +379,141 @@ public interface Gestor {
     @ResponseWrapper(localName = "findAllEscuderiaResponse", targetNamespace = "http://ws/", className = "ws.FindAllEscuderiaResponse")
     @Action(input = "http://ws/Gestor/findAllEscuderiaRequest", output = "http://ws/Gestor/findAllEscuderiaResponse")
     public List<Escuderia> findAllEscuderia();
+
+    /**
+     * 
+     * @param campeonato
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "createCampeonato", targetNamespace = "http://ws/", className = "ws.CreateCampeonato")
+    @Action(input = "http://ws/Gestor/createCampeonato")
+    public void createCampeonato(
+        @WebParam(name = "campeonato", targetNamespace = "")
+        Campeonato campeonato);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<ws.Monoplaza>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findAllMonoplaza", targetNamespace = "http://ws/", className = "ws.FindAllMonoplaza")
+    @ResponseWrapper(localName = "findAllMonoplazaResponse", targetNamespace = "http://ws/", className = "ws.FindAllMonoplazaResponse")
+    @Action(input = "http://ws/Gestor/findAllMonoplazaRequest", output = "http://ws/Gestor/findAllMonoplazaResponse")
+    public List<Monoplaza> findAllMonoplaza();
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<ws.Premio>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findAllPremio", targetNamespace = "http://ws/", className = "ws.FindAllPremio")
+    @ResponseWrapper(localName = "findAllPremioResponse", targetNamespace = "http://ws/", className = "ws.FindAllPremioResponse")
+    @Action(input = "http://ws/Gestor/findAllPremioRequest", output = "http://ws/Gestor/findAllPremioResponse")
+    public List<Premio> findAllPremio();
+
+    /**
+     * 
+     * @param campeonato
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "editCampeonato", targetNamespace = "http://ws/", className = "ws.EditCampeonato")
+    @Action(input = "http://ws/Gestor/editCampeonato")
+    public void editCampeonato(
+        @WebParam(name = "campeonato", targetNamespace = "")
+        Campeonato campeonato);
+
+    /**
+     * 
+     * @param piloto
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "removePiloto", targetNamespace = "http://ws/", className = "ws.RemovePiloto")
+    @Action(input = "http://ws/Gestor/removePiloto")
+    public void removePiloto(
+        @WebParam(name = "piloto", targetNamespace = "")
+        int piloto);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<ws.Piloto>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findAllPiloto", targetNamespace = "http://ws/", className = "ws.FindAllPiloto")
+    @ResponseWrapper(localName = "findAllPilotoResponse", targetNamespace = "http://ws/", className = "ws.FindAllPilotoResponse")
+    @Action(input = "http://ws/Gestor/findAllPilotoRequest", output = "http://ws/Gestor/findAllPilotoResponse")
+    public List<Piloto> findAllPiloto();
+
+    /**
+     * 
+     * @param circuito
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "createCircuito", targetNamespace = "http://ws/", className = "ws.CreateCircuito")
+    @Action(input = "http://ws/Gestor/createCircuito")
+    public void createCircuito(
+        @WebParam(name = "circuito", targetNamespace = "")
+        Circuito circuito);
+
+    /**
+     * 
+     * @param pais
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "removePais", targetNamespace = "http://ws/", className = "ws.RemovePais")
+    @Action(input = "http://ws/Gestor/removePais")
+    public void removePais(
+        @WebParam(name = "pais", targetNamespace = "")
+        int pais);
+
+    /**
+     * 
+     * @param premio
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "createPremio", targetNamespace = "http://ws/", className = "ws.CreatePremio")
+    @Action(input = "http://ws/Gestor/createPremio")
+    public void createPremio(
+        @WebParam(name = "premio", targetNamespace = "")
+        Premio premio);
+
+    /**
+     * 
+     * @param monoplaza
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "removeMonoplaza", targetNamespace = "http://ws/", className = "ws.RemoveMonoplaza")
+    @Action(input = "http://ws/Gestor/removeMonoplaza")
+    public void removeMonoplaza(
+        @WebParam(name = "monoplaza", targetNamespace = "")
+        int monoplaza);
+
+    /**
+     * 
+     * @param idMonoplaza
+     * @return
+     *     returns ws.Monoplaza
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findMonoplaza", targetNamespace = "http://ws/", className = "ws.FindMonoplaza")
+    @ResponseWrapper(localName = "findMonoplazaResponse", targetNamespace = "http://ws/", className = "ws.FindMonoplazaResponse")
+    @Action(input = "http://ws/Gestor/findMonoplazaRequest", output = "http://ws/Gestor/findMonoplazaResponse")
+    public Monoplaza findMonoplaza(
+        @WebParam(name = "idMonoplaza", targetNamespace = "")
+        int idMonoplaza);
 
     /**
      * 

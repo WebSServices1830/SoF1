@@ -8,7 +8,7 @@
     <ui:define name="content">
         <h1>Practica  #{wsResultados.premio.nombre}</h1>
 
-        <p:dataTable var="res" value="#{wsResultados.sesionPractica.resultados}">
+        <p:dataTable var="res" value="#{wsResultados.resultadosPracticas(wsResultados.premio.idPremio)}">
             <p:column headerText="POS">
                 <h:outputText value="#{res.posicion}" />
             </p:column>
@@ -22,13 +22,13 @@
             </p:column>
 
             <p:column headerText="CAR">
-                <h:outputText value="#{res.piloto.monoplaza.escuderia.nombre}" />
+                <h:outputText value="#{res.piloto.monoplaza.marca}" />
             </p:column>
             <p:column headerText="TIME">
-                <h:outputText value="#{res.tiempo}" />
+                <h:outputText value="#{wsResultados.splitToComponentTimes(res.tiempo)}" />
             </p:column>
             <p:column headerText="GAP">
-                <h:outputText value="#{res.recordVuelta}" />
+                <h:outputText value="#{wsResultados.splitToComponentTimes(res.recordVuelta)}" />
             </p:column>
             <p:column headerText="LAPS">
                 <h:outputText value="#{res.vueltas}" />

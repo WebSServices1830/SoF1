@@ -8,7 +8,7 @@
     <ui:define name="content">
         <h1>Clasificacion  #{wsResultados.premio.nombre}</h1>
 
-        <p:dataTable var="res" value="#{wsResultados.sesionClasificacion.resultados}">
+        <p:dataTable var="res" value="#{wsResultados.resultadosClasificacion(wsResultados.premio.idPremio)}">
             <p:column headerText="POS">
                 <h:outputText value="#{res.posicion}" />
             </p:column>
@@ -17,21 +17,21 @@
                 <h:outputText value="#{res.piloto.numero}" />
             </p:column>
 
-            <p:column headerText="DRIVE">
+            <p:column headerText="DRIVER">
                 <h:outputText value="#{res.piloto.nombre}" />
             </p:column>
 
             <p:column headerText="CAR">
-                <h:outputText value="#{res.piloto.monoplaza.escuderia.nombre}" />
+                <h:outputText value="#{res.piloto.monoplaza.marca}" />
             </p:column>
             <p:column headerText="Q1">
-                <h:outputText value="#{res.q1}" />
+                <h:outputText value="#{wsResultados.splitToComponentTimes(res.q1)}" />
             </p:column>
             <p:column headerText="Q2">
-                <h:outputText value="#{res.q2}" />
+                <h:outputText value="#{wsResultados.splitToComponentTimes(res.q2)}" />
             </p:column>
             <p:column headerText="Q3">
-                <h:outputText value="#{res.q3}" />
+                <h:outputText value="#{wsResultados.splitToComponentTimes(res.q3)}" />
             </p:column>
             <p:column headerText="LAPS">
                 <h:outputText value="#{res.vueltas}" />

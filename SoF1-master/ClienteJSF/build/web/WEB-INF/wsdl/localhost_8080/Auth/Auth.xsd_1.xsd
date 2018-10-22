@@ -24,7 +24,6 @@
 <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
 <xs:element name="edad" type="xs:int" minOccurs="0"/>
 <xs:element name="idUsuario" type="xs:int" minOccurs="0"/>
-<xs:element name="idXml" type="xs:ID" minOccurs="0"/>
 <xs:element name="imagen" type="xs:string" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 <xs:element name="rol" type="xs:string" minOccurs="0"/>

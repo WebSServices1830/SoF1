@@ -6,8 +6,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="bottom">
-        
-        <p:commandButton value="Simular"  actionListener="#{wsResultados.simular}" />
+        <p:commandButton value="Simular"  actionListener="#{wsResultados.simular(wsSessionBean.campeonato.idCampeonato)}" />
    </ui:define>
 
 

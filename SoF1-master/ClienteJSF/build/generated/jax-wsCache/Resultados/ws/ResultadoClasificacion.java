@@ -3,12 +3,7 @@ package ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlIDREF;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -22,14 +17,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="idResultado" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="idXml" type="{http://www.w3.org/2001/XMLSchema}ID" minOccurs="0"/&gt;
- *         &lt;element name="piloto" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="piloto" type="{http://ws/}piloto" minOccurs="0"/&gt;
  *         &lt;element name="posicion" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="q1" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="q2" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="q3" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="recordVuelta" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
- *         &lt;element name="sesionClasificacion" type="{http://www.w3.org/2001/XMLSchema}IDREF" minOccurs="0"/&gt;
+ *         &lt;element name="sesionClasificacion" type="{http://ws/}sesionClasificacion" minOccurs="0"/&gt;
  *         &lt;element name="vueltas" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -42,7 +36,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultadoClasificacion", propOrder = {
     "idResultado",
-    "idXml",
     "piloto",
     "posicion",
     "q1",
@@ -55,21 +48,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class ResultadoClasificacion {
 
     protected Integer idResultado;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String idXml;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object piloto;
+    protected Piloto piloto;
     protected Integer posicion;
     protected Double q1;
     protected Double q2;
     protected Double q3;
     protected Double recordVuelta;
-    @XmlIDREF
-    @XmlSchemaType(name = "IDREF")
-    protected Object sesionClasificacion;
+    protected SesionClasificacion sesionClasificacion;
     protected Integer vueltas;
 
     /**
@@ -97,38 +82,14 @@ public class ResultadoClasificacion {
     }
 
     /**
-     * Obtiene el valor de la propiedad idXml.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdXml() {
-        return idXml;
-    }
-
-    /**
-     * Define el valor de la propiedad idXml.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdXml(String value) {
-        this.idXml = value;
-    }
-
-    /**
      * Obtiene el valor de la propiedad piloto.
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link Piloto }
      *     
      */
-    public Object getPiloto() {
+    public Piloto getPiloto() {
         return piloto;
     }
 
@@ -137,10 +98,10 @@ public class ResultadoClasificacion {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Piloto }
      *     
      */
-    public void setPiloto(Object value) {
+    public void setPiloto(Piloto value) {
         this.piloto = value;
     }
 
@@ -269,10 +230,10 @@ public class ResultadoClasificacion {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link SesionClasificacion }
      *     
      */
-    public Object getSesionClasificacion() {
+    public SesionClasificacion getSesionClasificacion() {
         return sesionClasificacion;
     }
 
@@ -281,10 +242,10 @@ public class ResultadoClasificacion {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link SesionClasificacion }
      *     
      */
-    public void setSesionClasificacion(Object value) {
+    public void setSesionClasificacion(SesionClasificacion value) {
         this.sesionClasificacion = value;
     }
 

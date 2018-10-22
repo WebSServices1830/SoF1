@@ -68,33 +68,24 @@
             <p:layoutUnit position="west" size="175" header="Menú" collapsible="true">
                 <div id="left">
                     <ui:insert name="menu">
-
                         <p:menu >
                             <p:submenu label="Opciones" >
-
-
                                 <c:if test="#{wsSessionBean.admin}">
                                     <p:menuitem value="Agregar escuderia"  outcome="/escuderia/crear" icon="ui-icon-plus" />
                                     <p:menuitem value="Agregar piloto"  outcome="/piloto/crear" icon="ui-icon-plus" />
                                     <p:menuitem value="Agregar monoplaza"  outcome="/monoplaza/crear" icon="ui-icon-plus" />
-
                                 </c:if>
                                 <p:menuitem value="Escuderia"  outcome="/escuderia/listado" icon="ui-icon-flag" />
                                 <p:menuitem value="Pilotos"  outcome="/piloto/listado" icon="ui-icon-person" />
                                 <p:menuitem value="Monoplazas"  outcome="/monoplaza/listado" icon="ui-icon-radio-on" />
                                 <p:menuitem value="Calendario"  outcome="/calendario/listar" icon="ui-icon-star" />
                             </p:submenu>
-                            <p:submenu label="Campeonatos" >
+                          </p:menu>  
+                        <h:form>
                                 <c:forEach items="#{wsSessionBean.campeonatos}" var="item">
-                                    <p:menuitem value="#{item.nombre}" outcome="/calendario/detalle" ajax="false" >
-                                        <f:actionListener binding="#{wsCampeonato.setCampeonato(item)}"/>
-                                        <f:actionListener binding="#{wsSessionBean.setCampeonato(item)}"/>
-                                    </p:menuitem>
-                                </c:forEach>
-                            </p:submenu>   
-                        </p:menu>
-
-
+                                    <p:commandButton id="btnCampeonato#{item.idCampeonato}" value="#{item.nombre}" ajax="false" actionListener="#{wsSessionBean.change(item)}" />
+                                </c:forEach>         
+                    </h:form>
                     </ui:insert>
                 </div>
             </p:layoutUnit> 

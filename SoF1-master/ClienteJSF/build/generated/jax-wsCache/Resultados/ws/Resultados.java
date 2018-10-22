@@ -30,21 +30,6 @@ public interface Resultados {
      * 
      * @param idPremio
      * @return
-     *     returns ws.SesionCarrera
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerSesionCarreraByPremio", targetNamespace = "http://ws/", className = "ws.ObtenerSesionCarreraByPremio")
-    @ResponseWrapper(localName = "obtenerSesionCarreraByPremioResponse", targetNamespace = "http://ws/", className = "ws.ObtenerSesionCarreraByPremioResponse")
-    @Action(input = "http://ws/Resultados/obtenerSesionCarreraByPremioRequest", output = "http://ws/Resultados/obtenerSesionCarreraByPremioResponse")
-    public SesionCarrera obtenerSesionCarreraByPremio(
-        @WebParam(name = "idPremio", targetNamespace = "")
-        int idPremio);
-
-    /**
-     * 
-     * @param idPremio
-     * @return
      *     returns ws.SesionPractica
      */
     @WebMethod
@@ -70,48 +55,18 @@ public interface Resultados {
 
     /**
      * 
-     * @param idSesionClasificacion
+     * @param idSesionCarrera
      * @return
-     *     returns java.util.List<ws.ResultadoClasificacion>
+     *     returns java.util.List<ws.ResultadoCarrera>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerResultadoClasificacionBySesionClasificacion", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoClasificacionBySesionClasificacion")
-    @ResponseWrapper(localName = "obtenerResultadoClasificacionBySesionClasificacionResponse", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoClasificacionBySesionClasificacionResponse")
-    @Action(input = "http://ws/Resultados/obtenerResultadoClasificacionBySesionClasificacionRequest", output = "http://ws/Resultados/obtenerResultadoClasificacionBySesionClasificacionResponse")
-    public List<ResultadoClasificacion> obtenerResultadoClasificacionBySesionClasificacion(
-        @WebParam(name = "idSesionClasificacion", targetNamespace = "")
-        int idSesionClasificacion);
-
-    /**
-     * 
-     * @param idSesionPractica
-     * @return
-     *     returns java.util.List<ws.ResultadoPractica>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerResultadoPracticaBySesionPractica", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoPracticaBySesionPractica")
-    @ResponseWrapper(localName = "obtenerResultadoPracticaBySesionPracticaResponse", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoPracticaBySesionPracticaResponse")
-    @Action(input = "http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaRequest", output = "http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaResponse")
-    public List<ResultadoPractica> obtenerResultadoPracticaBySesionPractica(
-        @WebParam(name = "idSesionPractica", targetNamespace = "")
-        int idSesionPractica);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<ws.TablaGeneral>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "verResultadoGeneral", targetNamespace = "http://ws/", className = "ws.VerResultadoGeneral")
-    @ResponseWrapper(localName = "verResultadoGeneralResponse", targetNamespace = "http://ws/", className = "ws.VerResultadoGeneralResponse")
-    @Action(input = "http://ws/Resultados/verResultadoGeneralRequest", output = "http://ws/Resultados/verResultadoGeneralResponse")
-    public List<TablaGeneral> verResultadoGeneral(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
+    @RequestWrapper(localName = "obtenerResultadoCarreraBySesionCarrera", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoCarreraBySesionCarrera")
+    @ResponseWrapper(localName = "obtenerResultadoCarreraBySesionCarreraResponse", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoCarreraBySesionCarreraResponse")
+    @Action(input = "http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraRequest", output = "http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraResponse")
+    public List<ResultadoCarrera> obtenerResultadoCarreraBySesionCarrera(
+        @WebParam(name = "idSesionCarrera", targetNamespace = "")
+        int idSesionCarrera);
 
     /**
      * 
@@ -130,17 +85,62 @@ public interface Resultados {
 
     /**
      * 
-     * @param idSesionCarrera
+     * @param arg0
      * @return
-     *     returns java.util.List<ws.ResultadoCarrera>
+     *     returns java.util.List<ws.TablaGeneral>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerResultadoCarreraBySesionCarrera", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoCarreraBySesionCarrera")
-    @ResponseWrapper(localName = "obtenerResultadoCarreraBySesionCarreraResponse", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoCarreraBySesionCarreraResponse")
-    @Action(input = "http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraRequest", output = "http://ws/Resultados/obtenerResultadoCarreraBySesionCarreraResponse")
-    public List<ResultadoCarrera> obtenerResultadoCarreraBySesionCarrera(
-        @WebParam(name = "idSesionCarrera", targetNamespace = "")
-        int idSesionCarrera);
+    @RequestWrapper(localName = "verResultadoGeneral", targetNamespace = "http://ws/", className = "ws.VerResultadoGeneral")
+    @ResponseWrapper(localName = "verResultadoGeneralResponse", targetNamespace = "http://ws/", className = "ws.VerResultadoGeneralResponse")
+    @Action(input = "http://ws/Resultados/verResultadoGeneralRequest", output = "http://ws/Resultados/verResultadoGeneralResponse")
+    public List<TablaGeneral> verResultadoGeneral(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
+     * @param idSesionPractica
+     * @return
+     *     returns java.util.List<ws.ResultadoPractica>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerResultadoPracticaBySesionPractica", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoPracticaBySesionPractica")
+    @ResponseWrapper(localName = "obtenerResultadoPracticaBySesionPracticaResponse", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoPracticaBySesionPracticaResponse")
+    @Action(input = "http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaRequest", output = "http://ws/Resultados/obtenerResultadoPracticaBySesionPracticaResponse")
+    public List<ResultadoPractica> obtenerResultadoPracticaBySesionPractica(
+        @WebParam(name = "idSesionPractica", targetNamespace = "")
+        int idSesionPractica);
+
+    /**
+     * 
+     * @param idPremio
+     * @return
+     *     returns ws.SesionCarrera
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerSesionCarreraByPremio", targetNamespace = "http://ws/", className = "ws.ObtenerSesionCarreraByPremio")
+    @ResponseWrapper(localName = "obtenerSesionCarreraByPremioResponse", targetNamespace = "http://ws/", className = "ws.ObtenerSesionCarreraByPremioResponse")
+    @Action(input = "http://ws/Resultados/obtenerSesionCarreraByPremioRequest", output = "http://ws/Resultados/obtenerSesionCarreraByPremioResponse")
+    public SesionCarrera obtenerSesionCarreraByPremio(
+        @WebParam(name = "idPremio", targetNamespace = "")
+        int idPremio);
+
+    /**
+     * 
+     * @param idSesionClasificacion
+     * @return
+     *     returns java.util.List<ws.ResultadoClasificacion>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerResultadoClasificacionBySesionClasificacion", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoClasificacionBySesionClasificacion")
+    @ResponseWrapper(localName = "obtenerResultadoClasificacionBySesionClasificacionResponse", targetNamespace = "http://ws/", className = "ws.ObtenerResultadoClasificacionBySesionClasificacionResponse")
+    @Action(input = "http://ws/Resultados/obtenerResultadoClasificacionBySesionClasificacionRequest", output = "http://ws/Resultados/obtenerResultadoClasificacionBySesionClasificacionResponse")
+    public List<ResultadoClasificacion> obtenerResultadoClasificacionBySesionClasificacion(
+        @WebParam(name = "idSesionClasificacion", targetNamespace = "")
+        int idSesionClasificacion);
 
 }

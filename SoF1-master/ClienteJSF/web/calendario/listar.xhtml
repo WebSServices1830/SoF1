@@ -4,40 +4,35 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
         <ui:composition template="./../Template.xhtml">
 
             <ui:define name="content">
-                <h1>Calendario</h1>
-                <h:form>
-                  
-                    <ui:repeat value="#{wsCampeonato.premios}" var="item">
-                        <p:fieldset legend="#{item.idPremio}" style="margin-bottom:20px;">
-                            <h:panelGrid columns="1">
-                                <h2>#{item.nombre}</h2>
-                                <h:outputText
-                                    value="#{item.fechaInicio} to #{item.fechaFin}" />
-                                <h:outputText
-                                    value="Campeonatos: #{item.circuito}" />
-                            </h:panelGrid>
-                            <p:toolbar>
-                                <f:facet name="right">
-                                    <p:menuButton value="Options">
-                                        <p:menuitem value="Ver más" action="#{wsCampeonato.detalle(item.idPiloto)}" ajax="false" icon="ui-icon-close"/>
-                                        <p:menuitem value="Comentarios" action="#{wsCampeonato.comentarios(item.idPiloto)}" ajax="false" icon="ui-icon-close"/>
-                                    </p:menuButton>
-                                </f:facet>
-                            </p:toolbar>
-                        </p:fieldset>
-                    </ui:repeat>
+                <h1>#{wsCampeonato.campeonato.nombre}</h1>
+                <h:form> <p:panelGrid columns="4">                  
+                        <ui:repeat value="#{wsCampeonato.premios}" var="item"> 
+                     
+                         <p:commandLink id="nonAjax" action="#{wsCampeonato.detalle(item.idPremio)}" ajax="false">
+                                    <h:panelGrid columns="1">
+                                        <img width="30px" height="30px" alt="" src="#{item.circuito.foto}"/>
+                                        <h:outputText
+                                            value="#{wsCampeonato.fechas(item)}" />
+                                        <h5>#{item.nombre}</h5>
+                                  
+                                            <p:outputLabel value=" (#{wsCampeonato.ganador(item)})"/>   
+                                      
+                                            
+                                    </h:panelGrid>
+                                </p:commandLink>                            
+                        </ui:repeat>
+                    </p:panelGrid>
                 </h:form>
-                <p:commandButton value="Detalle" id="ajax" actionListener="#{wsCampeonato.detalle(10)}" styleClass="ui-priority-primary" />
-                <p:link outcome="/calendario/detalle" value="Detalle">
-                    <f:param name="productId" value="10" />
-                </p:link>
+                
+         
             </ui:define>
 
         </ui:composition>

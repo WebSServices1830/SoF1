@@ -114,55 +114,6 @@
 
 <xs:element name="removePremio" type="tns:removePremio"/>
 
-<xs:complexType name="findAllPais">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="findAllPaisResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:pais" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="pais">
-<xs:sequence>
-<xs:element name="idPais" type="xs:int" minOccurs="0"/>
-<xs:element name="nombre" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findAllMonoplaza">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="findAllMonoplazaResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:monoplaza" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="monoplaza">
-<xs:sequence>
-<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
-<xs:element name="idMonoplaza" type="xs:int" minOccurs="0"/>
-<xs:element name="imagen" type="xs:string" minOccurs="0"/>
-<xs:element name="marca" type="xs:string" minOccurs="0"/>
-<xs:element name="modelo" type="xs:string" minOccurs="0"/>
-<xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
-<xs:element name="numCilindros" type="xs:double" minOccurs="0"/>
-<xs:element name="potencia" type="xs:double" minOccurs="0"/>
-<xs:element name="torque" type="xs:double" minOccurs="0"/>
-<xs:element name="velMax" type="xs:double" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="campeonato">
-<xs:sequence>
-<xs:element name="idCampeonato" type="xs:int" minOccurs="0"/>
-<xs:element name="nombre" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="findPremio">
 <xs:sequence>
 <xs:element name="idPremio" type="xs:int"/>
@@ -190,6 +141,13 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="campeonato">
+<xs:sequence>
+<xs:element name="idCampeonato" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="circuito">
 <xs:sequence>
 <xs:element name="fechRecord" type="xs:dateTime" minOccurs="0"/>
@@ -201,6 +159,13 @@
 <xs:element name="record" type="xs:double" minOccurs="0"/>
 <xs:element name="ultimoGanador" type="xs:string" minOccurs="0"/>
 <xs:element name="vueltas" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pais">
+<xs:sequence>
+<xs:element name="idPais" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -228,6 +193,41 @@
 <xs:element name="idSesionPractica" type="xs:int" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 <xs:element name="premio" type="tns:premio" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllPais">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllPaisResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pais" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllMonoplaza">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllMonoplazaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:monoplaza" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="monoplaza">
+<xs:sequence>
+<xs:element name="campeonato" type="tns:campeonato" minOccurs="0"/>
+<xs:element name="idMonoplaza" type="xs:int" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="marca" type="xs:string" minOccurs="0"/>
+<xs:element name="modelo" type="xs:string" minOccurs="0"/>
+<xs:element name="multiplicador" type="xs:double" minOccurs="0"/>
+<xs:element name="numCilindros" type="xs:double" minOccurs="0"/>
+<xs:element name="potencia" type="xs:double" minOccurs="0"/>
+<xs:element name="torque" type="xs:double" minOccurs="0"/>
+<xs:element name="velMax" type="xs:double" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -489,12 +489,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="createPremio">
-<xs:sequence>
-<xs:element name="premio" type="tns:premio" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="findAllEscuderia">
 <xs:sequence/>
 </xs:complexType>
@@ -502,6 +496,12 @@
 <xs:complexType name="findAllEscuderiaResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:escuderia" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createPremio">
+<xs:sequence>
+<xs:element name="premio" type="tns:premio" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
