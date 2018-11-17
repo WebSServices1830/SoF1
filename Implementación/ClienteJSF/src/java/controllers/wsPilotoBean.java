@@ -15,18 +15,20 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.ws.rs.core.GenericType;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
+import ws.PaisesRestClient;
+import ws.PilotoRestClient;
 
 /**
  *
@@ -83,7 +85,7 @@ public class wsPilotoBean {
      List<Pais> paises=new ArrayList<>();
 
     public List<Pais> getPaises() {
- //       paises=findAllPais();
+        paises=findAllPais();
         return paises;
     }
 
@@ -110,7 +112,7 @@ public class wsPilotoBean {
     }
 
     public List<Piloto> getPilotos() {
- //     pilotos=findAllPilotoByCampeonato(c.getIdCampeonato());
+     pilotos=findAllPilotoByCampeonato(c.getIdCampeonato());
         return pilotos;
     }
 
@@ -125,14 +127,8 @@ public class wsPilotoBean {
         piloto.setCampeonato(c);
         upload();
         System.out.println("" + piloto.getNombre()+" "+piloto);
-        GregorianCalendar c = new GregorianCalendar();
-        c.setTime(fecha);
-        piloto.setFechaNacimiento(c.getTime());
       
- //       piloto.setPais(findPais(idpais));
-        
- //      createPiloto(piloto);
-       
+
         System.out.println("save");
         return "listado";
     }
@@ -157,9 +153,6 @@ public class wsPilotoBean {
     public String edit() throws IOException {
         piloto.setCampeonato(c);
         upload();
-           GregorianCalendar c = new GregorianCalendar();
-        c.setTime(fecha);
-            piloto.setFechaNacimiento(c.getTime());
         
    //   piloto.setPais(findPais(idpais));
        
@@ -170,9 +163,9 @@ public class wsPilotoBean {
 
     private UploadedFile file;
 
-    public Date getDate(XMLGregorianCalendar xmlgc){
+    public Date getDate(Date xmlgc){
         if(xmlgc== null) return null;
-        return xmlgc.toGregorianCalendar().getTime();
+        return xmlgc;
     }
     
     public UploadedFile getFile() {
@@ -222,6 +215,17 @@ public class wsPilotoBean {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private List<Pais> findAllPais() {
+        PaisesRestClient pcl=new PaisesRestClient();
+        return pcl.obtenerPaises(new GenericType<List<Pais>>() {});
+    }
+
+    private List<Piloto> findAllPilotoByCampeonato(Integer idCampeonato) {
+        PilotoRestClient pcl=new PilotoRestClient();
+        
+        return pcl.obtenerPilotosByCampeonato(new GenericType<List<Piloto>>(){}, idCampeonato+"");
     }
 
        

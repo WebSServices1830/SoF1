@@ -20,8 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
+import ws.AutenticacionRestClient;
+import ws.CampeonatoRestClient;
 
 /**
  *
@@ -51,11 +54,14 @@ public class wsSessionBean implements Serializable {
     
     
     public List<Campeonato> getCampeonatos() {
-        campeonatos=new ArrayList<>();
-//        campeonatos=findAllCampeonato();
+        
+        CampeonatoRestClient ccl=new CampeonatoRestClient();
+        campeonatos=ccl.obtenerCampeonatos(new GenericType<List<Campeonato>>() {});
     if(campeonatos.size()>0 && campeonato == null) campeonato=campeonatos.get(0);
         return campeonatos;
     }
+    
+    
      public void change(Campeonato c){
         campeonato=c;
     }
@@ -159,7 +165,8 @@ public class wsSessionBean implements Serializable {
     public String login() {
         System.out.println("login " + usuario);
         Usuario u= null;
-        //= iniciarSesion(usuario, clave);
+        AutenticacionRestClient acl=new AutenticacionRestClient();
+        //System.out.println(acl.iniciarSesion(Usuario.class, usuario, clave));
         if (u.getIdUsuario() > -1) {
             estado = true;
             usuarioSession = u;
