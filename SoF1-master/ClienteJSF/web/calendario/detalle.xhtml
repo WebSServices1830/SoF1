@@ -22,6 +22,7 @@
                  
                     <p:inputText value="#{wsCampeonato.idcircuito}"/>
                     <p:commandButton action="#{wsCampeonato.detallePista}" ajax="false"  value="circuito"/>
+                    <p:commandButton value="Carrera" oncomplete="#{wsResultados.detCarrera(wsCampeonato.premio.idPremio)}"  icon="ui-icon-flag" ajax="false" />
                     <p:panelMenu style="align-content: center;border-bottom-color: #045491;elevation: higher; width:500px">
                         <p:submenu label="Informacion">
                             <p:menuitem value="Circuito" action="#{wsCampeonato.detallePista}" ajax="false" icon="ui-icon-disk" />
@@ -32,6 +33,7 @@
                         </p:submenu>
                         <p:separator />
                         <p:submenu label="Sesiones">
+                            
                             <p:menuitem value="Carrera" action="#{wsResultados.detCarrera(wsCampeonato.premio.idPremio)}" outcome="/resultados/resCarrera" icon="ui-icon-flag" ajax="false" />
                             <p:menuitem value="Clasificacion" action="#{wsResultados.detClasificacion(wsCampeonato.premio.idPremio)}" outcome="/resultados/resClasificacion"  ajax="false" />
                             <p:menuitem value="Practica" action="#{wsResultados.detPractica(wsCampeonato.premio.idPremio)}" outcome="/resultados/resPractica" ajax="false" icon="ui-icon-flag"/>

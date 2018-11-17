@@ -13,26 +13,24 @@
 
             <ui:define name="content">
                 <h1>#{wsCampeonato.campeonato.nombre}</h1>
-                <h:form> <p:panelGrid columns="4">                  
-                        <ui:repeat value="#{wsCampeonato.premios}" var="item"> 
-                     
-                         <p:commandLink id="nonAjax" action="#{wsCampeonato.detalle(item.idPremio)}" ajax="false">
-                                    <h:panelGrid columns="1">
-                                        <img width="30px" height="30px" alt="" src="#{item.circuito.foto}"/>
-                                        <h:outputText
-                                            value="#{wsCampeonato.fechas(item)}" />
-                                        <h5>#{item.nombre}</h5>
-                                  
-                                            <p:outputLabel value=" (#{wsCampeonato.ganador(item)})"/>   
-                                      
-                                            
-                                    </h:panelGrid>
-                                </p:commandLink>                            
-                        </ui:repeat>
-                    </p:panelGrid>
+                <h:form> 
+                <ui:repeat value="#{wsCampeonato.premios}" var="item"> 
+                    <p:panelGrid columns="3" >
+                            <p:commandLink id="nonAjax" action="#{wsCampeonato.detalle(item.idPremio)}" ajax="false">
+                                <h:panelGrid columns="1">
+                                    <img width="100px" height="100px" alt="" src="#{item.circuito.foto}"/>
+                                    <h:outputText
+                                        value="#{wsCampeonato.fechas(item)}" />
+                                    <h5>#{item.nombre}</h5>
+                                    <p:outputLabel value=" (#{wsCampeonato.ganador(item)})"/>                    
+                                </h:panelGrid>
+                            </p:commandLink>  
+                        </p:panelGrid>
+                    </ui:repeat>
+                   
                 </h:form>
-                
-         
+
+
             </ui:define>
 
         </ui:composition>

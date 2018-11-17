@@ -127,12 +127,14 @@ public class wsResultados {
     }
  public String detCarrera(int id) throws IOException{
      premio= findPremio(id);
+   System.err.println("detCarrera aaaaaaaaaa "+premio.getCircuito().getNombre());
+     
          return "/resultados/resCarrera";
     }
  public String detClasificacion(int id) throws IOException{
        
        premio= findPremio(id); 
-       System.err.println("find piloto tal "+resClasificacion.getIdResultado());
+       
          return "/resultados/resClasificacion";
     }
  public String detPractica(int id) throws IOException{

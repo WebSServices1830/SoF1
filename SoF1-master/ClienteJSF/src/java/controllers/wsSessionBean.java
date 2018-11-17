@@ -41,6 +41,7 @@ public class wsSessionBean implements Serializable {
     String filePath = "C:\\xampp\\htdocs\\images\\users\\";
     
     List<Campeonato> campeonatos;
+    
     Campeonato campeonato;
     private UploadedFile file;
     private boolean estado = false;
