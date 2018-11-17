@@ -6,6 +6,10 @@
 package controllers;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+import entities.CalificacionPiloto;
+import entities.Piloto;
+import entities.Premio;
+import entities.Usuario;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -18,13 +22,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
-import ws.CalificacionPiloto;
-import ws.Campeonato;
-import ws.Gestor_Service;
-import ws.Opiniones_Service;
-import ws.Piloto;
-import ws.Premio;
-import ws.Usuario;
+
 
 /**
  *
@@ -34,17 +32,6 @@ import ws.Usuario;
 @ManagedBean
 public class wsCalificacionPiloto {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service_1;
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl")
-    private Opiniones_Service service;
-
-    //@ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
-    //Usuario usuarioSession;
-    /**
-     * Creates a new instance of wsCalificacionPiloto
-     */
     
     
     @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
@@ -90,19 +77,18 @@ public class wsCalificacionPiloto {
         System.out.println("rating " +rating);
         GregorianCalendar c = new GregorianCalendar();
 
-        XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
         this.calificacion.setPuntaje(rating.doubleValue());
 
-        this.calificacion.setFecha(date2);
+        this.calificacion.setFecha(c.getTime());
 
-        this.calificarPiloto(usuario.getIdUsuario(), piloto.getIdPiloto(), calificacion);
+//        this.calificarPiloto(usuario.getIdUsuario(), piloto.getIdPiloto(), calificacion);
 
         return "listado";
     }
 
     public String comentarios(int idP) {
         this.idPiloto = idP;
-        this.piloto = findPiloto(idP);
+    //    this.piloto = findPiloto(idP);
         this.rating = (int) this.getPromedioPiloto();
         return "comentarios";
     }
@@ -117,40 +103,6 @@ public class wsCalificacionPiloto {
     }
 
     //---------------------------------------------------------------------------------------
-    private java.util.List<ws.CalificacionPiloto> obtenerCalificacionesPiloto(int idPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        return port.obtenerCalificacionesPiloto(idPiloto);
-    }
-
-    private double obtenerCalificacionPromedioPiloto(int idPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        return port.obtenerCalificacionPromedioPiloto(idPiloto);
-    }
-
-    private java.util.List<ws.Piloto> obtenerTopPilotos() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        return port.obtenerTopPilotos();
-    }
-
-    private java.util.List<ws.CalificacionPiloto> obtenerCalificacionesPiloto_1(int idPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        return port.obtenerCalificacionesPiloto(idPiloto);
-    }
-
-    private Piloto findPiloto(int idPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service_1.getGestorPort();
-        return port.findPiloto(idPiloto);
-    }
 
     //---------------------------------------------------------------------------------------
     public CalificacionPiloto getCalificacion() {
@@ -163,7 +115,7 @@ public class wsCalificacionPiloto {
 
     public List<CalificacionPiloto> getCalificaciones() {
         this.calificaciones.clear();
-        this.calificaciones = this.obtenerCalificacionesPiloto(idPiloto);
+//        this.calificaciones = this.obtenerCalificacionesPiloto(idPiloto);
         return calificaciones;
     }
 
@@ -172,7 +124,7 @@ public class wsCalificacionPiloto {
     }
 
     public List<Piloto> getPilotos() {
-        this.pilotos = this.obtenerTopPilotos();
+//        this.pilotos = this.obtenerTopPilotos();
         return pilotos;
     }
 
@@ -197,7 +149,7 @@ public class wsCalificacionPiloto {
     }
 
     public double getPromedioPiloto() {
-        this.promedioPiloto = obtenerCalificacionPromedioPiloto(this.idPiloto);
+  //      this.promedioPiloto = obtenerCalificacionPromedioPiloto(this.idPiloto);
         return promedioPiloto;
     }
 
@@ -213,25 +165,12 @@ public class wsCalificacionPiloto {
         this.rating = rating;
     }
 
-    private void calificarPiloto(int idUsuario, int idPiloto, ws.CalificacionPiloto calificacionPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        port.calificarPiloto(idUsuario, idPiloto, calificacionPiloto);
-    }
-
-    private java.util.List<ws.Piloto> obtenerTopPilotos_1() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        return port.obtenerTopPilotos();
-    }
 
     List<Piloto> toppilotos =new ArrayList<>();
     List<Premio> toppremios =new ArrayList<>();
 
     public List<Piloto> getToppilotos() {
-       toppilotos=obtenerTopPilotos_1();
+  //     toppilotos=obtenerTopPilotos_1();
         return toppilotos;
     }
 
@@ -240,7 +179,7 @@ public class wsCalificacionPiloto {
     }
 
     public List<Premio> getToppremios() {
-        toppremios=obtenerTopPremios();
+//        toppremios=obtenerTopPremios();
         return toppremios;
     }
 
@@ -248,11 +187,5 @@ public class wsCalificacionPiloto {
         this.toppremios = toppremios;
     }
     
-    private java.util.List<ws.Premio> obtenerTopPremios() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service.getOpinionesPort();
-        return port.obtenerTopPremios();
-    }
 
 }

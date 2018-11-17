@@ -5,7 +5,9 @@
  */
 package controllers;
 
-import ws.Monoplaza;
+
+import entities.Campeonato;
+import entities.Monoplaza;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,10 +21,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
-import ws.Campeonato;
-import ws.Gestor_Service;
+
 
 /**
  *
@@ -31,9 +31,6 @@ import ws.Gestor_Service;
 @Named(value = "wsMonoplazaBean")
 @ManagedBean
 public class wsMonoplazaBean {
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service;
 
    
     
@@ -75,22 +72,22 @@ public class wsMonoplazaBean {
         upload();
          monoplaza.setImagen("http://"+wsSessionBean.IP + "/images/cars/" + monoplaza.getMarca()+ ".jpg");
          monoplaza.setCampeonato(c);
-         createMonoplaza(monoplaza);
+//         createMonoplaza(monoplaza);
         return "listado";
     } 
     public String delete(int id){
-        removeMonoplaza(id);
+   //     removeMonoplaza(id);
         return null;
     }
         public String editarView(int id) throws IOException {
-            monoplaza=findMonoplaza(id);
+ //           monoplaza=findMonoplaza(id);
         return "edit";
 
     }
 
     
     public List<Monoplaza> getMonoplazas() {
-        monoplazas=findAllMonoplaza(c.getIdCampeonato());
+ //       monoplazas=findAllMonoplaza(c.getIdCampeonato());
         return monoplazas;
     }
 
@@ -110,7 +107,7 @@ public class wsMonoplazaBean {
         monoplaza.setCampeonato(c);
         System.out.println("editando "+monoplaza.getIdMonoplaza());
         upload();
-        editMonoplaza(monoplaza);
+ //       editMonoplaza(monoplaza);
     return "listado";
     }
 public void upload() throws IOException {
@@ -152,40 +149,5 @@ public void upload() throws IOException {
                 }
     }    
 
-    private java.util.List<ws.Monoplaza> findAllMonoplaza(int idCampeonato) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.obtenerMonoplazasByCampeonato(idCampeonato);
-        }
-
-    private void createMonoplaza(ws.Monoplaza monoplaza) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.createMonoplaza(monoplaza);
-    }
-
-    private void removeMonoplaza(int monoplaza) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.removeMonoplaza(monoplaza);
-    }
-
-    private void editMonoplaza(ws.Monoplaza monoplaza) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.editMonoplaza(monoplaza);
-    }
-
-    private Monoplaza findMonoplaza(int idMonoplaza) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findMonoplaza(idMonoplaza);
-    }
-    
     
 }

@@ -5,6 +5,9 @@
  */
 package controllers;
 
+import entities.Campeonato;
+import entities.Pais;
+import entities.Piloto;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,11 +27,6 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
-import ws.Campeonato;
-import ws.Gestor_Service;
-import ws.Pais;
-import ws.Piloto;
-//import ws.gestor.Gestor_Service;
 
 /**
  *
@@ -37,9 +35,6 @@ import ws.Piloto;
 @Named(value = "wsPilotoBean")
 @ManagedBean
 public class wsPilotoBean {
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service;
 
     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato c;
@@ -88,7 +83,7 @@ public class wsPilotoBean {
      List<Pais> paises=new ArrayList<>();
 
     public List<Pais> getPaises() {
-        paises=findAllPais();
+ //       paises=findAllPais();
         return paises;
     }
 
@@ -115,7 +110,7 @@ public class wsPilotoBean {
     }
 
     public List<Piloto> getPilotos() {
-      pilotos=findAllPilotoByCampeonato(c.getIdCampeonato());
+ //     pilotos=findAllPilotoByCampeonato(c.getIdCampeonato());
         return pilotos;
     }
 
@@ -128,17 +123,15 @@ public class wsPilotoBean {
 
     public String save() throws IOException {
         piloto.setCampeonato(c);
-        piloto.setPais(findPais(idpais));
         upload();
         System.out.println("" + piloto.getNombre()+" "+piloto);
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(fecha);
-        try {
-            piloto.setFechaNacimiento(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
-        } catch (DatatypeConfigurationException ex) {
-        }
+        piloto.setFechaNacimiento(c.getTime());
       
-       createPiloto(piloto);
+ //       piloto.setPais(findPais(idpais));
+        
+ //      createPiloto(piloto);
        
         System.out.println("save");
         return "listado";
@@ -147,15 +140,15 @@ public class wsPilotoBean {
 
 
     public void delete(int id) {
-        removePiloto(id);
+     //   removePiloto(id);
         System.out.println("borrando " + id);
 
     }
 
     public String editar(int id) throws IOException {
-           piloto= findPiloto(id);
+       //    piloto= findPiloto(id);
            idpais=piloto.getPais().getIdPais();
-           fecha=getDate(piloto.getFechaNacimiento());
+//           fecha=getDate(piloto.getFechaNacimiento());
      
            return "editar";
 
@@ -163,16 +156,14 @@ public class wsPilotoBean {
 
     public String edit() throws IOException {
         piloto.setCampeonato(c);
-        piloto.setPais(findPais(idpais));
         upload();
            GregorianCalendar c = new GregorianCalendar();
         c.setTime(fecha);
-        try {
-            piloto.setFechaNacimiento(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
-        } catch (DatatypeConfigurationException ex) {
-        }
-     
-        editPiloto(piloto);
+            piloto.setFechaNacimiento(c.getTime());
+        
+   //   piloto.setPais(findPais(idpais));
+       
+  //      editPiloto(piloto);
         return "listado";
 
     }
@@ -233,71 +224,6 @@ public class wsPilotoBean {
         }
     }
 
-    private void createPiloto(ws.Piloto piloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.createPiloto(piloto);
-    }
-
-    private java.util.List<ws.Piloto> findAllPiloto() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findAllPiloto();
-    }
-
-    private void editPiloto(ws.Piloto piloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.editPiloto(piloto);
-    }
-        private Piloto editPiloto(int id) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findPiloto(id);
-    }
-
-    private Piloto findPiloto(int idPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findPiloto(idPiloto);
-    }
-
-    private java.util.List<ws.Piloto> findAllPilotoByCampeonato(int arg0) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.obtenerPilotosByCampeonato(arg0);
-    }
-
-    private java.util.List<ws.Pais> findAllPais() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findAllPais();
-    }
-
-    private Pais findPais(int idPais) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findPais(idPais);
-    }
-
-    private void removePiloto(int piloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.removePiloto(piloto);
-    }
-    
-
-    
-
-    
+       
     
 }

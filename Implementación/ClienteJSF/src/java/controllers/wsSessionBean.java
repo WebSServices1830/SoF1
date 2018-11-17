@@ -5,6 +5,9 @@
  */
 package controllers;
 
+import entities.Campeonato;
+import entities.Premio;
+import entities.Usuario;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,17 +16,12 @@ import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
-import ws.Auth_Service;
-
-import ws.Campeonato;
-import ws.Gestor_Service;
-import ws.Premio;
-import ws.Usuario;
 
 /**
  *
@@ -32,11 +30,6 @@ import ws.Usuario;
 @Named(value = "wsSessionBean")
 @SessionScoped
 public class wsSessionBean implements Serializable {
- @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service_1;
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Auth/Auth.wsdl")
-    private Auth_Service service;
     
     
     static String IP="localhost";
@@ -58,8 +51,9 @@ public class wsSessionBean implements Serializable {
     
     
     public List<Campeonato> getCampeonatos() {
-        campeonatos=findAllCampeonato();
-        if(campeonatos.size()>0 && campeonato == null) campeonato=campeonatos.get(0);
+        campeonatos=new ArrayList<>();
+//        campeonatos=findAllCampeonato();
+    if(campeonatos.size()>0 && campeonato == null) campeonato=campeonatos.get(0);
         return campeonatos;
     }
      public void change(Campeonato c){
@@ -126,7 +120,7 @@ public class wsSessionBean implements Serializable {
     public String registro() throws IOException {
         usuarioSession.setRol("usuario");
         upload();
-        registrarUsuario(usuarioSession);
+//        registrarUsuario(usuarioSession);
         System.out.println("registro.");
         estado = true;
         return "index";
@@ -154,7 +148,7 @@ public class wsSessionBean implements Serializable {
 
     public String salir() {
 
-        estado = !cerrarSesion(usuarioSession);
+//        estado = !cerrarSesion(usuarioSession);
         if (!estado) {
             usuarioSession = new Usuario();
         }
@@ -164,7 +158,8 @@ public class wsSessionBean implements Serializable {
 
     public String login() {
         System.out.println("login " + usuario);
-        Usuario u = iniciarSesion(usuario, clave);
+        Usuario u= null;
+        //= iniciarSesion(usuario, clave);
         if (u.getIdUsuario() > -1) {
             estado = true;
             usuarioSession = u;
@@ -211,34 +206,6 @@ public class wsSessionBean implements Serializable {
                 } catch (IOException e) {
                 System.out.println(e.getMessage());
                 }
-    }
-
-    private Boolean registrarUsuario(ws.Usuario usuario) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Auth port = service.getAuthPort();
-        return port.registrarUsuario(usuario);
-    }
-
-    private Usuario iniciarSesion(java.lang.String usuario, java.lang.String contrasena) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Auth port = service.getAuthPort();
-        return port.iniciarSesion(usuario, contrasena);
-    }
-
-    private Boolean cerrarSesion(ws.Usuario usuario) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Auth port = service.getAuthPort();
-        return port.cerrarSesion(usuario);
-    }
-
-    private java.util.List<ws.Campeonato> findAllCampeonato() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service_1.getGestorPort();
-        return port.findAllCampeonato();
     }
 
   

@@ -5,6 +5,10 @@
  */
 package controllers;
 
+import entities.Apuesta;
+import entities.Campeonato;
+import entities.Premio;
+import entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
@@ -12,12 +16,6 @@ import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.xml.ws.WebServiceRef;
-import ws.Apuesta;
-import ws.Apuestas_Service;
-import ws.Campeonato;
-import ws.Gestor_Service;
-import ws.Premio;
-import ws.Usuario;
 
 /**
  *
@@ -27,14 +25,9 @@ import ws.Usuario;
 @ManagedBean
 public class wsApuestaBean {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service_1;
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/AppFormula1Servidor/Apuestas.wsdl")
-    private Apuestas_Service service;
     
     @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
-    private Usuario usuario;
+   private Usuario usuario;
 
     public Usuario getUsuario() {
         return usuario;
@@ -71,7 +64,7 @@ public class wsApuestaBean {
     
     public String apostar(){
         
-        this.hacerApuesta(usuario.getIdUsuario(), apuesta.getCantidad(), idPremio, idPiloto);
+        //this.hacerApuesta(usuario.getIdUsuario(), apuesta.getCantidad(), idPremio, idPiloto);
         return "listado";
     }
 
@@ -96,31 +89,10 @@ public class wsApuestaBean {
     
     //----------------------------------------------------------------------------------------------
 
-    private boolean hacerApuesta(int idUsuario, double cantidad, int idPremio, int idPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Apuestas port = service.getApuestasPort();
-        return port.hacerApuesta(idUsuario, cantidad, idPremio, idPiloto);
-    }
-
-    private java.util.List<ws.Apuesta> obtenerApuestasByUsuario(int idUsuario) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Apuestas port = service.getApuestasPort();
-        return port.obtenerApuestasByUsuario(idUsuario);
-    }
-
-    private java.util.List<ws.Premio> findAllPremio(int id) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service_1.getGestorPort();
-        return port.obtenerPremiosByCampeonato(id);
-    }
-    
   //----------------------------------------------------
 
     public List<Premio> getPremios() {
-        premios = this.findAllPremio(c.getIdCampeonato());
+//        premios = this.findAllPremio(c.getIdCampeonato());
         return premios;
     }
 
@@ -130,14 +102,8 @@ public class wsApuestaBean {
 
     
     public List<Apuesta> getApuestas() {
-    /*
-        if(this.usuario != null){
-            apuestas = this.obtenerApuestasByUsuario(this.usuario.getIdUsuario());
-        }else{
-            apuestas = new ArrayList<Apuesta>();
-        }
-    */    
-        return this.obtenerApuestasByUsuario(usuario.getIdUsuario());
+        return new ArrayList<>();
+      //  return this.obtenerApuestasByUsuario(usuario.getIdUsuario());
     }
 
     public void setApuestas(List<Apuesta> apuestas) {

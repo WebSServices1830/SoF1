@@ -5,6 +5,11 @@
  */
 package controllers;
 
+import entities.CalificacionPremio;
+import entities.Campeonato;
+import entities.Circuito;
+import entities.Premio;
+import entities.Usuario;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,16 +26,6 @@ import javax.faces.view.ViewScoped;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.ws.WebServiceRef;
-import ws.CalificacionPremio;
-import ws.Campeonato;
-import ws.Circuito;
-import ws.Gestor_Service;
-import ws.Opiniones_Service;
-import ws.Premio;
-import ws.ResultadoCarrera;
-import ws.Resultados_Service;
-import ws.SesionCarrera;
-import ws.Usuario;
 
 /**
  *
@@ -40,15 +35,6 @@ import ws.Usuario;
 @ManagedBean
 public class wsCampeonato {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Resultados/Resultados.wsdl")
-    private Resultados_Service service_2;
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service;
-
-    
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/AppFormula1Servidor/Opiniones.wsdl")
-    private Opiniones_Service service_1;
 
     int idcircuito;
 
@@ -100,12 +86,12 @@ public class wsCampeonato {
     
     public List<CalificacionPremio> getCalificaciones() {
 
-        calificaciones = obtenerCalificacionesPremio(idpremio);
+       // calificaciones = obtenerCalificacionesPremio(idpremio);
         return calificaciones;
     }
 
     public List<CalificacionPremio> obtenerCalificaciones() {
-        calificaciones = obtenerCalificacionesPremio(idpremio);
+        //calificaciones = obtenerCalificacionesPremio(idpremio);
         return calificaciones;
     }
 
@@ -130,15 +116,6 @@ public class wsCampeonato {
     }
     Circuito circuito = new Circuito();
 
-    public Gestor_Service getService() {
-
-        return service;
-    }
-
-    public void setService(Gestor_Service service) {
-        this.service = service;
-    }
-
     public Campeonato getCampeonato() {
         return campeonato;
     }
@@ -148,7 +125,7 @@ public class wsCampeonato {
     }
 
     public List<Premio> getPremios() {
-        premios = obtenerPremiosByCampeonato(campeonato.getIdCampeonato());
+    //    premios = obtenerPremiosByCampeonato(campeonato.getIdCampeonato());
         return premios;
     }
 
@@ -169,7 +146,7 @@ public class wsCampeonato {
     }
 
     public String detalle(int id) throws IOException {
-        premio = findPremio(id);
+   //     premio = findPremio(id);
         idcircuito=premio.getCircuito().getIdCircuito();
         idpremio=id;
         return "/calendario/detalle";
@@ -178,7 +155,7 @@ public class wsCampeonato {
     public String detallePista() throws IOException {
         System.out.println(idcircuito);
     
-        circuito = findCircuito(idcircuito);
+ //       circuito = findCircuito(idcircuito);
         
         return "detallePista";
     }
@@ -200,7 +177,7 @@ public class wsCampeonato {
 
     public Integer puntaje() {
         Integer act = 0;
-        calificaciones = obtenerCalificacionesPremio(premio.getIdPremio());
+//        calificaciones = obtenerCalificacionesPremio(premio.getIdPremio());
         for (CalificacionPremio c : calificaciones) {
             act += c.getPuntaje().shortValue();
         }
@@ -219,52 +196,25 @@ Integer rating = new Integer(0);
     }
 
     public String submitComment() throws DatatypeConfigurationException {
-       // newCalificacion.setUsuario();
         newCalificacion.setPuntaje(rating.doubleValue());
-       newCalificacion.setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar()));
-       calificarPremio(usuario.getIdUsuario(), idpremio, newCalificacion);
+       newCalificacion.setFecha(new Date());
+   //    calificarPremio(usuario.getIdUsuario(), idpremio, newCalificacion);
      rating=0;
      newCalificacion.setComentario("");
        return null;
     }
 
-    private void calificarPremio(int idUsuario, int idPremio, ws.CalificacionPremio calificacionPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service_1.getOpinionesPort();
-        port.calificarPremio(idUsuario, idPremio, calificacionPremio);
-    }
-
-    private java.util.List<ws.CalificacionPremio> obtenerCalificacionesPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service_1.getOpinionesPort();
-        return port.obtenerCalificacionesPremio(idPremio);
-    }
-
-    private Premio findPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findPremio(idPremio);
-    }
-
-    private java.util.List<ws.Premio> obtenerPremiosByCampeonato(int idCampeonato) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.obtenerPremiosByCampeonato(idCampeonato);
-    }
-
+    
     public String ganador(Premio p) {
-        try {
+  /*      try {
         SesionCarrera sesCarr = obtenerSesionCarreraByPremio(p.getIdPremio());
         ResultadoCarrera resCarr = obtenerResultadoCarreraBySesionCarrera(sesCarr.getIdSesionCarrera()).get(0);
             
         return resCarr.getPiloto().getNombre();
         } catch (Exception e) {
         }
-        return p.getCircuito().getUltimoGanador();
+        return p.getCircuito().getUltimoGanador();*/
+        return "ganador";
     }
 
     private String month(int month) {
@@ -313,27 +263,6 @@ Integer rating = new Integer(0);
         return monthName;
     }
 
-    private double obtenerCalificacionPromedioPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Opiniones port = service_1.getOpinionesPort();
-        return port.obtenerCalificacionPromedioPremio(idPremio);
-    }
-
-    private SesionCarrera obtenerSesionCarreraByPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service_2.getResultadosPort();
-        return port.obtenerSesionCarreraByPremio(idPremio);
-    }
-
-    private java.util.List<ws.ResultadoCarrera> obtenerResultadoCarreraBySesionCarrera(int idSesionCarrera) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service_2.getResultadosPort();
-        return port.obtenerResultadoCarreraBySesionCarrera(idSesionCarrera);
-    }
-
     public List<String> getFotos() {
         List<String> fotos= new ArrayList<String>(Arrays.asList(premio.getCircuito().getFoto().split(";")));
                 return fotos;
@@ -347,10 +276,4 @@ Integer rating = new Integer(0);
     }
     
 
-    private Circuito findCircuito(int idCircuito) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findCircuito(idCircuito);
-    }
 }

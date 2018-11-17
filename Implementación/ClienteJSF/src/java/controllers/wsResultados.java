@@ -5,6 +5,14 @@
  */
 package controllers;
 
+import entities.Campeonato;
+import entities.Premio;
+import entities.ResultadoCarrera;
+import entities.ResultadoClasificacion;
+import entities.ResultadoPractica;
+import entities.SesionCarrera;
+import entities.SesionClasificacion;
+import entities.SesionPractica;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +21,6 @@ import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.xml.ws.WebServiceRef;
-import ws.Campeonato;
-import ws.Gestor_Service;
-import ws.Premio;
-import ws.ResultadoCarrera;
-import ws.ResultadoClasificacion;
-import ws.ResultadoPractica;
-import ws.Resultados_Service;
-import ws.SesionCarrera;
-import ws.SesionClasificacion;
-import ws.SesionPractica;
 
 /**
  *
@@ -32,11 +30,6 @@ import ws.SesionPractica;
 @ManagedBean
 public class wsResultados {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service_1;
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Resultados/Resultados.wsdl")
-    private Resultados_Service service;
     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato campeonato;
      @ManagedProperty(value = "#{wsCampeonato.idpremio}")
@@ -179,97 +172,44 @@ public class wsResultados {
     }
    public void simular(){
        System.out.println("simulando..."+campeonato.getIdCampeonato());
-        simularTorneo(campeonato.getIdCampeonato());
+ //       simularTorneo(campeonato.getIdCampeonato());
     }
  public String detCarrera() throws IOException{
-     premio= findPremio(idpremio);
+ //    premio= findPremio(idpremio);
      return "/resultados/resCarrera";
     }
  public String detClasificacion() throws IOException{
        
-       premio= findPremio(idpremio); 
+///       premio= findPremio(idpremio); 
          return "/resultados/resClasificacion";
     }
  public String detPractica() throws IOException{
-       premio= findPremio(idpremio);
+//       premio= findPremio(idpremio);
          return "/resultados/resPractica";
     }
 
-    private java.util.List<ws.TablaGeneral> verResultadoGeneral(int arg0) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        return port.verResultadoGeneral(arg0);
-    }
-
-    private void simularTorneo(int arg0) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        port.simularTorneo(arg0);
-    }
- 
 public List<ResultadoClasificacion> resultadosClasificacion(int idPremio){
-    sesionClasificacion=obtenerSesionClasificacionByPremio(idPremio);
-    return obtenerResultadoClasificacionBySesionClasificacion(sesionClasificacion.getIdSesionClasificacion());
+//    sesionClasificacion=obtenerSesionClasificacionByPremio(idPremio);
+//    return obtenerResultadoClasificacionBySesionClasificacion(sesionClasificacion.getIdSesionClasificacion());
     
+    return new ArrayList<>();
 }
 
 public List<ResultadoCarrera> resultadosCarrera(int idPremio){
     
-    sesionCarrea=obtenerSesionCarreraByPremio(idPremio);
-    return obtenerResultadoCarreraBySesionCarrera(sesionCarrea.getIdSesionCarrera());
+//    sesionCarrea=obtenerSesionCarreraByPremio(idPremio);
+//    return obtenerResultadoCarreraBySesionCarrera(sesionCarrea.getIdSesionCarrera());
     
+    return new ArrayList<>();
 }
 
 
 public List<ResultadoPractica> resultadosPracticas(int idPremio){
-    sesionPractica=obtenerSesionPracticaByPremio(idPremio);
-    return obtenerResultadoPracticaBySesionPractica(sesionPractica.getIdSesionPractica());
-    
+ //   sesionPractica=obtenerSesionPracticaByPremio(idPremio);
+  
+//return obtenerResultadoPracticaBySesionPractica(sesionPractica.getIdSesionPractica());
+    return new ArrayList<>();
 }
-
-    private SesionClasificacion obtenerSesionClasificacionByPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        return port.obtenerSesionClasificacionByPremio(idPremio);
-    }
-
-    private java.util.List<ws.ResultadoClasificacion> obtenerResultadoClasificacionBySesionClasificacion(int idSesionClasificacion) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        return port.obtenerResultadoClasificacionBySesionClasificacion(idSesionClasificacion);
-    }
-
-    private SesionCarrera obtenerSesionCarreraByPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        return port.obtenerSesionCarreraByPremio(idPremio);
-    }
-
-    private java.util.List<ws.ResultadoCarrera> obtenerResultadoCarreraBySesionCarrera(int idSesionCarrera) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        return port.obtenerResultadoCarreraBySesionCarrera(idSesionCarrera);
-    }
-
-    private java.util.List<ws.ResultadoPractica> obtenerResultadoPracticaBySesionPractica(int idSesionPractica) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        return port.obtenerResultadoPracticaBySesionPractica(idSesionPractica);
-    }
-
-    private SesionPractica obtenerSesionPracticaByPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Resultados port = service.getResultadosPort();
-        return port.obtenerSesionPracticaByPremio(idPremio);
-    }
     public static String splitToComponentTimes(double biggy){
     int hours = (int) biggy / 3600;
     int remainder = (int) biggy - hours * 3600;
@@ -280,10 +220,5 @@ public List<ResultadoPractica> resultadosPracticas(int idPremio){
     return hours+":"+mins+":"+secs+"."+(hours*secs)%1000;
 }
 
-    private Premio findPremio(int idPremio) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service_1.getGestorPort();
-        return port.findPremio(idPremio);
-    }
+    
 }

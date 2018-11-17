@@ -5,6 +5,11 @@
  */
 package controllers;
 
+import entities.Campeonato;
+import entities.Escuderia;
+import entities.Monoplaza;
+import entities.Pais;
+import entities.Piloto;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,12 +25,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
-import ws.Campeonato;
-import ws.Escuderia;
-import ws.Gestor_Service;
-import ws.Monoplaza;
-import ws.Pais;
-import ws.Piloto;
 
 /**
  *
@@ -35,8 +34,6 @@ import ws.Piloto;
 @ManagedBean
 public class wsEscuderiaBean {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Gestor/Gestor.wsdl")
-    private Gestor_Service service;
 
   String filePath = "C:\\xampp\\htdocs\\images\\escuderias\\";
    
@@ -81,7 +78,7 @@ public class wsEscuderiaBean {
      List<Pais> paises=new ArrayList<>();
 
     public List<Pais> getPaises() {
-        paises=findAllPais();
+   //     paises=findAllPais();
         return paises;
     }
 
@@ -122,7 +119,7 @@ public class wsEscuderiaBean {
     }
 
     public List<Escuderia> getEscuderias() {
-        escuderias=findAllEscuderia(c.getIdCampeonato());
+      //  escuderias=findAllEscuderia(c.getIdCampeonato());
         return escuderias;
     }
 
@@ -165,7 +162,7 @@ public class wsEscuderiaBean {
     }
 
     public List<Monoplaza> getMonoplazas() {
-        monoplazas=findAllMonoplaza(c.getIdCampeonato());
+//        monoplazas=findAllMonoplaza(c.getIdCampeonato());
         return monoplazas;
     }
 
@@ -190,7 +187,7 @@ public class wsEscuderiaBean {
     }
 
     public List<Piloto> getPilotos() {
-        pilotos = findAllPiloto(c.getIdCampeonato());
+  //      pilotos = findAllPiloto(c.getIdCampeonato());
         return pilotos;
     }
 
@@ -199,21 +196,22 @@ public class wsEscuderiaBean {
     }
 
     public String delete(int idescuderia) throws IOException {
-        removeEscuderia(idescuderia);
+   //     removeEscuderia(idescuderia);
         return "";
     }
 public String save() throws IOException {
     upload();
-        Pais p=findPais(idpais);
-        Monoplaza m1=findMonoplaza(mid1);
-        Monoplaza m2=findMonoplaza(mid2);
-        m1.setIdMonoplaza(mid1);
-        m2.setIdMonoplaza(mid2);
-        Piloto p1=findPiloto(idp1);
-        System.out.println("pil 1 "+idp1+" ´-->"+p1.getNombre());
-        Piloto p2=findPiloto(idp2);
-        System.out.println("pil 2 "+idp2+" ´-->"+p2.getNombre());
-      
+        Pais p=null;
+        //p=findPais(idpais);
+        Monoplaza m1=null;
+        //m1=findMonoplaza(mid1);
+        Monoplaza m2=null;
+        //=findMonoplaza(mid2);
+        Piloto p1=null;
+        //=findPiloto(idp1);
+        Piloto p2=null;
+        //=findPiloto(idp2);
+        
         escuderia.setPiloto1(p1);
         escuderia.setPiloto2(p2);
       
@@ -225,12 +223,12 @@ public String save() throws IOException {
         System.out.println("pil 1 "+escuderia.getPiloto1().getNombre());
         System.out.println("pil 2 "+escuderia.getPiloto2().getNombre());
         System.out.println("pais "+escuderia.getPais().getNombre());
-       createEscuderia(escuderia);
-       p1.setMonoplaza(m1);
+   //    createEscuderia(escuderia);
+  /*     p1.setMonoplaza(m1);
        p2.setMonoplaza(m2);
         editPiloto(p1);
         editPiloto(p2);
-      //      return null;
+    */  //      return null;
 /*        editMonoplaza(m1);
         editMonoplaza(m2);*/
         return "listado";
@@ -238,20 +236,18 @@ public String save() throws IOException {
  
 public String edit() throws IOException {
     upload();
-        Pais p=findPais(idpais);
-        Monoplaza m1=findMonoplaza(mid1);
-        Monoplaza m2=findMonoplaza(mid2);
+   //     Pais p=findPais(idpais);
+   //     Monoplaza m1=findMonoplaza(mid1);
+     //   Monoplaza m2=findMonoplaza(mid2);
         m1.setIdMonoplaza(mid1);
         m2.setIdMonoplaza(mid2);
-        Piloto p1=findPiloto(idp1);
-        System.out.println("pil 1 "+idp1+" ´-->"+p1.getNombre());
-        Piloto p2=findPiloto(idp2);
-        System.out.println("pil 2 "+idp2+" ´-->"+p2.getNombre());
+      //  Piloto p1=findPiloto(idp1);
+        //Piloto p2=findPiloto(idp2);
       
-        escuderia.setPiloto1(p1);
-        escuderia.setPiloto2(p2);
+     //   escuderia.setPiloto1(p1);
+    //    escuderia.setPiloto2(p2);
       
-        escuderia.setPais(p);
+   //     escuderia.setPais(p);
         escuderia.setCampeonato(c);
         escuderia.setMonoplaza1(m1);
         escuderia.setMonoplaza2(m2);
@@ -259,11 +255,11 @@ public String edit() throws IOException {
         System.out.println("pil 1 "+escuderia.getPiloto1().getNombre());
         System.out.println("pil 2 "+escuderia.getPiloto2().getNombre());
         System.out.println("pais "+escuderia.getPais().getNombre());
-       editEscuderia(escuderia);
-       p1.setMonoplaza(m1);
-       p2.setMonoplaza(m2);
-        editPiloto(p1);
-        editPiloto(p2);
+  //     editEscuderia(escuderia);
+      /// p1.setMonoplaza(m1);
+      //// p2.setMonoplaza(m2);
+  //      editPiloto(p1);
+ //       editPiloto(p2);
       //      return null;
 /*        editMonoplaza(m1);
         editMonoplaza(m2);*/
@@ -271,7 +267,7 @@ public String edit() throws IOException {
     }
  
     public String editarView(int idEscuderia){
-        escuderia=findEscuderia(idEscuderia);
+//        escuderia=findEscuderia(idEscuderia);
         mid1=escuderia.getMonoplaza1().getIdMonoplaza();
         mid2=escuderia.getMonoplaza2().getIdMonoplaza();
         idp1=escuderia.getPiloto1().getIdPiloto();
@@ -281,89 +277,6 @@ public String edit() throws IOException {
        return "editar";
     }
 
-    private java.util.List<ws.Piloto> findAllPiloto(int idc) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.obtenerPilotosByCampeonato(idc);
-    }
-
-    private java.util.List<ws.Monoplaza> findAllMonoplaza(int idcampeonato) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.obtenerMonoplazasByCampeonato(idcampeonato);
-    }
-
-    private Monoplaza findMonoplaza(int idMonoplaza) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findMonoplaza(idMonoplaza);
-    }
-
-    private void createEscuderia(ws.Escuderia escuderia) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.createEscuderia(escuderia);
-    }
-
-    private void removeEscuderia(int escuderia) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.removeEscuderia(escuderia);
-    }
-
-    private java.util.List<ws.Escuderia> findAllEscuderia(int idcampeonato) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-     //   return port.obtenerEscuderiasByCampeonato(idcampeonato);
-        System.out.println("idCampeonato --->"+idcampeonato);
-        return port.obtenerEscuderiasByCampeonato(idcampeonato);
-    }
-
-    private void editMonoplaza(ws.Monoplaza monoplaza) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.editMonoplaza(monoplaza);
-    }
-  private Pais findPais(int idPais) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findPais(idPais);
-    }
-    private Escuderia findEscuderia(int idEscuderia) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findEscuderia(idEscuderia);
-    }
-
-    private Piloto findPiloto(int idPiloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findPiloto(idPiloto);
-    }
-
-    private void editPiloto(ws.Piloto piloto) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.editPiloto(piloto);
-    }
-    
-     private java.util.List<ws.Pais> findAllPais() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        return port.findAllPais();
-    }
     public void upload() throws IOException {
         //System.out.println("tmp directory" System.getProperty("java.io.tmpdir"));
         byte[] bytes = null;
@@ -401,20 +314,6 @@ public String edit() throws IOException {
                 System.out.println(e.getMessage());
                 }
     }    
-
-    private void removeEscuderia_1(int escuderia) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.removeEscuderia(escuderia);
-    }
-
-    private void editEscuderia(ws.Escuderia escuderia) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        ws.Gestor port = service.getGestorPort();
-        port.editEscuderia(escuderia);
-    }
 
 
 }
