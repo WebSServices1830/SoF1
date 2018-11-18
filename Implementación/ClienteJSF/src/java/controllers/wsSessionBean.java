@@ -35,7 +35,7 @@ import ws.CampeonatoRestClient;
 public class wsSessionBean implements Serializable {
     
     
-    static String IP="localhost";
+    static String IP="192.168.137.1";
     String filePath = "C:\\xampp\\htdocs\\images\\users\\";
     
     List<Campeonato> campeonatos;
@@ -126,9 +126,10 @@ public class wsSessionBean implements Serializable {
     public String registro() throws IOException {
         usuarioSession.setRol("usuario");
         upload();
-//        registrarUsuario(usuarioSession);
-        System.out.println("registro.");
+        
+        acl.registrarUsuario(usuarioSession, String.class);
         estado = true;
+        
         return "index";
     }
 
@@ -153,20 +154,21 @@ public class wsSessionBean implements Serializable {
     }
 
     public String salir() {
-
-//        estado = !cerrarSesion(usuarioSession);
+        String  res=acl.cerrarSesion(String.class, usuarioSession.getIdUsuario()+"");
+        estado = ! Boolean.valueOf(res);
         if (!estado) {
+          usuario="";
             usuarioSession = new Usuario();
         }
-        System.out.println("salir");
         return null;
     }
-
+    private AutenticacionRestClient acl=new AutenticacionRestClient();
+        
     public String login() {
         System.out.println("login " + usuario);
         Usuario u= null;
-        AutenticacionRestClient acl=new AutenticacionRestClient();
-        //System.out.println(acl.iniciarSesion(Usuario.class, usuario, clave));
+        
+        u=acl.iniciarSesion(Usuario.class, usuario, clave);
         if (u.getIdUsuario() > -1) {
             estado = true;
             usuarioSession = u;

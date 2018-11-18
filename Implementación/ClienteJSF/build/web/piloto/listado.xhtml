@@ -14,7 +14,9 @@
 
 
                     <h:panelGrid columns="2" cellpadding="5">
-                        <img width="100px" height="150px" alt="#{item.nombre}" src="#{item.imagen}"/>
+                        <p:graphicImage value="#{item.imagen}" width="100px" 
+                                        height="150px" alt="#{item.nombre}" cache="false"/>
+
 
                         <h:panelGrid columns="1">
                             <h2>#{item.nombre}</h2>
@@ -41,22 +43,21 @@
                                 </h:outputText>
                             </h:panelGrid>
 
+                            <h:outputText
+                                value="Multiplicador:  #{item.multiplicador}"/>
 
                         </h:panelGrid>
 
-                        <c:if test="#{wsSessionBean.estado}">
-                            <p:commandButton action="#{wsCalificacionPiloto.calificarView(item)}" value="Comentar" ajax="false"/>
-                        </c:if>
 
 
                     </h:panelGrid>
                     <p:toolbar>
                         <f:facet name="right">
                             <p:menuButton value="Options">
-                                <p:menuitem value="Comentarios" action="#{wsCalificacionPiloto.comentarios(item.idPiloto)}" ajax="false" icon="ui-icon-book" />
+                                <p:menuitem value="Comentarios" action="#{wsCalificacionPiloto.comentarios(item.idPiloto)}" ajax="false" icon="ui-icon-comment" />
                                 <c:if test="#{wsSessionBean.admin}">
+                                    <p:menuitem value="Edit" action="#{wsPilotoBean.editar(item.idPiloto)}" ajax="false" icon="ui-icon-pencil" />
                                     <p:menuitem value="Delete" actionListener="#{wsPilotoBean.delete(item.idPiloto)}" ajax="false" icon="ui-icon-close" />
-                                    <p:menuitem value="Edit" action="#{wsPilotoBean.editar(item.idPiloto)}" ajax="false" icon="ui-icon-close" />
                                 </c:if>
 
 

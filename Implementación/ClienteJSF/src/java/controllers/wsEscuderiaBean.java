@@ -23,8 +23,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
 import org.primefaces.model.UploadedFile;
+import ws.EscuderiasRestClient;
+import ws.MonoplazasRestClient;
+import ws.PaisesRestClient;
+import ws.PilotoRestClient;
 
 /**
  *
@@ -34,17 +39,18 @@ import org.primefaces.model.UploadedFile;
 @ManagedBean
 public class wsEscuderiaBean {
 
+    private String filePath = "C:\\xampp\\htdocs\\images\\escuderias\\";
+    private EscuderiasRestClient escueriaRest = new EscuderiasRestClient();
+    private PaisesRestClient paisesRest = new PaisesRestClient();
+    private PilotoRestClient piltotosRest = new PilotoRestClient();
+    private MonoplazasRestClient monoplazaRest = new MonoplazasRestClient();
 
-  String filePath = "C:\\xampp\\htdocs\\images\\escuderias\\";
-   
     /**
      * Creates a new instance of wsEscuderiaBean
      */
-    
-    
     public wsEscuderiaBean() {
     }
-      private UploadedFile file;
+    private UploadedFile file;
 
     public UploadedFile getFile() {
         return file;
@@ -54,19 +60,20 @@ public class wsEscuderiaBean {
         this.file = file;
     }
     List<Escuderia> escuderias = new ArrayList<>();
-    Escuderia escuderia=new Escuderia();
+    Escuderia escuderia = new Escuderia();
     List<Piloto> pilotos = new ArrayList<>();
     Piloto piloto = new Piloto();
     Piloto piloto2 = new Piloto();
 
     Monoplaza m1 = new Monoplaza();
     Monoplaza m2 = new Monoplaza();
-    int mid2 ;//= new Monoplaza();
-    int mid1 ;//= new Monoplaza();
-    int idp1 ;//= new Monoplaza();
-    int idp2 ;//= new Monoplaza();
+    int mid2;//= new Monoplaza();
+    int mid1;//= new Monoplaza();
+    int idp1;//= new Monoplaza();
+    int idp2;//= new Monoplaza();
 
     int idpais;
+
     public int getIdpais() {
         return idpais;
     }
@@ -74,15 +81,15 @@ public class wsEscuderiaBean {
     public void setIdpais(int idpais) {
         this.idpais = idpais;
     }
-    
-     List<Pais> paises=new ArrayList<>();
+
+    List<Pais> paises = new ArrayList<>();
 
     public List<Pais> getPaises() {
-   //     paises=findAllPais();
+        //     paises=findAllPais();
         return paises;
     }
 
-     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
+    @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato c;
 
     public int getIdp1() {
@@ -108,18 +115,17 @@ public class wsEscuderiaBean {
     public void setC(Campeonato c) {
         this.c = c;
     }
-   
+
     public int getMid1() {
         return mid1;
     }
-   
 
     public void setMid1(int mid1) {
         this.mid1 = mid1;
     }
 
     public List<Escuderia> getEscuderias() {
-      //  escuderias=findAllEscuderia(c.getIdCampeonato());
+        escuderias = findAllEscuderia(c.getIdCampeonato());
         return escuderias;
     }
 
@@ -134,7 +140,7 @@ public class wsEscuderiaBean {
     public void setMid2(int mid2) {
         this.mid2 = mid2;
     }
-    
+
     List<Monoplaza> monoplazas = new ArrayList<>();
 
     public Escuderia getEscuderia() {
@@ -162,8 +168,8 @@ public class wsEscuderiaBean {
     }
 
     public List<Monoplaza> getMonoplazas() {
-//        monoplazas=findAllMonoplaza(c.getIdCampeonato());
-        return monoplazas;
+          monoplazas= monoplazaRest.obtenerPilotosByCampeonato(new GenericType<List<Monoplaza>>(){}, c.getIdCampeonato()+"");
+      return monoplazas;
     }
 
     public void setMonoplazas(List<Monoplaza> monoplazas) {
@@ -187,7 +193,7 @@ public class wsEscuderiaBean {
     }
 
     public List<Piloto> getPilotos() {
-  //      pilotos = findAllPiloto(c.getIdCampeonato());
+        pilotos =piltotosRest.obtenerPilotosByCampeonato(new GenericType<List<Piloto>>() {},c.getIdCampeonato()+"" );
         return pilotos;
     }
 
@@ -196,124 +202,111 @@ public class wsEscuderiaBean {
     }
 
     public String delete(int idescuderia) throws IOException {
-   //     removeEscuderia(idescuderia);
+        escueriaRest.eliminarEscuderia(idescuderia+"");
         return "";
     }
-public String save() throws IOException {
-    upload();
-        Pais p=null;
-        //p=findPais(idpais);
-        Monoplaza m1=null;
-        //m1=findMonoplaza(mid1);
-        Monoplaza m2=null;
-        //=findMonoplaza(mid2);
-        Piloto p1=null;
-        //=findPiloto(idp1);
-        Piloto p2=null;
-        //=findPiloto(idp2);
+
+    public String save() throws IOException {
+        upload();
+        Pais p = null;
+        p=paisesRest.obtenerPaisPorId(Pais.class, idpais+"");
+        Monoplaza m1 = null;
+        m1=monoplazaRest.obtenerMonoplazaPorId(Monoplaza.class, mid1+"");
+        Monoplaza m2 = null;
+        m2=monoplazaRest.obtenerMonoplazaPorId(Monoplaza.class, mid2+"");
+        Piloto p1 = null;
+        p1=piltotosRest.obtenerPilotosPorId(Piloto.class, idp1+"");
+        Piloto p2 = null;
+        p2=piltotosRest.obtenerPilotosPorId(Piloto.class, idp2+"");
         
         escuderia.setPiloto1(p1);
         escuderia.setPiloto2(p2);
-      
+
         escuderia.setPais(p);
         escuderia.setCampeonato(c);
         escuderia.setMonoplaza1(m1);
         escuderia.setMonoplaza2(m2);
         
-        System.out.println("pil 1 "+escuderia.getPiloto1().getNombre());
-        System.out.println("pil 2 "+escuderia.getPiloto2().getNombre());
-        System.out.println("pais "+escuderia.getPais().getNombre());
-   //    createEscuderia(escuderia);
-  /*     p1.setMonoplaza(m1);
-       p2.setMonoplaza(m2);
-        editPiloto(p1);
-        editPiloto(p2);
-    */  //      return null;
-/*        editMonoplaza(m1);
-        editMonoplaza(m2);*/
+        escueriaRest.crearEscuderia(escuderia, String.class);
         return "listado";
     }
- 
-public String edit() throws IOException {
-    upload();
-   //     Pais p=findPais(idpais);
-   //     Monoplaza m1=findMonoplaza(mid1);
-     //   Monoplaza m2=findMonoplaza(mid2);
-        m1.setIdMonoplaza(mid1);
-        m2.setIdMonoplaza(mid2);
-      //  Piloto p1=findPiloto(idp1);
-        //Piloto p2=findPiloto(idp2);
-      
-     //   escuderia.setPiloto1(p1);
-    //    escuderia.setPiloto2(p2);
-      
-   //     escuderia.setPais(p);
+
+    public String edit() throws IOException {
+        upload();
+        Pais p = null;
+        p=paisesRest.obtenerPaisPorId(Pais.class, idpais+"");
+        Monoplaza m1 = null;
+        m1=monoplazaRest.obtenerMonoplazaPorId(Monoplaza.class, mid1+"");
+        Monoplaza m2 = null;
+        m2=monoplazaRest.obtenerMonoplazaPorId(Monoplaza.class, mid2+"");
+        Piloto p1 = null;
+        p1=piltotosRest.obtenerPilotosPorId(Piloto.class, idp1+"");
+        Piloto p2 = null;
+        p2=piltotosRest.obtenerPilotosPorId(Piloto.class, idp2+"");
+        escuderia.setPiloto1(p1);
+        escuderia.setPiloto2(p2);
+        escuderia.setPais(p);
         escuderia.setCampeonato(c);
         escuderia.setMonoplaza1(m1);
         escuderia.setMonoplaza2(m2);
         
-        System.out.println("pil 1 "+escuderia.getPiloto1().getNombre());
-        System.out.println("pil 2 "+escuderia.getPiloto2().getNombre());
-        System.out.println("pais "+escuderia.getPais().getNombre());
-  //     editEscuderia(escuderia);
-      /// p1.setMonoplaza(m1);
-      //// p2.setMonoplaza(m2);
-  //      editPiloto(p1);
- //       editPiloto(p2);
-      //      return null;
-/*        editMonoplaza(m1);
-        editMonoplaza(m2);*/
+        escueriaRest.editarEscuderia(escuderia);
+
         return "listado";
     }
- 
-    public String editarView(int idEscuderia){
-//        escuderia=findEscuderia(idEscuderia);
-        mid1=escuderia.getMonoplaza1().getIdMonoplaza();
-        mid2=escuderia.getMonoplaza2().getIdMonoplaza();
-        idp1=escuderia.getPiloto1().getIdPiloto();
-        idp2=escuderia.getPiloto2().getIdPiloto();
-        idpais=escuderia.getPais().getIdPais();
-              
-       return "editar";
+
+    public String editarView(int idEscuderia) {
+        escuderia=escueriaRest.obtenerEscuderiaPorId(Escuderia.class, idEscuderia+"");
+        mid1 = escuderia.getMonoplaza1().getIdMonoplaza();
+        mid2 = escuderia.getMonoplaza2().getIdMonoplaza();
+        idp1 = escuderia.getPiloto1().getIdPiloto();
+        idp2 = escuderia.getPiloto2().getIdPiloto();
+        idpais = escuderia.getPais().getIdPais();
+
+        return "editar";
     }
 
     public void upload() throws IOException {
         //System.out.println("tmp directory" System.getProperty("java.io.tmpdir"));
         byte[] bytes = null;
-                System.out.println("Size " + file.getSize());
+        System.out.println("Size " + file.getSize());
 
-        
-        if (null != file && file.getSize() >0) {
-             escuderia.setImagen("http://"+wsSessionBean.IP + "/images/escuderias/" + escuderia.getNombre()+ ".jpg");
-        
-            copyFile(escuderia.getNombre()+".jpg", file.getInputstream());
-          FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+        if (null != file && file.getSize() > 0) {
+            escuderia.setImagen("http://" + wsSessionBean.IP + "/images/escuderias/" + escuderia.getNombre() + ".jpg");
+
+            copyFile(escuderia.getNombre() + ".jpg", file.getInputstream());
+            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
-    public void copyFile(String fileName, InputStream in) {
-           try {
-              
-              
-                // write the inputStream to a FileOutputStream
-                OutputStream out = new FileOutputStream(new File(filePath + fileName));
-              
-                int read = 0;
-                byte[] bytes = new byte[1024];
-              
-                while ((read = in.read(bytes)) != -1) {
-                    out.write(bytes, 0, read);
-                }
-              
-                in.close();
-                out.flush();
-                out.close();
-              
-                System.out.println("New file created!");
-                } catch (IOException e) {
-                System.out.println(e.getMessage());
-                }
-    }    
 
+    public void copyFile(String fileName, InputStream in) {
+        try {
+
+            // write the inputStream to a FileOutputStream
+            OutputStream out = new FileOutputStream(new File(filePath + fileName));
+
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((read = in.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+
+            in.close();
+            out.flush();
+            out.close();
+
+            System.out.println("New file created!");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private List<Escuderia> findAllEscuderia(Integer idCampeonato) {
+
+        return escueriaRest.obtenerPilotosByCampeonato(new GenericType<List<Escuderia>>() {
+        }, idCampeonato + "");
+    }
 
 }

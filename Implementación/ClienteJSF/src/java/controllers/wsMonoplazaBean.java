@@ -8,6 +8,7 @@ package controllers;
 
 import entities.Campeonato;
 import entities.Monoplaza;
+import entities.Piloto;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,7 +22,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.ws.rs.core.GenericType;
 import org.primefaces.model.UploadedFile;
+import ws.MonoplazasRestClient;
 
 
 /**
@@ -35,6 +38,8 @@ public class wsMonoplazaBean {
    
     
   String filePath = "C:\\xampp\\htdocs\\images\\cars\\";
+    private MonoplazasRestClient monoplazaRest = new MonoplazasRestClient();
+
     /**
      * Creates a new instance of wsMonoplazaBean
      */
@@ -72,22 +77,24 @@ public class wsMonoplazaBean {
         upload();
          monoplaza.setImagen("http://"+wsSessionBean.IP + "/images/cars/" + monoplaza.getMarca()+ ".jpg");
          monoplaza.setCampeonato(c);
-//         createMonoplaza(monoplaza);
+
+           monoplazaRest.crearMonoplaza(monoplaza, String.class);
+           
         return "listado";
     } 
     public String delete(int id){
-   //     removeMonoplaza(id);
+        monoplazaRest.eliminarMonoplaza(id+"");
         return null;
     }
         public String editarView(int id) throws IOException {
- //           monoplaza=findMonoplaza(id);
+            monoplaza=monoplazaRest.obtenerMonoplazaPorId(Monoplaza.class, id+"");
         return "edit";
 
     }
 
     
     public List<Monoplaza> getMonoplazas() {
- //       monoplazas=findAllMonoplaza(c.getIdCampeonato());
+       monoplazas=findAllMonoplaza(c.getIdCampeonato());
         return monoplazas;
     }
 
@@ -107,7 +114,7 @@ public class wsMonoplazaBean {
         monoplaza.setCampeonato(c);
         System.out.println("editando "+monoplaza.getIdMonoplaza());
         upload();
- //       editMonoplaza(monoplaza);
+        monoplazaRest.editarMonoplaza(monoplaza);
     return "listado";
     }
 public void upload() throws IOException {
@@ -148,6 +155,12 @@ public void upload() throws IOException {
                 System.out.println(e.getMessage());
                 }
     }    
+
+    private List<Monoplaza> findAllMonoplaza(Integer idCampeonato) {
+           MonoplazasRestClient mrc=new MonoplazasRestClient();
+           return mrc.obtenerPilotosByCampeonato(new GenericType<List<Monoplaza>>(){}, idCampeonato+"");
+    
+    }
 
     
 }

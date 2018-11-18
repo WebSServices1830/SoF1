@@ -41,6 +41,8 @@ public class wsPilotoBean {
     @ManagedProperty(value = "#{wsSessionBean.campeonato}")
     private Campeonato c;
     
+    private   PilotoRestClient pcl=new PilotoRestClient();
+   private     PaisesRestClient prcl=new PaisesRestClient();
     
     public Campeonato getC() {
         return c;
@@ -126,25 +128,25 @@ public class wsPilotoBean {
     public String save() throws IOException {
         piloto.setCampeonato(c);
         upload();
-        System.out.println("" + piloto.getNombre()+" "+piloto);
-      
-
-        System.out.println("save");
+    
+        Pais p= prcl.obtenerPaisPorId(Pais.class, idpais+"");
+        piloto.setPais(p);
+        String crearPilotos = pcl.crearPilotos(piloto, String.class);
+        System.out.println("save "+crearPilotos);
         return "listado";
     }
     
 
 
     public void delete(int id) {
-     //   removePiloto(id);
+        pcl.eliminarPilotos(id+"");
         System.out.println("borrando " + id);
 
     }
 
     public String editar(int id) throws IOException {
-       //    piloto= findPiloto(id);
+           piloto= pcl.obtenerPilotosPorId(Piloto.class, id+"");
            idpais=piloto.getPais().getIdPais();
-//           fecha=getDate(piloto.getFechaNacimiento());
      
            return "editar";
 
@@ -153,9 +155,10 @@ public class wsPilotoBean {
     public String edit() throws IOException {
         piloto.setCampeonato(c);
         upload();
-        
-   //   piloto.setPais(findPais(idpais));
+        Pais p= prcl.obtenerPaisPorId(Pais.class, idpais+"");
+        piloto.setPais(p);
        
+        pcl.editarPilotos(piloto);
   //      editPiloto(piloto);
         return "listado";
 
@@ -218,12 +221,10 @@ public class wsPilotoBean {
     }
 
     private List<Pais> findAllPais() {
-        PaisesRestClient pcl=new PaisesRestClient();
-        return pcl.obtenerPaises(new GenericType<List<Pais>>() {});
+        return prcl.obtenerPaises(new GenericType<List<Pais>>() {});
     }
 
     private List<Piloto> findAllPilotoByCampeonato(Integer idCampeonato) {
-        PilotoRestClient pcl=new PilotoRestClient();
         
         return pcl.obtenerPilotosByCampeonato(new GenericType<List<Piloto>>(){}, idCampeonato+"");
     }

@@ -17,8 +17,8 @@
 
 
                     <h:panelGrid columns="2" cellpadding="5">
-                        <img width="100px" height="150px" alt="#{item.marca}" src="#{item.imagen}"/>
-
+                        <p:graphicImage value="#{item.imagen}" width="100px" 
+                                        height="150px" alt="#{item.marca}" cache="false"/>
                         <h:panelGrid columns="1">
                             <h2>#{item.marca}</h2>
                             <h:outputText
@@ -44,9 +44,8 @@
                     <p:toolbar>
                         <f:facet name="right">
                             <p:menuButton value="Options">
-
+                                    <p:menuitem value="Edit" action="#{wsMonoplazaBean.editarView(item.idMonoplaza)}" ajax="false" icon="ui-icon-pencil" />
                                     <p:menuitem value="Delete" ajax="false" action  ="#{wsMonoplazaBean.delete(item.idMonoplaza)}" icon="ui-icon-close" />
-                                    <p:menuitem value="Edit" action="#{wsMonoplazaBean.editarView(item.idMonoplaza)}" ajax="false" icon="ui-icon-close" />
                             </p:menuButton>
                         </f:facet>
                     </p:toolbar>

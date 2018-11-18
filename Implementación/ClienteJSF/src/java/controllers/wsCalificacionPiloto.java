@@ -17,11 +17,16 @@ import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedProperty;
+
+import javax.ws.rs.core.GenericType;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
+import ws.OpinionesRestClient;
+import ws.PilotoRestClient;
 
 
 /**
@@ -33,6 +38,9 @@ import javax.xml.ws.WebServiceRef;
 public class wsCalificacionPiloto {
 
     
+    private OpinionesRestClient opinionesRest =new OpinionesRestClient();
+      private PilotoRestClient piltotosRest = new PilotoRestClient();
+  
     
     @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
     private Usuario usuario;
@@ -73,22 +81,24 @@ public class wsCalificacionPiloto {
         return "comentar";
     }
     public String calificar() throws DatatypeConfigurationException {
-        System.out.println("comentario" +calificacion.getComentario());
-        System.out.println("rating " +rating);
         GregorianCalendar c = new GregorianCalendar();
 
         this.calificacion.setPuntaje(rating.doubleValue());
 
         this.calificacion.setFecha(c.getTime());
-
-//        this.calificarPiloto(usuario.getIdUsuario(), piloto.getIdPiloto(), calificacion);
-
-        return "listado";
+        piloto=piltotosRest.obtenerPilotosPorId(Piloto.class,piloto.getIdPiloto()+"");
+        idPiloto=piloto.getIdPiloto();
+        calificacion.setPiloto(piloto);
+        calificacion.setUsuario(usuario);
+        
+       opinionesRest.crearOpinionPiloto(calificacion, String.class);
+        return "";
     }
 
     public String comentarios(int idP) {
         this.idPiloto = idP;
-    //    this.piloto = findPiloto(idP);
+        this.piloto =  piltotosRest.obtenerPilotosPorId(Piloto.class, idP+"");
+  
         this.rating = (int) this.getPromedioPiloto();
         return "comentarios";
     }
@@ -114,8 +124,8 @@ public class wsCalificacionPiloto {
     }
 
     public List<CalificacionPiloto> getCalificaciones() {
-        this.calificaciones.clear();
-//        this.calificaciones = this.obtenerCalificacionesPiloto(idPiloto);
+        this.calificaciones = opinionesRest.obtenerOpinionesPorPiloto(new GenericType<List<CalificacionPiloto>>(){}
+                , idPiloto+"");
         return calificaciones;
     }
 
@@ -150,7 +160,8 @@ public class wsCalificacionPiloto {
 
     public double getPromedioPiloto() {
   //      this.promedioPiloto = obtenerCalificacionPromedioPiloto(this.idPiloto);
-        return promedioPiloto;
+promedioPiloto=   Double.valueOf(opinionesRest.obtenerCalificacionPromedioPiloto(String.class, idPiloto+""));
+  return promedioPiloto;
     }
 
     public void setPromedioPiloto(double promedioPiloto) {

@@ -74,6 +74,8 @@
             </h:panelGrid>
             <p:commandButton value="Guardar" action="#{wsEscuderiaBean.edit}" ajax="false"  />
 
+            <h:inputHidden value="#{wsEscuderiaBean.escuderia.idEscuderia}"/>
+            <h:inputHidden value="#{wsEscuderiaBean.escuderia.imagen}"/>
         </h:form>
     </ui:define>
 

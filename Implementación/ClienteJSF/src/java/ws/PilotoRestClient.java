@@ -7,8 +7,10 @@ package ws;
 
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 
 /**
  * Jersey REST client generated for REST resource:PilotosResource [pilotos]<br>
@@ -53,7 +55,9 @@ public class PilotoRestClient {
     }
 
     public <T> T crearPilotos(Object requestEntity, Class<T> responseType) throws ClientErrorException {
-        return webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), responseType);
+       Builder b= webTarget.request(javax.ws.rs.core.MediaType.TEXT_PLAIN);
+      
+       return b.post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), responseType);
     }
 
     public <T> T obtenerPilotosByCampeonato(GenericType<T> responseType, String id) throws ClientErrorException {
