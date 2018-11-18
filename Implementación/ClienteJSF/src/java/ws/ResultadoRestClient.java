@@ -8,6 +8,7 @@ package ws;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 
 /**
  * Jersey REST client generated for REST resource:ResultadosResource
@@ -33,7 +34,7 @@ public class ResultadoRestClient {
         webTarget = client.target(BASE_URI).path("resultados");
     }
 
-    public <T> T obtenerResultadoCarreraBySesionCarrera(Class<T> responseType, String id) throws ClientErrorException {
+    public <T> T obtenerResultadoCarreraBySesionCarrera(GenericType<T> responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("resultadosCarrera/sesionCarrera/{0}", new Object[]{id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -51,7 +52,7 @@ public class ResultadoRestClient {
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
-    public <T> T obtenerTablaGeneralPorCampeonato(Class<T> responseType, String id) throws ClientErrorException {
+    public <T> T obtenerTablaGeneralPorCampeonato(GenericType<T> responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("tablaGeneral/campeonato/{0}", new Object[]{id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -67,13 +68,13 @@ public class ResultadoRestClient {
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
-    public <T> T obtenerResultadoCarreraBySesionClasificacion(Class<T> responseType, String id) throws ClientErrorException {
+    public <T> T obtenerResultadoCarreraBySesionClasificacion(GenericType<T> responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("resultadosClasificacion/sesionClasificacion/{0}", new Object[]{id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
-    public <T> T obtenerResultadoPracticaBySesionPractica(Class<T> responseType, String id) throws ClientErrorException {
+    public <T> T obtenerResultadoPracticaBySesionPractica(GenericType<T> responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("resultadosPractica/sesionPractica/{0}", new Object[]{id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);

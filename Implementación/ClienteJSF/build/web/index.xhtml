@@ -4,7 +4,8 @@
                 template="./Template.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         Bienvenido a SOFT1
@@ -27,7 +28,61 @@
         
         </h:panelGrid>
         
-        
+        <f:view>
+
+
+            <h:form>
+                <center>
+                    
+                <h1><h:outputText value="Tabla de posciones"/></h1>
+                </center>
+                <p:dataTable value="#{wsCalificacionPiloto.tabla}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdTablaGeneral"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idTablaGeneral}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Posicion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.posicion}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Piloto"/>
+                        </f:facet>
+                        <h:outputText value="#{item.piloto}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Vueltas"/>
+                        </f:facet>
+                        <h:outputText value="#{item.vueltas}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tiempo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tiempo}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Puntos"/>
+                        </f:facet>
+                        <h:outputText value="#{item.puntos}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Campeonato"/>
+                        </f:facet>
+                        <h:outputText value="#{item.campeonato}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
   
     </ui:define>
 

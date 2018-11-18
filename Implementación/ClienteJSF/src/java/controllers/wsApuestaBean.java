@@ -7,7 +7,9 @@ package controllers;
 
 import entities.Apuesta;
 import entities.Campeonato;
+import entities.Piloto;
 import entities.Premio;
+import entities.ResultadoCarrera;
 import entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,11 @@ import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
+import ws.ApuestasRestClient;
+import ws.PilotoRestClient;
+import ws.PremiosRestClient;
 
 /**
  *
@@ -55,6 +61,7 @@ public class wsApuestaBean {
     int idPremio;
     int idPiloto;
     Apuesta apuesta = new Apuesta();
+    ApuestasRestClient apuREST= new ApuestasRestClient();
 
     /**
      * Creates a new instance of wsApuestaBean
@@ -63,8 +70,14 @@ public class wsApuestaBean {
     }
     
     public String apostar(){
-        
-        //this.hacerApuesta(usuario.getIdUsuario(), apuesta.getCantidad(), idPremio, idPiloto);
+        PremiosRestClient preREST= new PremiosRestClient();
+        PilotoRestClient piloREST= new PilotoRestClient();
+        apuesta.setUsuario(usuario);
+        Premio miPre = preREST.obtenerPremioPorId(Premio.class, idPremio+"");
+        apuesta.setPremio(miPre);
+        Piloto miPil = piloREST.obtenerPilotosPorId(Piloto.class, idPiloto+"");
+        apuesta.setPiloto(miPil);
+        apuREST.hacerApuesta(apuesta);
         return "listado";
     }
 
@@ -92,7 +105,9 @@ public class wsApuestaBean {
   //----------------------------------------------------
 
     public List<Premio> getPremios() {
-//        premios = this.findAllPremio(c.getIdCampeonato());
+        PremiosRestClient preREST= new PremiosRestClient();
+        premios = preREST.obtenerPilotosByCampeonato(new GenericType<List<Premio>>(){},c.getIdCampeonato()+"");
+               
         return premios;
     }
 
@@ -102,8 +117,7 @@ public class wsApuestaBean {
 
     
     public List<Apuesta> getApuestas() {
-        return new ArrayList<>();
-      //  return this.obtenerApuestasByUsuario(usuario.getIdUsuario());
+        return  apuREST.obtenerApuestarPorUsuario(new GenericType<List<Apuesta>>(){}, usuario.getIdUsuario()+"");
     }
 
     public void setApuestas(List<Apuesta> apuestas) {

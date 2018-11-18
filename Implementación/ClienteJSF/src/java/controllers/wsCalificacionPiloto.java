@@ -7,8 +7,10 @@ package controllers;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import entities.CalificacionPiloto;
+import entities.Campeonato;
 import entities.Piloto;
 import entities.Premio;
+import entities.TablaGeneral;
 import entities.Usuario;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +29,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceRef;
 import ws.OpinionesRestClient;
 import ws.PilotoRestClient;
+import ws.ResultadoRestClient;
 
 
 /**
@@ -40,7 +43,19 @@ public class wsCalificacionPiloto {
     
     private OpinionesRestClient opinionesRest =new OpinionesRestClient();
       private PilotoRestClient piltotosRest = new PilotoRestClient();
+      private ResultadoRestClient resRest = new ResultadoRestClient();
   
+    @ManagedProperty(value = "#{wsSessionBean.campeonato}")
+    private Campeonato c;
+
+    public Campeonato getC() {
+        return c;
+    }
+
+    public void setC(Campeonato c) {
+        this.c = c;
+    }
+    
     
     @ManagedProperty(value = "#{wsSessionBean.usuarioSession}")
     private Usuario usuario;
@@ -72,6 +87,18 @@ public class wsCalificacionPiloto {
     int idPiloto = 0;
     double promedioPiloto = 0;
     Integer rating = new Integer(0);
+
+    List<TablaGeneral> tabla = new ArrayList<TablaGeneral>();
+
+    public List<TablaGeneral> getTabla() {
+        tabla=resRest.obtenerTablaGeneralPorCampeonato(new GenericType<List<TablaGeneral>>(){},c.getIdCampeonato()+"");
+        return tabla;
+    }
+
+    public void setTabla(List<TablaGeneral> tabla) {
+        this.tabla = tabla;
+    }
+    
 
     public wsCalificacionPiloto() {
     }
@@ -159,7 +186,6 @@ public class wsCalificacionPiloto {
     }
 
     public double getPromedioPiloto() {
-  //      this.promedioPiloto = obtenerCalificacionPromedioPiloto(this.idPiloto);
 promedioPiloto=   Double.valueOf(opinionesRest.obtenerCalificacionPromedioPiloto(String.class, idPiloto+""));
   return promedioPiloto;
     }
@@ -181,7 +207,7 @@ promedioPiloto=   Double.valueOf(opinionesRest.obtenerCalificacionPromedioPiloto
     List<Premio> toppremios =new ArrayList<>();
 
     public List<Piloto> getToppilotos() {
-  //     toppilotos=obtenerTopPilotos_1();
+        toppilotos= opinionesRest.obtenerPilotosTop(new GenericType<List<Piloto>>(){});
         return toppilotos;
     }
 
@@ -190,7 +216,7 @@ promedioPiloto=   Double.valueOf(opinionesRest.obtenerCalificacionPromedioPiloto
     }
 
     public List<Premio> getToppremios() {
-//        toppremios=obtenerTopPremios();
+        toppremios= opinionesRest.obtenerPremiosTop(new GenericType<List<Premio>>(){});
         return toppremios;
     }
 

@@ -8,7 +8,10 @@ package controllers;
 import entities.CalificacionPremio;
 import entities.Campeonato;
 import entities.Circuito;
+import entities.Piloto;
 import entities.Premio;
+import entities.ResultadoCarrera;
+import entities.SesionCarrera;
 import entities.Usuario;
 import java.io.IOException;
 import java.io.Serializable;
@@ -23,9 +26,15 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.view.ViewScoped;
+import javax.ws.rs.core.GenericType;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.ws.WebServiceRef;
+import ws.CampeonatoRestClient;
+import ws.CircuitosRestClient;
+import ws.OpinionesRestClient;
+import ws.PremiosRestClient;
+import ws.ResultadoRestClient;
 
 /**
  *
@@ -85,13 +94,14 @@ public class wsCampeonato {
 
     
     public List<CalificacionPremio> getCalificaciones() {
-
-       // calificaciones = obtenerCalificacionesPremio(idpremio);
+        OpinionesRestClient OpRestClient= new OpinionesRestClient();
+        calificaciones = OpRestClient.obtenerOpinionesPorPremio(new GenericType<List<CalificacionPremio>>(){},idpremio+"");
         return calificaciones;
     }
 
     public List<CalificacionPremio> obtenerCalificaciones() {
-        //calificaciones = obtenerCalificacionesPremio(idpremio);
+        OpinionesRestClient OpRestClient= new OpinionesRestClient();
+        calificaciones = OpRestClient.obtenerOpinionesPorPremio(new GenericType<List<CalificacionPremio>>(){},idpremio+"");
         return calificaciones;
     }
 
@@ -125,7 +135,10 @@ public class wsCampeonato {
     }
 
     public List<Premio> getPremios() {
-    //    premios = obtenerPremiosByCampeonato(campeonato.getIdCampeonato());
+          PremiosRestClient cRc= new PremiosRestClient(); 
+      premios = cRc.obtenerPilotosByCampeonato(new GenericType<List<Premio>>(){},campeonato.getIdCampeonato()+"");
+
+ 
         return premios;
     }
 
@@ -146,17 +159,16 @@ public class wsCampeonato {
     }
 
     public String detalle(int id) throws IOException {
-   //     premio = findPremio(id);
+        PremiosRestClient preREST= new PremiosRestClient();
+        premio = preREST.obtenerPremioPorId(Premio.class,id+"");
         idcircuito=premio.getCircuito().getIdCircuito();
         idpremio=id;
         return "/calendario/detalle";
     }
 
     public String detallePista() throws IOException {
-        System.out.println(idcircuito);
-    
- //       circuito = findCircuito(idcircuito);
-        
+        CircuitosRestClient cirREST= new CircuitosRestClient();
+        circuito= cirREST.obtenerCircuitoPorId(Circuito.class, idcircuito+"");        
         return "detallePista";
     }
 
@@ -177,7 +189,9 @@ public class wsCampeonato {
 
     public Integer puntaje() {
         Integer act = 0;
-//        calificaciones = obtenerCalificacionesPremio(premio.getIdPremio());
+        OpinionesRestClient OpRestClient= new OpinionesRestClient();
+        calificaciones = OpRestClient.obtenerOpinionesPorPremio(new GenericType<List<CalificacionPremio>>(){},idpremio+"");
+
         for (CalificacionPremio c : calificaciones) {
             act += c.getPuntaje().shortValue();
         }
@@ -194,27 +208,35 @@ Integer rating = new Integer(0);
     public void setRating(Integer rating) {
         this.rating = rating;
     }
+        PremiosRestClient pr = new PremiosRestClient();
+        OpinionesRestClient opiREST = new OpinionesRestClient();
 
     public String submitComment() throws DatatypeConfigurationException {
         newCalificacion.setPuntaje(rating.doubleValue());
-       newCalificacion.setFecha(new Date());
-   //    calificarPremio(usuario.getIdUsuario(), idpremio, newCalificacion);
-     rating=0;
-     newCalificacion.setComentario("");
-       return null;
+        newCalificacion.setFecha(new Date());
+        newCalificacion.setUsuario(usuario);
+        
+        Premio p=pr.obtenerPremioPorId(Premio.class, idpremio+"");
+        newCalificacion.setPremio(p);
+        opiREST.crearOpinionPremio(newCalificacion, String.class);
+        rating = 0;
+        newCalificacion.setComentario("");
+        return null;
     }
 
     
     public String ganador(Premio p) {
-  /*      try {
-        SesionCarrera sesCarr = obtenerSesionCarreraByPremio(p.getIdPremio());
-        ResultadoCarrera resCarr = obtenerResultadoCarreraBySesionCarrera(sesCarr.getIdSesionCarrera()).get(0);
+       try {
+        ResultadoRestClient resREST = new ResultadoRestClient();
+        SesionCarrera sesCarr = resREST.obtenerSesionCarreraByPremio(SesionCarrera.class,p.getIdPremio()+"");
             
-        return resCarr.getPiloto().getNombre();
+        List<ResultadoCarrera> resCarr =resREST.obtenerResultadoCarreraBySesionCarrera(new GenericType<List<ResultadoCarrera>>(){},sesCarr.getIdSesionCarrera()+"");
+           return resCarr.get(0).getPiloto().getNombre();
+
         } catch (Exception e) {
+            return p.getCircuito().getUltimoGanador();
         }
-        return p.getCircuito().getUltimoGanador();*/
-        return "ganador";
+        
     }
 
     private String month(int month) {

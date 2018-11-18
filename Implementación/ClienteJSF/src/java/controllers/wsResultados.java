@@ -6,6 +6,7 @@
 package controllers;
 
 import entities.Campeonato;
+import entities.Piloto;
 import entities.Premio;
 import entities.ResultadoCarrera;
 import entities.ResultadoClasificacion;
@@ -20,7 +21,10 @@ import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
+import ws.PremiosRestClient;
+import ws.ResultadoRestClient;
 
 /**
  *
@@ -81,7 +85,7 @@ public class wsResultados {
     }
 
     public List<ResultadoClasificacion> getResultadosClasificacions() {
-        resultadosClasificacions=resultadosClasificacion(idpremio);
+        resultadosClasificacions=resultadosClasificacion(premio.getIdPremio());
         return resultadosClasificacions;
     }
 
@@ -103,7 +107,7 @@ public class wsResultados {
     ResultadoCarrera resCarrera= new ResultadoCarrera();
     ResultadoPractica resPractica = new ResultadoPractica();
     ResultadoClasificacion resClasificacion = new ResultadoClasificacion();
- 
+  ResultadoRestClient resREST = new ResultadoRestClient();
 
 
     public Premio getPremio() {
@@ -171,44 +175,48 @@ public class wsResultados {
         
     }
    public void simular(){
+
        System.out.println("simulando..."+campeonato.getIdCampeonato());
- //       simularTorneo(campeonato.getIdCampeonato());
+       resREST.simularCampeonato(campeonato.getIdCampeonato()+"", boolean.class);
+ 
     }
  public String detCarrera() throws IOException{
- //    premio= findPremio(idpremio);
+     PremiosRestClient preREST= new PremiosRestClient();
+        premio = preREST.obtenerPremioPorId(Premio.class,idpremio+"");
      return "/resultados/resCarrera";
     }
  public String detClasificacion() throws IOException{
-       
-///       premio= findPremio(idpremio); 
+        PremiosRestClient preREST= new PremiosRestClient();
+        
+        premio = preREST.obtenerPremioPorId(Premio.class,idpremio+""); 
          return "/resultados/resClasificacion";
     }
  public String detPractica() throws IOException{
-//       premio= findPremio(idpremio);
+        PremiosRestClient preREST= new PremiosRestClient();
+        premio = preREST.obtenerPremioPorId(Premio.class,idpremio+"");
          return "/resultados/resPractica";
     }
 
 public List<ResultadoClasificacion> resultadosClasificacion(int idPremio){
-//    sesionClasificacion=obtenerSesionClasificacionByPremio(idPremio);
-//    return obtenerResultadoClasificacionBySesionClasificacion(sesionClasificacion.getIdSesionClasificacion());
-    
-    return new ArrayList<>();
+ sesionClasificacion = resREST.obtenerSesionClasificacionByPremio(SesionClasificacion.class,idPremio+"");
+
+ return resREST.obtenerResultadoCarreraBySesionClasificacion(new GenericType<List<ResultadoClasificacion>>(){},sesionClasificacion.getIdSesionClasificacion()+"");
+
 }
 
 public List<ResultadoCarrera> resultadosCarrera(int idPremio){
-    
-//    sesionCarrea=obtenerSesionCarreraByPremio(idPremio);
-//    return obtenerResultadoCarreraBySesionCarrera(sesionCarrea.getIdSesionCarrera());
-    
-    return new ArrayList<>();
+   
+   
+ sesionCarrea = resREST.obtenerSesionCarreraByPremio(SesionCarrera.class,idPremio+"");
+return resREST.obtenerResultadoCarreraBySesionCarrera(new GenericType<List<ResultadoCarrera>>(){},sesionCarrea.getIdSesionCarrera()+"");
+
 }
 
 
 public List<ResultadoPractica> resultadosPracticas(int idPremio){
- //   sesionPractica=obtenerSesionPracticaByPremio(idPremio);
   
-//return obtenerResultadoPracticaBySesionPractica(sesionPractica.getIdSesionPractica());
-    return new ArrayList<>();
+    sesionPractica=resREST.obtenerSesionPracticaByPremio(SesionPractica.class, idPremio+"");
+return resREST.obtenerResultadoPracticaBySesionPractica(new GenericType<List<ResultadoPractica>>(){}, sesionPractica.getIdSesionPractica()+"");   
 }
     public static String splitToComponentTimes(double biggy){
     int hours = (int) biggy / 3600;

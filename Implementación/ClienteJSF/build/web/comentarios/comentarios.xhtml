@@ -10,7 +10,9 @@
                 <h2>Comentarios antiguos</h2>
                 <p:dataTable var="item" value="#{wsCampeonato.calificaciones}">
             <p:column headerText="Usuario">
+                <p:graphicImage value="#{item.usuario.imagen}" height="25px" width="20px"/>
                 <p:outputLabel value="#{item.usuario.nombre}" /> 
+                
             </p:column>
             <p:column headerText="Puntaje">
                 <p:outputLabel value="#{item.puntaje}" /> 

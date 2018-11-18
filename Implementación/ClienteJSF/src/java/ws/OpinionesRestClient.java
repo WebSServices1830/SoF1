@@ -7,6 +7,7 @@ package ws;
 
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 
@@ -34,7 +35,7 @@ public class OpinionesRestClient {
         webTarget = client.target(BASE_URI).path("opiniones");
     }
 
-    public <T> T obtenerPilotosTop(Class<T> responseType) throws ClientErrorException {
+    public <T> T obtenerPilotosTop(GenericType<T> responseType) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path("pilotos/top");
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -44,7 +45,7 @@ public class OpinionesRestClient {
         return webTarget.path("piloto").request(javax.ws.rs.core.MediaType.TEXT_PLAIN).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), responseType);
     }
 
-    public <T> T obtenerPremiosTop(Class<T> responseType) throws ClientErrorException {
+    public <T> T obtenerPremiosTop(GenericType<T> responseType) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path("premios/top");
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -63,7 +64,8 @@ public class OpinionesRestClient {
     }
 
     public <T> T crearOpinionPremio(Object requestEntity, Class<T> responseType) throws ClientErrorException {
-        return webTarget.path("premio").request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), responseType);
+        
+        return webTarget.path("premio").request(javax.ws.rs.core.MediaType.TEXT_PLAIN).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), responseType);
     }
 
     public <T> T obtenerCalificacionPromedioPiloto(Class<T> responseType, String id) throws ClientErrorException {
@@ -72,7 +74,7 @@ public class OpinionesRestClient {
         return resource.request(javax.ws.rs.core.MediaType.TEXT_PLAIN).get(responseType);
     }
 
-    public <T> T obtenerOpinionesPorPremio(Class<T> responseType, String id) throws ClientErrorException {
+    public <T> T obtenerOpinionesPorPremio(GenericType<T> responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("premio/{0}", new Object[]{id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
