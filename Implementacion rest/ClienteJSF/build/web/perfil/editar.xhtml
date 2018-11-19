@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+        <f:view>
+
+
+            <h:form enctype="multipart/form-data">
+                <h1><h:outputText value="Editar Informaciòn"/></h1>
+                   
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Usuario:" for="usuario" />
+                    <p:inputText id="usuario" value="#{wsSessionBean.usuarioSession.usuario}" title="Usuario" />
+                    <p:outputLabel value="Contrasena:" for="contrasena" />
+                    <p:password id="contrasena" value="#{wsSessionBean.usuarioSession.contrasena}" title="Contrasena" />
+                   
+                    <c:if test="#{wsSessionBean.admin}">
+                    <p:outputLabel value="Rol:" for="rol" />
+                    <p:inputText id="rol" value="#{wsSessionBean.usuarioSession.rol}" title="Rol" />
+                    </c:if>
+
+                    
+                    <p:outputLabel value="Nombre:" for="nombre" />
+                    <p:inputText id="nombre" value="#{wsSessionBean.usuarioSession.nombre}" title="Nombre" />
+                    <p:outputLabel value="Edad:" for="edad" />
+                    <p:inputText id="edad" value="#{wsSessionBean.usuarioSession.edad}" title="Edad" />
+                   
+
+                    
+                    <p:outputLabel value="Descripcion:" for="descripcion" />
+                                          <p:inputTextarea  id="descripcion" value="#{wsSessionBean.usuarioSession.descripcion}"/>
+                    <p:outputLabel value="Foto:" />                
+                <p:fileUpload value="#{wsSessionBean.file}" mode="simple"   />
+
+                </h:panelGrid>
+            
+                       <p:commandButton value="Guardar" ajax="false" action="#{wsSessionBean.save}"/>
+ 
+            </h:form>
+        </f:view>
+
+    </ui:define>
+
+</ui:composition>

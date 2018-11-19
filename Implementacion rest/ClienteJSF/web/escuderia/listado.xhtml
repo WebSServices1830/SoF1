@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../Template.xhtml">
+
+            <ui:define name="content">
+                <h1> Escuderias </h1>
+                <h:form id="frm1">
+
+                    <ui:repeat value="#{wsEscuderiaBean.escuderias}" var="item">
+                        <p:fieldset legend="#{item.idEscuderia}" style="margin-bottom:20px;">
+                            <h:panelGrid columns="3">
+
+                                <p:panelGrid columns="2" >
+
+                                    <p:outputLabel value="Logo: "/>
+                                    <p:graphicImage value="#{item.imagen}" width="200px" 
+                                                    height="150px" alt="#{item.nombre}" cache="false"/>
+
+                                    <p:outputLabel value="Escuderia:"/>
+                                    <p:outputLabel value="#{item.nombre}"/>
+                                    <p:outputLabel value="Lider : "/>
+                                    <p:outputLabel value="#{item.lider}"/>
+                                    <p:outputLabel value="Tecnico Lider: "/>
+                                    <p:outputLabel value="#{item.tecnicoLider}"/>
+
+                                    <p:outputLabel value="Pais: "/>
+                                    <p:outputLabel value="#{item.pais.nombre}"/>
+                                    <p:outputLabel value="Detalle:"/>
+                                    <p:outputLabel value="#{item.detalle}"/>
+                                </p:panelGrid>
+
+                                <h:panelGrid columns="2">
+                                    <p:outputLabel value="Pilotos"/>
+                                    <p:outputLabel value="Monoplazas"/>
+                                    <p:commandLink action="#{wsEscuderiaBean.setPiloto(item.piloto1)}" update=":frm1:dialog1"  oncomplete="PF('dlg3').show();" >
+
+                                        <img width="100px" height="150px" src="#{item.piloto1.imagen}" 
+                                             alt="#{item.piloto1.nombre}"/>
+                                        <br>
+                                            <p:outputLabel value="#{item.piloto1.nombre}"/>
+                                        </br>
+                                    </p:commandLink>
+            <p:commandLink   actionListener="#{wsEscuderiaBean.setM1(item.monoplaza1)}"  oncomplete="PF('dlg2').show();" update=":frm1:dialog2" >
+
+                                    <img width="100px" height="150px" src="#{item.monoplaza1.imagen}" 
+                                         alt="#{item.monoplaza1.marca}"/>
+                                        <br>
+                                            <p:outputLabel value="#{item.monoplaza1.marca}"/>
+                                        </br>
+            </p:commandLink>
+                                    <p:commandLink  actionListener="#{wsEscuderiaBean.setPiloto(item.piloto2)}"   update=":frm1:dialog1"  oncomplete="PF('dlg3').show();"  >
+
+                                        <img width="100px" height="150px" src="#{item.piloto2.imagen}" 
+                                             alt="#{item.monoplaza1.marca}"/>
+                                         <br>
+                                            <p:outputLabel value="#{item.piloto2.nombre}"/>
+                                        </br>
+                                    </p:commandLink>
+
+                                    <p:commandLink   actionListener="#{wsEscuderiaBean.setM1(item.monoplaza2)}"  oncomplete="PF('dlg2').show();" update=":frm1:dialog2" >
+
+                                        <img width="100px" height="150px" src="#{item.monoplaza2.imagen}" 
+                                             alt="#{item.monoplaza1.marca}"/>
+                                         <br>
+                                            <p:outputLabel value="#{item.monoplaza2.marca}"/>
+                                        </br>
+                                        
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </h:panelGrid>
+
+                            <c:if test="#{wsSessionBean.admin}">
+                                <p:toolbar>
+                                    <f:facet name="right">
+                                        <p:menuButton value="Options">
+                                            <p:menuitem value="Edit" action="#{wsEscuderiaBean.editarView(item.idEscuderia)}" ajax="false" icon="ui-icon-pencil" />
+                                            <p:menuitem value="Delete" ajax="false" action  ="#{wsEscuderiaBean.delete(item.idEscuderia)}" icon="ui-icon-close" />
+                                        </p:menuButton>
+                                    </f:facet>
+                                </p:toolbar>
+                            </c:if>
+
+                        </p:fieldset>
+
+                    </ui:repeat>
+
+                    <p:dialog header="Información del piloto" id="dialog1" widgetVar="dlg3" showEffect="bounce" hideEffect="bounce" height="300" width="500">
+                    
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:graphicImage value="#{wsEscuderiaBean.piloto.imagen}" width="100px" 
+                                        height="150px" alt="#{item.nombre}" cache="false"/>
+
+
+                        <h:panelGrid columns="1">
+                            <h2>#{wsEscuderiaBean.piloto.nombre}</h2>
+                            <p:rating  value="#{wsPilotoBean.getPromedioPiloto(wsEscuderiaBean.piloto.idPiloto)}" readonly="true"/>
+    <h:outputText
+                                value="#{wsEscuderiaBean.piloto.biografia}" />
+
+                            <h:outputText
+                                value="Numero: #{wsEscuderiaBean.piloto.numero}" />
+                            <h:outputText
+                                value="Campeonatos: #{wsEscuderiaBean.piloto.campeonatos}" />
+
+                            <h:outputText
+                                value="Podios: #{wsEscuderiaBean.piloto.podios}" />
+                            <h:outputText
+                                value="Pais de nacimiento:  #{wsEscuderiaBean.piloto.pais.nombre}"/>
+                            <h:outputText
+                                value="Lugar de nacimiento:  #{wsEscuderiaBean.piloto.paisNacimiento}"/>
+                            <h:panelGrid columns="2">
+
+
+                                <h:outputText value="Fecha Nacimiento:"/> <h:outputText
+                                    value="#{wsPilotoBean.getDate(wsEscuderiaBean.piloto.fechaNacimiento)}" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy" type="date"/>
+                                </h:outputText>
+                            </h:panelGrid>
+
+                            <h:outputText
+                                value="Multiplicador:  #{wsEscuderiaBean.piloto.multiplicador}"/>
+
+                        
+                        </h:panelGrid>
+                        </h:panelGrid>
+                        
+                    </p:dialog>
+              
+                    
+                          <p:dialog header="Información del Monoplaza" id="dialog2" widgetVar="dlg2" showEffect="bounce" hideEffect="bounce" height="200" width="500">
+                  
+                           <h:panelGrid columns="2" cellpadding="5">
+                               <p:graphicImage value="#{wsEscuderiaBean.m1.imagen}" width="100px" 
+                                        height="150px" alt="#{wsEscuderiaBean.m1.marca}" cache="false"/>
+                        <h:panelGrid columns="1">
+                            <h2>#{wsEscuderiaBean.m1.marca}</h2>
+                            <h:outputText
+                                value="Modelo: #{wsEscuderiaBean.m1.modelo}" />
+
+                            <h:outputText
+                                value="Cilindros: #{wsEscuderiaBean.m1.numCilindros}" />
+
+                            <h:outputText
+                                value="potencia: #{wsEscuderiaBean.m1.potencia}" />
+                            <h:outputText
+                                value="Torque:  #{wsEscuderiaBean.m1.torque}"/>
+                            
+                            <h:outputText
+                                value="velocidad Máxima :  #{wsEscuderiaBean.m1.velMax} km/h"/>
+                            
+
+                        </h:panelGrid>
+
+
+                    </h:panelGrid>
+                   
+                          </p:dialog>
+              
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

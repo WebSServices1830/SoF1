@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+                <h2>Comentarios antiguos</h2>
+                <h:form>
+            
+        <h:inputHidden value="#{wsResultados.idpremio}"/>
+                    
+         <p:commandLink  style="margin-right:  100px; text-align: right;float: right;" id="nonAjax" action="#{wsCampeonato.detalle(wsResultados.idpremio)}" ajax="false" >
+                               Volver
+                                </p:commandLink>  
+        </h:form>
+      
+                <p:dataTable var="item" value="#{wsCampeonato.calificaciones}">
+            <p:column headerText="Usuario">
+                <p:graphicImage value="#{item.usuario.imagen}" height="25px" width="20px"/>
+                <p:outputLabel value="#{item.usuario.nombre}" /> 
+                
+            </p:column>
+            <p:column headerText="Puntaje">
+                <p:outputLabel value="#{item.puntaje}" /> 
+            </p:column>
+                
+            <p:column headerText="Comentario">
+                <p:outputLabel value="#{item.comentario}" /> 
+            </p:column>
+                </p:dataTable>
+                  <c:if test="#{wsSessionBean.estado}" >
+                <h2>Nuevo Comentario</h2>
+                <h:outputText value="Puntaje" />
+                <h:form>           
+                    <p:rating value="#{wsCampeonato.rating}" />
+                    <h:inputHidden value="#{wsCampeonato.idpremio}" />
+                    <br/>
+                    <p:editor id="editor" widgetVar="editorWidget" value="#{wsCampeonato.newCalificacion.comentario}" width="600" />
+                    <h:panelGrid columns="2" style="margin-top: 10px">
+                        <p:commandButton value="Enviar"  action="#{wsCampeonato.submitComment}" ajax="false"  icon="ui-icon-disk" />
+                        <p:commandButton value="Limpiar" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+                    </h:panelGrid>
+
+                </h:form>
+        
+                  </c:if>
+
+    </ui:define>
+
+</ui:composition>

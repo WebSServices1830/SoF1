@@ -1,0 +1,65 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        Editar Piloto
+        
+        <p:tooltip />
+        <h:form enctype="multipart/form-data">
+            
+            <h:panelGrid columns="2">
+            <h:panelGrid columns="2">
+                
+                 
+                <p:outputLabel for="nombre" value="nombre:"></p:outputLabel>
+                <p:inputText id="nombre" required="true"  value="#{wsPilotoBean.piloto.nombre}"/>
+                
+                <p:outputLabel for="num" value="Numero"></p:outputLabel>
+                <p:inputText  id="num" required="true"  value="#{wsPilotoBean.piloto.numero}"/>
+                
+               
+                <p:outputLabel value="Pais de nacimiento:"></p:outputLabel>
+                 <p:selectOneMenu value="#{wsPilotoBean.idpais}">
+                    <f:selectItem itemLabel="Selecciona un pais"/>
+                    <f:selectItems value="#{wsPilotoBean.paises}" 
+                                   var="p" itemValue="#{p.idPais}" itemLabel="#{p.nombre}"                >           
+                                  </f:selectItems>
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Lugar de nacimiento:"></p:outputLabel>
+                <p:inputText value="#{wsPilotoBean.piloto.paisNacimiento}"/>
+                
+                <p:outputLabel for="button" value="Fecha Nacimiento:" />
+                <p:calendar id="button" value="#{wsPilotoBean.piloto.fechaNacimiento}" showOn="button" />
+ 
+                <p:outputLabel value="Campeonatos:"></p:outputLabel>
+                <p:inputText value="#{wsPilotoBean.piloto.campeonatos}" />
+                <p:outputLabel value="Podios:"></p:outputLabel>
+                <p:inputText value="#{wsPilotoBean.piloto.podios}" />
+
+                <p:outputLabel value="Bibliografia:" />                
+                <p:inputTextarea value="#{wsPilotoBean.piloto.biografia}" cols="30" rows="10"/>
+                <p:outputLabel value="Foto:" />                
+            <p:fileUpload value="#{wsPilotoBean.file}" mode="simple"   />
+            </h:panelGrid>
+                <p:column style=" position: relative; top: -200px;">
+                    
+                
+                    <img src="#{wsPilotoBean.piloto.imagen}" width="140px" height="180px" style="vertical-align: top;"/>    
+            </p:column>
+            </h:panelGrid>
+            
+            <p:commandButton value="Guardar" ajax="false" action="#{wsPilotoBean.edit}"  />
+            
+            <h:inputHidden value="#{wsPilotoBean.piloto.idPiloto}"/>
+            <h:inputHidden value="#{wsPilotoBean.piloto.imagen}"/>
+        </h:form>
+         
+            
+
+    </ui:define>
+
+</ui:composition>

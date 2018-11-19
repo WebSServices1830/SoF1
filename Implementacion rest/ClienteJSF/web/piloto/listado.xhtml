@@ -1,0 +1,77 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+
+        <h1>Pilotos</h1>
+        <h:form>
+            <ui:repeat value="#{wsPilotoBean.pilotos}" var="item">
+                <p:fieldset legend="#{item.idPiloto}" style="margin-bottom:20px;">
+
+
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:graphicImage value="#{item.imagen}" width="100px" 
+                                        height="150px" alt="#{item.nombre}" cache="false"/>
+
+
+                        <h:panelGrid columns="1">
+                            <h2>#{item.nombre}</h2>
+                            <p:rating  value="#{wsPilotoBean.getPromedioPiloto(item.idPiloto)}" readonly="true"/>
+    <h:outputText
+                                value="#{item.biografia}" />
+
+                            <h:outputText
+                                value="Numero: #{item.numero}" />
+                            <h:outputText
+                                value="Campeonatos: #{item.campeonatos}" />
+
+                            <h:outputText
+                                value="Podios: #{item.podios}" />
+                            <h:outputText
+                                value="Pais de nacimiento:  #{item.pais.nombre}"/>
+                            <h:outputText
+                                value="Lugar de nacimiento:  #{item.paisNacimiento}"/>
+                            <h:panelGrid columns="2">
+
+
+                                <h:outputText value="Fecha Nacimiento:"/> 
+                                <h:outputText
+                                    value="#{wsPilotoBean.getDate(item.fechaNacimiento)}" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy" type="date"/>
+                                </h:outputText>
+                            </h:panelGrid>
+
+                            <h:outputText
+                                value="Multiplicador:  #{item.multiplicador}"/>
+
+                        
+                        </h:panelGrid>
+
+
+
+                    </h:panelGrid>
+                    <p:toolbar>
+                        <f:facet name="right">
+                            <p:menuButton value="Options">
+                                <p:menuitem value="Comentarios" action="#{wsCalificacionPiloto.comentarios(item.idPiloto)}" ajax="false" icon="ui-icon-comment" />
+                                <c:if test="#{wsSessionBean.admin}">
+                                    <p:menuitem value="Edit" action="#{wsPilotoBean.editar(item.idPiloto)}" ajax="false" icon="ui-icon-pencil" />
+                                    <p:menuitem value="Delete" actionListener="#{wsPilotoBean.delete(item.idPiloto)}" ajax="false" icon="ui-icon-close" />
+                                </c:if>
+
+
+
+                            </p:menuButton>
+
+                        </f:facet>
+                    </p:toolbar>
+                </p:fieldset>
+            </ui:repeat>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

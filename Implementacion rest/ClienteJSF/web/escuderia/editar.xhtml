@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../Template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+ <ui:define name="content">
+        <h:form enctype="multipart/form-data">
+
+            Editar Escuderia
+
+            
+
+            <h:panelGrid columns="2">
+
+                <p:outputLabel for="nombre" value="Nombre:"/>
+                <p:inputText id="nombre" value="#{wsEscuderiaBean.escuderia.nombre}"/>
+                <p:outputLabel for="lider" value="Lider:"/>
+                <p:inputText id="lider" value="#{wsEscuderiaBean.escuderia.lider}"/>
+                
+                <p:outputLabel for="lidert" value="Lider técnico:"/>
+                <p:inputText id="lidert" value="#{wsEscuderiaBean.escuderia.tecnicoLider}"/>
+                
+                <p:outputLabel value="Pais: "/>
+                          <p:selectOneMenu value="#{wsEscuderiaBean.idpais}">
+                    <f:selectItem itemLabel="Selecciona un pais"/>
+                    <f:selectItems value="#{wsPilotoBean.paises}" 
+                                   var="p" itemValue="#{p.idPais}" itemLabel="#{p.nombre}"                >           
+                                  </f:selectItems>
+                </p:selectOneMenu>
+      
+                <p:outputLabel for="car" value="Piloto 1:    " />
+                <p:selectOneMenu id="car" value="#{wsEscuderiaBean.idp1}">
+                    <f:selectItem itemLabel="Seleccionar al piloto 1" itemValue="" />
+            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p1" itemLabel="#{p1.nombre}"
+                           itemValue="#{p1.idPiloto}" 
+                           >           
+            </f:selectItems>
+        </p:selectOneMenu>
+              
+                <p:outputLabel for="car2" value="Piloto 2:    " />
+                <p:selectOneMenu id="car2" value="#{wsEscuderiaBean.idp2}">
+                    <f:selectItem itemLabel="Seleccionar al piloto 2" itemValue="" />
+            <f:selectItems value="#{wsEscuderiaBean.pilotos}" var="p2" itemLabel="#{p2.nombre}"
+                           itemValue="#{p2.idPiloto}" 
+                           >           
+            </f:selectItems>
+        </p:selectOneMenu>
+              
+          <p:outputLabel for="m1" value="Monoplaza 1:" />
+                <p:selectOneMenu id="m1" value="#{wsEscuderiaBean.mid1}">
+                    <f:selectItem itemLabel="Seleccionar monoplaza 1" itemValue="" />
+                    <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m1"
+                                   itemValue="#{m1.idMonoplaza}"   itemLabel="#{m1.marca}">           
+            </f:selectItems>
+        </p:selectOneMenu>
+         
+                    <p:outputLabel for="m2" value="Monoplaza 2:    " />
+                    <p:selectOneMenu id="m2" value="#{wsEscuderiaBean.mid2}">
+                    <f:selectItem itemLabel="Seleccionar monoplaza 2" itemValue="" />
+                    <f:selectItems value="#{wsEscuderiaBean.monoplazas}" var="m2" 
+                                    itemValue="#{m2.idMonoplaza}"   itemLabel="#{m2.marca}">           
+            </f:selectItems>
+        </p:selectOneMenu>
+                
+                   <p:outputLabel value="Detalle:" />                
+                   <p:inputTextarea value="#{wsEscuderiaBean.escuderia.detalle}" cols="30" rows="10"/>
+        
+                    
+          <p:outputLabel value="Foto:" />                
+          <p:fileUpload value="#{wsEscuderiaBean.file}" mode="simple"   />
+
+            </h:panelGrid>
+            <p:commandButton value="Guardar" action="#{wsEscuderiaBean.edit}" ajax="false"  />
+
+            <h:inputHidden value="#{wsEscuderiaBean.escuderia.idEscuderia}"/>
+            <h:inputHidden value="#{wsEscuderiaBean.escuderia.imagen}"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
